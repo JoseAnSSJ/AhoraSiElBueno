@@ -8,14 +8,16 @@ public class DeepConsModel {
     public static String NombreTecnico;
     public static String Obs;
     public static String Clv_Orden;
+    public static int Clv_TipSer;
 
-    public DeepConsModel(int Contrato, String ContratoCom, String STATUS, String NombreTecnico, String Obs, String Clv_Orden){
+    public DeepConsModel(int Contrato, String ContratoCom, String STATUS, String NombreTecnico, String Obs, String Clv_Orden, int clv_TipSer){
         this.Contrato = Contrato;
         this.ContatoCom = ContratoCom;
         this.STATUS = STATUS;
         this.NombreTecnico = NombreTecnico;
         this.Obs = Obs;
         this.Clv_Orden = Clv_Orden;
+        this.Clv_TipSer = clv_TipSer;
 
     }
 
@@ -65,5 +67,13 @@ public class DeepConsModel {
 
     public static void setClv_Orden(String clv_Orden) {
         Clv_Orden = clv_Orden;
+    }
+
+    public static int getClv_TipSer() {
+        return Clv_TipSer;
+    }
+
+    public static void setClv_TipSer(int clv_TipSer) {
+        Clv_TipSer = clv_TipSer;
     }
 }

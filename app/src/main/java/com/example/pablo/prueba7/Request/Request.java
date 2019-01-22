@@ -369,7 +369,8 @@ String a="Seleccione tecnico secundario";
                         userJson.get("STATUS").getAsString(),
                         userJson.get("NombreTecnico").getAsString(),
                         userJson.get("Obs").getAsString(),
-                        userJson.get("Clv_Orden").getAsString()
+                        userJson.get("Clv_Orden").getAsString(),
+                        userJson.get("Clv_TipSer").getAsInt()
                 );
                 MainActivity.NombreTec.setText(DeepConsModel.NombreTecnico);
                 if (DeepConsModel.STATUS.equals("E")) {
