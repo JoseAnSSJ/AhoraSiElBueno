@@ -8,8 +8,10 @@ import com.example.pablo.prueba7.Listas.Example2;
 import com.example.pablo.prueba7.Listas.Example3;
 import com.example.pablo.prueba7.Listas.JSONApaTipDis;
 import com.example.pablo.prueba7.Listas.JSONApaTipo;
+import com.example.pablo.prueba7.Listas.JSONArbolServicios;
 import com.example.pablo.prueba7.Listas.JSONCAMDO;
 import com.example.pablo.prueba7.Listas.JSONCLIAPA;
+import com.example.pablo.prueba7.Listas.JSONMediosSer;
 import com.example.pablo.prueba7.Listas.JSONResponseTecnico;
 import com.example.pablo.prueba7.Listas.JSONStatusApa;
 import com.example.pablo.prueba7.Listas.JSONTecSec;
@@ -52,6 +54,10 @@ public interface Service {
     Call<JSONApaTipDis> getDataApaTipDis();
     @POST(Constants.URL_GET_DAT_CAMDO)
     Call<JSONCAMDO> getDataCAMDO();
+    @POST(Constants.URL_GET_ARB_SER)
+    Call<JSONArbolServicios> getDataArbSer();
+    @POST(Constants.URL_GET_MEDIO_SER)
+    Call<JSONMediosSer> getDataMedSer();
 
 }
 

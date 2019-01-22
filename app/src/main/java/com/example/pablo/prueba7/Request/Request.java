@@ -20,8 +20,10 @@ import com.example.pablo.prueba7.Listas.Example2;
 import com.example.pablo.prueba7.Listas.Example3;
 import com.example.pablo.prueba7.Listas.JSONApaTipDis;
 import com.example.pablo.prueba7.Listas.JSONApaTipo;
+import com.example.pablo.prueba7.Listas.JSONArbolServicios;
 import com.example.pablo.prueba7.Listas.JSONCAMDO;
 import com.example.pablo.prueba7.Listas.JSONCLIAPA;
+import com.example.pablo.prueba7.Listas.JSONMediosSer;
 import com.example.pablo.prueba7.Listas.JSONResponseTecnico;
 import com.example.pablo.prueba7.Listas.JSONStatusApa;
 import com.example.pablo.prueba7.Listas.JSONTecSec;
@@ -32,6 +34,8 @@ import com.example.pablo.prueba7.Modelos.GetBUSCADetOrdSerListResult;
 import com.example.pablo.prueba7.Modelos.GetListAparatosDisponiblesByIdArticuloResult;
 import com.example.pablo.prueba7.Modelos.GetListClienteAparatosResult;
 import com.example.pablo.prueba7.Modelos.GetListTipoAparatosByIdArticuloResult;
+import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
+import com.example.pablo.prueba7.Modelos.GetMuestraMedioPorServicoContratadoListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraRelOrdenesTecnicosListResult;
 import com.example.pablo.prueba7.Modelos.GetSP_StatusAparatosListResult;
 import com.example.pablo.prueba7.Modelos.Get_ClvTecnicoResult;
@@ -101,6 +105,7 @@ String a="Seleccione tecnico secundario";
 
                     b = true;
                         getClv_tecnico();
+                    getArbSer();
 
 
 
@@ -745,5 +750,68 @@ String a="Seleccione tecnico secundario";
             }
         });
     }
+    /////////////////////////////Arbol Servicios//////////////////////////////
+    public void getArbSer()  {
+        Service service = null;
+        try {
+            service = services.getArbolSerService();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Call<JSONArbolServicios> call = service.getDataArbSer();
+        call.enqueue(new Callback<JSONArbolServicios>() {
+            @Override
+            public void onResponse(Call<JSONArbolServicios> call, Response<JSONArbolServicios> response) {
+                JSONArbolServicios jsonResponse = response.body();
+                array.dataArbSer =  new ArrayList<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>>(asList(jsonResponse.GetMuestraArbolServiciosAparatosPorinstalarListResult()));
+                Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
+                while (itData.hasNext()) {
+                    List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = (List<GetMuestraArbolServiciosAparatosPorinstalarListResult>) itData.next();
+                    for (int i = 0; i < dat.size(); i++) {
+                        Log.d("response21", String.valueOf(dat.get(i).getClv_TipSer()));
+                    }
+                }
+                getMedSer();
+            }
 
+            @Override
+            public void onFailure(Call<JSONArbolServicios> call, Throwable t) {
+
+            }
+
+        });
+
+    }
+    /////////////////////////////Medios Servicios//////////////////////////////
+    public void getMedSer()  {
+        Service service = null;
+        try {
+            service = services.getMediosSerService();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Call<JSONMediosSer> call = service.getDataMedSer();
+        call.enqueue(new Callback<JSONMediosSer>() {
+            @Override
+            public void onResponse(Call<JSONMediosSer> call, Response<JSONMediosSer> response) {
+                JSONMediosSer jsonResponse = response.body();
+                array.dataMedSer =  new ArrayList<List<GetMuestraMedioPorServicoContratadoListResult>>(asList(jsonResponse.GetMuestraMedioPorServicoContratadoListResult()));
+                Iterator<List<GetMuestraMedioPorServicoContratadoListResult>> itData = array.dataMedSer.iterator();
+                while (itData.hasNext()) {
+                    List<GetMuestraMedioPorServicoContratadoListResult> dat = (List<GetMuestraMedioPorServicoContratadoListResult>) itData.next();
+                    for (int i = 0; i < dat.size(); i++) {
+                        Log.d("response22", dat.get(i).getDescripcion());
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<JSONMediosSer> call, Throwable t) {
+
+            }
+
+        });
+
+    }
 }
