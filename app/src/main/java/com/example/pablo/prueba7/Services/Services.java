@@ -30,7 +30,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class Services {
-    public static int clave;
+    public static int claveTecnico;
+
     public String abc="Basic: "+Login.enco;
 
     /////////TOKEN///C////
@@ -102,7 +103,7 @@ public class Services {
     public Service getProxService() throws JSONException {
         //POST Body Json
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("clv_tecnico", clave);
+        jsonObject.put("clv_tecnico", claveTecnico);
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         final RequestBody body = RequestBody.create(JSON, jsonObject.toString());
 
@@ -136,7 +137,7 @@ public class Services {
     public Service getOrdSerService() throws JSONException {
         //POST Body Json
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("clv_tecnico", clave);
+        jsonObject.put("clv_tecnico", claveTecnico);
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         final RequestBody body = RequestBody.create(JSON, jsonObject.toString());
 
@@ -167,7 +168,7 @@ public class Services {
         //POST Body JsonArray
         JSONObject jsonObject = new JSONObject();
         JSONObject jsonObject2 = new JSONObject();
-        jsonObject.put("clv_tecnico",clave);
+        jsonObject.put("clv_tecnico",claveTecnico);
         jsonObject.put("op",1);
         jsonObject.put("clv_orden",0);
         jsonObject.put("contratoCom","");
@@ -431,7 +432,7 @@ public class Services {
     //////////////Tipo de Aparato Disponible/////C//////////
     public Service getApaTipDisService() throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Clv_Tecnico", clave);
+        jsonObject.put("Clv_Tecnico", claveTecnico);
         jsonObject.put("Id_Articulo", CambioAparato.idArticulo2);
         MediaType JSON = MediaType.parse("application/json; charse=utf-8");
         final RequestBody body = RequestBody.create(JSON, jsonObject.toString());

@@ -142,7 +142,7 @@ String a="Seleccione tecnico secundario";
                         Log.d("response9", data.get(i).clv_tecnico);
                     }
                     clave_tecnico = data.get(0).clv_tecnico;
-                    services.clave = Integer.parseInt(data.get(0).clv_tecnico);
+                    services.claveTecnico = Integer.parseInt(data.get(0).clv_tecnico);
                 }
 
                 getProximaCita();
@@ -769,6 +769,7 @@ String a="Seleccione tecnico secundario";
                     List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = (List<GetMuestraArbolServiciosAparatosPorinstalarListResult>) itData.next();
                     for (int i = 0; i < dat.size(); i++) {
                         Log.d("response21", String.valueOf(dat.get(i).getClv_TipSer()));
+                        array.nombreArbol.add(dat.get(i).getNombre());
                     }
                 }
                 getMedSer();
@@ -801,6 +802,7 @@ String a="Seleccione tecnico secundario";
                     List<GetMuestraMedioPorServicoContratadoListResult> dat = (List<GetMuestraMedioPorServicoContratadoListResult>) itData.next();
                     for (int i = 0; i < dat.size(); i++) {
                         Log.d("response22", dat.get(i).getDescripcion());
+                        array.medio.add(dat.get(i).getDescripcion());
                     }
                 }
 
