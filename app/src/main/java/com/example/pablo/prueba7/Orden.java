@@ -60,7 +60,6 @@ public class Orden extends AppCompatActivity
                 Intent intento1 = new Intent(Orden.this, MainActivity.class);
 
                 startActivity(intento1);
-
                    request.getDeepCons();
 
 
@@ -97,6 +96,12 @@ public class Orden extends AppCompatActivity
 
     ///////////////////////ADAPTADOR ORDENES//////////////////////
     class OrdenesListAdaapter1 extends BaseAdapter {
+
+         class viewHolder{
+            TextView status,contrato,nombre;
+            Button orden;
+        }
+
         @Override
         public int getCount() {
             return Array.ordenx.size();
@@ -112,24 +117,37 @@ public class Orden extends AppCompatActivity
             return 0;
         }
 
+
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
-
-            convertView = getLayoutInflater().inflate(R.layout.ordenes_list_items,null);
-
-
-            TextView status=(TextView)convertView.findViewById(R.id.statusv);
-            Button orden=(Button)convertView.findViewById(R.id.ordenv);
-            TextView contrato=(TextView)convertView.findViewById(R.id.contratov);
-            TextView nombre=(TextView)convertView.findViewById(R.id.nombrev);
+            viewHolder holder;
 
 
-            status.setText(Array.statusx.get(position));
-            orden.setText(Array.ordenx.get(position));
-            contrato.setText(Array.contratox.get(position));
-            nombre.setText(Array.nombrex.get(position));
+           // convertView = getLayoutInflater().inflate(R.layout.ordenes_list_items,null);
+            if (convertView == null) {
+                holder = new viewHolder();
+            ////////
+                convertView = getLayoutInflater().inflate(R.layout.ordenes_list_items,null);
+            ///////
 
+            holder.status=(TextView)convertView.findViewById(R.id.statusv);
+            holder.orden=(Button)convertView.findViewById(R.id.ordenv);
+            holder.contrato=(TextView)convertView.findViewById(R.id.contratov);
+            holder.nombre=(TextView)convertView.findViewById(R.id.nombrev);
+
+
+           holder.status.setText(Array.statusx.get(position));
+            holder.orden.setText(Array.ordenx.get(position));
+            holder.contrato.setText(Array.contratox.get(position));
+            holder.nombre.setText(Array.nombrex.get(position));
+
+            convertView.setTag(holder);
+            }
+            else {
+                holder = (viewHolder) convertView.getTag();
+            }
             return convertView;
 
         }

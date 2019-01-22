@@ -545,7 +545,10 @@ String a="Seleccione tecnico secundario";
             }
         });
     }
+
+
 ////ClientesAparato////
+
     public void getCliApa(final Context context) {
 
         Service service = null;

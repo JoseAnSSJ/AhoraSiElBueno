@@ -92,7 +92,6 @@ public class Inicio extends AppCompatActivity
             startActivity(intent1);
             //Actualizar la siguente cita y la grafica
             request.getProximaCita();
-
                 request.getOrdenes();
 
 
