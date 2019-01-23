@@ -30,7 +30,7 @@ public class Trabajos extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trabajos, container, false);
-        Button accion = view.findViewById(R.id.accion);
+
         ListView trabajos=view.findViewById(R.id.listTrabajos);
 
         /*trabajo1=view.findViewById(R.id.observacion1);
@@ -77,6 +77,17 @@ public class Trabajos extends Fragment{
             Button accion=(Button)convertView.findViewById(R.id.accionv);
             trabajo.setText(Array.trabajox.get(position));
             accion.setText(Array.accionx.get(position));
+
+
+            accion.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intento = new Intent(getContext(), asignacion.class);
+                    startActivity(intento);
+
+                }
+            });
+
 
             return convertView;
         }

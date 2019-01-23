@@ -52,21 +52,8 @@ public class Orden extends AppCompatActivity
 
         //////////////////////////////////////////
 
-        //* Boton para ir a menu principal
-        orden1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intento1 = new Intent(Orden.this, MainActivity.class);
-
-                startActivity(intento1);
-
-                   request.getDeepCons();
 
 
-
-            }
-        });
         cambiodom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,6 +116,26 @@ public class Orden extends AppCompatActivity
             orden.setText(Array.ordenx.get(position));
             contrato.setText(Array.contratox.get(position));
             nombre.setText(Array.nombrex.get(position));
+
+
+
+
+
+            orden.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intento1 = new Intent(Orden.this, MainActivity.class);
+                    startActivity(intento1);
+                    request.getDeepCons();
+
+                }
+            });
+
+
+
+
+
+
 
             return convertView;
 

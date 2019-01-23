@@ -487,6 +487,7 @@ String a="Seleccione tecnico secundario";
                     List<GetBUSCADetOrdSerListResult> dat = (List<GetBUSCADetOrdSerListResult>) itData.next();
                     for (int i = 0; i < dat.size(); i++) {
                         Log.d("response11", dat.get(i).getDescripcion());
+                        Log.d("response13",dat.get(i).getAccion());
 
                         Array.trabajox.add(String.valueOf(dat.get(i).getDescripcion()));
                         Array.accionx.add(String.valueOf(dat.get(i).getAccion()));
