@@ -7,7 +7,6 @@ import com.example.pablo.prueba7.Modelos.DeepConsModel;
 import com.example.pablo.prueba7.Login;
 
 import com.example.pablo.prueba7.Modelos.UserModel;
-import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
 import com.example.pablo.prueba7.sampledata.Constants;
 import com.example.pablo.prueba7.sampledata.Service;
 
@@ -16,6 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
@@ -510,6 +510,43 @@ public class Services {
         jsonObject.put("ClvUnicaNet",102703 );
         MediaType JSON = MediaType.parse("application/json; charse=utf-8");
         final RequestBody body = RequestBody.create(JSON, jsonObject.toString());
+        final OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request newRequest = chain.request().newBuilder()
+                        .addHeader("Authorization", UserModel.Codigo)
+                        .addHeader("Content-Type","application/json" )
+                        .post(body)
+                        .build();
+                return chain.proceed(newRequest);
+            }
+        }).build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Constants.NEW_URL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        return retrofit.create(Service.class);
+    }
+    public Service getTipoAparatosService() throws JSONException {
+        ////////
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("Id",0 );
+        JSONObject jsonObject1 = new JSONObject();
+        jsonObject1.put("obj",jsonObject);
+        /////////////
+        JSONObject jsonObject2 = new JSONObject();
+        jsonObject2.put("Clv_UnicaNet", 102703);
+        jsonObject2.put("idMedio", 4);
+        ////////
+        ArrayList<JSONObject> arrayLists = new ArrayList<>();
+        arrayLists.add(jsonObject2);
+        /////////////
+        JSONObject jsonObject3 = new JSONObject();
+        jsonObject3.put("obj", jsonObject);
+        jsonObject3.put("Lst", arrayLists);
+        MediaType JSON = MediaType.parse("application/json; charse=utf-8");
+        final RequestBody body = RequestBody.create(JSON, String.valueOf(jsonObject3));
         final OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {

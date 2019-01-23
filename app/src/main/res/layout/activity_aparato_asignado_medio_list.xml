@@ -91,7 +91,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="250dp"
             android:layout_marginEnd="30dp"
-            android:text="Cancerlar"
+            android:text="Cancelar"
             android:textAlignment="center"
             android:textSize="20dp" />
     </RelativeLayout>

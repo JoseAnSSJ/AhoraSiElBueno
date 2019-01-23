@@ -15,6 +15,7 @@ import com.example.pablo.prueba7.Listas.JSONMediosSer;
 import com.example.pablo.prueba7.Listas.JSONResponseTecnico;
 import com.example.pablo.prueba7.Listas.JSONStatusApa;
 import com.example.pablo.prueba7.Listas.JSONTecSec;
+import com.example.pablo.prueba7.Listas.JSONTipoAparatos;
 import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
@@ -58,6 +59,8 @@ public interface Service {
     Call<JSONArbolServicios> getDataArbSer();
     @POST(Constants.URL_GET_MEDIO_SER)
     Call<JSONMediosSer> getDataMedSer();
+    @POST(Constants.URL_GET_TIPO_APARATOS)
+    Call<JSONTipoAparatos> getDataTipoAparatos();
 
 }
 

@@ -27,6 +27,7 @@ import com.example.pablo.prueba7.Listas.JSONMediosSer;
 import com.example.pablo.prueba7.Listas.JSONResponseTecnico;
 import com.example.pablo.prueba7.Listas.JSONStatusApa;
 import com.example.pablo.prueba7.Listas.JSONTecSec;
+import com.example.pablo.prueba7.Listas.JSONTipoAparatos;
 import com.example.pablo.prueba7.MainActivity;
 import com.example.pablo.prueba7.Modelos.GetDameDatosCAMDOResult;
 import com.example.pablo.prueba7.Modelos.DeepConsModel;
@@ -37,6 +38,7 @@ import com.example.pablo.prueba7.Modelos.GetListTipoAparatosByIdArticuloResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraMedioPorServicoContratadoListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraRelOrdenesTecnicosListResult;
+import com.example.pablo.prueba7.Modelos.GetMuestraTipoAparatoListResult;
 import com.example.pablo.prueba7.Modelos.GetSP_StatusAparatosListResult;
 import com.example.pablo.prueba7.Modelos.Get_ClvTecnicoResult;
 import com.example.pablo.prueba7.Modelos.GetDameListadoOrdenesAgendadasResult;
@@ -108,7 +110,7 @@ public class Request extends AppCompatActivity {
                     b = true;
                         getClv_tecnico();
                     getArbSer();
-
+                    getTipoAparatos();
 
 
                 }
@@ -817,6 +819,43 @@ public class Request extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<JSONMediosSer> call, Throwable t) {
+
+            }
+
+        });
+
+    }
+    /////////////////////////////Tipo de Aparatos//////////////////////////////
+    public void getTipoAparatos()  {
+        Service service = null;
+        try {
+            service = services.getTipoAparatosService();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Call<JSONTipoAparatos> call = service.getDataTipoAparatos();
+        call.enqueue(new Callback<JSONTipoAparatos>() {
+            @Override
+            public void onResponse(Call<JSONTipoAparatos> call, Response<JSONTipoAparatos> response) {
+                JSONTipoAparatos jsonResponse = response.body();
+                array.dataTipoAparatos =  new ArrayList<List<GetMuestraTipoAparatoListResult>>(asList(jsonResponse.GetMuestraTipoAparatoListResult()));
+                Iterator<List<GetMuestraTipoAparatoListResult>> itData = array.dataTipoAparatos.iterator();
+                while (itData.hasNext()) {
+                    List<GetMuestraTipoAparatoListResult> dat = (List<GetMuestraTipoAparatoListResult>) itData.next();
+
+                    for (int i = 0; i < dat.size(); i++) {
+                        Log.d("response22", dat.get(i).getNombre());
+
+
+                    }
+                }
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<JSONTipoAparatos> call, Throwable t) {
 
             }
 

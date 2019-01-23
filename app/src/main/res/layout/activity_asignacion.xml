@@ -12,14 +12,7 @@
         android:textSize="25dp"
         android:layout_marginLeft="90dp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="siguiente"
-        android:id="@+id/siguiente"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="10dp" />
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -38,5 +31,13 @@
 
     </RelativeLayout>
 
-
+    <Button
+        android:id="@+id/siguiente"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="Asignar Aparatos" />
 </RelativeLayout>

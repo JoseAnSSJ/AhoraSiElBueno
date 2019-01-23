@@ -8,6 +8,7 @@ import com.example.pablo.prueba7.Modelos.GetListTipoAparatosByIdArticuloResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraMedioPorServicoContratadoListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraRelOrdenesTecnicosListResult;
+import com.example.pablo.prueba7.Modelos.GetMuestraTipoAparatoListResult;
 import com.example.pablo.prueba7.Modelos.GetSP_StatusAparatosListResult;
 import com.example.pablo.prueba7.Modelos.Get_ClvTecnicoResult;
 import com.example.pablo.prueba7.Modelos.GetdameSerDELCliresumenResult;
@@ -47,4 +48,5 @@ public class Array {
  public static  ArrayList<List<GetDameDatosCAMDOResult>> dataCAMDO;
     public static  ArrayList<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> dataArbSer;
     public static  ArrayList<List<GetMuestraMedioPorServicoContratadoListResult>> dataMedSer;
+    public static  ArrayList<List<GetMuestraTipoAparatoListResult>> dataTipoAparatos;
 }
