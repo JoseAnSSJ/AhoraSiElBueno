@@ -96,11 +96,14 @@ public class Inicio extends AppCompatActivity
                 request.getOrdenes();
 
 
+
             finish();
         } else if (id == R.id.Ordenes) {
             Intent intent1 = new Intent(Inicio.this, Orden.class);
             request.getListOrd();
             request.getTrabajos();
+
+
             startActivity(intent1);
 
             finish();
@@ -184,6 +187,8 @@ public class Inicio extends AppCompatActivity
         data.setValueTextSize(15f);
         data.setValueTextColor(Color.BLACK);
         pieChart.setData(data);
+
     }
+
 
 }

@@ -1,6 +1,7 @@
 package com.example.pablo.prueba7;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,7 @@ import com.example.pablo.prueba7.Listas.Array;
  */
 public class Trabajos extends Fragment{
     public static TextView trabajo1;
+
 
 
     public Trabajos() {
@@ -53,6 +55,7 @@ public class Trabajos extends Fragment{
     ///////////////////Adaptador Trabajos//////////////////////////
     class TrabajosAdapter extends BaseAdapter{
 
+
         @Override
         public int getCount() {
 
@@ -68,29 +71,50 @@ public class Trabajos extends Fragment{
         public long getItemId(int position) {
             return 0;
         }
+        private   class ViewHolder{
+            TextView trabajo;
+            Button accion;
+
+        }
+
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+            ViewHolder holder;
 
-            convertView = getLayoutInflater().inflate(R.layout.list_trabajos_items,null);
-            TextView trabajo=(TextView)convertView.findViewById(R.id.trabajov);
-            Button accion=(Button)convertView.findViewById(R.id.accionv);
-            trabajo.setText(Array.trabajox.get(position));
-            accion.setText(Array.accionx.get(position));
+            if (convertView == null) {
+                holder = new ViewHolder();
+
+                convertView = getLayoutInflater().inflate(R.layout.list_trabajos_items,null);
+                holder.trabajo=(TextView)convertView.findViewById(R.id.trabajov);
+            holder.accion=(Button)convertView.findViewById(R.id.accionv);
+                convertView.setTag(holder);
+            }
+            else {
+                holder = (TrabajosAdapter.ViewHolder) convertView.getTag();
+            }
 
 
-            accion.setOnClickListener(new View.OnClickListener() {
+            holder.trabajo.setText(Array.trabajox.get(position));
+            holder.accion.setText(Array.accionx.get(position));
+
+
+            holder.accion.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intento = new Intent(getContext(), asignacion.class);
                     startActivity(intento);
-
                 }
+
+
             });
 
 
+
             return convertView;
+
         }
+
     }
     ///////////////////////////////////////////////
 

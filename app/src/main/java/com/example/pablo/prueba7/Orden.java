@@ -2,6 +2,7 @@ package com.example.pablo.prueba7;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -82,8 +83,13 @@ public class Orden extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    ///////////////////////ADAPTADOR ORDENES//////////////////////
+
+
+    ///////////////////////ADAPTADOR ORDENES/////////
+    // ///////////
     class OrdenesListAdaapter1 extends BaseAdapter {
+
+
         @Override
         public int getCount() {
             return Array.ordenx.size();
@@ -99,47 +105,53 @@ public class Orden extends AppCompatActivity
             return 0;
         }
 
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+            Holder holder1 = new Holder();
+            if (convertView == null) {
+
+                convertView = getLayoutInflater().inflate(R.layout.ordenes_list_items, null);
 
 
-            convertView = getLayoutInflater().inflate(R.layout.ordenes_list_items,null);
-
-
-            TextView status=(TextView)convertView.findViewById(R.id.statusv);
-            Button orden=(Button)convertView.findViewById(R.id.ordenv);
-            TextView contrato=(TextView)convertView.findViewById(R.id.contratov);
-            TextView nombre=(TextView)convertView.findViewById(R.id.nombrev);
-
-
-            status.setText(Array.statusx.get(position));
-            orden.setText(Array.ordenx.get(position));
-            contrato.setText(Array.contratox.get(position));
-            nombre.setText(Array.nombrex.get(position));
-
-
-
-
-
-            orden.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intento1 = new Intent(Orden.this, MainActivity.class);
-                    startActivity(intento1);
-                    request.getDeepCons();
-
-                }
-            });
+                holder1.status = (TextView) convertView.findViewById(R.id.statusv);
+                holder1.orden = (Button) convertView.findViewById(R.id.ordenv);
+                holder1.contrato = (TextView) convertView.findViewById(R.id.contratov);
+                holder1.nombre = (TextView) convertView.findViewById(R.id.nombrev);
+                convertView.setTag(holder1);
+            } else {
+                holder1 = (Holder) convertView.getTag();
+            }
 
 
 
 
+            holder1.status.setText(Array.statusx.get(position));
+                holder1.orden.setText(Array.ordenx.get(position));
+                holder1.contrato.setText(Array.contratox.get(position));
+                holder1.nombre.setText(Array.nombrex.get(position));
+                /////////////boton para ir ala pagina principal///////////
 
 
+                holder1.orden.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intento1 = new Intent(Orden.this, MainActivity.class);
+                        startActivity(intento1);
+                        request.getDeepCons();
+                    }
+
+
+                });
 
             return convertView;
-
         }
+        public class Holder {
+            TextView status,contrato, nombre;
+            Button orden;
+        }
+
+
     }
 
     ////////////////////////////////////////////
