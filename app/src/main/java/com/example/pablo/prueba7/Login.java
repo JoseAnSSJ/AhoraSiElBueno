@@ -68,7 +68,7 @@ public class Login extends AppCompatActivity {
         */
 
 
-        Error.Errores(this);
+
 
         entrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,9 +85,6 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_LONG).show();
                     Intent intento = new Intent(Login.this, Inicio.class);
                     startActivity(intento);
-
-
-
                 }
             }
         });

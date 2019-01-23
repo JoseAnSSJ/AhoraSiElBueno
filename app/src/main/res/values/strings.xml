@@ -9,4 +9,5 @@
     <string name="title_activity_orden">Orden</string>
     <string name="title_activity_reportes">Reportes</string>
     <string name="title_activity_configuracion">Configuracion</string>
+    <string name="VentanaMedios">res/layout/alertdialogmedios</string>
 </resources>
