@@ -34,6 +34,9 @@ public class Array {
     public static ArrayList<String>accionx=new ArrayList<>();
     //////////////////////////////////////////////////////
 
+    public static ArrayList <String>nombreArbol=new ArrayList<>();
+    public static ArrayList<String>medio=new ArrayList<>();
+    //////////////////////////////////////////////////////
     public static  ArrayList<List<Get_ClvTecnicoResult>> datatec;
     public static ArrayList<List<GetBUSCADetOrdSerListResult>> dataTrabajos;
     public static ArrayList<List<GetMuestraRelOrdenesTecnicosListResult>> dataTecSec;

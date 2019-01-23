@@ -47,6 +47,7 @@ import com.example.pablo.prueba7.Modelos.ProximaCitaModel;
 import com.example.pablo.prueba7.Modelos.Queja;
 import com.example.pablo.prueba7.Modelos.UserModel;
 import com.example.pablo.prueba7.Services.Services;
+import com.example.pablo.prueba7.asignacion;
 import com.example.pablo.prueba7.sampledata.Service;
 import com.google.gson.JsonObject;
 import com.example.pablo.prueba7.Listas.Array;
@@ -66,6 +67,7 @@ import static java.util.Arrays.asList;
 public class Request extends AppCompatActivity {
     Services services = new Services();
 Array array = new Array();
+  public static  ArrayAdapter<String> adapterMedio;
 CambioDom c = new CambioDom();
     public static String clave_tecnico;
 String a="Seleccione tecnico secundario";
@@ -772,7 +774,7 @@ String a="Seleccione tecnico secundario";
                         array.nombreArbol.add(dat.get(i).getNombre());
                     }
                 }
-                getMedSer();
+
             }
 
             @Override
@@ -784,7 +786,7 @@ String a="Seleccione tecnico secundario";
 
     }
     /////////////////////////////Medios Servicios//////////////////////////////
-    public void getMedSer()  {
+    public void getMedSer(final Context context)  {
         Service service = null;
         try {
             service = services.getMediosSerService();
@@ -800,11 +802,15 @@ String a="Seleccione tecnico secundario";
                 Iterator<List<GetMuestraMedioPorServicoContratadoListResult>> itData = array.dataMedSer.iterator();
                 while (itData.hasNext()) {
                     List<GetMuestraMedioPorServicoContratadoListResult> dat = (List<GetMuestraMedioPorServicoContratadoListResult>) itData.next();
+                    String datos[] = new String[dat.size()];
                     for (int i = 0; i < dat.size(); i++) {
                         Log.d("response22", dat.get(i).getDescripcion());
                         array.medio.add(dat.get(i).getDescripcion());
+                        datos[i] = dat.get(i).getDescripcion();
                     }
                 }
+                adapterMedio = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, datos);
+
 
             }
 

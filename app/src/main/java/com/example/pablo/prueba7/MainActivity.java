@@ -1,5 +1,6 @@
 package com.example.pablo.prueba7;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -57,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intento=new Intent(MainActivity.this,asignacion.class);
+                startActivity(intento);
                 request.getInfoCliente();
                     request.getServicios();
 
