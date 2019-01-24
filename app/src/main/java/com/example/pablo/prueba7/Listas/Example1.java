@@ -20,7 +20,4 @@ public class Example1 {
     public void setGetDameListadoOrdenesAgendadasResult(List<GetDameListadoOrdenesAgendadasResult> getDameListadoOrdenesAgendadasResult) {
         this.getDameListadoOrdenesAgendadasResult = getDameListadoOrdenesAgendadasResult;
     }
-
-
-
 }

@@ -21,7 +21,6 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
-import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -39,8 +38,8 @@ public class Inicio extends AppCompatActivity
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle onSaveInstanceState) {
+        super.onCreate(onSaveInstanceState);
         setContentView(R.layout.activity_inicio);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         pieChart =(PieChart)findViewById(R.id.pastel);

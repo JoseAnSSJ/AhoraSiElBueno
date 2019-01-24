@@ -1,19 +1,13 @@
 package com.example.pablo.prueba7;
 
 
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -24,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pablo.prueba7.Listas.Array;
-import com.example.pablo.prueba7.Modelos.GetListClienteAparatosResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraMedioPorServicoContratadoListResult;
 import com.example.pablo.prueba7.Request.Request;
@@ -35,18 +28,19 @@ import java.util.List;
 public class asignacion extends AppCompatActivity {
 Array array = new Array();
 Request request = new Request();
-    Button siguiente, btnmedio;
+    Button siguiente, eliminar;
     ListView Asignacion;
     public static Spinner spinnerMedio;
     public static int clv_unicaNet, clv_Medio;
 
 
 
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle onSaveInstanceState) {
+        super.onCreate(onSaveInstanceState);
         setContentView(R.layout.activity_asignacion);
         siguiente= (Button) findViewById(R.id.siguiente);
         Asignacion = findViewById(R.id.Asignacion);
+        eliminar = findViewById(R.id.eliminar);
 
 
 
@@ -94,6 +88,16 @@ Request request = new Request();
                 spinnerMedio = convertView.findViewById(R.id.spinnerMedio);
                 final CheckBox check = convertView.findViewById(R.id.chek);
 
+
+                eliminar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        nombre.setText(array.nombreArbol.get(position));
+                        medio.setVisibility(View.VISIBLE);
+                        clv_Medio= 0;
+                        clv_unicaNet=0;
+                    }
+                });
 
                 final int[] m = {1};
                 nombre.setText(array.nombreArbol.get(position));

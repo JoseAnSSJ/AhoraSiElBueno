@@ -77,7 +77,7 @@ public class Request extends AppCompatActivity {
     public static boolean b = false;
 
     public static String datos[];
-    public static String datosMedio[];
+
 
 
     ///////////////////Token///////////////////////////

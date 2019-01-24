@@ -18,7 +18,6 @@ import com.example.pablo.prueba7.Listas.JSONTecSec;
 import com.example.pablo.prueba7.Listas.JSONTipoAparatos;
 import com.google.gson.JsonObject;
 
-import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -24,8 +24,8 @@ public class asignado extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle onSaveInstanceState) {
+        super.onCreate(onSaveInstanceState);
         setContentView(R.layout.activity_asignado);
         escanear = (Button) findViewById(R.id.escanear);
         codigo = (TextView) findViewById(R.id.codigo);

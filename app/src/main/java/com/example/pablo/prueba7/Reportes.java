@@ -21,8 +21,8 @@ public class Reportes extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Request request = new Request();
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle onSaveInstanceState) {
+        super.onCreate(onSaveInstanceState);
         setContentView(R.layout.activity_reportes);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

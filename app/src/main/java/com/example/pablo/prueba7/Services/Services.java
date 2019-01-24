@@ -6,8 +6,6 @@ import com.example.pablo.prueba7.CambioAparato;
 import com.example.pablo.prueba7.Modelos.DeepConsModel;
 import com.example.pablo.prueba7.Login;
 
-import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
-import com.example.pablo.prueba7.Modelos.GetMuestraMedioPorServicoContratadoListResult;
 import com.example.pablo.prueba7.Modelos.UserModel;
 import com.example.pablo.prueba7.sampledata.Constants;
 import com.example.pablo.prueba7.sampledata.Service;
@@ -18,8 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import okhttp3.Interceptor;
 import okhttp3.MediaType;

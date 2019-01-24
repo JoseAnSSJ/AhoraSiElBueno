@@ -18,15 +18,15 @@ import com.example.pablo.prueba7.Modelos.UserModel;
 import com.example.pablo.prueba7.Request.Request;
 
 
-import org.json.JSONException;
+
 
 public class Configuracion extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Button CS;
     Request request = new Request();
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle onSaveInstanceState) {
+        super.onCreate(onSaveInstanceState);
         setContentView(R.layout.activity_configuracion);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

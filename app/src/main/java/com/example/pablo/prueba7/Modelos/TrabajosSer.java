@@ -29,11 +29,4 @@ public class TrabajosSer {
     public void setDescripcion(String descripcion) {
         this.descripcion= descripcion;
     }
-
-
-
-
-
-
-
 }

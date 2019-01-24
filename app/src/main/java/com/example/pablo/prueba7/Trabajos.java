@@ -1,7 +1,6 @@
 package com.example.pablo.prueba7;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -28,7 +27,7 @@ public class Trabajos extends Fragment{
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle onSaveInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trabajos, container, false);
         Button accion = view.findViewById(R.id.accion);
         ListView trabajos=view.findViewById(R.id.listTrabajos);

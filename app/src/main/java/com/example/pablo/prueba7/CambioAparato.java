@@ -26,8 +26,8 @@ public class CambioAparato extends AppCompatActivity {
     Button done;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(@Nullable Bundle onSaveInstanceState) {
+        super.onCreate(onSaveInstanceState);
         setContentView(R.layout.activity_cambio_aparato);
         done = (Button) findViewById(R.id.done);
         aparato = findViewById(R.id.aparato);

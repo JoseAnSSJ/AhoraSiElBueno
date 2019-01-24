@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle onSaveInstanceState) {
+        super.onCreate(onSaveInstanceState);
         setContentView(R.layout.activity_swipe);
         info= findViewById(R.id.info);
         layoutAnimado= findViewById(R.id.animado);
@@ -167,13 +167,3 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
 
 }
-
-
-
-
-
-
-
-
-
-
