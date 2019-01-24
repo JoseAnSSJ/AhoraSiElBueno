@@ -7,9 +7,9 @@ public class GetMuestraMedioPorServicoContratadoListResult {
     @SerializedName("Descripcion")
     @Expose
     private String descripcion;
-    @SerializedName("Medio")
+    @SerializedName("IdMedio")
     @Expose
-    public static Integer medio;
+    public Integer idMedio;
     @SerializedName("RequiereAcometida")
     @Expose
     private boolean requiereAcometida;
@@ -18,8 +18,8 @@ public class GetMuestraMedioPorServicoContratadoListResult {
         return descripcion;
     }
 
-    public Integer getMedio() {
-        return medio;
+    public Integer getIdMedio() {
+        return idMedio;
     }
 
     public boolean isRequiereAcometida() {
@@ -30,8 +30,8 @@ public class GetMuestraMedioPorServicoContratadoListResult {
         this.descripcion = descripcion;
     }
 
-    public void setMedio(Integer medio) {
-        this.medio = medio;
+    public void getIdMedio(Integer medio) {
+        this.idMedio = medio;
     }
 
     public void setRequiereAcometida(boolean requiereAcometida) {

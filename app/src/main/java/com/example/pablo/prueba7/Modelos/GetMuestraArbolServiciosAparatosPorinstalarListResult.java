@@ -9,7 +9,7 @@ public class GetMuestraArbolServiciosAparatosPorinstalarListResult {
     private Integer clv_TipSer;
     @SerializedName("Clv_UnicaNet")
     @Expose
-    public static Integer clv_UnicaNet;
+    public Integer clv_UnicaNet;
     @SerializedName("Detalle")
     @Expose
     private String detalle;
@@ -25,6 +25,7 @@ public class GetMuestraArbolServiciosAparatosPorinstalarListResult {
     @SerializedName("Type")
     @Expose
     private String type;
+
 
     public Integer getClv_TipSer() {
         return clv_TipSer;

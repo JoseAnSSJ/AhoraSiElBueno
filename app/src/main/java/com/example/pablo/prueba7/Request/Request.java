@@ -50,6 +50,7 @@ import com.example.pablo.prueba7.Modelos.Queja;
 import com.example.pablo.prueba7.Modelos.UserModel;
 import com.example.pablo.prueba7.Services.Services;
 import com.example.pablo.prueba7.asignacion;
+import com.example.pablo.prueba7.asignado;
 import com.example.pablo.prueba7.sampledata.Service;
 import com.google.gson.JsonObject;
 import com.example.pablo.prueba7.Listas.Array;
@@ -829,7 +830,7 @@ public class Request extends AppCompatActivity {
 
     }
     /////////////////////////////Tipo de Aparatos//////////////////////////////
-    public void getTipoAparatos()  {
+    public void getTipoAparatos(final Context context)  {
         Service service = null;
         try {
             service = services.getTipoAparatosService();
@@ -840,6 +841,7 @@ public class Request extends AppCompatActivity {
         call.enqueue(new Callback<JSONTipoAparatos>() {
             @Override
             public void onResponse(Call<JSONTipoAparatos> call, Response<JSONTipoAparatos> response) {
+                array.tipoAparato.clear();
                 JSONTipoAparatos jsonResponse = response.body();
                 array.dataTipoAparatos =  new ArrayList<List<GetMuestraTipoAparatoListResult>>(asList(jsonResponse.GetMuestraTipoAparatoListResult()));
                 Iterator<List<GetMuestraTipoAparatoListResult>> itData = array.dataTipoAparatos.iterator();
@@ -848,11 +850,11 @@ public class Request extends AppCompatActivity {
 
                     for (int i = 0; i < dat.size(); i++) {
                         Log.d("response23", dat.get(i).getNombre());
-
-
+                        array.tipoAparato.add(dat.get(i).getNombre());
                     }
                 }
-
+                ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, array.tipoAparato);
+                asignado.spinnerAparato.setAdapter(adapter1);
 
 
             }

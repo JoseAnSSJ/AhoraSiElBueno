@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.Modelos.GetListClienteAparatosResult;
+import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraMedioPorServicoContratadoListResult;
 import com.example.pablo.prueba7.Request.Request;
 
@@ -37,6 +38,7 @@ Request request = new Request();
     Button siguiente, btnmedio;
     ListView Asignacion;
     public static Spinner spinnerMedio;
+    public static int clv_unicaNet, clv_Medio;
 
 
 
@@ -45,8 +47,7 @@ Request request = new Request();
         setContentView(R.layout.activity_asignacion);
         siguiente= (Button) findViewById(R.id.siguiente);
         Asignacion = findViewById(R.id.Asignacion);
-     //   btnmedio = (Button) findViewById(R.id.medio);
-       // layoutMedio = findViewById(R.id.layoutmedio);
+
 
 
 
@@ -101,9 +102,13 @@ Request request = new Request();
                     @Override
                     public void onClick(View v) {
                         request.getMedSer(getApplicationContext());
-                      //  ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, array.medio);
-                      //  spinnerMedio.setAdapter(adapter1);
-                        Toast.makeText(getApplicationContext(), "seleccionaste" + position, Toast.LENGTH_LONG).show();
+                        /////
+
+                        Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
+                        List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = (List<GetMuestraArbolServiciosAparatosPorinstalarListResult>) itData.next();
+                        clv_unicaNet = dat.get(position).getClv_UnicaNet();
+
+                        ////
                         layoutMedio.setVisibility(View.VISIBLE);
                         medio.setVisibility(View.GONE);
                         nombre.setVisibility(View.GONE);
@@ -119,7 +124,9 @@ Request request = new Request();
                     if (m[0] == 1) {
                         Toast.makeText(getApplicationContext(),"Debe de llenar el campo 'Medio'",Toast.LENGTH_LONG).show();
                     } else {
-                        request.getTipoAparatos();
+                        Iterator<List<GetMuestraMedioPorServicoContratadoListResult>> itData = array.dataMedSer.iterator();
+                        List<GetMuestraMedioPorServicoContratadoListResult> dat = (List<GetMuestraMedioPorServicoContratadoListResult>) itData.next();
+                        clv_Medio = dat.get(position).getIdMedio();
                         layoutMedio.setVisibility(View.GONE);
                         medio.setVisibility(View.GONE);
                         nombre.setVisibility(View.VISIBLE);

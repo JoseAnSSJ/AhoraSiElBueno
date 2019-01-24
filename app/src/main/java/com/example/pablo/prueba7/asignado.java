@@ -6,8 +6,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.pablo.prueba7.Request.Request;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -16,6 +18,8 @@ public class asignado extends AppCompatActivity {
     Button cambio;
     TextView codigo;
     String contents;
+    public static Spinner spinnerAparato;
+    Request request = new Request();
 
 
 
@@ -25,6 +29,9 @@ public class asignado extends AppCompatActivity {
         setContentView(R.layout.activity_asignado);
         escanear = (Button) findViewById(R.id.escanear);
         codigo = (TextView) findViewById(R.id.codigo);
+        spinnerAparato=findViewById(R.id.tipo_aparato);
+        request.getTipoAparatos(getApplicationContext());
+
 
         cambio=(Button)findViewById(R.id.regresar);
         cambio.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +50,8 @@ public class asignado extends AppCompatActivity {
                 scanIntegrator.initiateScan();
             }
         });
+
+
 
     }
 

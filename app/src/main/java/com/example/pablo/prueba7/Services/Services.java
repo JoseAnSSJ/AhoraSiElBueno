@@ -30,7 +30,8 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-
+import static com.example.pablo.prueba7.asignacion.clv_Medio;
+import static com.example.pablo.prueba7.asignacion.clv_unicaNet;
 
 
 public class Services {
@@ -532,6 +533,7 @@ public class Services {
                 .build();
         return retrofit.create(Service.class);
     }
+    //////////////Tipo Aparatos/////C//////////
     public Service getTipoAparatosService() throws JSONException {
         ////////
         JSONObject jsonObject = new JSONObject();
@@ -540,8 +542,8 @@ public class Services {
         jsonObject1.put("obj",jsonObject);
         /////////////
         JSONObject jsonObject2 = new JSONObject();
-        jsonObject2.put("Clv_UnicaNet", GetMuestraArbolServiciosAparatosPorinstalarListResult.clv_UnicaNet);
-        jsonObject2.put("idMedio", GetMuestraMedioPorServicoContratadoListResult.medio);
+        jsonObject2.put("Clv_UnicaNet", clv_unicaNet);
+        jsonObject2.put("idMedio", clv_Medio);
         ////////
         JSONArray list = new JSONArray();
         list.put(jsonObject2);

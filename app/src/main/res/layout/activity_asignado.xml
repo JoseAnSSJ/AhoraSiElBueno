@@ -1,52 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:verticalScrollbarPosition="defaultPosition"
+        android:visibility="visible">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Asignacion de Aparatos"
-        android:layout_marginStart="20dp"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:layout_marginLeft="20dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tipo de Aparato:"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="90dp"
-        android:textSize="20dp"
-        android:layout_marginLeft="30dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aparato:"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="130dp"
-        android:textSize="20dp"
-        android:layout_marginLeft="30dp" />
-
-    <Spinner
-        android:layout_width="120dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="133dp"
-        android:id="@+id/aparato"
-        android:layout_marginLeft="220dp" />
-
-
-    <Spinner
-        android:layout_width="120dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="95dp"
-        android:id="@+id/tipo_aparato"
-        android:layout_marginLeft="220dp" />
-
+        android:layout_centerHorizontal="true"
+        />
     <Button
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -79,44 +55,79 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Tipo de Aparato:"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:textSize="20dp"
+        android:layout_marginLeft="30dp" />
+    <Spinner
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:id="@+id/tipo_aparato"
+        android:background="@drawable/contorno"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aparato:"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="180dp"
+        android:textSize="20dp"
+        android:layout_marginLeft="30dp" />
+
+    <Spinner
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+android:layout_centerHorizontal="true"
+        android:layout_marginTop="210dp"
+        android:id="@+id/aparato"
+        android:background="@drawable/contorno"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Servicios a los que se le instala el aparato:"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="260dp"
         android:textSize="18dp"
         android:layout_marginStart="20dp"
         android:textStyle="bold"
         android:layout_marginLeft="20dp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Agregar"
-        android:layout_marginTop="300dp"
-        android:layout_marginStart="270dp"
-        android:id="@+id/agregar"
-        android:layout_marginLeft="270dp" />
-
-
     <RelativeLayout
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="300dp"
+        android:id="@+id/sss"
         >
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"></ListView>
 
     </RelativeLayout>
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agregar"
+        android:layout_below="@id/sss"
+        android:layout_marginTop="25dp"
+        android:id="@+id/agregar"
+         />
     <RelativeLayout
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="350dp"
+        android:layout_below="@id/sss"
+android:layout_marginTop="100dp"
         android:layout_alignParentLeft="true">
 
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"></ListView>
     </RelativeLayout>
-
+</RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

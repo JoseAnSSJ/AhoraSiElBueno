@@ -50,8 +50,13 @@
         <activity android:name=".MainActivity"
             android:configChanges="screenSize|orientation"
             ></activity>
-        <activity android:name=".asignacion"></activity>
-        <activity android:name=".asignado"></activity>
+        <activity android:name=".asignacion"
+            android:theme="@style/AppTheme.NoActionBar"
+
+            ></activity>
+        <activity android:name=".asignado"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
 
         <activity android:name=".Login"
             android:theme="@style/AppTheme.NoActionBar"
