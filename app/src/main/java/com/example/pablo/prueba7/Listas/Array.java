@@ -8,6 +8,7 @@ import com.example.pablo.prueba7.Modelos.GetListTipoAparatosByIdArticuloResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraMedioPorServicoContratadoListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraRelOrdenesTecnicosListResult;
+import com.example.pablo.prueba7.Modelos.GetMuestraServiciosRelTipoAparatoListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraTipoAparatoListResult;
 import com.example.pablo.prueba7.Modelos.GetSP_StatusAparatosListResult;
 import com.example.pablo.prueba7.Modelos.Get_ClvTecnicoResult;
@@ -15,6 +16,7 @@ import com.example.pablo.prueba7.Modelos.GetdameSerDELCliresumenResult;
 import com.example.pablo.prueba7.Modelos.OrdSer;
 import com.example.pablo.prueba7.Modelos.Queja;
 import com.example.pablo.prueba7.Modelos.GetDameDatosCAMDOResult;
+import com.example.pablo.prueba7.Modelos.GetMuestraAparatosDisponiblesListResult;
 
 import java.security.PublicKey;
 import java.util.ArrayList;
@@ -38,6 +40,8 @@ public class Array {
     public static ArrayList <String>nombreArbol=new ArrayList<>();
     public static ArrayList<String>medio=new ArrayList<>();
     public static ArrayList<String>tipoAparato=new ArrayList<>();
+    public static ArrayList<String>aparatoDisponibles=new ArrayList<>();
+    public static ArrayList<String>serviciosAparatos=new ArrayList<>();
     //////////////////////////////////////////////////////
     public static  ArrayList<List<Get_ClvTecnicoResult>> datatec;
     public static ArrayList<List<GetBUSCADetOrdSerListResult>> dataTrabajos;
@@ -50,4 +54,6 @@ public class Array {
     public static  ArrayList<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> dataArbSer;
     public static  ArrayList<List<GetMuestraMedioPorServicoContratadoListResult>> dataMedSer;
     public static  ArrayList<List<GetMuestraTipoAparatoListResult>> dataTipoAparatos;
+    public static  ArrayList<List<GetMuestraAparatosDisponiblesListResult>> dataAparatosDisponibles;
+    public static  ArrayList<List<GetMuestraServiciosRelTipoAparatoListResult>> dataserviciosAparatos;
 }

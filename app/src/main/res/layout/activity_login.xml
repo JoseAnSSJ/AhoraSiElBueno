@@ -38,7 +38,9 @@
         android:hint="Contraseña"
         android:singleLine="true"
         android:text="123"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:password="true"
+        />
 
     <Button
         android:id="@+id/entrar"

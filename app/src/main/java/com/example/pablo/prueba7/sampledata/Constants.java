@@ -20,4 +20,6 @@ public class Constants {
     public static final String URL_GET_ARB_SER = "MuestraArbolServiciosAparatosPorinstalar/GetMuestraArbolServiciosAparatosPorinstalarList";
     public static final String URL_GET_MEDIO_SER = "MuestraMedioPorServicoContratado/GetMuestraMedioPorServicoContratadoList";
     public static final String URL_GET_TIPO_APARATOS = "MuestraTipoAparato/GetMuestraTipoAparatoList";
+    public static final String URL_GET_APARATOS_DISPONIBLES="MuestraAparatosDisponibles/GetMuestraAparatosDisponiblesList";
+    public static final String URL_GET_SERVICIOS_APARATOS = "MuestraServiciosRelTipoAparato/GetMuestraServiciosRelTipoAparatoList";
 }

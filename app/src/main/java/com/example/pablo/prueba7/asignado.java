@@ -5,21 +5,35 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.pablo.prueba7.Listas.Array;
+import com.example.pablo.prueba7.Modelos.GetMuestraAparatosDisponiblesListResult;
+import com.example.pablo.prueba7.Modelos.GetMuestraTipoAparatoListResult;
 import com.example.pablo.prueba7.Request.Request;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import java.util.Iterator;
+import java.util.List;
 
 public class asignado extends AppCompatActivity {
     Button escanear;
     Button cambio;
     TextView codigo;
     String contents;
-    public static Spinner spinnerAparato;
+    ListView serviciosAparato;
+    public static Spinner spinnerAparato, spinneraparatoDisponible;
     Request request = new Request();
+    Array array = new Array();
+    public static int idArticuloasignado;
 
 
 
@@ -30,15 +44,16 @@ public class asignado extends AppCompatActivity {
         escanear = (Button) findViewById(R.id.escanear);
         codigo = (TextView) findViewById(R.id.codigo);
         spinnerAparato=findViewById(R.id.tipo_aparato);
+        spinneraparatoDisponible=findViewById(R.id.aparatoDisponible);
+        serviciosAparato = findViewById(R.id.Servicios123);
+        cambio=findViewById(R.id.agregar);
         request.getTipoAparatos(getApplicationContext());
 
 
-        cambio=(Button)findViewById(R.id.regresar);
         cambio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intento=new Intent(asignado.this,asignacion.class);
-                startActivity(intento);
+
             }
         });
 
@@ -51,7 +66,37 @@ public class asignado extends AppCompatActivity {
             }
         });
 
+        spinnerAparato.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Iterator<List<GetMuestraTipoAparatoListResult>> itdata = array.dataTipoAparatos.iterator();
+                List<GetMuestraTipoAparatoListResult> dat = itdata.next();
+                idArticuloasignado = dat.get(position).getIdArticulo();
+                request.getAparatosDisponibles(getApplicationContext());
 
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spinneraparatoDisponible.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                request.getServiciosAparatos(getApplicationContext());
+                ServicioAparatoAdapter servicioAparatoAdapter = new ServicioAparatoAdapter();
+                serviciosAparato.setAdapter(servicioAparatoAdapter);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     }
 
@@ -68,5 +113,36 @@ public class asignado extends AppCompatActivity {
         }
     }
 
+
+    class ServicioAparatoAdapter extends BaseAdapter{
+
+        @Override
+        public int getCount() {
+            return array.serviciosAparatos.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return position;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            convertView = getLayoutInflater().inflate(R.layout.activity_asignados_list, null);
+
+            TextView servicios = convertView.findViewById(R.id.textServicios);
+            CheckBox check = convertView.findViewById(R.id.chekServicios);
+
+            servicios.setText(array.serviciosAparatos.get(position));
+
+            return convertView;
+        }
+    }
 
 }

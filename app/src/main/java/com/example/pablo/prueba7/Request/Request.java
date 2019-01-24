@@ -20,11 +20,13 @@ import com.example.pablo.prueba7.Listas.Example2;
 import com.example.pablo.prueba7.Listas.Example3;
 import com.example.pablo.prueba7.Listas.JSONApaTipDis;
 import com.example.pablo.prueba7.Listas.JSONApaTipo;
+import com.example.pablo.prueba7.Listas.JSONAparatosDisponibles;
 import com.example.pablo.prueba7.Listas.JSONArbolServicios;
 import com.example.pablo.prueba7.Listas.JSONCAMDO;
 import com.example.pablo.prueba7.Listas.JSONCLIAPA;
 import com.example.pablo.prueba7.Listas.JSONMediosSer;
 import com.example.pablo.prueba7.Listas.JSONResponseTecnico;
+import com.example.pablo.prueba7.Listas.JSONServiciosAparatos;
 import com.example.pablo.prueba7.Listas.JSONStatusApa;
 import com.example.pablo.prueba7.Listas.JSONTecSec;
 import com.example.pablo.prueba7.Listas.JSONTipoAparatos;
@@ -35,9 +37,11 @@ import com.example.pablo.prueba7.Modelos.GetBUSCADetOrdSerListResult;
 import com.example.pablo.prueba7.Modelos.GetListAparatosDisponiblesByIdArticuloResult;
 import com.example.pablo.prueba7.Modelos.GetListClienteAparatosResult;
 import com.example.pablo.prueba7.Modelos.GetListTipoAparatosByIdArticuloResult;
+import com.example.pablo.prueba7.Modelos.GetMuestraAparatosDisponiblesListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraMedioPorServicoContratadoListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraRelOrdenesTecnicosListResult;
+import com.example.pablo.prueba7.Modelos.GetMuestraServiciosRelTipoAparatoListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraTipoAparatoListResult;
 import com.example.pablo.prueba7.Modelos.GetSP_StatusAparatosListResult;
 import com.example.pablo.prueba7.Modelos.Get_ClvTecnicoResult;
@@ -861,6 +865,82 @@ public class Request extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<JSONTipoAparatos> call, Throwable t) {
+
+            }
+
+        });
+
+    }
+    /////////////////////////////Aparatos Disponibles//////////////////////////////
+    public void getAparatosDisponibles(final Context context)  {
+        Service service = null;
+        try {
+            service = services.getAparatosDisponiblesService();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Call<JSONAparatosDisponibles> call = service.getDataAparatosDisponibles();
+        call.enqueue(new Callback<JSONAparatosDisponibles>() {
+            @Override
+            public void onResponse(Call<JSONAparatosDisponibles> call, Response<JSONAparatosDisponibles> response) {
+                array.aparatoDisponibles.clear();
+                JSONAparatosDisponibles jsonResponse = response.body();
+                array.dataAparatosDisponibles =  new ArrayList<List<GetMuestraAparatosDisponiblesListResult>>(asList(jsonResponse.GetMuestraAparatosDisponiblesListResult()));
+                Iterator<List<GetMuestraAparatosDisponiblesListResult>> itData = array.dataAparatosDisponibles.iterator();
+                while (itData.hasNext()) {
+                    List<GetMuestraAparatosDisponiblesListResult> dat = (List<GetMuestraAparatosDisponiblesListResult>) itData.next();
+
+                    for (int i = 0; i < dat.size(); i++) {
+                        array.aparatoDisponibles.add(dat.get(i).getDescripcion());
+                    }
+                }
+                ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, array.aparatoDisponibles);
+                asignado.spinneraparatoDisponible.setAdapter(adapter1);
+
+
+            }
+
+            @Override
+            public void onFailure(Call<JSONAparatosDisponibles> call, Throwable t) {
+
+            }
+
+        });
+
+    }
+
+    /////////////////////////////Servicios Aparatos//////////////////////////////
+    public void getServiciosAparatos(final Context context)  {
+        Service service = null;
+        try {
+            service = services.getServiciosAparatosService();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Call<JSONServiciosAparatos> call = service.getDataServiciosAparatos();
+        call.enqueue(new Callback<JSONServiciosAparatos>() {
+            @Override
+            public void onResponse(Call<JSONServiciosAparatos> call, Response<JSONServiciosAparatos> response) {
+                array.serviciosAparatos.clear();
+                JSONServiciosAparatos jsonResponse = response.body();
+                array.dataserviciosAparatos =  new ArrayList<List<GetMuestraServiciosRelTipoAparatoListResult>>(asList(jsonResponse.GetMuestraServiciosRelTipoAparatoListResult()));
+                Iterator<List<GetMuestraServiciosRelTipoAparatoListResult>> itData = array.dataserviciosAparatos.iterator();
+                while (itData.hasNext()) {
+                    List<GetMuestraServiciosRelTipoAparatoListResult> dat = (List<GetMuestraServiciosRelTipoAparatoListResult>) itData.next();
+
+                    for (int i = 0; i < dat.size(); i++) {
+                        array.serviciosAparatos.add(dat.get(i).getNombre());
+                        Log.d("ertgf", array.serviciosAparatos.get(i));
+
+                    }
+                }
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<JSONServiciosAparatos> call, Throwable t) {
 
             }
 
