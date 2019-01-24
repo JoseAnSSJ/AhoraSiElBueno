@@ -51,19 +51,18 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         InfoServicios= findViewById(R.id.infoservicios);
         setTitle(null);
 
-            request.getTecSec(this);
+
 
 //* Boton de informacion
 
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intento=new Intent(MainActivity.this,asignacion.class);
                 startActivity(intento);
                 request.getInfoCliente();
                     request.getServicios();
-
-
                 if(layoutAnimado.getVisibility()==View.GONE) {
                     layoutAnimado.setVisibility(View.VISIBLE);
                     hzScrollView.setVisibility(View.VISIBLE);

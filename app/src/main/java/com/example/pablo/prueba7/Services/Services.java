@@ -6,16 +6,20 @@ import com.example.pablo.prueba7.CambioAparato;
 import com.example.pablo.prueba7.Modelos.DeepConsModel;
 import com.example.pablo.prueba7.Login;
 
+import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
+import com.example.pablo.prueba7.Modelos.GetMuestraMedioPorServicoContratadoListResult;
 import com.example.pablo.prueba7.Modelos.UserModel;
 import com.example.pablo.prueba7.sampledata.Constants;
 import com.example.pablo.prueba7.sampledata.Service;
 
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
@@ -536,15 +540,15 @@ public class Services {
         jsonObject1.put("obj",jsonObject);
         /////////////
         JSONObject jsonObject2 = new JSONObject();
-        jsonObject2.put("Clv_UnicaNet", 102703);
-        jsonObject2.put("idMedio", 4);
+        jsonObject2.put("Clv_UnicaNet", GetMuestraArbolServiciosAparatosPorinstalarListResult.clv_UnicaNet);
+        jsonObject2.put("idMedio", GetMuestraMedioPorServicoContratadoListResult.medio);
         ////////
-        ArrayList<JSONObject> arrayLists = new ArrayList<>();
-        arrayLists.add(jsonObject2);
+        JSONArray list = new JSONArray();
+        list.put(jsonObject2);
         /////////////
         JSONObject jsonObject3 = new JSONObject();
         jsonObject3.put("obj", jsonObject);
-        jsonObject3.put("Lst", arrayLists);
+        jsonObject3.put("Lst", list);
         MediaType JSON = MediaType.parse("application/json; charse=utf-8");
         final RequestBody body = RequestBody.create(JSON, String.valueOf(jsonObject3));
         final OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {

@@ -109,8 +109,9 @@ public class Request extends AppCompatActivity {
 
                     b = true;
                         getClv_tecnico();
-                    getArbSer();
-                    getTipoAparatos();
+
+
+
 
 
                 }
@@ -755,7 +756,7 @@ public class Request extends AppCompatActivity {
         });
     }
     /////////////////////////////Arbol Servicios//////////////////////////////
-    public void getArbSer()  {
+    public void getArbSer(final Context context)  {
         Service service = null;
         try {
             service = services.getArbolSerService();
@@ -776,7 +777,6 @@ public class Request extends AppCompatActivity {
                         array.nombreArbol.add(dat.get(i).getNombre());
                     }
                 }
-                getMedSer();
             }
 
             @Override
@@ -788,7 +788,7 @@ public class Request extends AppCompatActivity {
 
     }
     /////////////////////////////Medios Servicios//////////////////////////////
-    public void getMedSer()  {
+    public void getMedSer(final Context context)  {
         Service service = null;
         try {
             service = services.getMediosSerService();
@@ -799,12 +799,13 @@ public class Request extends AppCompatActivity {
         call.enqueue(new Callback<JSONMediosSer>() {
             @Override
             public void onResponse(Call<JSONMediosSer> call, Response<JSONMediosSer> response) {
+                array.medio.clear();
                 JSONMediosSer jsonResponse = response.body();
                 array.dataMedSer =  new ArrayList<List<GetMuestraMedioPorServicoContratadoListResult>>(asList(jsonResponse.GetMuestraMedioPorServicoContratadoListResult()));
                 Iterator<List<GetMuestraMedioPorServicoContratadoListResult>> itData = array.dataMedSer.iterator();
                 while (itData.hasNext()) {
                     List<GetMuestraMedioPorServicoContratadoListResult> dat = (List<GetMuestraMedioPorServicoContratadoListResult>) itData.next();
-                    array.medio.add(" ");
+                    array.medio.add("Selecionar Medio");
                     int j=1;
                     for (int i = 0; i < dat.size(); i++) {
                         Log.d("response22", dat.get(i).getDescripcion());
@@ -812,6 +813,8 @@ public class Request extends AppCompatActivity {
                         j=j+1;
                     }
                 }
+                ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, array.medio);
+                asignacion.spinnerMedio.setAdapter(adapter1);
 
 
 
@@ -844,7 +847,7 @@ public class Request extends AppCompatActivity {
                     List<GetMuestraTipoAparatoListResult> dat = (List<GetMuestraTipoAparatoListResult>) itData.next();
 
                     for (int i = 0; i < dat.size(); i++) {
-                        Log.d("response22", dat.get(i).getNombre());
+                        Log.d("response23", dat.get(i).getNombre());
 
 
                     }

@@ -44,7 +44,7 @@ public class Orden extends AppCompatActivity
         cambioapa = findViewById(R.id.cambioapa);
          ordenes=findViewById(R.id.listorden);
         Error.Errores(this);
-
+        request.getArbSer(getApplicationContext());
         ////////////////////////////////////////
 
         OrdenesListAdaapter1 ordAdapt=new OrdenesListAdaapter1();
@@ -62,6 +62,7 @@ public class Orden extends AppCompatActivity
                 startActivity(intento1);
 
                    request.getDeepCons();
+
 
 
 

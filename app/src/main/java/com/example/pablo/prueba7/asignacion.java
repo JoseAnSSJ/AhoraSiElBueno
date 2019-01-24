@@ -92,14 +92,17 @@ Request request = new Request();
                 Button cancelarmedio = convertView.findViewById(R.id.cancelarMedio);
                 spinnerMedio = convertView.findViewById(R.id.spinnerMedio);
                 final CheckBox check = convertView.findViewById(R.id.chek);
-                ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, array.medio);
-                spinnerMedio.setAdapter(adapter1);
+
+
                 final int[] m = {1};
                 nombre.setText(array.nombreArbol.get(position));
                 final RelativeLayout layoutMedio = convertView.findViewById(R.id.poiuyt);
                 medio.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        request.getMedSer(getApplicationContext());
+                      //  ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, array.medio);
+                      //  spinnerMedio.setAdapter(adapter1);
                         Toast.makeText(getApplicationContext(), "seleccionaste" + position, Toast.LENGTH_LONG).show();
                         layoutMedio.setVisibility(View.VISIBLE);
                         medio.setVisibility(View.GONE);
@@ -116,11 +119,13 @@ Request request = new Request();
                     if (m[0] == 1) {
                         Toast.makeText(getApplicationContext(),"Debe de llenar el campo 'Medio'",Toast.LENGTH_LONG).show();
                     } else {
+                        request.getTipoAparatos();
                         layoutMedio.setVisibility(View.GONE);
                         medio.setVisibility(View.GONE);
                         nombre.setVisibility(View.VISIBLE);
                         check.setVisibility(View.VISIBLE);
                         siguiente.setEnabled(true);
+
 
                     }
                 }

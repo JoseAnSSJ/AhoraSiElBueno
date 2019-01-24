@@ -9,7 +9,7 @@ public class GetMuestraMedioPorServicoContratadoListResult {
     private String descripcion;
     @SerializedName("Medio")
     @Expose
-    private Integer medio;
+    public static Integer medio;
     @SerializedName("RequiereAcometida")
     @Expose
     private boolean requiereAcometida;
