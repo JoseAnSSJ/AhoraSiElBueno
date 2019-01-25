@@ -336,7 +336,8 @@ String a="Seleccione tecnico secundario";
                         Array.contratox.add(String.valueOf(dat.get(i).getContrato()));
                         Array.nombrex.add(String.valueOf(dat.get(i).getNombre()));
                         Array.statusx.add(String.valueOf(dat.get(i).getStatus()));
-
+                       Array.ordensrc.add(String.valueOf(dat.get(i).getClvOrden()));
+                        Array.contratosrc.add(String.valueOf(dat.get(i).getContrato()));
 
                     }
 

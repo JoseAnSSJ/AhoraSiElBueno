@@ -2,6 +2,8 @@ package com.example.pablo.prueba7;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -15,9 +17,12 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.example.pablo.prueba7.Adapters.ordenes_adapter_result;
 import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.Request.Request;
 
@@ -29,7 +34,9 @@ public class Orden extends AppCompatActivity
     Request request = new Request();
     Button orden1, cambiodom, cambioapa;
     ListView ordenes;
-
+    EditText ordsearch,contsearch;
+    ordenes_adapter_result adapter;
+    int textlength = 0;
 
     @Override
 
@@ -42,13 +49,15 @@ public class Orden extends AppCompatActivity
         orden1 =  findViewById(R.id.orden);
         cambiodom = findViewById(R.id.cambiodom);
         cambioapa = findViewById(R.id.cambioapa);
-         ordenes=findViewById(R.id.listorden);
+        ordenes=findViewById(R.id.listorden);
+        ordsearch=findViewById(R.id.ordsearch);
+        contsearch=findViewById(R.id.contsearch);
         Error.Errores(this);
 
         ////////////////////////////////////////
 
-        OrdenesListAdaapter1 ordAdapt=new OrdenesListAdaapter1();
-        ordenes.setAdapter(ordAdapt);    //Asignacion del adapatador a la listView
+        adapter=new ordenes_adapter_result(Orden.this);
+        ordenes.setAdapter(adapter);    //Asignacion del adapatador a la listView
 
         //////////////////////////////////////////
 
@@ -83,6 +92,73 @@ public class Orden extends AppCompatActivity
             }
         });
 
+        //////////////////////////////////////////////////////////
+        Array array=new Array();
+        /////////BUSCA ORDEN//////////////
+        ordsearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                textlength = ordsearch.getText().length();
+                Array.ordensrc.clear();
+                for (int i = 0; i < Array.ordenx.size(); i++) {
+                    if (textlength <= Array.ordenx.get(i).length()) {
+                        if (Array.ordenx.get(i).toLowerCase().contains(
+                                ordsearch.getText().toString().toLowerCase().trim())){
+                            Array.ordensrc.add(Array.ordenx.get(i));
+                        }
+                    }
+                }
+
+                adapter=new ordenes_adapter_result(Orden.this);
+                ordenes.setAdapter(adapter);    //Asignacion del adapatador a la listView
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        //////////////////BUSCA CONTRATO////////////////////////////
+        contsearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                textlength = contsearch.getText().length();
+                Array.contratosrc.clear();
+                for (int i = 0; i < Array.contratox.size(); i++) {
+                    if (textlength <= Array.contratox.get(i).length()) {
+                        if (Array.contratox.get(i).toLowerCase().contains(
+                                contsearch.getText().toString().toLowerCase().trim())){
+                            Array.contratosrc.add(Array.contratox.get(i));
+                        }
+                    }
+                }
+
+                adapter= new ordenes_adapter_result(Orden.this);
+                ordenes.setAdapter(adapter);    //Asignacion del adapatador a la listView
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        //////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -93,67 +169,6 @@ public class Orden extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
-
-    ///////////////////////ADAPTADOR ORDENES//////////////////////
-    class OrdenesListAdaapter1 extends BaseAdapter {
-
-         class viewHolder{
-            TextView status,contrato,nombre;
-            Button orden;
-        }
-
-        @Override
-        public int getCount() {
-            return Array.ordenx.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return position;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            viewHolder holder;
-
-
-           // convertView = getLayoutInflater().inflate(R.layout.ordenes_list_items,null);
-            if (convertView == null) {
-                holder = new viewHolder();
-            ////////
-                convertView = getLayoutInflater().inflate(R.layout.ordenes_list_items,null);
-            ///////
-
-            holder.status=(TextView)convertView.findViewById(R.id.statusv);
-            holder.orden=(Button)convertView.findViewById(R.id.ordenv);
-            holder.contrato=(TextView)convertView.findViewById(R.id.contratov);
-            holder.nombre=(TextView)convertView.findViewById(R.id.nombrev);
-
-
-           holder.status.setText(Array.statusx.get(position));
-            holder.orden.setText(Array.ordenx.get(position));
-            holder.contrato.setText(Array.contratox.get(position));
-            holder.nombre.setText(Array.nombrex.get(position));
-
-            convertView.setTag(holder);
-            }
-            else {
-                holder = (viewHolder) convertView.getTag();
-            }
-            return convertView;
-
-        }
-    }
-
-    ////////////////////////////////////////////
 
     @Override
     public void onBackPressed() {
