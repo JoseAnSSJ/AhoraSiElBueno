@@ -5,8 +5,6 @@ package com.example.pablo.prueba7;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -27,13 +25,12 @@ import com.example.pablo.prueba7.Request.Request;
 import java.util.Iterator;
 import java.util.List;
 
-import static android.support.v7.widget.RecyclerView.*;
 
 public class asignacion extends AppCompatActivity {
 Array array = new Array();
 Request request = new Request();
     Button siguiente, eliminar;
-    public static Button aceptarmedio,cancelarmedio;
+    public static  Button aceptarmedio,cancelarmedio;
     ListView Asignacion;
     public static Spinner spinnerMedio;
     public static int clv_unicaNet, clv_Medio, posi;
@@ -44,7 +41,7 @@ Request request = new Request();
     protected void onCreate(Bundle onSaveInstanceState) {
         super.onCreate(onSaveInstanceState);
         setContentView(R.layout.activity_asignacion);
-        siguiente= (Button) findViewById(R.id.siguiente);
+        siguiente= findViewById(R.id.siguiente);
         Asignacion = findViewById(R.id.Asignacion);
         eliminar = findViewById(R.id.eliminar);
 

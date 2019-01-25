@@ -172,7 +172,7 @@ public class Services {
         //POST Body JsonArray
         JSONObject jsonObject = new JSONObject();
         JSONObject jsonObject2 = new JSONObject();
-        jsonObject.put("clv_tecnico",claveTecnico);
+        jsonObject.put("clv_tecnico",0);
         jsonObject.put("op",1);
         jsonObject.put("clv_orden",0);
         jsonObject.put("contratoCom","");
