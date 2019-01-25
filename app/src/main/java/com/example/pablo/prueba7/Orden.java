@@ -3,6 +3,7 @@ package com.example.pablo.prueba7;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
@@ -22,6 +23,7 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.example.pablo.prueba7.Adapters.contrato_ordenes_result;
 import com.example.pablo.prueba7.Adapters.ordenes_adapter_result;
 import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.Request.Request;
@@ -35,7 +37,8 @@ public class Orden extends AppCompatActivity
     Button orden1, cambiodom, cambioapa;
     ListView ordenes;
     EditText ordsearch,contsearch;
-    ordenes_adapter_result adapter;
+    ordenes_adapter_result adapterord;
+    contrato_ordenes_result adaptercont;
     int textlength = 0;
 
     @Override
@@ -56,8 +59,10 @@ public class Orden extends AppCompatActivity
         request.getArbSer(getApplicationContext());
         ////////////////////////////////////////
 
-        adapter=new ordenes_adapter_result(Orden.this);
-        ordenes.setAdapter(adapter);    //Asignacion del adapatador a la listView
+
+
+        adapterord=new ordenes_adapter_result(Orden.this);
+        ordenes.setAdapter(adapterord);    //Asignacion del adapatador a la listView
 
         //////////////////////////////////////////
 
@@ -70,10 +75,6 @@ public class Orden extends AppCompatActivity
 
                 startActivity(intento1);
                    request.getDeepCons();
-
-
-
-
             }
         });
         cambiodom.setOnClickListener(new View.OnClickListener() {
@@ -93,8 +94,6 @@ public class Orden extends AppCompatActivity
             }
         });
 
-        //////////////////////////////////////////////////////////
-        Array array=new Array();
         /////////BUSCA ORDEN//////////////
         ordsearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -116,8 +115,8 @@ public class Orden extends AppCompatActivity
                     }
                 }
 
-                adapter=new ordenes_adapter_result(Orden.this);
-                ordenes.setAdapter(adapter);    //Asignacion del adapatador a la listView
+                ordenes.setAdapter(adapterord);
+
             }
 
             @Override
@@ -125,7 +124,25 @@ public class Orden extends AppCompatActivity
             }
         });
 
+
+
+     /*   if (ordsearch.isSelected()) {
+            contsearch.setEnabled(false);
+        }else if (contsearch.isSelected()) {
+            ordsearch.setEnabled(false);
+        }
+*/
+        if (contsearch.getText().toString().trim().equalsIgnoreCase(""))
+            et1.setError("This field can not be blank");
+
+
+         ///////////////////////////////////////
+
+        adapterord=new ordenes_adapter_result(Orden.this);
+        ordenes.setAdapter(adapterord);    //Asignacion del adapatador a la listView
+
         //////////////////BUSCA CONTRATO////////////////////////////
+
         contsearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -145,9 +162,8 @@ public class Orden extends AppCompatActivity
                         }
                     }
                 }
-
-                adapter= new ordenes_adapter_result(Orden.this);
-                ordenes.setAdapter(adapter);    //Asignacion del adapatador a la listView
+                adaptercont=new contrato_ordenes_result(Orden.this);
+                ordenes.setAdapter(adaptercont);    //Asignacion del adapatador a la listView
 
             }
 
@@ -158,8 +174,6 @@ public class Orden extends AppCompatActivity
         });
 
         //////////////////////////////////////////////
-
-        /////////////////////////////////////////////////////////
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

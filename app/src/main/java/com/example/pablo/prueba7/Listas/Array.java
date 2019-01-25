@@ -53,7 +53,7 @@ public class Array {
     public static ArrayList<List<GetSP_StatusAparatosListResult>> dataStaApa;
     public static  ArrayList<List<GetListTipoAparatosByIdArticuloResult>> dataApaTipo;
     public static  ArrayList<List<GetListAparatosDisponiblesByIdArticuloResult>> dataApaTipDis;
- public static  ArrayList<List<GetDameDatosCAMDOResult>> dataCAMDO;
+    public static  ArrayList<List<GetDameDatosCAMDOResult>> dataCAMDO;
     public static  ArrayList<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> dataArbSer;
     public static  ArrayList<List<GetMuestraMedioPorServicoContratadoListResult>> dataMedSer;
     public static  ArrayList<List<GetMuestraTipoAparatoListResult>> dataTipoAparatos;

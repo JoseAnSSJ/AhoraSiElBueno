@@ -11,13 +11,13 @@ import android.widget.TextView;
 import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.R;
 
-public class ordenes_adapter_result extends BaseAdapter {
+public class contrato_ordenes_result extends BaseAdapter {
 
 
     LayoutInflater inflater;
     Context mContext;
 
-    public ordenes_adapter_result(Context context){
+    public contrato_ordenes_result(Context context){
         mContext=context;
         inflater=LayoutInflater.from(mContext);
 
@@ -29,7 +29,7 @@ public class ordenes_adapter_result extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return Array.ordensrc.size();
+        return Array.contratosrc.size();
 
     }
 
