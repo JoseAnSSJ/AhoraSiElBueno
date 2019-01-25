@@ -75,7 +75,7 @@ public class Trabajos extends Fragment {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            Holder holder = new Holder();
+            final Holder holder = new Holder();
 
             if (convertView == null) {
                 convertView = getLayoutInflater().inflate(R.layout.list_trabajos_items, null);
@@ -86,36 +86,34 @@ public class Trabajos extends Fragment {
 
             holder.trabajo.setText(Array.trabajox.get(position));
             holder.accion.setText(Array.accionx.get(position));
-            if (holder.accion.equals("Desconeccion")) {
 
-                    holder.accion.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            //  Intent intento1=new Intent(getContext(),-----------);
+                holder.accion.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if ((holder.trabajo.getText().toString().trim()).equalsIgnoreCase("DESCO - Desconeción del Servicio Principal")) {
+                            Intent intento1 = new Intent(getContext(), Inicio.class);
+                            startActivity(intento1);
+                        } else {
+                            if ((holder.trabajo.getText().toString().trim()).equalsIgnoreCase("ISNET - Instalación de Servicio de Internet")) {
+                                Intent intento = new Intent(getContext(), asignacion.class);
+                                startActivity(intento);
+
+                            } else {
+                                if ((holder.trabajo.getText().toString().trim()).equalsIgnoreCase("ISTVA - Instalación de Servicio de TV")) {
+                                    Intent intento = new Intent(getContext(), asignacion.class);
+                                    startActivity(intento);
+
+                                }
+
+
+                            }
                         }
-                    });
-                }
-
-                    /////////////////////pantallas vicente////////////////////////////
-                    holder.accion.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent intento = new Intent(getContext(), asignacion.class);
-                            startActivity(intento);
-
-                        }
-
-
-                    });
-
-            return convertView;
+                    }
+                });
+                return convertView;
         }
-
-
     }
-
 }
-
 
 
 
