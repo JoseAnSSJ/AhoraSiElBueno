@@ -1,6 +1,7 @@
 package com.example.pablo.prueba7;
 
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,18 +11,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.pablo.prueba7.Listas.Array;
+import com.example.pablo.prueba7.Modelos.DeepConsModel;
+import com.example.pablo.prueba7.Modelos.GetBUSCADetOrdSerListResult;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Trabajos extends Fragment{
+public class Trabajos extends Fragment {
     public static TextView trabajo1;
-
 
 
     public Trabajos() {
@@ -33,27 +36,17 @@ public class Trabajos extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trabajos, container, false);
 
-        ListView trabajos=view.findViewById(R.id.listTrabajos);
+        ListView trabajos = view.findViewById(R.id.listTrabajos);
 
-        /*trabajo1=view.findViewById(R.id.observacion1);
-        accion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intento = new Intent(getContext(), asignacion.class);
-                startActivity(intento);
-            }
-        });*/
 
-        ////////////////////////////////////////
-
-        TrabajosAdapter trabadapt=new TrabajosAdapter();
+        TrabajosAdapter trabadapt = new TrabajosAdapter();
         trabajos.setAdapter(trabadapt);    //Asignacion del adapatador a la listView
 
-        //////////////////////////////////////////
         return view;
     }
+
     ///////////////////Adaptador Trabajos//////////////////////////
-    class TrabajosAdapter extends BaseAdapter{
+    class TrabajosAdapter extends BaseAdapter {
 
 
         @Override
@@ -71,7 +64,9 @@ public class Trabajos extends Fragment{
         public long getItemId(int position) {
             return 0;
         }
-        private   class ViewHolder{
+
+
+        public class Holder {
             TextView trabajo;
             Button accion;
 
@@ -80,43 +75,43 @@ public class Trabajos extends Fragment{
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder holder;
+            Holder holder = new Holder();
 
-            if (convertView == null) {
-                holder = new ViewHolder();
+                 if (convertView==null) {
+                     convertView = getLayoutInflater().inflate(R.layout.list_trabajos_items, null);
+                     holder.trabajo = convertView.findViewById(R.id.trabajov);
+                     holder.accion = (Button) convertView.findViewById(R.id.accionv);
+                 }
 
-                convertView = getLayoutInflater().inflate(R.layout.list_trabajos_items,null);
-                holder.trabajo=(TextView)convertView.findViewById(R.id.trabajov);
-            holder.accion=(Button)convertView.findViewById(R.id.accionv);
-                convertView.setTag(holder);
+
+                 holder.trabajo.setText(Array.trabajox.get(position));
+                 holder.accion.setText(Array.accionx.get(position));
+                 if (holder.accion.equals("Desconeccion")) {
+                   }
+                   else {
+                     holder.accion.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //  Intent intento1=new Intent(getContext(),-----------);
+                    }
+                });
             }
-            else {
-                holder = (TrabajosAdapter.ViewHolder) convertView.getTag();
+            /////////////////////pantallas vicente////////////////////////////
+                holder.accion.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intento = new Intent(getContext(), asignacion.class);
+                        startActivity(intento);
+
+                    }
+
+
+                });
+
+
+                return convertView;
+
             }
-
-
-            holder.trabajo.setText(Array.trabajox.get(position));
-            holder.accion.setText(Array.accionx.get(position));
-
-
-            holder.accion.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intento = new Intent(getContext(), asignacion.class);
-                    startActivity(intento);
-                }
-
-
-            });
-
-
-
-            return convertView;
-
         }
-
     }
-    ///////////////////////////////////////////////
 
-
-}

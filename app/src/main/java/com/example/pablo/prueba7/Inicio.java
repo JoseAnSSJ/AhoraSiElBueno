@@ -92,19 +92,16 @@ public class Inicio extends AppCompatActivity
             startActivity(intent1);
             //Actualizar la siguente cita y la grafica
             request.getProximaCita();
-
-                request.getOrdenes();
-
-
-
+            request.getOrdenes();
             finish();
         } else if (id == R.id.Ordenes) {
             Intent intent1 = new Intent(Inicio.this, Orden.class);
+            startActivity(intent1);
             request.getListOrd();
             request.getTrabajos();
 
 
-            startActivity(intent1);
+
 
             finish();
         } else if (id == R.id.Reportes) {

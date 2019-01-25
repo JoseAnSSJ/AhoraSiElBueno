@@ -52,9 +52,6 @@ public class Orden extends AppCompatActivity
         ordenes.setAdapter(ordAdapt);    //Asignacion del adapatador a la listView
 
         //////////////////////////////////////////
-
-
-
         cambiodom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,6 +136,7 @@ public class Orden extends AppCompatActivity
                         Intent intento1 = new Intent(Orden.this, MainActivity.class);
                         startActivity(intento1);
                         request.getDeepCons();
+
                     }
 
 
@@ -186,8 +184,7 @@ public class Orden extends AppCompatActivity
             startActivity(intent1);
             //Actualizar la siguente cita y la grafica
            request.getProximaCita();
-
-                request.getOrdenes();
+           request.getOrdenes();
 
         } else if (id == R.id.Ordenes) {
             Intent intent1 = new Intent(Orden.this, Orden.class);
