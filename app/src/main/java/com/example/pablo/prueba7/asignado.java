@@ -25,8 +25,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class asignado extends AppCompatActivity {
-    Button escanear;
-    Button cambio;
+    Button escanear, agragar;
     TextView codigo;
     String contents;
     ListView serviciosAparato;
@@ -46,11 +45,11 @@ public class asignado extends AppCompatActivity {
         spinnerAparato=findViewById(R.id.tipo_aparato);
         spinneraparatoDisponible=findViewById(R.id.aparatoDisponible);
         serviciosAparato = findViewById(R.id.Servicios123);
-        cambio=findViewById(R.id.agregar);
+        agragar=findViewById(R.id.agregar);
         request.getTipoAparatos(getApplicationContext());
 
 
-        cambio.setOnClickListener(new View.OnClickListener() {
+        agragar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

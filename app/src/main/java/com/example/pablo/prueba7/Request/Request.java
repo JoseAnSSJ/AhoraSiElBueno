@@ -59,6 +59,7 @@ import com.example.pablo.prueba7.sampledata.Service;
 import com.google.gson.JsonObject;
 import com.example.pablo.prueba7.Listas.Array;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 
 import java.util.ArrayList;
@@ -772,11 +773,13 @@ public class Request extends AppCompatActivity {
         call.enqueue(new Callback<JSONArbolServicios>() {
             @Override
             public void onResponse(Call<JSONArbolServicios> call, Response<JSONArbolServicios> response) {
+                array.nombreArbol.clear();
                 JSONArbolServicios jsonResponse = response.body();
                 array.dataArbSer =  new ArrayList<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>>(asList(jsonResponse.GetMuestraArbolServiciosAparatosPorinstalarListResult()));
                 Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
                 while (itData.hasNext()) {
                     List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = (List<GetMuestraArbolServiciosAparatosPorinstalarListResult>) itData.next();
+
                     for (int i = 0; i < dat.size(); i++) {
                         Log.d("response21", String.valueOf(dat.get(i).getClv_TipSer()));
                         array.nombreArbol.add(dat.get(i).getNombre());

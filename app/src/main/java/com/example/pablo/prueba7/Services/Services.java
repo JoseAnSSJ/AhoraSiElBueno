@@ -27,6 +27,7 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+
 import static com.example.pablo.prueba7.asignacion.clv_Medio;
 import static com.example.pablo.prueba7.asignacion.clv_unicaNet;
 import static com.example.pablo.prueba7.asignado.idArticuloasignado;
@@ -486,7 +487,7 @@ public class Services {
     //////////////Arbol Servicios/////F//////////
     public Service getArbolSerService() throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("clv_orden", 121211);
+        jsonObject.put("clv_orden", 121222);
         MediaType JSON = MediaType.parse("application/json; charse=utf-8");
         final RequestBody body = RequestBody.create(JSON, jsonObject.toString());
         final OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
@@ -510,7 +511,7 @@ public class Services {
     //////////////Medios Servicios/////F//////////
     public Service getMediosSerService() throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("ClvUnicaNet",102703 );
+        jsonObject.put("ClvUnicaNet",clv_unicaNet );
         MediaType JSON = MediaType.parse("application/json; charse=utf-8");
         final RequestBody body = RequestBody.create(JSON, jsonObject.toString());
         final OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
@@ -572,7 +573,7 @@ public class Services {
     //////////////Aparatos Disponibles/////F//////////
     public Service getAparatosDisponiblesService() throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("clv_orden", 121211);
+        jsonObject.put("clv_orden", 121222);
         jsonObject.put("Clv_Tecnico", claveTecnico);
         jsonObject.put("idArticulo", idArticuloasignado);
         MediaType JSON = MediaType.parse("application/json; charse=utf-8");
@@ -604,7 +605,7 @@ public class Services {
         jsonObject1.put("obj",jsonObject);
         /////////////
         JSONObject jsonObject2 = new JSONObject();
-        jsonObject2.put("Clv_UnicaNet", 102703);
+        jsonObject2.put("Clv_UnicaNet", clv_unicaNet);
         jsonObject2.put("idMedio", clv_Medio);
         ////////
         JSONArray list = new JSONArray();
@@ -633,4 +634,40 @@ public class Services {
                 .build();
         return retrofit.create(Service.class);
     }
+
+  /*  public Service getAsignaAparatoService() throws JSONException {
+        ////////
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("Id",0 );
+        JSONObject jsonObject1 = new JSONObject();
+        jsonObject1.put("obj",jsonObject);
+        /////////////
+        ////////
+        JSONArray list = new JSONArray();
+        list.put(prueba1);
+        /////////////
+        JSONObject jsonObject3 = new JSONObject();
+        jsonObject3.put("obj", jsonObject);
+        jsonObject3.put("Lst", list);
+        MediaType JSON = MediaType.parse("application/json; charse=utf-8");
+        final RequestBody body = RequestBody.create(JSON, String.valueOf(jsonObject3));
+        final OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request newRequest = chain.request().newBuilder()
+                        .addHeader("Authorization", UserModel.Codigo)
+                        .addHeader("Content-Type","application/json" )
+                        .post(body)
+                        .build();
+                return chain.proceed(newRequest);
+            }
+        }).build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Constants.NEW_URL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        return retrofit.create(Service.class);
+    }*/
+
 }
