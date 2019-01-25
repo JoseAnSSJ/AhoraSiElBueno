@@ -28,8 +28,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-import static com.example.pablo.prueba7.asignacion.clv_Medio;
-import static com.example.pablo.prueba7.asignacion.clv_unicaNet;
+import static com.example.pablo.prueba7.Adapters.Arbol_Adapter.clv_Medio;
+import static com.example.pablo.prueba7.Adapters.Arbol_Adapter.clv_unicaNet;
 import static com.example.pablo.prueba7.asignado.idArticuloasignado;
 
 
