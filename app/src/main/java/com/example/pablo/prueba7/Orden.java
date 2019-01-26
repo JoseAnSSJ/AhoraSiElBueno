@@ -41,8 +41,8 @@ public class Orden extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         orden1 =  findViewById(R.id.orden);
-        cambiodom = findViewById(R.id.cambiodom);
-        cambioapa = findViewById(R.id.cambioapa);
+       // cambiodom = findViewById(R.id.cambiodom);
+        // cambioapa = findViewById(R.id.cambioapa);
          ordenes=findViewById(R.id.listorden);
         Error.Errores(this);
 
@@ -52,7 +52,7 @@ public class Orden extends AppCompatActivity
         ordenes.setAdapter(ordAdapt);    //Asignacion del adapatador a la listView
 
         //////////////////////////////////////////
-        cambiodom.setOnClickListener(new View.OnClickListener() {
+        /*cambiodom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 request.getCAMDO();
@@ -67,7 +67,7 @@ public class Orden extends AppCompatActivity
                 Intent intent = new Intent(Orden.this, CambioAparato.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

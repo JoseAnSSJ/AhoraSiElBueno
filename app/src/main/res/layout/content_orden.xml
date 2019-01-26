@@ -92,6 +92,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="10dp"
             />
+        <!--
 
         <Button
             android:id="@+id/orden"
@@ -104,7 +105,7 @@
             android:textSize="10dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="85dp"/>
-        <Button
+      >  <Button
             android:id="@+id/cambiodom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -126,6 +127,7 @@
             android:textSize="10dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="185dp"/>
+            -->
 
         <TextView
             android:id="@+id/recibi"

@@ -18,15 +18,15 @@ import android.widget.TextView;
 import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.Modelos.DeepConsModel;
 import com.example.pablo.prueba7.Modelos.GetBUSCADetOrdSerListResult;
+import com.example.pablo.prueba7.Request.Request;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class Trabajos extends Fragment {
-    public static TextView trabajo1;
 
-
+    Request request = new Request();
     public Trabajos() {
         // Required empty public constructor
     }
@@ -90,26 +90,39 @@ public class Trabajos extends Fragment {
                 holder.accion.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if ((holder.trabajo.getText().toString().trim()).equalsIgnoreCase("DESCO - Desconeción del Servicio Principal")) {
+                        if ((holder.trabajo.getText().toString().trim()).equalsIgnoreCase("DESCO - Desconexión Del Servicio Principal")) {
                             Intent intento1 = new Intent(getContext(), Inicio.class);
                             startActivity(intento1);
-                        } else {
-                            if ((holder.trabajo.getText().toString().trim()).equalsIgnoreCase("ISNET - Instalación de Servicio de Internet")) {
-                                Intent intento = new Intent(getContext(), asignacion.class);
-                                startActivity(intento);
+                        }
+                        if ((holder.trabajo.getText().toString().trim()).equalsIgnoreCase("ISNET - Instalación de Servicio de Internet")) {
+                            Intent intento = new Intent(getContext(), CambioAparato.class);
+                            startActivity(intento);
 
-                            } else {
-                                if ((holder.trabajo.getText().toString().trim()).equalsIgnoreCase("ISTVA - Instalación de Servicio de TV")) {
-                                    Intent intento = new Intent(getContext(), asignacion.class);
-                                    startActivity(intento);
-
-                                }
-
-
+                        }
+                        if ((holder.trabajo.getText().toString().trim()).equalsIgnoreCase("ISTVA - Instalación de Servicio de TV")) {
+                            Intent intento = new Intent(getContext(), asignacion.class);
+                            startActivity(intento);
+                        }
+                        if ((holder.trabajo.getText().toString().trim()).equalsIgnoreCase("CAPAG - Cambio de tipo de aparato  FTTH")) {
+                            Intent intento = new Intent(getActivity(), CambioAparato.class);
+                            startActivity(intento);
+                        }
+                        if ((holder.trabajo.getText().toString().trim()).equalsIgnoreCase("CAMDO - Cambio De Domicilio")) {
+                            request.getCAMDO();
+                            Intent intento = new Intent(getActivity(), CambioDom.class);
+                            startActivity(intento);
                             }
+                           if ((holder.trabajo.getText().toString().trim()).equalsIgnoreCase("CAPAT - Cambio De Tipo De Aparato")){
+                               Intent intento = new Intent(getActivity(), CambioAparato.class);
+                               startActivity(intento);
+
                         }
                     }
+
+
+
                 });
+
                 return convertView;
         }
     }

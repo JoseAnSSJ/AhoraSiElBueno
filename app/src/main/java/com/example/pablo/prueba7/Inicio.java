@@ -100,9 +100,6 @@ public class Inicio extends AppCompatActivity
             request.getListOrd();
             request.getTrabajos();
 
-
-
-
             finish();
         } else if (id == R.id.Reportes) {
             Intent intent1 = new Intent(Inicio.this, Reportes.class);
