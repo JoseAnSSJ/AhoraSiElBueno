@@ -15,7 +15,7 @@
 
 
 <RelativeLayout
-    android:id="@+id/ads"
+    android:id="@+id/mostr2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
 
@@ -80,8 +80,9 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ads"
+        android:layout_alignTop="@+id/mostr2"
         android:layout_marginTop="300dp"
+        android:id="@+id/mostrar1"
         >
         <TextView
             android:layout_width="wrap_content"
