@@ -160,7 +160,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="188dp"
             android:layout_marginTop="15dp"
-            android:inputType="numberSigned"
+            android:inputType="text|number"
             android:queryHint="Contrato" />
         <TextView
             android:layout_width="wrap_content"

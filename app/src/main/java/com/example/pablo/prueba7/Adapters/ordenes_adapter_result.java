@@ -11,13 +11,25 @@ import android.widget.TextView;
 import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.R;
 
+import java.util.ArrayList;
+
 public class ordenes_adapter_result extends BaseAdapter {
 
 
     LayoutInflater inflater;
     Context mContext;
+    ArrayList<String>ordensrc;
+    ArrayList<String>contratosrc;
+    ArrayList<String>nombresrc;
+    ArrayList<String>statusrc;
 
-    public ordenes_adapter_result(Context context){
+    public ordenes_adapter_result(Context context, ArrayList<String>ordensrc,ArrayList<String>nombrex,ArrayList<String>contratosrc,ArrayList<String>statusrc){
+
+        this.ordensrc=ordensrc;
+        this.contratosrc=contratosrc;
+        this.nombresrc=nombrex;
+        this.statusrc=statusrc;
+
         mContext=context;
         inflater=LayoutInflater.from(mContext);
 
@@ -29,7 +41,8 @@ public class ordenes_adapter_result extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return Array.ordensrc.size();
+        return Array.ordensrc.size()&Array.nombresrc.size()&Array.statusrc.size()&Array.contratosrc.size();
+
 
     }
 
@@ -66,10 +79,10 @@ public class ordenes_adapter_result extends BaseAdapter {
             holder=(viewHolder)convertView.getTag();
         }
 
-        holder.nombre.setText(Array.nombrex.get(position));
+        holder.nombre.setText(Array.nombresrc.get(position));
         holder.orden.setText(Array.ordensrc.get(position));
         holder.contrato.setText(Array.contratosrc.get(position));
-        holder.status.setText(Array.statusx.get(position));
+        holder.status.setText(Array.statusrc.get(position));
 
         return convertView;
 

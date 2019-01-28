@@ -3,7 +3,6 @@ package com.example.pablo.prueba7;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
@@ -15,20 +14,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.SearchView;
-import android.widget.TextView;
 
-import com.example.pablo.prueba7.Adapters.contrato_ordenes_result;
 import com.example.pablo.prueba7.Adapters.ordenes_adapter_result;
 import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.Request.Request;
-
-import org.json.JSONException;
 
 public class Orden extends AppCompatActivity
 
@@ -38,7 +30,6 @@ public class Orden extends AppCompatActivity
     ListView ordenes;
     EditText ordsearch,contsearch;
     ordenes_adapter_result adapterord;
-    contrato_ordenes_result adaptercont;
     int textlength = 0;
 
     @Override
@@ -59,9 +50,7 @@ public class Orden extends AppCompatActivity
         request.getArbSer(getApplicationContext());
         ////////////////////////////////////////
 
-
-
-        adapterord=new ordenes_adapter_result(Orden.this);
+        adapterord=new ordenes_adapter_result(Orden.this,Array.ordensrc,Array.nombresrc,Array.statusrc,Array.contratosrc);
         ordenes.setAdapter(adapterord);    //Asignacion del adapatador a la listView
 
         //////////////////////////////////////////
@@ -106,16 +95,23 @@ public class Orden extends AppCompatActivity
 
                 textlength = ordsearch.getText().length();
                 Array.ordensrc.clear();
+                Array.nombresrc.clear();
+                Array.statusrc.clear();
+                Array.contratosrc.clear();
                 for (int i = 0; i < Array.ordenx.size(); i++) {
                     if (textlength <= Array.ordenx.get(i).length()) {
-                        if (Array.ordenx.get(i).toLowerCase().contains(
-                                ordsearch.getText().toString().toLowerCase().trim())){
+                        if (Array.ordenx.get(i).toLowerCase().contains(ordsearch.getText().toString().toLowerCase().trim())){
                             Array.ordensrc.add(Array.ordenx.get(i));
+                            Array.nombresrc.add(Array.nombrex.get(i));
+                            Array.contratosrc.add(Array.contratox.get(i));
+                            Array.statusrc.add((Array.statusx.get(i)));
+
                         }
                     }
                 }
 
-                ordenes.setAdapter(adapterord);
+                adapterord=new ordenes_adapter_result(Orden.this,Array.ordensrc,Array.nombresrc,Array.statusrc,Array.contratosrc);
+                ordenes.setAdapter(adapterord);   //Asignacion del adapatador a la listView
 
             }
 
@@ -124,22 +120,6 @@ public class Orden extends AppCompatActivity
             }
         });
 
-
-
-     /*   if (ordsearch.isSelected()) {
-            contsearch.setEnabled(false);
-        }else if (contsearch.isSelected()) {
-            ordsearch.setEnabled(false);
-        }
-*/
-        if (contsearch.getText().toString().trim().equalsIgnoreCase(""))
-            et1.setError("This field can not be blank");
-
-
-         ///////////////////////////////////////
-
-        adapterord=new ordenes_adapter_result(Orden.this);
-        ordenes.setAdapter(adapterord);    //Asignacion del adapatador a la listView
 
         //////////////////BUSCA CONTRATO////////////////////////////
 
@@ -153,17 +133,23 @@ public class Orden extends AppCompatActivity
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 textlength = contsearch.getText().length();
+                Array.ordensrc.clear();
+                Array.nombresrc.clear();
+                Array.statusrc.clear();
                 Array.contratosrc.clear();
                 for (int i = 0; i < Array.contratox.size(); i++) {
                     if (textlength <= Array.contratox.get(i).length()) {
-                        if (Array.contratox.get(i).toLowerCase().contains(
-                                contsearch.getText().toString().toLowerCase().trim())){
+                        if (Array.contratox.get(i).toLowerCase().contains(contsearch.getText().toString().toLowerCase().trim())){
+                            Array.ordensrc.add(Array.ordenx.get(i));
+                            Array.nombresrc.add(Array.nombrex.get(i));
                             Array.contratosrc.add(Array.contratox.get(i));
+                            Array.statusrc.add((Array.statusx.get(i)));
+
                         }
                     }
                 }
-                adaptercont=new contrato_ordenes_result(Orden.this);
-                ordenes.setAdapter(adaptercont);    //Asignacion del adapatador a la listView
+                adapterord=new ordenes_adapter_result(Orden.this,Array.ordensrc,Array.nombresrc,Array.statusrc,Array.contratosrc);
+                ordenes.setAdapter(adapterord);   //Asignacion del adapatador a la listView
 
             }
 

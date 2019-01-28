@@ -35,6 +35,8 @@ public class Array {
     //----BUSQUEDA CONTRATO & ORDEN----//
     public static ArrayList<String>contratosrc=new ArrayList<>();
     public static ArrayList<String>ordensrc=new ArrayList<>();
+    public static ArrayList<String>nombresrc=new ArrayList<>();
+    public static ArrayList<String>statusrc=new ArrayList<>();
  ///////////////////////ARRAY TRABAJOS///////////////////
     public static ArrayList <String>trabajox=new ArrayList<>();
     public static ArrayList<String>accionx=new ArrayList<>();
