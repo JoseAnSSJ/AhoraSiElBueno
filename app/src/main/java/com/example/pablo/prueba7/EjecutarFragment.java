@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 /**
@@ -17,7 +18,7 @@ public class EjecutarFragment extends Fragment {
 
     Button reiniciar;
     Button eject;
-    EditText edt1;
+    TextView edt1;
 
     public EjecutarFragment() {
         // Required empty public constructor
@@ -30,7 +31,7 @@ public class EjecutarFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ejecutar, container, false);
         reiniciar = view.findViewById(R.id.restart);
         eject = view.findViewById(R.id.ejec);
-        edt1 = view.findViewById(R.id.status);
+        edt1 = view.findViewById(R.id.status2);
 
         reiniciar.setEnabled(false);
 

@@ -41,7 +41,7 @@ public class CambioAparato extends AppCompatActivity {
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intento1 = new Intent(CambioAparato.this, Orden.class);
+                Intent intento1 = new Intent(CambioAparato.this, MainActivity.class);
                 startActivity(intento1);
             }
         });

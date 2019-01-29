@@ -90,34 +90,29 @@ public class Trabajos extends Fragment {
 
             trabajo.setText(Array.trabajox.get(position));
             accion.setText(Array.accionx.get(position));
+
             accion.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View v) {
                     if ((trabajo.getText().toString().trim()).equalsIgnoreCase("DESCO - Desconexión Del Servicio Principal")) {
                         accion.setEnabled(false);
-
-                      if ((accion.getText().toString().trim()).equalsIgnoreCase("null")){
-                          accion.setText("---");
-
-
+                        if ((accion.getText().toString().trim()).equalsIgnoreCase(null)) {
+                            accion.setText("---");
                         }
-                    }
+                        }
                     if ((trabajo.getText().toString().trim()).equalsIgnoreCase("ISNET - Instalación de Servicio de Internet")) {
-                        Intent intento = new Intent(getContext(), CambioAparato.class);
-                        startActivity(intento);
-
-                    }
-                    if ((trabajo.getText().toString().trim()).equalsIgnoreCase("ISTVA - Instalación de Servicio de TV")) {
                         Intent intento = new Intent(getContext(), asignacion.class);
                         startActivity(intento);
-                    }
+                        }
                     if ((trabajo.getText().toString().trim()).equalsIgnoreCase("CAPAG - Cambio de tipo de aparato  FTTH")) {
                         Intent intento = new Intent(getActivity(), CambioAparato.class);
                         startActivity(intento);
                         }
                     if ((trabajo.getText().toString().trim()).equalsIgnoreCase("CAMDO - Cambio De Domicilio")) {
-                        request.getCAMDO();
+
                         Intent intento = new Intent(getActivity(), CambioDom.class);
+                        request.getCAMDO();
                         startActivity(intento);
                     }
                     if ((trabajo.getText().toString().trim()).equalsIgnoreCase("CAPAT - Cambio De Tipo De Aparato")) {
@@ -125,9 +120,29 @@ public class Trabajos extends Fragment {
                         startActivity(intento);
 
                     }
+                    if ((trabajo.getText().toString().trim()).equalsIgnoreCase("ISTVA - Instalación de Servicio de TV")) {
+                        Intent intento = new Intent(getContext(), asignacion.class);
+                        startActivity(intento);
+
+                    }
+                    if ((trabajo.getText().toString().trim()).equalsIgnoreCase("CONEX - Contratación De Extensión")) {
+                        accion.setEnabled(false);
+                        if ((accion.getText().toString().trim()).equalsIgnoreCase(null)) {
+                            accion.setText("---");
+                        }
+                        }
+                        if((trabajo.getText().toString().trim()).equalsIgnoreCase("MANTEN - MANTENIMIENTO")) {
+                            accion.setText("---");
+                            if ((accion.getText().toString().trim()).equalsIgnoreCase(null)) {
+                                accion.setEnabled(false);
+                            } }
+                            if((trabajo.getText().toString().trim()).equalsIgnoreCase("FUERA - Fuera Del Area De Instalación")) {
+                                accion.setEnabled(false);
+                                if ((accion.getText().toString().trim()).equalsIgnoreCase(null)) {
+                                    accion.setText("---");
+                                }
+                                }
                 }
-
-
             });
 
             return convertView;

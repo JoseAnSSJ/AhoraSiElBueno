@@ -83,13 +83,13 @@
 
                 <EditText
                     android:id="@+id/ejecureal"
-                    android:layout_width="match_parent"
+                    android:layout_width="144dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="200dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="40dp"
                     android:focusable="false"
                     android:hint="_/_/_"
                     android:textSize="20sp" />
@@ -164,7 +164,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="13dp"
+                    android:layout_marginStart="10dp"
                     android:text="Hora inicio"
                     android:textSize="20dp" />
 
@@ -174,7 +174,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="11dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="50dp"
                     android:layout_marginBottom="20dp"
                     android:text="Hora fin"
@@ -229,32 +229,42 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="310dp"
+                android:textSize="20dp"
+
+
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="350dp"
+                android:layout_marginTop="360dp"
                 android:textSize="20dp"
                 android:text="Observaciones:"
+                android:layout_marginStart="10dp"
+
                 />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="375dp"
+                android:layout_marginTop="385dp"
                 android:textSize="20dp"
+                android:layout_marginStart="10dp"
                 android:id="@+id/obs"
+                android:textColor="#000000"
                 />
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:layout_marginTop="420dp">
+                android:layout_marginTop="440dp">
 
                 <TextView
                     android:id="@+id/txtCoordenadas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:layout_marginStart="10dp"
+                    android:textSize="20dp"
+                    />
 
             </RelativeLayout>
 
