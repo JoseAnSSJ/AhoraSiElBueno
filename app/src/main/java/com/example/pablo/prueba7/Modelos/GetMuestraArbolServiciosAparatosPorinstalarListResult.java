@@ -3,6 +3,8 @@ package com.example.pablo.prueba7.Modelos;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class GetMuestraArbolServiciosAparatosPorinstalarListResult {
     @SerializedName("Clv_TipSer")
     @Expose
@@ -12,10 +14,10 @@ public class GetMuestraArbolServiciosAparatosPorinstalarListResult {
     public Integer clv_UnicaNet;
     @SerializedName("Detalle")
     @Expose
-    private String detalle;
+    public String detalle;
     @SerializedName("IdMedio")
     @Expose
-    private Integer idMedio;
+    public Integer idMedio;
     @SerializedName("Nombre")
     @Expose
     private String nombre;
@@ -25,6 +27,17 @@ public class GetMuestraArbolServiciosAparatosPorinstalarListResult {
     @SerializedName("Type")
     @Expose
     private String type;
+    @SerializedName("children")
+    @Expose
+    private List<children> children = null;
+
+    public List<children> getchildren() {
+        return children;
+    }
+
+    public void setchildren(List<children> children) {
+        this.children = children;
+    }
 
 
     public Integer getClv_TipSer() {

@@ -17,6 +17,7 @@ import com.example.pablo.prueba7.Modelos.OrdSer;
 import com.example.pablo.prueba7.Modelos.Queja;
 import com.example.pablo.prueba7.Modelos.GetDameDatosCAMDOResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraAparatosDisponiblesListResult;
+import com.example.pablo.prueba7.Modelos.children;
 
 import java.security.PublicKey;
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class Array {
     //////////////////////////////////////////////////////
 
     public static ArrayList <String>nombreArbol=new ArrayList<>();
+    public static ArrayList <String>DetalleArbol=new ArrayList<>();
     public static ArrayList<String>medio=new ArrayList<>();
     public static ArrayList<String>tipoAparato=new ArrayList<>();
     public static ArrayList<String>aparatoDisponibles=new ArrayList<>();
@@ -55,6 +57,7 @@ public class Array {
     public static  ArrayList<List<GetListAparatosDisponiblesByIdArticuloResult>> dataApaTipDis;
  public static  ArrayList<List<GetDameDatosCAMDOResult>> dataCAMDO;
     public static  ArrayList<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> dataArbSer;
+    public static  ArrayList<List<children>> dataChild;
     public static  ArrayList<List<GetMuestraMedioPorServicoContratadoListResult>> dataMedSer;
     public static  ArrayList<List<GetMuestraTipoAparatoListResult>> dataTipoAparatos;
     public static  ArrayList<List<GetMuestraAparatosDisponiblesListResult>> dataAparatosDisponibles;

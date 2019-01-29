@@ -21,8 +21,14 @@ import com.example.pablo.prueba7.Request.Request;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Iterator;
 import java.util.List;
+
+import static com.example.pablo.prueba7.Adapters.Arbol_Adapter.clv_Medio;
+import static com.example.pablo.prueba7.Adapters.Arbol_Adapter.clv_unicaNet;
 
 public class asignado extends AppCompatActivity {
     Button escanear, agragar;
@@ -52,6 +58,8 @@ public class asignado extends AppCompatActivity {
         agragar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intento=new Intent(asignado.this,asignacion.class);
+                startActivity(intento);
 
             }
         });
@@ -71,8 +79,17 @@ public class asignado extends AppCompatActivity {
                 Iterator<List<GetMuestraTipoAparatoListResult>> itdata = array.dataTipoAparatos.iterator();
                 List<GetMuestraTipoAparatoListResult> dat = itdata.next();
                 idArticuloasignado = dat.get(position).getIdArticulo();
+              /*  JSONObject jsonObject2 = new JSONObject();
+                try {
+                    jsonObject2.put("Clv_UnicaNet", clv_unicaNet);
+                    jsonObject2.put("idMedio", clv_Medio);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }*/
                 request.getAparatosDisponibles(getApplicationContext());
-
+                request.getServiciosAparatos(getApplicationContext());
+                ServicioAparatoAdapter servicioAparatoAdapter = new ServicioAparatoAdapter();
+                serviciosAparato.setAdapter(servicioAparatoAdapter);
 
 
             }
@@ -86,9 +103,7 @@ public class asignado extends AppCompatActivity {
         spinneraparatoDisponible.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                request.getServiciosAparatos(getApplicationContext());
-                ServicioAparatoAdapter servicioAparatoAdapter = new ServicioAparatoAdapter();
-                serviciosAparato.setAdapter(servicioAparatoAdapter);
+
             }
 
             @Override

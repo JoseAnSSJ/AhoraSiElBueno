@@ -28,8 +28,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-import static com.example.pablo.prueba7.Adapters.Arbol_Adapter.clv_Medio;
 import static com.example.pablo.prueba7.Adapters.Arbol_Adapter.clv_unicaNet;
+import static com.example.pablo.prueba7.asignacion.jsonArray;
+import static com.example.pablo.prueba7.asignacion.jsonObject2;
 import static com.example.pablo.prueba7.asignado.idArticuloasignado;
 
 
@@ -540,16 +541,10 @@ public class Services {
         JSONObject jsonObject1 = new JSONObject();
         jsonObject1.put("obj",jsonObject);
         /////////////
-        JSONObject jsonObject2 = new JSONObject();
-        jsonObject2.put("Clv_UnicaNet", clv_unicaNet);
-        jsonObject2.put("idMedio", clv_Medio);
-        ////////
-        JSONArray list = new JSONArray();
-        list.put(jsonObject2);
         /////////////
         JSONObject jsonObject3 = new JSONObject();
         jsonObject3.put("obj", jsonObject);
-        jsonObject3.put("Lst", list);
+        jsonObject3.put("Lst", jsonArray);
         MediaType JSON = MediaType.parse("application/json; charse=utf-8");
         final RequestBody body = RequestBody.create(JSON, String.valueOf(jsonObject3));
         final OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
@@ -600,20 +595,18 @@ public class Services {
     public Service getServiciosAparatosService() throws JSONException {
         ////////
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Id",31352 );
+        jsonObject.put("Id",22861 );
         JSONObject jsonObject1 = new JSONObject();
         jsonObject1.put("obj",jsonObject);
         /////////////
-        JSONObject jsonObject2 = new JSONObject();
-        jsonObject2.put("Clv_UnicaNet", clv_unicaNet);
-        jsonObject2.put("idMedio", clv_Medio);
+
         ////////
         JSONArray list = new JSONArray();
         list.put(jsonObject2);
         /////////////
         JSONObject jsonObject3 = new JSONObject();
         jsonObject3.put("obj", jsonObject);
-        jsonObject3.put("Lst", list);
+        jsonObject3.put("Lst", jsonArray);
         MediaType JSON = MediaType.parse("application/json; charse=utf-8");
         final RequestBody body = RequestBody.create(JSON, String.valueOf(jsonObject3));
         final OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
@@ -635,39 +628,5 @@ public class Services {
         return retrofit.create(Service.class);
     }
 
-  /*  public Service getAsignaAparatoService() throws JSONException {
-        ////////
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Id",0 );
-        JSONObject jsonObject1 = new JSONObject();
-        jsonObject1.put("obj",jsonObject);
-        /////////////
-        ////////
-        JSONArray list = new JSONArray();
-        list.put(prueba1);
-        /////////////
-        JSONObject jsonObject3 = new JSONObject();
-        jsonObject3.put("obj", jsonObject);
-        jsonObject3.put("Lst", list);
-        MediaType JSON = MediaType.parse("application/json; charse=utf-8");
-        final RequestBody body = RequestBody.create(JSON, String.valueOf(jsonObject3));
-        final OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
-            @Override
-            public Response intercept(Chain chain) throws IOException {
-                Request newRequest = chain.request().newBuilder()
-                        .addHeader("Authorization", UserModel.Codigo)
-                        .addHeader("Content-Type","application/json" )
-                        .post(body)
-                        .build();
-                return chain.proceed(newRequest);
-            }
-        }).build();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.NEW_URL)
-                .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        return retrofit.create(Service.class);
-    }*/
 
 }

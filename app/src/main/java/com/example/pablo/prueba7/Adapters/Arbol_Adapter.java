@@ -1,13 +1,14 @@
 package com.example.pablo.prueba7.Adapters;
 
 import android.content.Context;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,26 +19,35 @@ import com.example.pablo.prueba7.R;
 import com.example.pablo.prueba7.Request.Request;
 import com.example.pablo.prueba7.asignacion;
 
+
 import java.util.Iterator;
 import java.util.List;
 
-public class Arbol_Adapter extends BaseAdapter {
+import static com.example.pablo.prueba7.Adapters.Arbol_Adapter.viewHolder.medio;
+import static com.example.pablo.prueba7.asignacion.Asignacion;
+import static com.example.pablo.prueba7.asignacion.aceptarmedio;
+import static com.example.pablo.prueba7.asignacion.layoutMedio;
+import static com.example.pablo.prueba7.asignacion.siguiente;
 
+public class Arbol_Adapter extends BaseAdapter {
+    Request request = new Request();
     LayoutInflater inflater;
     Context mcontext;
     public static int clv_unicaNet, clv_Medio, posi;
-    public String dato;
+    public static String dato;
     Array array = new Array();
-    Request request = new Request();
+
+    Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
+    List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = itData.next();
 
     public Arbol_Adapter (Context context){
         mcontext=context;
         inflater = LayoutInflater.from(mcontext);
     }
 
-    public class viewHolder{
-        TextView nombre;
-        Button medio;
+    public static class viewHolder{
+        public static TextView nombre;
+        public static Button medio;
 
 
     }
@@ -57,16 +67,19 @@ public class Arbol_Adapter extends BaseAdapter {
         return position;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         final viewHolder holder;
+
+
         if (convertView == null) {
             holder = new viewHolder();
 
             convertView=inflater.inflate(R.layout.activity_aparato_asignado_medio_list,null);
 
-            holder.nombre=(TextView)convertView.findViewById(R.id.textservicio);
-            holder.medio=(Button)convertView.findViewById(R.id.medio);
+            holder.nombre=convertView.findViewById(R.id.textservicio);
+            holder.medio=convertView.findViewById(R.id.medio);
 
 
             convertView.setTag(holder);
@@ -74,91 +87,110 @@ public class Arbol_Adapter extends BaseAdapter {
         else {
             holder=(viewHolder)convertView.getTag();
         }
+        ///////////////
 
-        holder.nombre.setText(Array.nombreArbol.get(position));
+        ///////////////
+
+            if(dat.get(position).getIdMedio()==0){
+                holder.nombre.setText(array.nombreArbol.get(position));
+            }else{
+
+                holder.nombre.setText(dat.get(position).getNombre()+" ("+dat.get(position).getDetalle()+")");
+                holder.medio.setVisibility(View.INVISIBLE);
+
+
+            }
+
         ////////////////////
         asignacion.eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.nombre.setText(array.nombreArbol.get(position));
+
                 holder.medio.setVisibility(View.VISIBLE);
                 clv_Medio = 0;
                 clv_unicaNet = 0;
             }
         });
 
-        final int[] m = {1};
-        holder.nombre.setText(array.nombreArbol.get(position));
-
+       // final int[] m = {1};
+        ////////////////////////////////
 
         holder.medio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mcontext, "Bienvenido" + position, Toast.LENGTH_LONG).show();
-                /////
-                Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
-                List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = (List<GetMuestraArbolServiciosAparatosPorinstalarListResult>) itData.next();
-                clv_unicaNet = dat.get(position).getClv_UnicaNet();
+
+                Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData1 = array.dataArbSer.iterator();
+                List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat1 =  itData1.next();
+                clv_unicaNet = dat1.get(position).getClv_UnicaNet();
+
+
+
                 request.getMedSer(mcontext);
                 posi = position;
                 ////
-
-                asignacion.layoutMedio.setVisibility(View.VISIBLE);
-                //      Asignacion.setVisibility(View.GONE);
-                asignacion.siguiente.setEnabled(false);
+                layoutMedio.setVisibility(View.VISIBLE);
+                 Asignacion.setVisibility(View.GONE);
+                siguiente.setEnabled(false);
 
 
             }
         });
-        asignacion.aceptarmedio.setOnClickListener(new View.OnClickListener() {
+        aceptarmedio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 /*       if (m[0] == 1) {
-                            Toast.makeText(getApplicationContext(), "Debe de llenar el campo 'Medio'", Toast.LENGTH_LONG).show();
-                        } else {*/
 
-                Iterator<List<GetMuestraMedioPorServicoContratadoListResult>> itData = array.dataMedSer.iterator();
-                List<GetMuestraMedioPorServicoContratadoListResult> dat = (List<GetMuestraMedioPorServicoContratadoListResult>) itData.next();
-                clv_Medio = dat.get(position - 1).getIdMedio();
-                asignacion.layoutMedio.setVisibility(View.GONE);
-                asignacion.Asignacion.setVisibility(View.VISIBLE);
-                asignacion.siguiente.setEnabled(true);
-                //////
-                holder.medio.setVisibility(View.GONE);
-                holder.nombre.setText(array.nombreArbol.get(posi) + " (" + dato + ")");
+              //  if (m[0] == 1) {
+              //      Toast.makeText(mcontext, "Debe de llenar el campo 'Medio'", Toast.LENGTH_LONG).show();
+              //  } else {
+
+                    Iterator<List<GetMuestraMedioPorServicoContratadoListResult>> itData2 = array.dataMedSer.iterator();
+                    List<GetMuestraMedioPorServicoContratadoListResult> dat2 = itData2.next();
+                    try {
+                        clv_Medio = dat2.get(position).getIdMedio();
+                    } catch (Exception e) {
+                        clv_Medio = dat2.get(position - 1).getIdMedio();
+                    }
 
 
-                /////
+                    layoutMedio.setVisibility(View.GONE);
+                    Asignacion.setVisibility(View.VISIBLE);
+                    siguiente.setEnabled(true);
+                    //////
+                    medio.setVisibility(View.GONE);
+                    dat.get(position).setIdMedio(clv_Medio);
+                    dat.get(position).setDetalle(dato);
+                    Asignacion.setAdapter(Arbol_Adapter.this);
 
-                //}
+
+              //  }
+
             }
         });
         asignacion.cancelarmedio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //  nombre.setText(array.nombreArbol.get(posi));
-                asignacion.layoutMedio.setVisibility(View.GONE);
-                asignacion.Asignacion.setVisibility(View.VISIBLE);
-                asignacion.siguiente.setEnabled(true);
+                layoutMedio.setVisibility(View.GONE);
+                Asignacion.setVisibility(View.VISIBLE);
+                siguiente.setEnabled(true);
             }
         });
         asignacion.spinnerMedio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position != 0) {
-                    m[0] = 2;
+            public void onItemSelected(AdapterView<?> parent, View view, int position1, long id) {
+                //if (position != 0) {
+                 //   m[0] = 2;
                     Iterator<List<GetMuestraMedioPorServicoContratadoListResult>> itdata = array.dataMedSer.iterator();
                     List<GetMuestraMedioPorServicoContratadoListResult> dat = itdata.next();
-                    dato = dat.get(position - 1).getDescripcion();
+                    dato = dat.get(position1).getDescripcion();
 
-                }
+                //}
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        ////////////////////////
+
         return convertView;
     }
 }
