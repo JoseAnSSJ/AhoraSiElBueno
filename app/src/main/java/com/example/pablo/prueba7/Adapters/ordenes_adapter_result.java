@@ -46,8 +46,12 @@ public class ordenes_adapter_result extends BaseAdapter {
 
     @Override
     public int getCount() {
+<<<<<<< Updated upstream
         return Array.ordensrc.size();
                 //&Array.nombresrc.size()&Array.statusrc.size()&Array.contratosrc.size();
+=======
+        return Array.ordensrc.size();  //&Array.nombresrc.size()&Array.statusrc.size()&Array.contratosrc.size()
+>>>>>>> Stashed changes
 
 
     }
@@ -77,6 +81,15 @@ public class ordenes_adapter_result extends BaseAdapter {
             holder.orden=(Button)convertView.findViewById(R.id.ordenv);
             holder.contrato=(TextView)convertView.findViewById(R.id.contratov);
             holder.nombre=(TextView)convertView.findViewById(R.id.nombrev);
+
+            holder.orden.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
+                }
+            });
+
 
 
             convertView.setTag(holder);

@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.example.pablo.prueba7.Adapters.ordenes_adapter_result;
 import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.Request.Request;
+import com.example.pablo.prueba7.Services.Services;
 
 import static com.example.pablo.prueba7.Adapters.ordenes_adapter_result.viewHolder.orden;
 import static com.example.pablo.prueba7.Services.Services.clvorden;
@@ -33,12 +34,20 @@ public class Orden extends AppCompatActivity
 
         implements NavigationView.OnNavigationItemSelectedListener {
     Request request = new Request();
+<<<<<<< Updated upstream
     Button orden1, cambiodom, cambioapa,ordenb,contratob;
     ListView ordenes;
     EditText ordsearch,contsearch;
     ordenes_adapter_result adapterord;
     int textlength = 0;
     Request rqs=new Request();
+=======
+    Button orden1, cambiodom, cambioapa,borden;
+    ListView ordenes;
+    EditText ordsearch,contsearch;
+    ordenes_adapter_result adapterord;
+    public static int textlength = 0;
+>>>>>>> Stashed changes
 
     @Override
 
@@ -54,9 +63,14 @@ public class Orden extends AppCompatActivity
         ordenes=findViewById(R.id.listorden);
         ordsearch=findViewById(R.id.ordsearch);
         contsearch=findViewById(R.id.contsearch);
+<<<<<<< Updated upstream
         ordenb=findViewById(R.id.borden);
         contratob=findViewById(R.id.bcontrato);
+=======
+        borden=findViewById(R.id.borden);
+>>>>>>> Stashed changes
         Error.Errores(this);
+        final Request req=new Request();
         request.getArbSer(getApplicationContext());
         ////////////////////////////////////////
 
@@ -64,6 +78,9 @@ public class Orden extends AppCompatActivity
         ordenes.setAdapter(adapterord);    //Asignacion del adapatador a la listView
 
         //////////////////////////////////////////
+
+
+
 
         //* Boton para ir a menu principal
 
@@ -97,6 +114,45 @@ public class Orden extends AppCompatActivity
             }
         });
 
+<<<<<<< Updated upstream
+=======
+        //////////////////////////////////////////
+        borden.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Services.searchorden=1;
+                req.getListOrd();
+
+                textlength = ordsearch.getText().length();
+                Array.ordensrc.clear();
+                Array.nombresrc.clear();
+                Array.statusrc.clear();
+                Array.contratosrc.clear();
+                for (int i = 0; i < Array.ordenx.size(); i++) {
+                    if (textlength <= Array.ordenx.get(i).length()) {
+                        if (Array.ordenx.get(i).toLowerCase().contains(ordsearch.getText().toString().toLowerCase().trim())){
+                            Array.ordensrc.add(Array.ordenx.get(i));
+                            Array.nombresrc.add(Array.nombrex.get(i));
+                            Array.contratosrc.add(Array.contratox.get(i));
+                            Array.statusrc.add((Array.statusx.get(i)));
+
+                        }
+                    }
+               // }
+
+                adapterord=new ordenes_adapter_result(Orden.this,Array.ordensrc,Array.nombresrc,Array.statusrc,Array.contratosrc);
+                ordenes.setAdapter(adapterord);   //Asignacion del adapatador a la listView
+            }
+        });
+        //////////////////////////////
+
+
+
+        /////////BUSCA ORDEN//////////////
+        ordsearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+>>>>>>> Stashed changes
 
 
 
@@ -117,7 +173,11 @@ public class Orden extends AppCompatActivity
         opcion=1;
         request.getListOrd();
 
+<<<<<<< Updated upstream
         ordenb.setOnClickListener(new View.OnClickListener() {
+=======
+          contsearch.addTextChangedListener(new TextWatcher() {
+>>>>>>> Stashed changes
             @Override
             public void onClick(View v) {
 
@@ -254,3 +314,5 @@ public class Orden extends AppCompatActivity
         return false;
     }
 }
+}
+r

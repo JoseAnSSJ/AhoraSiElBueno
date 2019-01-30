@@ -28,6 +28,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
+import static com.example.pablo.prueba7.Orden.textlength;
 import static com.example.pablo.prueba7.asignacion.clv_Medio;
 import static com.example.pablo.prueba7.asignacion.clv_unicaNet;
 import static com.example.pablo.prueba7.asignado.idArticuloasignado;
@@ -35,9 +36,15 @@ import static com.example.pablo.prueba7.asignado.idArticuloasignado;
 
 public class Services {
     public static int claveTecnico;
+<<<<<<< Updated upstream
     public static int opcion;
     public static int clvorden=0;
     public static String cont;
+=======
+    public static int searchorden;
+
+
+>>>>>>> Stashed changes
     public String abc="Basic: "+Login.enco;
 
     /////////TOKEN///C////
@@ -175,9 +182,14 @@ public class Services {
         JSONObject jsonObject = new JSONObject();
         JSONObject jsonObject2 = new JSONObject();
         jsonObject.put("clv_tecnico",claveTecnico);
+<<<<<<< Updated upstream
         jsonObject.put("op",opcion);
         jsonObject.put("clv_orden",clvorden);
         jsonObject.put("contratoCom",cont);
+=======
+        jsonObject.put("op",searchorden);
+        jsonObject.put("clv_orden",textlength);
+        jsonObject.put("contratoCom","");
         jsonObject2.put("ObjLista",jsonObject);
 
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
@@ -205,6 +217,48 @@ public class Services {
         return retrofit.create(Service.class);
 
     }
+
+    ////////////////////////////////////////////
+
+    public Service getListOrdServiceBuusqueda() throws JSONException {
+        //POST Body JsonArray
+        JSONObject jsonObject = new JSONObject();
+        JSONObject jsonObject2 = new JSONObject();
+        jsonObject.put("clv_tecnico",0);
+        jsonObject.put("op",1);
+        jsonObject.put("clv_orden",0);
+        jsonObject.put("contratoCom","");
+>>>>>>> Stashed changes
+        jsonObject2.put("ObjLista",jsonObject);
+
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+        final RequestBody body = RequestBody.create(JSON, String.valueOf(jsonObject2));
+
+        final OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+
+            @Override
+            public okhttp3.Response intercept(Interceptor.Chain chain) throws IOException {
+
+                //Modificacion del Header
+                Request newRequest = chain.request().newBuilder()
+                        .addHeader("Authorization", UserModel.Codigo)
+                        .addHeader("Content-Type", "application/json")
+                        .post(body).build();
+
+
+                return chain.proceed(newRequest);
+            }
+        }).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.NEW_URL)
+                .client(client).addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        return retrofit.create(Service.class);
+
+    }
+
+
+    ////////////////////////////////////////////
 
     /////////////Servicios Service/////////C////////////
     public Service getServiciosService() throws JSONException {

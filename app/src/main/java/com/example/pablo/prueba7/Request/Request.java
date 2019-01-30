@@ -354,8 +354,6 @@ public class Request extends AppCompatActivity {
                         Array.statusrc.add(String.valueOf(dat.get(i).getStatus()));
 
                     }
-
-
                 }
             }
 
@@ -368,6 +366,8 @@ public class Request extends AppCompatActivity {
         });
 
     }
+
+
  ///////////////////Consuta pantalla ordenes///////////////////////////
     public void getDeepCons() {
 
