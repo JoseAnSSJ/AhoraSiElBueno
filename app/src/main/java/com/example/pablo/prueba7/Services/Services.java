@@ -37,6 +37,7 @@ public class Services {
     public static int claveTecnico;
     public static int opcion;
     public static int clvorden=0;
+    public static String cont;
     public String abc="Basic: "+Login.enco;
 
     /////////TOKEN///C////
@@ -173,10 +174,10 @@ public class Services {
         //POST Body JsonArray
         JSONObject jsonObject = new JSONObject();
         JSONObject jsonObject2 = new JSONObject();
-        jsonObject.put("clv_tecnico",0);
+        jsonObject.put("clv_tecnico",claveTecnico);
         jsonObject.put("op",opcion);
         jsonObject.put("clv_orden",clvorden);
-        jsonObject.put("contratoCom","");
+        jsonObject.put("contratoCom",cont);
         jsonObject2.put("ObjLista",jsonObject);
 
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");

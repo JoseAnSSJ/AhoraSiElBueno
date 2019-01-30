@@ -1,6 +1,7 @@
 package com.example.pablo.prueba7.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.pablo.prueba7.Listas.Array;
+import com.example.pablo.prueba7.MainActivity;
+import com.example.pablo.prueba7.Orden;
 import com.example.pablo.prueba7.R;
+import com.example.pablo.prueba7.Request.Request;
 
 import java.util.ArrayList;
 
@@ -22,6 +26,7 @@ public class ordenes_adapter_result extends BaseAdapter {
     ArrayList<String>contratosrc;
     ArrayList<String>nombresrc;
     ArrayList<String>statusrc;
+    Request request=new Request();
 
     public ordenes_adapter_result(Context context, ArrayList<String>ordensrc,ArrayList<String>nombrex,ArrayList<String>contratosrc,ArrayList<String>statusrc){
 
@@ -34,14 +39,15 @@ public class ordenes_adapter_result extends BaseAdapter {
         inflater=LayoutInflater.from(mContext);
 
     }
-    public class viewHolder{
+    public static class viewHolder{
         TextView status,contrato,nombre;
-        Button orden;
+       public static   Button orden;
     }
 
     @Override
     public int getCount() {
-        return Array.ordensrc.size()&Array.nombresrc.size()&Array.statusrc.size()&Array.contratosrc.size();
+        return Array.ordensrc.size();
+                //&Array.nombresrc.size()&Array.statusrc.size()&Array.contratosrc.size();
 
 
     }
@@ -84,7 +90,23 @@ public class ordenes_adapter_result extends BaseAdapter {
         holder.contrato.setText(Array.contratosrc.get(position));
         holder.status.setText(Array.statusrc.get(position));
 
-        return convertView;
+
+holder.orden.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intento1 = new Intent(mContext, MainActivity.class);
+
+        mContext.startActivity(intento1);
+        request.getDeepCons();
 
     }
+});
+        return convertView;
+
+
+
+    }
+
+
+
 }
