@@ -29,7 +29,7 @@ import java.util.ArrayList;
 
 public class Inicio extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    public static int OE,OP,OV,RE,RP,REP,RV;
+    public static int OE,OP,OV,OEP,OO,RE,RP,REP,RV,RO;
 
     public static PieChart  pieChart;
     Request request = new Request();
@@ -137,35 +137,60 @@ public class Inicio extends AppCompatActivity
 
         //Datos de la grafica
         ArrayList<PieEntry> yValues = new ArrayList<>();
-        if (OE != 0){
-            yValues.add(new PieEntry(OE,"OrdenEjecutada"));
-        }
-        if (OP != 0) {
-            yValues.add(new PieEntry(OP,"OrdenPendiente"));
-        }
-        if (OV != 0){
-            yValues.add(new PieEntry(OV,"OrdenEnVisita"));
-        }
-        if (RE != 0){
-            yValues.add(new PieEntry(RE,"ReporteEjecutada"));
-        }
-        if (RP != 0){
-            yValues.add(new PieEntry(RP,"ReportePendiente"));
-        }
-        if (REP != 0){
-            yValues.add(new PieEntry(REP,"ReporteEnProceso"));
-        }
-        if (RV != 0){
-            yValues.add(new PieEntry(RV,"ReporteEnVisita"));
-        }
-        if(yValues.isEmpty() == true){
+       if(OE==0 && OP==0 && OV==0 && RP==0 && OEP==0 && OO==0 && RE==0 && RV==0 && REP==0&& RO==0 ){
             yValues.add(new PieEntry(100f, "Completado"));
-        }
-        PieDataSet dataSet = new PieDataSet(yValues, "");
-        dataSet.setSliceSpace(7f);
-        dataSet.setSelectionShift(10f);
-        dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
-        dataSet.setHighlightEnabled(true);
+           PieDataSet dataSet = new PieDataSet(yValues, "");
+           dataSet.setSliceSpace(7f);
+           dataSet.setSelectionShift(10f);
+           dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+           dataSet.setHighlightEnabled(true);
+           PieData data = new PieData((dataSet));
+           data.setValueTextSize(15f);
+           data.setValueTextColor(Color.BLACK);
+           pieChart.setData(data);
+        }else {
+           if (OE != 0){
+               yValues.add(new PieEntry(OE,"OrdenEjecutada"));
+           }
+           if (OP != 0) {
+               yValues.add(new PieEntry(OP,"OrdenPendiente"));
+           }
+           if (OV != 0){
+               yValues.add(new PieEntry(OV,"OrdenEnVisita"));
+           }
+           if (OEP != 0){
+               yValues.add(new PieEntry(OV,"OrdenEnProceso"));
+           }
+           if (OO != 0){
+               yValues.add(new PieEntry(OV,"Otros"));
+           }
+           if (RE != 0){
+               yValues.add(new PieEntry(RE,"QuejasEjecutadas"));
+           }
+           if (RP != 0){
+               yValues.add(new PieEntry(RP,"QuejasPendiente"));
+           }
+           if (REP != 0){
+               yValues.add(new PieEntry(REP,"QuejasEnProceso"));
+           }
+           if (RV != 0){
+               yValues.add(new PieEntry(RV,"QuejasEnVisita"));
+           }
+           if (RO != 0){
+               yValues.add(new PieEntry(OV,"Otros"));
+           }
+           PieDataSet dataSet = new PieDataSet(yValues, "");
+           dataSet.setSliceSpace(7f);
+           dataSet.setSelectionShift(10f);
+           dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+           dataSet.setHighlightEnabled(true);
+           PieData data = new PieData((dataSet));
+           data.setValueTextSize(15f);
+           data.setValueTextColor(Color.BLACK);
+           pieChart.setData(data);
+       }
+
+
 
   /*      ArrayList<Integer> colors = new ArrayList<>();
         colors.add(Color.GREEN);
@@ -178,10 +203,7 @@ public class Inicio extends AppCompatActivity
 
         dataSet.setColors(colors);*/
 
-        PieData data = new PieData((dataSet));
-        data.setValueTextSize(15f);
-        data.setValueTextColor(Color.BLACK);
-        pieChart.setData(data);
+
     }
 
 }

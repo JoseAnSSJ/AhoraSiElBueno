@@ -229,22 +229,49 @@ public class Request extends AppCompatActivity {
                     for (int i = 0; i < dat.size(); i++) {
                         Log.d("response9", dat.get(i).getStatus());
                         Log.d("response10", String.valueOf(dat.get(i).getTotal()));
+                        if(dat.get(i).getStatus().equals("Ejecutada")){
+                            try{
+                                Inicio.OE = dat.get(i).getTotal();
+
+                            }catch (Exception e){
+                                Inicio.OE = 0;
+                            }
+                        }
+                        if(dat.get(i).getStatus().equals("Pendiente")){
+                            try{
+                                Inicio.OP = dat.get(i).getTotal();
+                            }catch (Exception e){
+                                Inicio.OP = 0;
+                            }
+                        }
+                        if(dat.get(i).getStatus().equals("Visita")){
+                            try{
+                                Inicio.OV = dat.get(i).getTotal();
+                            }catch (Exception e){
+                                Inicio.OV = 0;
+                            }
+
+                        }
+                        if(dat.get(i).getStatus().equals("En Proceso")){
+                            try{
+                                Inicio.OEP = dat.get(i).getTotal();
+                            }catch (Exception e){
+                                Inicio.OEP = 0;
+                            }
                     }
-                    try{
-                        Inicio.OE = dat.get(0).getTotal();
-                    }catch (Exception e){
-                        Inicio.OE = 0;
+                        if(dat.get(i).getStatus().equals("otro")){
+                            try{
+                                Inicio.OO = dat.get(i).getTotal();
+                            }catch (Exception e){
+                                Inicio.OO = 0;
+                            }
+                        }
                     }
-                    try{
-                        Inicio.OP = dat.get(1).getTotal();
-                    }catch (Exception e){
-                        Inicio.OP = 0;
-                    }
-                    try{
-                        Inicio.OV = dat.get(2).getTotal();
-                    }catch (Exception e){
-                        Inicio.OV = 0;
-                    }
+
+
+
+
+
                 }
 
             }
@@ -283,27 +310,45 @@ public class Request extends AppCompatActivity {
                     for (int i = 0; i < dat.size(); i++) {
                         Log.d("response7", dat.get(i).getStatus());
                         Log.d("response8", String.valueOf(dat.get(i).getTotal()));
+                        if(dat.get(i).getStatus().equals("Ejecutada")){
+                            try{
+                                Inicio.RE = dat.get(i).getTotal();
+
+                            }catch (Exception e){
+                                Inicio.RE = 0;
+                            }
+                        }
+                        if(dat.get(i).getStatus().equals("Pendiente")){
+                            try{
+                                Inicio.RP = dat.get(i).getTotal();
+                            }catch (Exception e){
+                                Inicio.RP = 0;
+                            }
+                        }
+                        if(dat.get(i).getStatus().equals("Visita")){
+                            try{
+                                Inicio.RV = dat.get(i).getTotal();
+                            }catch (Exception e){
+                                Inicio.RV = 0;
+                            }
+
+                        }
+                        if(dat.get(i).getStatus().equals("En Proceso")){
+                            try{
+                                Inicio.REP = dat.get(i).getTotal();
+                            }catch (Exception e){
+                                Inicio.REP = 0;
+                            }
+                        }
+                        if(dat.get(i).getStatus().equals("otro")){
+                            try{
+                                Inicio.RO = dat.get(i).getTotal();
+                            }catch (Exception e){
+                                Inicio.RO = 0;
+                            }
+                        }
                     }
-                    try{
-                        Inicio.RE = dat.get(0).getTotal();
-                    }catch (Exception e){
-                        Inicio.RE = 0;
-                    }
-                    try{
-                        Inicio.RP = dat.get(1).getTotal();
-                    }catch (Exception e){
-                        Inicio.RP = 0;
-                    }
-                    try{
-                        Inicio.REP = dat.get(2).getTotal();
-                    }catch (Exception e){
-                        Inicio.REP = 0;
-                    }
-                    try{
-                        Inicio.RV = dat.get(3).getTotal();
-                    }catch (Exception e){
-                        Inicio.RV = 0;
-                    }
+
                 }
                 Inicio.Grafica();
             }
