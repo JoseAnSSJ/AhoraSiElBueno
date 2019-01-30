@@ -165,16 +165,16 @@ public class Inicio extends AppCompatActivity
                yValues.add(new PieEntry(OV,"Otros"));
            }
            if (RE != 0){
-               yValues.add(new PieEntry(RE,"QuejasEjecutadas"));
+               yValues.add(new PieEntry(RE,"ReportesEjecutadas"));
            }
            if (RP != 0){
-               yValues.add(new PieEntry(RP,"QuejasPendiente"));
+               yValues.add(new PieEntry(RP,"ReportesPendiente"));
            }
            if (REP != 0){
-               yValues.add(new PieEntry(REP,"QuejasEnProceso"));
+               yValues.add(new PieEntry(REP,"ReportesEnProceso"));
            }
            if (RV != 0){
-               yValues.add(new PieEntry(RV,"QuejasEnVisita"));
+               yValues.add(new PieEntry(RV,"ReportesEnVisita"));
            }
            if (RO != 0){
                yValues.add(new PieEntry(OV,"Otros"));
