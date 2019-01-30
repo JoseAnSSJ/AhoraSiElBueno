@@ -95,12 +95,7 @@ public class Trabajos extends Fragment {
 
                 @Override
                 public void onClick(View v) {
-                    if ((trabajo.getText().toString().trim()).equalsIgnoreCase("DESCO - Desconexión Del Servicio Principal")) {
-                        accion.setEnabled(false);
-                        if ((accion.getText().toString().trim()).equalsIgnoreCase(null)) {
-                            accion.setText("---");
-                        }
-                        }
+
                     if ((trabajo.getText().toString().trim()).equalsIgnoreCase("ISNET - Instalación de Servicio de Internet")) {
                         Intent intento = new Intent(getContext(), asignacion.class);
                         startActivity(intento);
@@ -123,25 +118,12 @@ public class Trabajos extends Fragment {
                     if ((trabajo.getText().toString().trim()).equalsIgnoreCase("ISTVA - Instalación de Servicio de TV")) {
                         Intent intento = new Intent(getContext(), asignacion.class);
                         startActivity(intento);
-
+                        }
+                        if ((accion.getText().toString().trim().equalsIgnoreCase("null"))){
+                                        accion.setEnabled(false);
+                                        accion.setText("---");
                     }
-                    if ((trabajo.getText().toString().trim()).equalsIgnoreCase("CONEX - Contratación De Extensión")) {
-                        accion.setEnabled(false);
-                        if ((accion.getText().toString().trim()).equalsIgnoreCase(null)) {
-                            accion.setText("---");
-                        }
-                        }
-                        if((trabajo.getText().toString().trim()).equalsIgnoreCase("MANTEN - MANTENIMIENTO")) {
-                            accion.setText("---");
-                            if ((accion.getText().toString().trim()).equalsIgnoreCase(null)) {
-                                accion.setEnabled(false);
-                            } }
-                            if((trabajo.getText().toString().trim()).equalsIgnoreCase("FUERA - Fuera Del Area De Instalación")) {
-                                accion.setEnabled(false);
-                                if ((accion.getText().toString().trim()).equalsIgnoreCase(null)) {
-                                    accion.setText("---");
-                                }
-                                }
+
                 }
             });
 

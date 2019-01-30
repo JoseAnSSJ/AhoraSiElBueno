@@ -247,7 +247,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="385dp"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:layout_marginStart="10dp"
                 android:id="@+id/obs"
                 android:textColor="#000000"
