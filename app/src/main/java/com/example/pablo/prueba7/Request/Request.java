@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 
+import com.example.pablo.prueba7.Adapters.Servicios_Adapter;
 import com.example.pablo.prueba7.CambioAparato;
 import com.example.pablo.prueba7.CambioDom;
 import com.example.pablo.prueba7.Inicio;
@@ -79,6 +80,7 @@ public class Request extends AppCompatActivity {
     CambioDom c = new CambioDom();
     public static String clave_tecnico;
     String a="Seleccione tecnico secundario";
+
 
     public static boolean b = false;
 
@@ -400,8 +402,8 @@ public class Request extends AppCompatActivity {
                 } else if (DeepConsModel.STATUS.equals("V")) {
                     MainActivity.Status.setText("En Visita");
                 }
-                MainActivity.Contrato.setText(String.valueOf(DeepConsModel.Contrato));
-             //   InstalacionFragment.Obs.setText(String.valueOf(DeepConsModel.Obs));
+                MainActivity.Contrato.setText(String.valueOf(DeepConsModel.getContatoCom()));
+                InstalacionFragment.Obs.setText(String.valueOf(DeepConsModel.Obs));
 
             }
 
@@ -820,7 +822,7 @@ public class Request extends AppCompatActivity {
                 Iterator<List<GetMuestraMedioPorServicoContratadoListResult>> itData = array.dataMedSer.iterator();
                 while (itData.hasNext()) {
                     List<GetMuestraMedioPorServicoContratadoListResult> dat = (List<GetMuestraMedioPorServicoContratadoListResult>) itData.next();
-                   // array.medio.add("Selecionar Medio");
+                    array.medio.add("Selecionar Medio");
                     for (int i = 0; i < dat.size(); i++) {
                         Log.d("response22", dat.get(i).getDescripcion());
                         array.medio.add(dat.get(i).getDescripcion());
@@ -857,6 +859,7 @@ public class Request extends AppCompatActivity {
                 JSONTipoAparatos jsonResponse = response.body();
                 array.dataTipoAparatos =  new ArrayList<List<GetMuestraTipoAparatoListResult>>(asList(jsonResponse.GetMuestraTipoAparatoListResult()));
                 Iterator<List<GetMuestraTipoAparatoListResult>> itData = array.dataTipoAparatos.iterator();
+                array.tipoAparato.add("Seleccione aparato");
                 while (itData.hasNext()) {
                     List<GetMuestraTipoAparatoListResult> dat = (List<GetMuestraTipoAparatoListResult>) itData.next();
 
@@ -941,8 +944,10 @@ public class Request extends AppCompatActivity {
                         Log.d("ertgf", array.serviciosAparatos.get(i));
 
                     }
-                }
 
+                }
+                asignado.adapter = new Servicios_Adapter(context);
+                asignado.serviciosAparato.setAdapter(asignado.adapter);
 
 
             }

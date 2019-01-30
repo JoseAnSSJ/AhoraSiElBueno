@@ -591,11 +591,11 @@ public class Services {
                 .build();
         return retrofit.create(Service.class);
     }
-    //////////////Aparatos Disponibles/////F//////////
+    //////////////Servicios Disponibles/////C//////////
     public Service getServiciosAparatosService() throws JSONException {
         ////////
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Id",22861 );
+        jsonObject.put("Id",idArticuloasignado );
         JSONObject jsonObject1 = new JSONObject();
         jsonObject1.put("obj",jsonObject);
         /////////////

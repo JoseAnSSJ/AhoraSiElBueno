@@ -14,6 +14,8 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+
+import com.example.pablo.prueba7.Adapters.Servicios_Adapter;
 import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.Modelos.GetMuestraAparatosDisponiblesListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraTipoAparatoListResult;
@@ -34,12 +36,12 @@ public class asignado extends AppCompatActivity {
     Button escanear, agragar;
     TextView codigo;
     String contents;
-    ListView serviciosAparato;
+    public static ListView serviciosAparato;
     public static Spinner spinnerAparato, spinneraparatoDisponible;
     Request request = new Request();
     Array array = new Array();
     public static int idArticuloasignado;
-
+    public static Servicios_Adapter adapter;
 
 
     @Override
@@ -76,22 +78,15 @@ public class asignado extends AppCompatActivity {
         spinnerAparato.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Iterator<List<GetMuestraTipoAparatoListResult>> itdata = array.dataTipoAparatos.iterator();
-                List<GetMuestraTipoAparatoListResult> dat = itdata.next();
-                idArticuloasignado = dat.get(position).getIdArticulo();
-              /*  JSONObject jsonObject2 = new JSONObject();
-                try {
-                    jsonObject2.put("Clv_UnicaNet", clv_unicaNet);
-                    jsonObject2.put("idMedio", clv_Medio);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }*/
-                request.getAparatosDisponibles(getApplicationContext());
-                request.getServiciosAparatos(getApplicationContext());
-                ServicioAparatoAdapter servicioAparatoAdapter = new ServicioAparatoAdapter();
-                serviciosAparato.setAdapter(servicioAparatoAdapter);
-
-
+                if (position != 0) {
+                    Iterator<List<GetMuestraTipoAparatoListResult>> itdata = array.dataTipoAparatos.iterator();
+                    List<GetMuestraTipoAparatoListResult> dat = itdata.next();
+                    idArticuloasignado = dat.get(position-1).getIdArticulo();
+                    request.getAparatosDisponibles(getApplicationContext());
+                    request.getServiciosAparatos(getApplicationContext());
+                }
+            /*    adapter = new Servicios_Adapter(getApplicationContext());
+                asignado.serviciosAparato.setAdapter(adapter);*/
             }
 
             @Override
@@ -102,7 +97,7 @@ public class asignado extends AppCompatActivity {
 
         spinneraparatoDisponible.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position1, long id) {
 
             }
 
@@ -128,35 +123,5 @@ public class asignado extends AppCompatActivity {
     }
 
 
-    class ServicioAparatoAdapter extends BaseAdapter{
-
-        @Override
-        public int getCount() {
-            return array.serviciosAparatos.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return position;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            convertView = getLayoutInflater().inflate(R.layout.activity_asignados_list, null);
-
-            TextView servicios = convertView.findViewById(R.id.textServicios);
-            CheckBox check = convertView.findViewById(R.id.chekServicios);
-
-            servicios.setText(array.serviciosAparatos.get(position));
-
-            return convertView;
-        }
-    }
 
 }

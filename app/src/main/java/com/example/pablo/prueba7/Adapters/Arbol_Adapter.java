@@ -112,7 +112,7 @@ public class Arbol_Adapter extends BaseAdapter {
             }
         });
 
-       // final int[] m = {1};
+        final int[] m = {1};
         ////////////////////////////////
 
         holder.medio.setOnClickListener(new View.OnClickListener() {
@@ -139,9 +139,9 @@ public class Arbol_Adapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
-              //  if (m[0] == 1) {
-              //      Toast.makeText(mcontext, "Debe de llenar el campo 'Medio'", Toast.LENGTH_LONG).show();
-              //  } else {
+                if (m[0] == 1) {
+                    Toast.makeText(mcontext, "Debe de llenar el campo 'Medio'", Toast.LENGTH_LONG).show();
+                } else {
 
                     Iterator<List<GetMuestraMedioPorServicoContratadoListResult>> itData2 = array.dataMedSer.iterator();
                     List<GetMuestraMedioPorServicoContratadoListResult> dat2 = itData2.next();
@@ -162,7 +162,7 @@ public class Arbol_Adapter extends BaseAdapter {
                     Asignacion.setAdapter(Arbol_Adapter.this);
 
 
-              //  }
+                }
 
             }
         });
@@ -177,13 +177,13 @@ public class Arbol_Adapter extends BaseAdapter {
         asignacion.spinnerMedio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position1, long id) {
-                //if (position != 0) {
-                 //   m[0] = 2;
-                    Iterator<List<GetMuestraMedioPorServicoContratadoListResult>> itdata = array.dataMedSer.iterator();
-                    List<GetMuestraMedioPorServicoContratadoListResult> dat = itdata.next();
-                    dato = dat.get(position1).getDescripcion();
+                if (position1 != 0) {
+                    m[0] = 2;
+                    Iterator<List<GetMuestraMedioPorServicoContratadoListResult>> itdata3 = array.dataMedSer.iterator();
+                    List<GetMuestraMedioPorServicoContratadoListResult> dat3 = itdata3.next();
+                    dato = dat3.get(position1-1).getDescripcion();
 
-                //}
+                }
             }
 
             @Override
