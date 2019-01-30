@@ -4,7 +4,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class children {
-    public class GetMuestraAparatosDisponiblesListResult {
         @SerializedName("BaseIdUser")
         @Expose
         public Integer baseIdUser;
@@ -104,5 +103,4 @@ public class children {
         public void setType(String type) {
             this.type = type;
         }
-    }
 }

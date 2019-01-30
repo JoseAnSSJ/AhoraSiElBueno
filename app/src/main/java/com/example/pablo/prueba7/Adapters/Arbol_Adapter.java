@@ -36,6 +36,7 @@ public class Arbol_Adapter extends BaseAdapter {
     public static int clv_unicaNet, clv_Medio, posi;
     public static String dato;
     Array array = new Array();
+    public static int a=0;
 
     Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
     List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = itData.next();
@@ -97,9 +98,17 @@ public class Arbol_Adapter extends BaseAdapter {
 
                 holder.nombre.setText(dat.get(position).getNombre()+" ("+dat.get(position).getDetalle()+")");
                 holder.medio.setVisibility(View.INVISIBLE);
-
-
-            }
+                a=a+1;
+            }if(dat.get(position).children==null){
+           }else{
+            for(int b=0; b<dat.get(position).children.size();b++)
+                holder.nombre.setText(dat.get(position).getNombre()+" ("+dat.get(position).getDetalle()+")"+'\n'+dat.get(position).children.get(position).getNombre()+"("+dat.get(position).children.get(position).getDetalle()+")");
+        }
+            if(a==dat.size()){
+            asignacion.siguiente.setEnabled(true);
+        }else{
+            asignacion.siguiente.setEnabled(false);
+        }
 
         ////////////////////
         asignacion.eliminar.setOnClickListener(new View.OnClickListener() {
@@ -159,6 +168,7 @@ public class Arbol_Adapter extends BaseAdapter {
                     medio.setVisibility(View.GONE);
                     dat.get(position).setIdMedio(clv_Medio);
                     dat.get(position).setDetalle(dato);
+                    a=0;
                     Asignacion.setAdapter(Arbol_Adapter.this);
 
 

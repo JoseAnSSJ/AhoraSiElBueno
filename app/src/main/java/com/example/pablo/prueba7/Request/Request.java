@@ -53,7 +53,6 @@ import com.example.pablo.prueba7.Modelos.OrdSer;
 import com.example.pablo.prueba7.Modelos.ProximaCitaModel;
 import com.example.pablo.prueba7.Modelos.Queja;
 import com.example.pablo.prueba7.Modelos.UserModel;
-import com.example.pablo.prueba7.Modelos.children;
 import com.example.pablo.prueba7.Services.Services;
 import com.example.pablo.prueba7.asignacion;
 import com.example.pablo.prueba7.asignado;
@@ -61,7 +60,6 @@ import com.example.pablo.prueba7.sampledata.Service;
 import com.google.gson.JsonObject;
 import com.example.pablo.prueba7.Listas.Array;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 
 import java.util.ArrayList;
@@ -791,6 +789,7 @@ public class Request extends AppCompatActivity {
                     for (int i = 0; i < dat.size(); i++) {
                         Log.d("response21", String.valueOf(dat.get(i).getIdMedio()));
                         array.nombreArbol.add(dat.get(i).getNombre());
+
                     }
                 }
             }
@@ -803,6 +802,7 @@ public class Request extends AppCompatActivity {
         });
 
     }
+///////////////////////////////
 
     /////////////////////////////Medios Servicios//////////////////////////////
     public void getMedSer(final Context context)  {

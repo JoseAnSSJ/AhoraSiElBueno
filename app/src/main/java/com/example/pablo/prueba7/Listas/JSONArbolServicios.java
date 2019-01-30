@@ -9,13 +9,13 @@ import java.util.List;
 public class JSONArbolServicios {
     @SerializedName("GetMuestraArbolServiciosAparatosPorinstalarListResult")
     @Expose
-    private List<GetMuestraArbolServiciosAparatosPorinstalarListResult> GetMuestraArbolServiciosAparatosPorinstalarListResult = null;
+    public List<GetMuestraArbolServiciosAparatosPorinstalarListResult> getMuestraArbolServiciosAparatosPorinstalarListResult;
 
     public List<GetMuestraArbolServiciosAparatosPorinstalarListResult> GetMuestraArbolServiciosAparatosPorinstalarListResult() {
-        return GetMuestraArbolServiciosAparatosPorinstalarListResult;
+        return getMuestraArbolServiciosAparatosPorinstalarListResult;
     }
 
     public void setMuestraArbolServiciosAparatosPorinstalarListResult(List<GetMuestraArbolServiciosAparatosPorinstalarListResult> getMuestraArbolServiciosAparatosPorinstalarListResult) {
-        this.GetMuestraArbolServiciosAparatosPorinstalarListResult = getMuestraArbolServiciosAparatosPorinstalarListResult;
+        this.getMuestraArbolServiciosAparatosPorinstalarListResult = getMuestraArbolServiciosAparatosPorinstalarListResult;
     }
 }

@@ -33,8 +33,10 @@ public interface Service {
     @POST(Constants.URL_GET_PROX)
     Call<JsonObject> getDataProx();
     @POST(Constants.URL_GET_ORDQUE)
+
     Call<Example> getDataOrdenes();
     @POST(Constants.URL_GET_LIST_ORD)
+
     Call<Example1> getDataListOrd();
     @POST(Constants.URL_GET_DEEP_CONS)
     Call<JsonObject> getDataDeepCons();

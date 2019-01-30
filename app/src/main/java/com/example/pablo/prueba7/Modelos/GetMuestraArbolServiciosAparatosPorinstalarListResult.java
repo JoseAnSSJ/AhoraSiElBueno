@@ -29,7 +29,7 @@ public class GetMuestraArbolServiciosAparatosPorinstalarListResult {
     private String type;
     @SerializedName("children")
     @Expose
-    private List<children> children = null;
+    public List<children> children = null;
 
     public List<children> getchildren() {
         return children;

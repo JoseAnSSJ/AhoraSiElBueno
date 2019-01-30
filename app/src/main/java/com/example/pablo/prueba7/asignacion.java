@@ -71,7 +71,7 @@ Array array = new Array();
                         e.printStackTrace();
                     }
                 }
-
+                Log.d("numero", String.valueOf(Arbol_Adapter.a));
                 Intent intento=new Intent(asignacion.this,asignado.class);
                 startActivity(intento);
             }

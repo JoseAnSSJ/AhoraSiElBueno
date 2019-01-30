@@ -85,8 +85,7 @@ public class asignado extends AppCompatActivity {
                     request.getAparatosDisponibles(getApplicationContext());
                     request.getServiciosAparatos(getApplicationContext());
                 }
-            /*    adapter = new Servicios_Adapter(getApplicationContext());
-                asignado.serviciosAparato.setAdapter(adapter);*/
+
             }
 
             @Override
