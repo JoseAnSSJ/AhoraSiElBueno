@@ -17,20 +17,25 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.pablo.prueba7.Adapters.ordenes_adapter_result;
 import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.Request.Request;
 
+import static com.example.pablo.prueba7.Services.Services.clvorden;
+import static com.example.pablo.prueba7.Services.Services.opcion;
+
 public class Orden extends AppCompatActivity
 
         implements NavigationView.OnNavigationItemSelectedListener {
     Request request = new Request();
-    Button orden1, cambiodom, cambioapa;
+    Button orden1, cambiodom, cambioapa,ordenb;
     ListView ordenes;
     EditText ordsearch,contsearch;
     ordenes_adapter_result adapterord;
     int textlength = 0;
+    Request rqs=new Request();
 
     @Override
 
@@ -46,6 +51,7 @@ public class Orden extends AppCompatActivity
         ordenes=findViewById(R.id.listorden);
         ordsearch=findViewById(R.id.ordsearch);
         contsearch=findViewById(R.id.contsearch);
+        ordenb=findViewById(R.id.borden);
         Error.Errores(this);
         request.getArbSer(getApplicationContext());
         ////////////////////////////////////////
@@ -83,8 +89,70 @@ public class Orden extends AppCompatActivity
             }
         });
 
+
+        //////////////////////////////////
+
+        adapterord=new ordenes_adapter_result(Orden.this,Array.ordensrc,Array.nombresrc,Array.statusrc,Array.contratosrc);
+        ordenes.setAdapter(adapterord);   //Asignacion del adapatador a la listView
+
+
+     /*   if (ordsearch.getText().toString().trim().equalsIgnoreCase("")){
+            clvorden=0;
+            opcion=1;
+            request.getListOrd();
+
+        }
+*/
+
+        clvorden=0;
+        opcion=1;
+        request.getListOrd();
+
+        ordenb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                 if (ordsearch.getText().toString().trim().equalsIgnoreCase("")){
+                    Toast toast1 =
+                            Toast.makeText(getApplicationContext(),
+                                    "Campo de Orden Vacio", Toast.LENGTH_SHORT);
+                    toast1.show();
+
+                }
+                else {
+
+                Array.ordensrc.clear();
+                Array.nombresrc.clear();
+                Array.statusrc.clear();
+                Array.contratosrc.clear();
+
+                opcion=2;
+                clvorden=Integer.parseInt(ordsearch.getText().toString().toLowerCase().trim());
+                rqs.getListOrd();
+
+                Toast toast1 =
+                        Toast.makeText(getApplicationContext(),
+                                "Orden encontrada", Toast.LENGTH_SHORT);
+                toast1.show();
+                ordsearch.setText(" ");
+                adapterord=new ordenes_adapter_result(Orden.this,Array.ordensrc,Array.nombresrc,Array.statusrc,Array.contratosrc);
+                ordenes.setAdapter(adapterord);
+                }
+/////////////////////////
+
+
+                ///////////////////
+            }
+
+
+        });
+
+
+
         /////////BUSCA ORDEN//////////////
-        ordsearch.addTextChangedListener(new TextWatcher() {
+       /* ordsearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -158,7 +226,7 @@ public class Orden extends AppCompatActivity
 
             }
         });
-
+*/
         //////////////////////////////////////////////
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

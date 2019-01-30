@@ -18,7 +18,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="230dp"/>
+                android:layout_marginTop="230dp"
+                />
 
 
 
@@ -34,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No. de Contrato"
-            android:layout_marginStart="240dp"
+            android:layout_marginStart="220dp"
             android:textStyle="bold"
             />
         <TextView
@@ -142,26 +143,41 @@
 
         <EditText
             android:id="@+id/ordsearch"
-            android:layout_width="190dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/trabajo"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="-110dp"
-            android:inputType="number"
-            android:queryHint="Orden" />
+            android:inputType="number" />
+
+        <Button
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:gravity="center_vertical"
+            android:layout_marginTop="30dp"
+            android:background="@android:drawable/ic_search_category_default"
+            android:id="@+id/borden"
+            android:layout_marginStart="135dp"
+            android:layout_marginLeft="30dp" />
+
 
         <EditText
             android:id="@+id/contsearch"
-            android:layout_width="178dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="188dp"
+            android:layout_marginStart="200dp"
             android:layout_marginTop="15dp"
-            android:inputType="text|number"
-            android:queryHint="Contrato" />
+            android:inputType="text|number" />
+
+        <Button
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:gravity="center_vertical"
+            android:layout_marginTop="30dp"
+            android:background="@android:drawable/ic_search_category_default"
+            android:id="@+id/escanear"
+            android:layout_marginStart="330dp"
+            android:layout_marginLeft="30dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
