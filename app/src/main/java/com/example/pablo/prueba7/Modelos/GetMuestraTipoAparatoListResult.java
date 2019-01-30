@@ -10,6 +10,9 @@ public class GetMuestraTipoAparatoListResult {
     @SerializedName("IdArticulo")
     @Expose
     private  Integer idArticulo;
+    @SerializedName("Categoria")
+    @Expose
+    public  String categoria;
 
     public String getNombre() {
         return nombre;
@@ -25,5 +28,13 @@ public class GetMuestraTipoAparatoListResult {
 
     public void setIdArticulo(Integer idArticulo) {
         this.idArticulo = idArticulo;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getCategoria() {
+        return categoria;
     }
 }

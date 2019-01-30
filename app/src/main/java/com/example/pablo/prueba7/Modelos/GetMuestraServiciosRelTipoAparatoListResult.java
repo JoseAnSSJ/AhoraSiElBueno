@@ -10,6 +10,17 @@ public class GetMuestraServiciosRelTipoAparatoListResult {
     @SerializedName("nombre")
     @Expose
     public String nombre;
+    @SerializedName("selected")
+    @Expose
+    public static boolean selected=false;
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
+    public static boolean isSelected() {
+        return selected;
+    }
 
     public Integer getClv_UnicaNet() {
         return clv_UnicaNet;

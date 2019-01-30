@@ -1,30 +1,42 @@
 package com.example.pablo.prueba7.Adapters;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-
-import android.widget.TextView;
+import android.widget.CheckBox;
 
 import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.R;
+import com.example.pablo.prueba7.sampledata.SelectedIndex;
 
-public class Servicios_Adapter extends BaseAdapter {
+
+public class Servicios_Adapter extends BaseAdapter implements SelectedIndex {
 
 Array array = new Array();
     LayoutInflater inflater;
     Context mcontext;
+    private int mSelectedIndex = -1;
 
     public Servicios_Adapter (Context context){
         mcontext=context;
         inflater = LayoutInflater.from(mcontext);
     }
+
+    @Override
+    public void setSelectedIndex(int position) {
+       /* if (array.serviciosAparatos.get(position).isSelected()) {
+            array.serviciosAparatos.get(position).setSelected(false);
+        } else {
+            array.serviciosAparatos.get(position).setSelected(true);
+        }*/
+    }
+
     public static class viewHolder{
-        public static TextView servicio;
-        public static Button check;
+        public static CheckBox check;
 
     }
 
@@ -43,8 +55,10 @@ Array array = new Array();
         return 0;
     }
 
+
+
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         final viewHolder holder;
 
 
@@ -53,7 +67,6 @@ Array array = new Array();
 
             convertView=inflater.inflate(R.layout.activity_asignados_list,null);
 
-            holder.servicio=convertView.findViewById(R.id.textServicios);
             holder.check=convertView.findViewById(R.id.chekServicios);
 
 
@@ -63,7 +76,13 @@ Array array = new Array();
             holder=(viewHolder)convertView.getTag();
         }
 
-        holder.servicio.setText(array.serviciosAparatos.get(position));
+        holder.check.setText(array.serviciosAparatos.get(position));
+
+      if (mSelectedIndex == position){
+          holder.check.setChecked(true);
+          Log.d("qwe", holder.check.getText().toString());
+      }
+
         return convertView;
     }
 }

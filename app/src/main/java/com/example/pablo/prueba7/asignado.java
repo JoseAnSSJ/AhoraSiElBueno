@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -31,6 +32,7 @@ import java.util.List;
 
 import static com.example.pablo.prueba7.Adapters.Arbol_Adapter.clv_Medio;
 import static com.example.pablo.prueba7.Adapters.Arbol_Adapter.clv_unicaNet;
+import static com.example.pablo.prueba7.Adapters.Arbol_Adapter.posi;
 
 public class asignado extends AppCompatActivity {
     Button escanear, agragar;
@@ -40,7 +42,8 @@ public class asignado extends AppCompatActivity {
     public static Spinner spinnerAparato, spinneraparatoDisponible;
     Request request = new Request();
     Array array = new Array();
-    public static int idArticuloasignado;
+    public static int idArticuloasignado, clveAparatoSpinner;
+    public static String detalleSpinner, nombreSpinner;
     public static Servicios_Adapter adapter;
 
 
@@ -57,30 +60,13 @@ public class asignado extends AppCompatActivity {
         request.getTipoAparatos(getApplicationContext());
 
 
-        agragar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intento=new Intent(asignado.this,asignacion.class);
-                startActivity(intento);
-
-            }
-        });
-
-
-        escanear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                IntentIntegrator scanIntegrator = new IntentIntegrator(asignado.this);
-                scanIntegrator.initiateScan();
-            }
-        });
-
         spinnerAparato.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position != 0) {
                     Iterator<List<GetMuestraTipoAparatoListResult>> itdata = array.dataTipoAparatos.iterator();
                     List<GetMuestraTipoAparatoListResult> dat = itdata.next();
+                    detalleSpinner= dat.get(position-1).getCategoria();
                     idArticuloasignado = dat.get(position-1).getIdArticulo();
                     request.getAparatosDisponibles(getApplicationContext());
                     request.getServiciosAparatos(getApplicationContext());
@@ -97,7 +83,10 @@ public class asignado extends AppCompatActivity {
         spinneraparatoDisponible.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position1, long id) {
-
+                Iterator<List<GetMuestraAparatosDisponiblesListResult>> itData1 = array.dataAparatosDisponibles.iterator();
+                    List<GetMuestraAparatosDisponiblesListResult> dat1 =  itData1.next();
+                clveAparatoSpinner=dat1.get(position1).getClv_Aparato();
+                nombreSpinner= dat1.get(position1).getDescripcion();
             }
 
             @Override
@@ -105,7 +94,23 @@ public class asignado extends AppCompatActivity {
 
             }
         });
+        agragar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                onBackPressed();
+                return;
+
+            }
+        });
+
+        escanear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                IntentIntegrator scanIntegrator = new IntentIntegrator(asignado.this);
+                scanIntegrator.initiateScan();
+            }
+        });
     }
 
     @Override
