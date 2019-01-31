@@ -102,8 +102,10 @@ public class Inicio extends AppCompatActivity
 
             finish();
         } else if (id == R.id.Reportes) {
-            Intent intent1 = new Intent(Inicio.this, Reportes.class);
+            Intent intent1 = new Intent(Inicio.this, MainReportes.class);
             startActivity(intent1);
+
+
             finish();
         } else if (id == R.id.Configuraciones) {
             Intent intent1 = new Intent(Inicio.this, Configuracion.class);

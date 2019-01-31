@@ -2,7 +2,6 @@ package com.example.pablo.prueba7;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -21,8 +20,6 @@ import android.widget.TextView;
 
 import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.Request.Request;
-
-import org.json.JSONException;
 
 public class Orden extends AppCompatActivity
 
@@ -192,7 +189,7 @@ public class Orden extends AppCompatActivity
 
 
         } else if (id == R.id.Reportes) {
-            Intent intent1 = new Intent(Orden.this, Reportes.class);
+            Intent intent1 = new Intent(Orden.this, MainReportes.class);
             startActivity(intent1);
 
         } else if (id == R.id.Configuraciones) {

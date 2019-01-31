@@ -17,9 +17,6 @@ import android.widget.Button;
 import com.example.pablo.prueba7.Modelos.UserModel;
 import com.example.pablo.prueba7.Request.Request;
 
-
-import org.json.JSONException;
-
 public class Configuracion extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Button CS;
@@ -96,7 +93,7 @@ public class Configuracion extends AppCompatActivity
             startActivity(intent1);
 
         } else if (id == R.id.Reportes) {
-            Intent intent1 = new Intent(Configuracion.this, Reportes.class);
+            Intent intent1 = new Intent(Configuracion.this, MainReportes.class);
             startActivity(intent1);
 
         } else if (id == R.id.Configuraciones) {

@@ -2,6 +2,8 @@ package com.example.pablo.prueba7.sampledata;
 
 
 
+import android.support.annotation.Nullable;
+
 import com.example.pablo.prueba7.Listas.Example;
 import com.example.pablo.prueba7.Listas.Example1;
 import com.example.pablo.prueba7.Listas.Example2;
@@ -11,6 +13,7 @@ import com.example.pablo.prueba7.Listas.JSONApaTipo;
 import com.example.pablo.prueba7.Listas.JSONArbolServicios;
 import com.example.pablo.prueba7.Listas.JSONCAMDO;
 import com.example.pablo.prueba7.Listas.JSONCLIAPA;
+import com.example.pablo.prueba7.Listas.JSONClienteReportes;
 import com.example.pablo.prueba7.Listas.JSONMediosSer;
 import com.example.pablo.prueba7.Listas.JSONResponseTecnico;
 import com.example.pablo.prueba7.Listas.JSONStatusApa;
@@ -18,6 +21,8 @@ import com.example.pablo.prueba7.Listas.JSONTecSec;
 import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
+
+import java.util.Calendar;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -58,6 +63,8 @@ public interface Service {
     Call<JSONArbolServicios> getDataArbSer();
     @POST(Constants.URL_GET_MEDIO_SER)
     Call<JSONMediosSer> getDataMedSer();
+    @POST(Constants.URL_GET_CLIT_REPOR)
+    Call<JSONClienteReportes>getReport();
 
 }
 

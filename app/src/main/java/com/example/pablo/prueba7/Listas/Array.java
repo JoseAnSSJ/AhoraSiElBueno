@@ -11,6 +11,7 @@ import com.example.pablo.prueba7.Modelos.GetMuestraRelOrdenesTecnicosListResult;
 import com.example.pablo.prueba7.Modelos.GetSP_StatusAparatosListResult;
 import com.example.pablo.prueba7.Modelos.Get_ClvTecnicoResult;
 import com.example.pablo.prueba7.Modelos.GetdameSerDELCliresumenResult;
+import com.example.pablo.prueba7.Modelos.GetuspBuscaContratoSeparado2ListResult;
 import com.example.pablo.prueba7.Modelos.OrdSer;
 import com.example.pablo.prueba7.Modelos.Queja;
 import com.example.pablo.prueba7.Modelos.GetDameDatosCAMDOResult;
@@ -23,6 +24,7 @@ public class Array {
    public static ArrayList<List<GetdameSerDELCliresumenResult>> dataclientes;
     public static ArrayList<List<Queja>> dataque;
     public static  ArrayList<List<OrdSer>> dataord;
+    public static ArrayList<List<GetuspBuscaContratoSeparado2ListResult>> dataRep;
     //////////////////////ARRAY ORDENES//////////////////////
     public static ArrayList<List<GetDameListadoOrdenesAgendadasResult>> dataagenda;
     public static ArrayList <String>contratox=new ArrayList<>();

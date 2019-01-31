@@ -59,8 +59,7 @@ Request request = new Request();
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.activity_hora, container, false);
         Obs = view.findViewById(R.id.obs);
-
-            request.getTecSec(getContext());
+        request.getTecSec(getContext());
 
 
         //////////// acciones de botones de hora y fecha//////

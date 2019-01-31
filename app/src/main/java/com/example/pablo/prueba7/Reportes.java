@@ -15,8 +15,7 @@ import android.view.MenuItem;
 
 import org.json.JSONException;
 
-public class Reportes extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class Reportes extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +71,7 @@ public class Reportes extends AppCompatActivity
                 startActivity(intent1);
 
             } else if (id == R.id.Reportes) {
-                Intent intent1 = new Intent(Reportes.this, Reportes.class);
+                Intent intent1 = new Intent(Reportes.this, MainReportes.class);
                 startActivity(intent1);
 
             } else if (id == R.id.Configuraciones) {
