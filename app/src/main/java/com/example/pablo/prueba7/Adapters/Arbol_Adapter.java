@@ -47,7 +47,7 @@ public class Arbol_Adapter extends BaseAdapter {
     }
 
     public static class viewHolder{
-        public static TextView nombre;
+        public static TextView nombre, servicio;
         public static Button medio;
 
 
@@ -74,20 +74,19 @@ public class Arbol_Adapter extends BaseAdapter {
         final viewHolder holder;
 
 
-        if (convertView == null) {
+
             holder = new viewHolder();
 
             convertView=inflater.inflate(R.layout.activity_aparato_asignado_medio_list,null);
 
             holder.nombre=convertView.findViewById(R.id.textservicio);
+      //  holder.servicio=convertView.findViewById(R.id.textservicioasig);
             holder.medio=convertView.findViewById(R.id.medio);
 
 
             convertView.setTag(holder);
-        }
-        else {
-            holder=(viewHolder)convertView.getTag();
-        }
+
+
         ///////////////
 
         ///////////////
@@ -100,11 +99,14 @@ public class Arbol_Adapter extends BaseAdapter {
                 holder.medio.setVisibility(View.INVISIBLE);
                 a=a+1;
             }if(dat.get(position).children==null){
+                holder.servicio.setVisibility(View.INVISIBLE);
            }else{
             for(int b=0; b<dat.get(position).children.size();b++)
-                holder.nombre.setText(dat.get(position).getNombre()+" ("+dat.get(position).getDetalle()+")"+'\n'+dat.get(position).children.get(position).getNombre()+"("+dat.get(position).children.get(position).getDetalle()+")");
+
+            holder.nombre.setText(holder.nombre.getText()+dat.get(position).children.get(position).getNombre()+"("+dat.get(b).children.get(b).getDetalle()+")");
+           // holder.nombre.setVisibility(View.INVISIBLE);
         }
-            if(a==dat.size()){
+            if(a>=dat.size()){
             asignacion.siguiente.setEnabled(true);
         }else{
             asignacion.siguiente.setEnabled(false);

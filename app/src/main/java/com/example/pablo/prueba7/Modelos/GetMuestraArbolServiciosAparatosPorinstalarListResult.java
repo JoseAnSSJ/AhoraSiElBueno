@@ -3,6 +3,7 @@ package com.example.pablo.prueba7.Modelos;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GetMuestraArbolServiciosAparatosPorinstalarListResult {
@@ -29,13 +30,13 @@ public class GetMuestraArbolServiciosAparatosPorinstalarListResult {
     private String type;
     @SerializedName("children")
     @Expose
-    public List<children> children = null;
+    public ArrayList<children> children;
 
-    public List<children> getchildren() {
+    public ArrayList<children> getchildren() {
         return children;
     }
 
-    public void setchildren(List<children> children) {
+    public void setchildren(ArrayList<children> children) {
         this.children = children;
     }
 
@@ -95,4 +96,6 @@ public class GetMuestraArbolServiciosAparatosPorinstalarListResult {
     public void setType(String type) {
         this.type = type;
     }
+
+
 }

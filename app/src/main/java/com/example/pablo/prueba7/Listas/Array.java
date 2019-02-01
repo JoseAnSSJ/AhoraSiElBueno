@@ -21,7 +21,13 @@ import com.example.pablo.prueba7.Modelos.children;
 
 import java.security.PublicKey;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class Array {
    public static ArrayList<List<GetdameSerDELCliresumenResult>> dataclientes;
@@ -56,7 +62,7 @@ public class Array {
     public static  ArrayList<List<GetListAparatosDisponiblesByIdArticuloResult>> dataApaTipDis;
  public static  ArrayList<List<GetDameDatosCAMDOResult>> dataCAMDO;
     public static  ArrayList<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> dataArbSer;
-    public static  ArrayList<List<children>> dataChild;
+    public static  children dataChild= new children();
     public static  ArrayList<List<GetMuestraMedioPorServicoContratadoListResult>> dataMedSer;
     public static  ArrayList<List<GetMuestraTipoAparatoListResult>> dataTipoAparatos;
     public static  ArrayList<List<GetMuestraAparatosDisponiblesListResult>> dataAparatosDisponibles;

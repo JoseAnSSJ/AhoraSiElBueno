@@ -9,29 +9,40 @@ public class children {
         public Integer baseIdUser;
         @SerializedName("BaseRemoteIp")
         @Expose
-        private Integer baseRemoteIp;
+        public Integer baseRemoteIp;
         @SerializedName("Clv_Aparato")
         @Expose
         public Integer clv_Aparato;
         @SerializedName("Clv_UnicaNet")
         @Expose
-        private Integer clv_UnicaNet;
+        public Integer clv_UnicaNet;
         @SerializedName("ContratoNet")
         @Expose
         public Integer contratoNet;
         @SerializedName("Detalle")
         @Expose
-        private String detalle;
+        public String detalle;
         @SerializedName("Nombre")
         @Expose
-        private String nombre;
+        public String nombre;
         @SerializedName("Tipo")
         @Expose
         public String tipo;
         @SerializedName("Type")
         @Expose
-        private String type;
+        public String type;
 
+   /* public children(Integer baseIdUser, Integer baseRemoteIp, Integer clv_Aparato, Integer clv_UnicaNet, Integer contratoNet, String detalle, String nombre, String tipo, String type) {
+        this.baseIdUser = baseIdUser;
+        this.baseRemoteIp = baseRemoteIp;
+        this.clv_Aparato = clv_Aparato;
+        this.clv_UnicaNet = clv_UnicaNet;
+        this.contratoNet = contratoNet;
+        this.detalle = detalle;
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.type = type;
+    }*/
         public Integer getBaseIdUser() {
             return baseIdUser;
         }
@@ -103,4 +114,6 @@ public class children {
         public void setType(String type) {
             this.type = type;
         }
+
 }
+

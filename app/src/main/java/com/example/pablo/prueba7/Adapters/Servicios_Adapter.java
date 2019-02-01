@@ -1,39 +1,35 @@
 package com.example.pablo.prueba7.Adapters;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.R;
-import com.example.pablo.prueba7.sampledata.SelectedIndex;
+
+import java.util.ArrayList;
 
 
-public class Servicios_Adapter extends BaseAdapter implements SelectedIndex {
+public class Servicios_Adapter extends BaseAdapter  {
 
 Array array = new Array();
     LayoutInflater inflater;
     Context mcontext;
-    private int mSelectedIndex = -1;
+    ArrayList<String> selectedStrings = new ArrayList<String>();
+
 
     public Servicios_Adapter (Context context){
         mcontext=context;
         inflater = LayoutInflater.from(mcontext);
     }
 
-    @Override
-    public void setSelectedIndex(int position) {
-       /* if (array.serviciosAparatos.get(position).isSelected()) {
-            array.serviciosAparatos.get(position).setSelected(false);
-        } else {
-            array.serviciosAparatos.get(position).setSelected(true);
-        }*/
-    }
+
 
     public static class viewHolder{
         public static CheckBox check;
@@ -63,6 +59,7 @@ Array array = new Array();
 
 
         if (convertView == null) {
+
             holder = new viewHolder();
 
             convertView=inflater.inflate(R.layout.activity_asignados_list,null);
@@ -78,11 +75,31 @@ Array array = new Array();
 
         holder.check.setText(array.serviciosAparatos.get(position));
 
-      if (mSelectedIndex == position){
-          holder.check.setChecked(true);
-          Log.d("qwe", holder.check.getText().toString());
-      }
+    holder.check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(isChecked){
+                    selectedStrings.add(String.valueOf(holder.check.getText()));
+                }else{
+                  //  selectedStrings.remove(String.valueOf(holder.check.getText()));
+                }
+                if(selectedStrings.size()!=0){
+                    for (int a=0; a<selectedStrings.size(); a++){
+                        Log.d("asdasd", selectedStrings.get(a));
+                }
+
+            }
+
+            /////////
+
+            /////////////
+
+
+        }
+    });
 
         return convertView;
     }
+
 }

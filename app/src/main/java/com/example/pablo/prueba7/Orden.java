@@ -53,7 +53,7 @@ public class Orden extends AppCompatActivity
         ordsearch=findViewById(R.id.ordsearch);
         contsearch=findViewById(R.id.contsearch);
         Error.Errores(this);
-        request.getArbSer(getApplicationContext());
+
         ////////////////////////////////////////
 
         adapter=new ordenes_adapter_result(Orden.this);

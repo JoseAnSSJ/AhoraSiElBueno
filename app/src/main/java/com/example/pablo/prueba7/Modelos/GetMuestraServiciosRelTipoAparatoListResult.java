@@ -4,22 +4,22 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class GetMuestraServiciosRelTipoAparatoListResult {
+    @SerializedName("BaseIdUser")
+    @Expose
+    public Integer baseIdUser;
     @SerializedName("Clv_UnicaNet")
     @Expose
     public Integer clv_UnicaNet;
     @SerializedName("nombre")
     @Expose
     public String nombre;
-    @SerializedName("selected")
-    @Expose
-    public static boolean selected=false;
 
-    public void setSelected(boolean selected) {
-        this.selected = selected;
+    public void setBaseIdUser(Integer baseIdUser) {
+        this.baseIdUser = baseIdUser;
     }
 
-    public static boolean isSelected() {
-        return selected;
+    public Integer getBaseIdUser() {
+        return baseIdUser;
     }
 
     public Integer getClv_UnicaNet() {

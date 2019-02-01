@@ -6,10 +6,12 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 
+import com.example.pablo.prueba7.Adapters.Arbol_Adapter;
 import com.example.pablo.prueba7.Adapters.Servicios_Adapter;
 import com.example.pablo.prueba7.CambioAparato;
 import com.example.pablo.prueba7.CambioDom;
@@ -70,6 +72,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.pablo.prueba7.asignacion.Asignacion;
 import static java.util.Arrays.asList;
 
 public class Request extends AppCompatActivity {
@@ -78,7 +81,7 @@ public class Request extends AppCompatActivity {
     CambioDom c = new CambioDom();
     public static String clave_tecnico;
     String a="Seleccione tecnico secundario";
-
+    Arbol_Adapter adapter;
 
     public static boolean b = false;
 
@@ -435,7 +438,7 @@ public class Request extends AppCompatActivity {
                         userJson.get("Clv_Orden").getAsString(),
                         userJson.get("Clv_TipSer").getAsInt()
                 );
-                MainActivity.NombreTec.setText(DeepConsModel.NombreTecnico);
+//                MainActivity.NombreTec.setText(DeepConsModel.NombreTecnico);
                 if (DeepConsModel.STATUS.equals("E")) {
                     MainActivity.Status.setText("Ejecutada");
 
@@ -446,7 +449,7 @@ public class Request extends AppCompatActivity {
                     MainActivity.Status.setText("En Visita");
                 }
                 MainActivity.Contrato.setText(String.valueOf(DeepConsModel.getContatoCom()));
-                InstalacionFragment.Obs.setText(String.valueOf(DeepConsModel.Obs));
+//                InstalacionFragment.Obs.setText(String.valueOf(DeepConsModel.Obs));
 
             }
 
@@ -812,7 +815,7 @@ public class Request extends AppCompatActivity {
         });
     }
     /////////////////////////////Arbol Servicios//////////////////////////////
-    public void getArbSer(final Context context)  {
+    public void getArbSer()  {
         Service service = null;
         try {
             service = services.getArbolSerService();
@@ -837,6 +840,7 @@ public class Request extends AppCompatActivity {
 
                     }
                 }
+
             }
 
             @Override
@@ -991,8 +995,10 @@ public class Request extends AppCompatActivity {
                     }
 
                 }
-                asignado.adapter = new Servicios_Adapter(context);
-                asignado.serviciosAparato.setAdapter(asignado.adapter);
+                ArrayAdapter arrayAdapter = new ArrayAdapter(context, android.R.layout.simple_list_item_checked, array.serviciosAparatos);
+                asignado.serviciosAparato.setAdapter(arrayAdapter);
+              //   asignado.adapter = new Servicios_Adapter(context);
+              //  asignado.serviciosAparato.setAdapter(asignado.adapter);
 
 
             }

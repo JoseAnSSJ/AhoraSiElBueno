@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import com.example.pablo.prueba7.Adapters.Arbol_Adapter;
 import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
+import com.example.pablo.prueba7.Request.Request;
 
 
 import org.json.JSONArray;
@@ -30,6 +31,7 @@ import java.util.List;
 
 public class asignacion extends AppCompatActivity {
 Array array = new Array();
+Request request = new Request();
     public static Button siguiente, eliminar;
     public static  Button aceptarmedio,cancelarmedio;
     public static ListView Asignacion;
@@ -39,8 +41,7 @@ Array array = new Array();
 
     public static JSONArray jsonArray = new JSONArray();
     public static JSONObject jsonObject2 = new JSONObject();
-    Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
-    List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = itData.next();
+
 
     Arbol_Adapter adapter;
 
@@ -55,12 +56,15 @@ Array array = new Array();
         cancelarmedio = findViewById(R.id.cancelarMedio);
         spinnerMedio = findViewById(R.id.spinnerMedio);
         layoutMedio = findViewById(R.id.poiuyt);
-
-
+ //       request.getArbSer();
+        adapter = new Arbol_Adapter(getApplicationContext());
+        Asignacion.setAdapter(adapter);
 
         siguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
+                List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = itData.next();
                 for(int a=0; a<dat.size(); a++ ){
                     try {
                         jsonObject2 = new JSONObject();
@@ -82,8 +86,8 @@ Array array = new Array();
                 Log.d("posision", String.valueOf(position));
             }
         });
-        adapter = new Arbol_Adapter(asignacion.this);
-        Asignacion.setAdapter(adapter);
+     //   adapter = new Arbol_Adapter(asignacion.this);
+     //   Asignacion.setAdapter(adapter);
 
 
 
