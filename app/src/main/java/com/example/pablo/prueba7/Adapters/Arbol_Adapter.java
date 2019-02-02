@@ -36,7 +36,7 @@ public class Arbol_Adapter extends BaseAdapter {
     public static int clv_unicaNet, clv_Medio, posi;
     public static String dato;
     Array array = new Array();
-    public static int a=0;
+    public static int a=0, ciclo;
 
     Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
     List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = itData.next();
@@ -98,13 +98,16 @@ public class Arbol_Adapter extends BaseAdapter {
                 holder.nombre.setText(dat.get(position).getNombre()+" ("+dat.get(position).getDetalle()+")");
                 holder.medio.setVisibility(View.INVISIBLE);
                 a=a+1;
-            }if(dat.get(position).children==null){
-                holder.servicio.setVisibility(View.INVISIBLE);
+            }if(dat.get(position).children.size()==0){
+              //  holder.servicio.setVisibility(View.INVISIBLE);
            }else{
-            for(int b=0; b<dat.get(position).children.size();b++)
-
-            holder.nombre.setText(holder.nombre.getText()+dat.get(position).children.get(position).getNombre()+"("+dat.get(b).children.get(b).getDetalle()+")");
-           // holder.nombre.setVisibility(View.INVISIBLE);
+            for(ciclo=0; ciclo<1;ciclo++)
+            holder.nombre.setText(holder.nombre.getText()+dat.get(position).children.get(ciclo).getNombre()+"("+dat.get(position).children.get(ciclo).getDetalle()+")");
+            if(ciclo==1){
+                for(int c=1; c<dat.get(position).children.size();c++){
+                    holder.nombre.setText(holder.nombre.getText()+dat.get(position).children.get(c).getNombre()+"("+dat.get(position).children.get(ciclo).getDetalle()+")");
+                }
+            }
         }
             if(a>=dat.size()){
             asignacion.siguiente.setEnabled(true);

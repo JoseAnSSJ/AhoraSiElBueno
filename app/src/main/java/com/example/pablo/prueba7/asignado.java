@@ -146,16 +146,18 @@ public class asignado extends AppCompatActivity {
                     for(int d=0; d<selectedStrings.size();d++){
                             int abc=dat4.get(c).getClv_UnicaNet();
                                  if(selectedStrings.get(d)==abc){
-                                  array.dataChild.setBaseIdUser(0);
-                                 array.dataChild.setBaseRemoteIp(null);
-                                   array.dataChild.setClv_Aparato(clveAparatoSpinner);
-                                   array.dataChild.setClv_UnicaNet(null);
-                                  array.dataChild.setContratoNet(0);
-                                   array.dataChild.setDetalle(detalleSpinner);
-                                   array.dataChild.setNombre(nombreSpinner);
-                                 array.dataChild.setTipo("A");
-                                  array.dataChild.setType("file");
-                                    dat4.get(c).children.add(array.dataChild);
+                                     children dataChild= new children();
+
+                                 dataChild.setBaseIdUser(0);
+                                dataChild.setBaseRemoteIp(null);
+                                   dataChild.setClv_Aparato(clveAparatoSpinner);
+                                   dataChild.setClv_UnicaNet(null);
+                                 dataChild.setContratoNet(0);
+                                   dataChild.setDetalle(detalleSpinner);
+                                  dataChild.setNombre(nombreSpinner);
+                                dataChild.setTipo("A");
+                                  dataChild.setType("file");
+                                    dat4.get(c).children.add(dataChild);
                         }
                     }
                 }
@@ -167,7 +169,7 @@ public class asignado extends AppCompatActivity {
 
                 ////////////
 
-
+                asignacion.aceptarAsignacion.setVisibility(View.VISIBLE);
                 Intent intento=new Intent(asignado.this,asignacion.class);
                 startActivity(intento);
 

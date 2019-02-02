@@ -32,7 +32,7 @@ import java.util.List;
 public class asignacion extends AppCompatActivity {
 Array array = new Array();
 Request request = new Request();
-    public static Button siguiente, eliminar;
+    public static Button siguiente, eliminar, aceptarAsignacion;
     public static  Button aceptarmedio,cancelarmedio;
     public static ListView Asignacion;
     public static Spinner spinnerMedio;
@@ -55,6 +55,7 @@ Request request = new Request();
         aceptarmedio = findViewById(R.id.aceptarMedio);
         cancelarmedio = findViewById(R.id.cancelarMedio);
         spinnerMedio = findViewById(R.id.spinnerMedio);
+        aceptarAsignacion = findViewById(R.id.aceptarAsignacion);
         layoutMedio = findViewById(R.id.poiuyt);
  //       request.getArbSer();
         adapter = new Arbol_Adapter(getApplicationContext());
@@ -86,8 +87,12 @@ Request request = new Request();
                 Log.d("posision", String.valueOf(position));
             }
         });
-     //   adapter = new Arbol_Adapter(asignacion.this);
-     //   Asignacion.setAdapter(adapter);
+aceptarAsignacion.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        
+    }
+});
 
 
 

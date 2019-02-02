@@ -98,12 +98,22 @@
 
     <Button
         android:id="@+id/siguiente"
-        android:layout_width="200dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="22dp"
+        android:text="Asignar Aparatos" />
+    <Button
+        android:id="@+id/aceptarAsignacion"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="20dp"
-        android:text="Asignar Aparatos" />
+        android:text="Aceptar"
+        android:visibility="invisible"
+        />
 </RelativeLayout>
