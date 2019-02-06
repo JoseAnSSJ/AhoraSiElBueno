@@ -400,8 +400,6 @@ public class Request extends AppCompatActivity {
                         Array.nombresrc.add(String.valueOf(dat.get(i).getNombre()));
                         Array.statusrc.add(String.valueOf(dat.get(i).getStatus()));
                     }
-
-
                 }
             }
 

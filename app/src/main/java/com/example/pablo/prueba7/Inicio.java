@@ -24,7 +24,8 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
-
+import static com.example.pablo.prueba7.Services.Services.clvorden;
+import static com.example.pablo.prueba7.Services.Services.opcion;
 
 
 public class Inicio extends AppCompatActivity
@@ -97,8 +98,11 @@ public class Inicio extends AppCompatActivity
             finish();
         } else if (id == R.id.Ordenes) {
             Intent intent1 = new Intent(Inicio.this, Orden.class);
+            clvorden=0;
+            opcion=1;
             request.getListOrd();
             request.getTrabajos();
+            //request.getDeepCons();
             startActivity(intent1);
 
             finish();

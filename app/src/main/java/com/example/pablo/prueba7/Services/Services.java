@@ -183,9 +183,9 @@ public class Services {
         JSONObject jsonObject = new JSONObject();
         JSONObject jsonObject2 = new JSONObject();
         jsonObject.put("clv_tecnico",claveTecnico);
-        jsonObject.put("op",1);
-        jsonObject.put("clv_orden",0);
-        jsonObject.put("contratoCom","");
+        jsonObject.put("op",opcion);
+        jsonObject.put("clv_orden",clvorden);
+        jsonObject.put("contratoCom",cont);
         jsonObject2.put("ObjLista",jsonObject);
 
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");

@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pablo.prueba7.Adapters.ordenes_adapter_result;
 import com.example.pablo.prueba7.Listas.Array;
@@ -37,10 +38,10 @@ public class Orden extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Request request = new Request();
     ordenes_adapter_result adapterord;
-    Button orden1, cambiodom, cambioapa;
+    Button orden1, cambiodom, cambioapa,ordenb,contratob;
     ListView ordenes;
     EditText ordsearch,contsearch;
-    ordenes_adapter_result adapter;
+    Request rqs=new Request();
     int textlength = 0;
 
     @Override
@@ -51,10 +52,13 @@ public class Orden extends AppCompatActivity
         setContentView(R.layout.activity_orden);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         orden1 =  findViewById(R.id.orden);
         cambiodom = findViewById(R.id.cambiodom);
         cambioapa = findViewById(R.id.cambioapa);
         ordenes=findViewById(R.id.listorden);
+        ordenb=findViewById(R.id.borden);
+        contratob=findViewById(R.id.bcontrato);
         ordsearch=findViewById(R.id.ordsearch);
         contsearch=findViewById(R.id.contsearch);
         Error.Errores(this);
@@ -76,10 +80,6 @@ public class Orden extends AppCompatActivity
 
                 startActivity(intento1);
                    request.getDeepCons();
-
-
-
-
             }
         });
         cambiodom.setOnClickListener(new View.OnClickListener() {
@@ -99,14 +99,74 @@ public class Orden extends AppCompatActivity
             }
         });
 
-        //////////////////////////////////////////////////////////
-        Array array=new Array();
-        /////////BUSCA ORDEN//////////////
+        ///////////Busqueda de orden/////////////
+
+        ordenb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
 
-        //////////////////BUSCA CONTRATO////////////////////////////
 
+                if (ordsearch.getText().toString().trim().equalsIgnoreCase("")){
+                    Toast toast1 =
+                            Toast.makeText(getApplicationContext(),
+                                    "Campo de Orden Vacio", Toast.LENGTH_SHORT);
+                    toast1.show();
 
+                }
+                else {
+
+                    Array.ordensrc.clear();
+                    Array.nombresrc.clear();
+                    Array.statusrc.clear();
+                    Array.contratosrc.clear();
+
+                    opcion=2;
+                    clvorden=Integer.parseInt(ordsearch.getText().toString().toLowerCase().trim());
+                    rqs.getListOrd();
+
+                    Toast toast1 =
+                            Toast.makeText(getApplicationContext(),
+                                    "Orden encontrada", Toast.LENGTH_SHORT);
+                    toast1.show();
+
+                    ordenes.setAdapter(adapterord);
+                }
+            }
+        });
+
+//////////////////Busqueda de Contrato//////////////////
+        contratob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (contsearch.getText().toString().trim().equalsIgnoreCase("")){
+                    Toast toast1 =
+                            Toast.makeText(getApplicationContext(),
+                                    "Campo de Contrato vacio", Toast.LENGTH_SHORT);
+                    toast1.show();
+
+                }
+                else {
+
+                    Array.ordensrc.clear();
+                    Array.nombresrc.clear();
+                    Array.statusrc.clear();
+                    Array.contratosrc.clear();
+
+                    opcion=3;
+                    cont=(contsearch.getText().toString().toLowerCase().trim());
+                    rqs.getListOrd();
+
+                    Toast toast1 =
+                            Toast.makeText(getApplicationContext(),
+                                    "Contrato encontrado", Toast.LENGTH_SHORT);
+                    toast1.show();
+                    //contsearch.setText(" ");
+                    ordenes.setAdapter(adapterord);
+                }
+            }
+        });
         //////////////////////////////////////////////
 
 
@@ -155,6 +215,11 @@ public class Orden extends AppCompatActivity
 
         } else if (id == R.id.Ordenes) {
             Intent intent1 = new Intent(Orden.this, Orden.class);
+            clvorden=0;
+            opcion=1;
+            request.getListOrd();
+            request.getTrabajos();
+            //request.getDeepCons();
             startActivity(intent1);
 
 

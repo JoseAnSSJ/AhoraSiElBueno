@@ -94,8 +94,6 @@ public class ordenes_adapter_result extends BaseAdapter {
                 Intent intento1 = new Intent(mContext, MainActivity.class);
                 mContext.startActivity(intento1);
 
-                // if(position!=0) {
-
                 clvor=Integer.valueOf(ordensrc.get(position));
                 request.getDeepCons();
                 request.getTrabajos();
@@ -104,7 +102,4 @@ public class ordenes_adapter_result extends BaseAdapter {
         });
         return convertView;
     }
-
-
-
 }
