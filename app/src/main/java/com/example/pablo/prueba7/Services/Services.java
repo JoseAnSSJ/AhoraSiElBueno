@@ -41,6 +41,10 @@ import static com.example.pablo.prueba7.asignado.idArticuloasignado;
 
 public class Services {
     public static int claveTecnico;
+    public static int opcion;
+    public static int clvorden=0;
+    public static int clavequeja=0;
+    public static String cont;
 
     public String abc="Basic: "+Login.enco;
 

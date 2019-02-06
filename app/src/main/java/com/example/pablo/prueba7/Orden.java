@@ -28,10 +28,15 @@ import com.example.pablo.prueba7.Request.Request;
 
 import org.json.JSONException;
 
+import static com.example.pablo.prueba7.Services.Services.clvorden;
+import static com.example.pablo.prueba7.Services.Services.cont;
+import static com.example.pablo.prueba7.Services.Services.opcion;
+
 public class Orden extends AppCompatActivity
 
         implements NavigationView.OnNavigationItemSelectedListener {
     Request request = new Request();
+    ordenes_adapter_result adapterord;
     Button orden1, cambiodom, cambioapa;
     ListView ordenes;
     EditText ordsearch,contsearch;
@@ -55,11 +60,12 @@ public class Orden extends AppCompatActivity
         Error.Errores(this);
 
         ////////////////////////////////////////
-
-        adapter=new ordenes_adapter_result(Orden.this);
-        ordenes.setAdapter(adapter);    //Asignacion del adapatador a la listView
-
-        //////////////////////////////////////////
+        clvorden=0;
+        opcion=1;
+        cont="";
+        adapterord=new ordenes_adapter_result(Orden.this,Array.ordensrc,Array.nombresrc,Array.statusrc,Array.contratosrc);
+        ordenes.setAdapter(adapterord);    //Asignacion del adapatador a la listView
+/////////////////////////////////////////////
 
         //* Boton para ir a menu principal
         orden1.setOnClickListener(new View.OnClickListener() {
@@ -96,70 +102,13 @@ public class Orden extends AppCompatActivity
         //////////////////////////////////////////////////////////
         Array array=new Array();
         /////////BUSCA ORDEN//////////////
-        ordsearch.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                textlength = ordsearch.getText().length();
-                Array.ordensrc.clear();
-                for (int i = 0; i < Array.ordenx.size(); i++) {
-                    if (textlength <= Array.ordenx.get(i).length()) {
-                        if (Array.ordenx.get(i).toLowerCase().contains(
-                                ordsearch.getText().toString().toLowerCase().trim())){
-                            Array.ordensrc.add(Array.ordenx.get(i));
-                        }
-                    }
-                }
-
-                adapter=new ordenes_adapter_result(Orden.this);
-                ordenes.setAdapter(adapter);    //Asignacion del adapatador a la listView
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
 
         //////////////////BUSCA CONTRATO////////////////////////////
-        contsearch.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                textlength = contsearch.getText().length();
-                Array.contratosrc.clear();
-                for (int i = 0; i < Array.contratox.size(); i++) {
-                    if (textlength <= Array.contratox.get(i).length()) {
-                        if (Array.contratox.get(i).toLowerCase().contains(
-                                contsearch.getText().toString().toLowerCase().trim())){
-                            Array.contratosrc.add(Array.contratox.get(i));
-                        }
-                    }
-                }
-
-                adapter= new ordenes_adapter_result(Orden.this);
-                ordenes.setAdapter(adapter);    //Asignacion del adapatador a la listView
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
         //////////////////////////////////////////////
 
-        /////////////////////////////////////////////////////////
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

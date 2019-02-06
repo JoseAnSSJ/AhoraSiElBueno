@@ -35,13 +35,17 @@ public class Array {
     public static  ArrayList<List<OrdSer>> dataord;
     //////////////////////ARRAY ORDENES//////////////////////
     public static ArrayList<List<GetDameListadoOrdenesAgendadasResult>> dataagenda;
-    public static ArrayList <String>contratox=new ArrayList<>();
-    public static ArrayList <String>statusx=new ArrayList<>();
-    public static ArrayList <String>nombrex=new ArrayList<>();
-    public static ArrayList <String>ordenx=new ArrayList<>();
-    //----BUSQUEDA CONTRATO & ORDEN----//
+
     public static ArrayList<String>contratosrc=new ArrayList<>();
     public static ArrayList<String>ordensrc=new ArrayList<>();
+    public static ArrayList<String>nombresrc=new ArrayList<>();
+    public static ArrayList<String>statusrc=new ArrayList<>();
+    //----ARRAY QUEJAS----//
+    //public static ArrayList<List<ListadoQuejasAgendadas>> dataquejas;
+    public static ArrayList<String>contratoQ=new ArrayList<>();
+    public static ArrayList<String>Queja=new ArrayList<>();
+    public static ArrayList<String>nombreQ=new ArrayList<>();
+    public static ArrayList<String>statusQ=new ArrayList<>();
  ///////////////////////ARRAY TRABAJOS///////////////////
     public static ArrayList <String>trabajox=new ArrayList<>();
     public static ArrayList<String>accionx=new ArrayList<>();

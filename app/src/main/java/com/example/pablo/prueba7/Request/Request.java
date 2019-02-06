@@ -385,20 +385,20 @@ public class Request extends AppCompatActivity {
                 Iterator<List<GetDameListadoOrdenesAgendadasResult>> itData = array.dataagenda.iterator();
                 while (itData.hasNext()) {
                     List<GetDameListadoOrdenesAgendadasResult> dat = (List<GetDameListadoOrdenesAgendadasResult>) itData.next();
+                    Array.ordensrc.clear();
+                    Array.nombresrc.clear();
+                    Array.statusrc.clear();
+                    Array.contratosrc.clear();
                     for (int i = 0; i < dat.size(); i++) {
                         Log.d("Clave de orden", String.valueOf(dat.get(i).getClvOrden()));
                         Log.d("Contrato", dat.get(i).getContrato());
                         Log.d("Nombre", dat.get(i).getNombre());
                         Log.d("Status", dat.get(i).getStatus());
 
-                        //guardando datos dentro de los arrays
-                        Array.ordenx.add(String.valueOf(dat.get(i).getClvOrden()));
-                        Array.contratox.add(String.valueOf(dat.get(i).getContrato()));
-                        Array.nombrex.add(String.valueOf(dat.get(i).getNombre()));
-                        Array.statusx.add(String.valueOf(dat.get(i).getStatus()));
-                       Array.ordensrc.add(String.valueOf(dat.get(i).getClvOrden()));
+                        Array.ordensrc.add(String.valueOf(dat.get(i).getClvOrden()));
                         Array.contratosrc.add(String.valueOf(dat.get(i).getContrato()));
-
+                        Array.nombresrc.add(String.valueOf(dat.get(i).getNombre()));
+                        Array.statusrc.add(String.valueOf(dat.get(i).getStatus()));
                     }
 
 
