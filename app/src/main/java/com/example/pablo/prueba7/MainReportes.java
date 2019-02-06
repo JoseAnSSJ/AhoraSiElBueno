@@ -21,15 +21,20 @@ public class MainReportes extends AppCompatActivity implements ActionBar.TabList
     ScrollView hzScrollView;
     Button info;
     RelativeLayout layoutAnimado;
+
+    public static TextView Nombre1, Direccion1,NombreTec1;
     Request request = new Request();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_swipe);
+        setContentView(R.layout.activity_reportess);
         info=(Button)findViewById(R.id.info);
         layoutAnimado = (RelativeLayout) findViewById(R.id.animado);
         hzScrollView=(ScrollView)findViewById(R.id.scv);
+        Nombre1= findViewById(R.id.infonombre1);
+        Direccion1= findViewById(R.id.infodireccion1);
+        NombreTec1= findViewById(R.id.tecnico1);
 
         setTitle(null);
         //request.getTecSec(this);
@@ -38,6 +43,8 @@ public class MainReportes extends AppCompatActivity implements ActionBar.TabList
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                request.getReportes();
+
                 if(layoutAnimado.getVisibility()==View.GONE) {
                     layoutAnimado.setVisibility(View.VISIBLE);
                     hzScrollView.setVisibility(View.VISIBLE);

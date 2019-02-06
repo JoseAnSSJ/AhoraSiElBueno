@@ -1,11 +1,13 @@
 package com.example.pablo.prueba7.Listas;
-import java.util.List;
 
 import com.example.pablo.prueba7.Modelos.GetuspBuscaContratoSeparado2ListResult;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class JSONClienteReportes {
+import java.util.List;
+
+public class JSONReportes {
+
     @SerializedName("GetuspBuscaContratoSeparado2ListResult")
     @Expose
     private List<GetuspBuscaContratoSeparado2ListResult> getuspBuscaContratoSeparado2ListResult = null;

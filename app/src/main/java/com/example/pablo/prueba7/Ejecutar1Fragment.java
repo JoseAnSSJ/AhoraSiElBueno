@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.pablo.prueba7.Request.Request;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,6 +17,7 @@ import android.widget.Button;
 public class Ejecutar1Fragment extends Fragment {
 
     Button eject;
+    Request request = new Request();
     public Ejecutar1Fragment() {
         // Required empty public constructor
     }

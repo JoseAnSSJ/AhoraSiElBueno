@@ -226,13 +226,14 @@
             <Spinner
                 android:id="@+id/tecnicosec"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="28dp"
+                android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="310dp"
-                android:textSize="20dp"
+                android:layout_marginTop="315dp"
 
 
-                />
+                android:background="@drawable/botones"
+                android:textSize="20dp" />
 
             <TextView
                 android:layout_width="wrap_content"

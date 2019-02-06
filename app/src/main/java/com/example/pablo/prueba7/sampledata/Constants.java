@@ -19,7 +19,11 @@ public class Constants {
     public static final String URL_GET_DAT_CAMDO = "AplicacionMovil/GetDameDatosCAMDO";
     public static final String URL_GET_ARB_SER = "MuestraArbolServiciosAparatosPorinstalar/GetMuestraArbolServiciosAparatosPorinstalarList";
     public static final String URL_GET_MEDIO_SER = "MuestraMedioPorServicoContratado/GetMuestraMedioPorServicoContratadoList";
-    public static final String URL_GET_CLIT_REPOR ="/SoftvWCFService.svc/uspBuscaContratoSeparado2/GetuspBuscaContratoSeparado2List";
-
+//////////////////////////////////////////////////////////////Reportes////////////////////////////////////////////////////////////////
+    public static final String URL_GET_CLIT_REPOR ="uspBuscaContratoSeparado2/GetuspBuscaContratoSeparado2List";
+    public static final String URL_GET_SOL="MUESTRATRABAJOSQUEJAS/GetMUESTRATRABAJOSQUEJASList";
+    public static final String URL_GET_REPCL="Quejas/GetQuejasList";
+    public static final String URL_GET_PRIORI="Softv_GetPrioridadQueja/GetSoftv_GetPrioridadQuejaList";
+    public static final String URL_GET_CLASIF="uspConsultaTblClasificacionProblemas/GetuspConsultaTblClasificacionProblemasList";
 
 }

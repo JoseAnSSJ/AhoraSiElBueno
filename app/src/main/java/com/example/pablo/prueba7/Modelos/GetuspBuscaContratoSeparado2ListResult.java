@@ -1,78 +1,52 @@
 package com.example.pablo.prueba7.Modelos;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
 
 public class GetuspBuscaContratoSeparado2ListResult {
-    @SerializedName("BaseIdUser")
-    @Expose
+
+
     private Integer baseIdUser;
-    @SerializedName("BaseRemoteIp")
-    @Expose
     private Object baseRemoteIp;
-    @SerializedName("Activo")
-    @Expose
     private Integer activo;
-    @SerializedName("Apellido_Materno")
-    @Expose
-    private String apellidoMaterno;
-    @SerializedName("Apellido_Paterno")
-    @Expose
-    private String apellidoPaterno;
-    @SerializedName("CALLE")
-    @Expose
-    private String cALLE;
-    @SerializedName("CIUDAD")
-    @Expose
-    private String cIUDAD;
-    @SerializedName("COLONIA")
-    @Expose
-    private String cOLONIA;
-    @SerializedName("CONTRATO")
-    @Expose
+    public static String apellidoMaterno;
+    public static String apellidoPaterno;
+    public static String cALLE;
+    public static String cIUDAD;
+    public static String cOLONIA;
     private String cONTRATO;
-    @SerializedName("ClvColonia")
-    @Expose
     private Object clvColonia;
-    @SerializedName("ContratoBueno")
-    @Expose
     private Integer contratoBueno;
-    @SerializedName("ContratoCom")
-    @Expose
-    private Object contratoCom;
-    @SerializedName("ESHOTEL")
-    @Expose
+    public static Object  contratoCom;
     private Boolean eSHOTEL;
-    @SerializedName("IdDistribuidor")
-    @Expose
     private Object idDistribuidor;
-    @SerializedName("IdUsuario")
-    @Expose
-    private Object idUsuario;
-    @SerializedName("NUMERO")
-    @Expose
-    private String nUMERO;
-    @SerializedName("Nombre")
-    @Expose
-    private String nombre;
-    @SerializedName("Op")
-    @Expose
-    private Object op;
-    @SerializedName("SOLOINTERNET")
-    @Expose
+    public static Object idUsuario;
+    public static String nUMERO;
+    public static String nombre;
+    public static Object op;
     private Boolean sOLOINTERNET;
-    @SerializedName("SetupBox")
-    @Expose
     private Object setupBox;
-    @SerializedName("TipoSer")
-    @Expose
-    private Object tipoSer;
+    public static Object tipoSer;
+
+    public GetuspBuscaContratoSeparado2ListResult(String calle, String ciudad, String colonia, String nombre, String numero, String apellidoPaterno, String apellidoMaterno) {
+
+        this.cIUDAD=ciudad;
+        this.cOLONIA=colonia;
+        this.nombre=nombre;
+        this.nUMERO=numero;
+        this.apellidoPaterno=apellidoPaterno;
+        this.apellidoMaterno=apellidoMaterno;
+        this.cALLE=calle;
+
+    }
+
 
     public Integer getBaseIdUser() {
         return baseIdUser;
     }
 
     public void setBaseIdUser(Integer baseIdUser) {
+
+
+
         this.baseIdUser = baseIdUser;
     }
 
@@ -97,7 +71,7 @@ public class GetuspBuscaContratoSeparado2ListResult {
     }
 
     public void setApellidoMaterno(String apellidoMaterno) {
-        this.apellidoMaterno = apellidoMaterno;
+        GetuspBuscaContratoSeparado2ListResult.apellidoMaterno = apellidoMaterno;
     }
 
     public String getApellidoPaterno() {
@@ -105,7 +79,7 @@ public class GetuspBuscaContratoSeparado2ListResult {
     }
 
     public void setApellidoPaterno(String apellidoPaterno) {
-        this.apellidoPaterno = apellidoPaterno;
+        GetuspBuscaContratoSeparado2ListResult.apellidoPaterno = apellidoPaterno;
     }
 
     public String getCALLE() {
@@ -113,7 +87,7 @@ public class GetuspBuscaContratoSeparado2ListResult {
     }
 
     public void setCALLE(String cALLE) {
-        this.cALLE = cALLE;
+        GetuspBuscaContratoSeparado2ListResult.cALLE =cALLE;
     }
 
     public String getCIUDAD() {
@@ -121,7 +95,7 @@ public class GetuspBuscaContratoSeparado2ListResult {
     }
 
     public void setCIUDAD(String cIUDAD) {
-        this.cIUDAD = cIUDAD;
+        GetuspBuscaContratoSeparado2ListResult.cIUDAD=cIUDAD;
     }
 
     public String getCOLONIA() {
@@ -129,7 +103,7 @@ public class GetuspBuscaContratoSeparado2ListResult {
     }
 
     public void setCOLONIA(String cOLONIA) {
-        this.cOLONIA = cOLONIA;
+        GetuspBuscaContratoSeparado2ListResult.cOLONIA=cOLONIA;
     }
 
     public String getCONTRATO() {
@@ -193,7 +167,7 @@ public class GetuspBuscaContratoSeparado2ListResult {
     }
 
     public void setNUMERO(String nUMERO) {
-        this.nUMERO = nUMERO;
+        GetuspBuscaContratoSeparado2ListResult.nUMERO=nUMERO;
     }
 
     public String getNombre() {
@@ -201,7 +175,7 @@ public class GetuspBuscaContratoSeparado2ListResult {
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        GetuspBuscaContratoSeparado2ListResult.nombre =nombre;
     }
 
     public Object getOp() {
@@ -235,4 +209,9 @@ public class GetuspBuscaContratoSeparado2ListResult {
     public void setTipoSer(Object tipoSer) {
         this.tipoSer = tipoSer;
     }
+
 }
+
+
+
+
