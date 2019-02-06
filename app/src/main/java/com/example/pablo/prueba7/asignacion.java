@@ -16,8 +16,10 @@ import android.widget.Spinner;
 
 import com.example.pablo.prueba7.Adapters.Arbol_Adapter;
 import com.example.pablo.prueba7.Listas.Array;
+import com.example.pablo.prueba7.Listas.JSONArbolServicios;
 import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
 import com.example.pablo.prueba7.Request.Request;
+import com.google.gson.JsonArray;
 
 
 import org.json.JSONArray;
@@ -40,8 +42,13 @@ Request request = new Request();
 
 
     public static JSONArray jsonArray = new JSONArray();
+    public static JSONArray jsonArray2 = new JSONArray();
+    public static JSONArray jsonArray3 = new JSONArray();
     public static JSONObject jsonObject2 = new JSONObject();
+    public static JSONObject jsonObject3 = new JSONObject();
+    public static JSONObject jsonObject4 = new JSONObject();
 
+    GetMuestraArbolServiciosAparatosPorinstalarListResult modelo = new GetMuestraArbolServiciosAparatosPorinstalarListResult();
 
     Arbol_Adapter adapter;
 
@@ -69,8 +76,8 @@ Request request = new Request();
                 for(int a=0; a<dat.size(); a++ ){
                     try {
                         jsonObject2 = new JSONObject();
-                        jsonObject2.put("Clv_UnicaNet", dat.get(a).clv_UnicaNet);
-                        jsonObject2.put("idMedio", dat.get(a).idMedio);
+                        jsonObject2.put("Clv_UnicaNet", dat.get(a).Clv_UnicaNet);
+                        jsonObject2.put("idMedio", dat.get(a).IdMedio);
                         jsonArray.put(a,jsonObject2);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -90,7 +97,56 @@ Request request = new Request();
 aceptarAsignacion.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        
+        for(int a=0; a<Array.dataArbSer.get(0).size(); a++){
+            Array.dataArbSer.get(0).get(a).setClv_orden(121222);
+        }
+        Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
+            List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = (List<GetMuestraArbolServiciosAparatosPorinstalarListResult>) itData.next();
+
+            for(int c=0; c<asignado.selectedStrings.size(); c++){
+                jsonObject3 = new JSONObject();
+                jsonArray3 = new JSONArray();
+                try {
+                    jsonObject3.put("BaseIdUser", dat.get(c).BaseIdUser);
+                    jsonObject3.put("BaseRepoteIp", JSONObject.NULL);
+                    jsonObject3.put("Clv_TipSer", dat.get(c).Clv_TipSer);
+                    jsonObject3.put("Clv_UnicaNet", dat.get(c).Clv_UnicaNet);
+                    jsonObject3.put("Contrato", JSONObject.NULL);
+                    jsonObject3.put("Detalle", dat.get(c).Detalle);
+                    jsonObject3.put("Expanded", dat.get(c).Expanded);
+                    jsonObject3.put("IdMedio", dat.get(c).IdMedio);
+                    jsonObject3.put("Nombre", dat.get(c).Nombre);
+                    jsonObject3.put("Tipo", dat.get(c).Tipo);
+                    jsonObject3.put("Type", dat.get(c).Type);
+                    for(int b=0; b< dat.get(c).children.size(); b++){
+                        jsonObject4 = new JSONObject();
+                        jsonObject4.put("BaseIdUser",dat.get(c).children.get(b).baseIdUser);
+                        jsonObject4.put("BaseRemoteIp",JSONObject.NULL);
+                        jsonObject4.put("Clv_Aparato",dat.get(c).children.get(b).Clv_Aparato);
+                        jsonObject4.put("Clv_UnicaNet",JSONObject.NULL);
+                        jsonObject4.put("ContratoNet",dat.get(c).children.get(b).ContratoNet);
+                        jsonObject4.put("Detalle",dat.get(c).children.get(b).Detalle);
+                        jsonObject4.put("Nombre",dat.get(c).children.get(b).Nombre);
+                        jsonObject4.put("Tipo",dat.get(c).children.get(b).Tipo);
+                        jsonObject4.put("Type",dat.get(c).children.get(b).Type);
+                        jsonArray3.put(b,jsonObject4);
+                    }
+                    jsonObject3.put("children", jsonArray3);
+                    jsonObject3.put("clv_orden", dat.get(c).clv_orden);
+                    jsonArray2.put(c, jsonObject3);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+
+
+
+
+
+        request.getAceptatAsignacino(getApplicationContext());
+
     }
 });
 

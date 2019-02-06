@@ -12,108 +12,96 @@ public class children {
         public Integer baseRemoteIp;
         @SerializedName("Clv_Aparato")
         @Expose
-        public Integer clv_Aparato;
+        public Integer Clv_Aparato;
         @SerializedName("Clv_UnicaNet")
         @Expose
         public Integer clv_UnicaNet;
         @SerializedName("ContratoNet")
         @Expose
-        public Integer contratoNet;
+        public Integer ContratoNet;
         @SerializedName("Detalle")
         @Expose
-        public String detalle;
+        public String Detalle;
         @SerializedName("Nombre")
         @Expose
-        public String nombre;
+        public String Nombre;
         @SerializedName("Tipo")
         @Expose
-        public String tipo;
+        public String Tipo;
         @SerializedName("Type")
         @Expose
-        public String type;
+        public String Type;
 
-   /* public children(Integer baseIdUser, Integer baseRemoteIp, Integer clv_Aparato, Integer clv_UnicaNet, Integer contratoNet, String detalle, String nombre, String tipo, String type) {
+    public void setClv_Aparato(Integer clv_Aparato) {
+        Clv_Aparato = clv_Aparato;
+    }
+
+    public void setContratoNet(Integer contratoNet) {
+        ContratoNet = contratoNet;
+    }
+
+    public void setDetalle(String detalle) {
+        Detalle = detalle;
+    }
+
+    public void setNombre(String nombre) {
+        Nombre = nombre;
+    }
+
+    public void setTipo(String tipo) {
+        Tipo = tipo;
+    }
+
+    public void setType(String type) {
+        Type = type;
+    }
+
+    public void setBaseIdUser(Integer baseIdUser) {
         this.baseIdUser = baseIdUser;
+    }
+
+    public void setBaseRemoteIp(Integer baseRemoteIp) {
         this.baseRemoteIp = baseRemoteIp;
-        this.clv_Aparato = clv_Aparato;
+    }
+
+    public void setClv_UnicaNet(Integer clv_UnicaNet) {
         this.clv_UnicaNet = clv_UnicaNet;
-        this.contratoNet = contratoNet;
-        this.detalle = detalle;
-        this.nombre = nombre;
-        this.tipo = tipo;
-        this.type = type;
-    }*/
-        public Integer getBaseIdUser() {
-            return baseIdUser;
-        }
+    }
 
-        public Integer getBaseRemoteIp() {
-            return baseRemoteIp;
-        }
+    public Integer getClv_Aparato() {
+        return Clv_Aparato;
+    }
 
-        public Integer getClv_Aparato() {
-            return clv_Aparato;
-        }
+    public Integer getContratoNet() {
+        return ContratoNet;
+    }
 
-        public Integer getClv_UnicaNet() {
-            return clv_UnicaNet;
-        }
+    public String getDetalle() {
+        return Detalle;
+    }
 
-        public Integer getContratoNet() {
-            return contratoNet;
-        }
+    public String getNombre() {
+        return Nombre;
+    }
 
-        public String getDetalle() {
-            return detalle;
-        }
+    public String getTipo() {
+        return Tipo;
+    }
 
-        public String getNombre() {
-            return nombre;
-        }
+    public String getType() {
+        return Type;
+    }
 
-        public String getTipo() {
-            return tipo;
-        }
+    public Integer getBaseIdUser() {
+        return baseIdUser;
+    }
 
-        public String getType() {
-            return type;
-        }
+    public Integer getBaseRemoteIp() {
+        return baseRemoteIp;
+    }
 
-        public void setBaseIdUser(Integer baseIdUser) {
-            this.baseIdUser = baseIdUser;
-        }
-
-        public void setBaseRemoteIp(Integer baseRemoteIp) {
-            this.baseRemoteIp = baseRemoteIp;
-        }
-
-        public void setClv_Aparato(Integer clv_Aparato) {
-            this.clv_Aparato = clv_Aparato;
-        }
-
-        public void setClv_UnicaNet(Integer clv_UnicaNet) {
-            this.clv_UnicaNet = clv_UnicaNet;
-        }
-
-        public void setContratoNet(Integer contratoNet) {
-            this.contratoNet = contratoNet;
-        }
-
-        public void setDetalle(String detalle) {
-            this.detalle = detalle;
-        }
-
-        public void setNombre(String nombre) {
-            this.nombre = nombre;
-        }
-
-        public void setTipo(String tipo) {
-            this.tipo = tipo;
-        }
-
-        public void setType(String type) {
-            this.type = type;
-        }
-
+    public Integer getClv_UnicaNet() {
+        return clv_UnicaNet;
+    }
 }
 

@@ -68,6 +68,8 @@ public interface Service {
     Call<JSONAparatosDisponibles> getDataAparatosDisponibles();
     @POST(Constants.URL_GET_SERVICIOS_APARATOS)
     Call<JSONServiciosAparatos> getDataServiciosAparatos();
+    @POST(Constants.URL_ACEPTAR_ASIG)
+    Call<JsonObject> getDataAceptarAsig();
 
 }
 

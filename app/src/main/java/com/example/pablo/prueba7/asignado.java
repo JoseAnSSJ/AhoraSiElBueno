@@ -46,8 +46,9 @@ public class asignado extends AppCompatActivity {
     public static String detalleSpinner, nombreSpinner;
     public static Servicios_Adapter adapter;
     CheckBox checkBox;
-    ArrayList<Integer> selectedStrings = new ArrayList<Integer>();
-
+    public static ArrayList<Integer> selectedStrings = new ArrayList<Integer>();
+    public static Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData4 = Array.dataArbSer.iterator();
+    public static List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat4 = itData4.next();
 
     @Override
     protected void onCreate(Bundle onSaveInstanceState) {
@@ -139,8 +140,7 @@ public class asignado extends AppCompatActivity {
         agragar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData4 = array.dataArbSer.iterator();
-                List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat4 = itData4.next();
+
 
                 for(int c=0; c<dat4.size(); c++){
                     for(int d=0; d<selectedStrings.size();d++){

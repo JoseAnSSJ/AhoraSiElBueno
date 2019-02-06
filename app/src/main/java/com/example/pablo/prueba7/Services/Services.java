@@ -3,10 +3,13 @@ package com.example.pablo.prueba7.Services;
 
 
 import com.example.pablo.prueba7.CambioAparato;
+import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.Modelos.DeepConsModel;
 import com.example.pablo.prueba7.Login;
 
+import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
 import com.example.pablo.prueba7.Modelos.UserModel;
+import com.example.pablo.prueba7.asignacion;
 import com.example.pablo.prueba7.sampledata.Constants;
 import com.example.pablo.prueba7.sampledata.Service;
 
@@ -16,6 +19,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 
 
 import okhttp3.Interceptor;
@@ -628,5 +633,41 @@ public class Services {
         return retrofit.create(Service.class);
     }
 
+    //////////////Tipo Aparatos/////C//////////
+    public Service getAceptarAsigService() throws JSONException {
+        Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = Array.dataArbSer.iterator();
+        List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = (List<GetMuestraArbolServiciosAparatosPorinstalarListResult>) itData.next();
 
+        ////////
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("Id",0 );
+        JSONObject jsonObject1 = new JSONObject();
+        jsonObject1.put("obj",jsonObject);
+        /////////////
+
+        /////////////
+        JSONObject jsonObject3 = new JSONObject();
+        jsonObject3.put("obj", jsonObject);
+        jsonObject3.put("Lst", asignacion.jsonArray2);
+       // jsonObject3.getJSONObject(String.valueOf(asignacion.jsonObject3));
+        MediaType JSON = MediaType.parse("application/json; charse=utf-8");
+        final RequestBody body = RequestBody.create(JSON, String.valueOf(jsonObject3));
+        final OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request newRequest = chain.request().newBuilder()
+                        .addHeader("Authorization", UserModel.Codigo)
+                        .addHeader("Content-Type","application/json" )
+                        .post(body)
+                        .build();
+                return chain.proceed(newRequest);
+            }
+        }).build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Constants.NEW_URL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        return retrofit.create(Service.class);
+    }
 }

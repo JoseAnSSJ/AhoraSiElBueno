@@ -1011,4 +1011,30 @@ public class Request extends AppCompatActivity {
         });
 
     }
+    public void getAceptatAsignacino(final Context context) {
+
+
+
+        Services getAceptarAsigService = new Services();
+        Service service = null;
+        try {
+            service = getAceptarAsigService.getAceptarAsigService();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Call<JsonObject> call = service.getDataAceptarAsig();
+        call.enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                JsonObject jsonResponse = response.body();
+            Toast.makeText(context, "aparato agregado", Toast.LENGTH_LONG).show();
+
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+
+            }
+        });
+    }
 }
