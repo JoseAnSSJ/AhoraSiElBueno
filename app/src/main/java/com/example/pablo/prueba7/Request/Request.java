@@ -412,7 +412,8 @@ public class Request extends AppCompatActivity {
         });
 
     }
- ///////////////////Consuta pantalla ordenes///////////////////////////
+
+    ///////////////////Consuta pantalla ordenes///////////////////////////
     public void getDeepCons() {
 
         Service service = null;
@@ -426,17 +427,22 @@ public class Request extends AppCompatActivity {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 JsonObject userJson = response.body().getAsJsonObject("GetDeepConsultaOrdSerResult");
-                // Log.d("response12", userJson.get("Obs").toString());
                 DeepConsModel user = new DeepConsModel(
+
                         userJson.get("Contrato").getAsInt(),
                         userJson.get("ContratoCom").getAsString(),
                         userJson.get("STATUS").getAsString(),
-                        userJson.get("NombreTecnico").getAsString(),
                         userJson.get("Obs").getAsString(),
-                        userJson.get("Clv_Orden").getAsString(),
+                        userJson.get("Clv_Orden").getAsInt(),
                         userJson.get("Clv_TipSer").getAsInt()
+
                 );
-//                MainActivity.NombreTec.setText(DeepConsModel.NombreTecnico);
+
+                MainActivity.Contrato.setText(String.valueOf(DeepConsModel.getContatoCom()));
+
+                InstalacionFragment.Obs.setText(String.valueOf(DeepConsModel.Obs));
+
+
                 if (DeepConsModel.STATUS.equals("E")) {
                     MainActivity.Status.setText("Ejecutada");
 
@@ -446,9 +452,6 @@ public class Request extends AppCompatActivity {
                 } else if (DeepConsModel.STATUS.equals("V")) {
                     MainActivity.Status.setText("En Visita");
                 }
-                MainActivity.Contrato.setText(String.valueOf(DeepConsModel.getContatoCom()));
-//                InstalacionFragment.Obs.setText(String.valueOf(DeepConsModel.Obs));
-
             }
 
             @Override
@@ -457,6 +460,7 @@ public class Request extends AppCompatActivity {
             }
         });
     }
+
     /////////////////Informacion del Cliente/////////////////////////////
     public void getInfoCliente()  {
 

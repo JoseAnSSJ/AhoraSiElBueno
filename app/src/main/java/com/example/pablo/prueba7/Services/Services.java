@@ -34,6 +34,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 import static com.example.pablo.prueba7.Adapters.Arbol_Adapter.clv_unicaNet;
+import static com.example.pablo.prueba7.Adapters.ordenes_adapter_result.clvor;
 import static com.example.pablo.prueba7.asignacion.jsonArray;
 import static com.example.pablo.prueba7.asignacion.jsonObject2;
 import static com.example.pablo.prueba7.asignado.idArticuloasignado;
@@ -252,7 +253,7 @@ public class Services {
     public Service getDeepConsService() throws JSONException {
         //POST Body Json
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Clv_Orden", 345);
+        jsonObject.put("Clv_Orden", clvor);
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         final RequestBody body = RequestBody.create(JSON, jsonObject.toString());
 
