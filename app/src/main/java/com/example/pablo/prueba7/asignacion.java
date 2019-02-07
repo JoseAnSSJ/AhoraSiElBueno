@@ -28,6 +28,7 @@ import java.util.List;
 public class asignacion extends AppCompatActivity {
 Array array = new Array();
 Request request = new Request();
+
     public static Button siguiente, eliminar, aceptarAsignacion;
     public static  Button aceptarmedio,cancelarmedio;
     public static ListView Asignacion;
@@ -59,8 +60,6 @@ Request request = new Request();
         spinnerMedio = findViewById(R.id.spinnerMedio);
         aceptarAsignacion = findViewById(R.id.aceptarAsignacion);
         layoutMedio = findViewById(R.id.poiuyt);
- //       request.getArbSer();
-
 
         adapter = new Arbol_Adapter(getApplicationContext());
         Asignacion.setAdapter(adapter);
@@ -100,7 +99,7 @@ aceptarAsignacion.setOnClickListener(new View.OnClickListener() {
         Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
             List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = (List<GetMuestraArbolServiciosAparatosPorinstalarListResult>) itData.next();
 
-            for(int c=0; c<asignado.selectedStrings.size(); c++){
+            for(int c=0; c<dat.size(); c++){
                 jsonObject3 = new JSONObject();
                 jsonArray3 = new JSONArray();
                 try {

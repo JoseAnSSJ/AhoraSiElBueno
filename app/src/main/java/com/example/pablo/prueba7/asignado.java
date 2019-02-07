@@ -170,6 +170,7 @@ public class asignado extends AppCompatActivity {
                 ////////////
 
                 asignacion.aceptarAsignacion.setVisibility(View.VISIBLE);
+                request.getArbSer();
                 Intent intento=new Intent(asignado.this,asignacion.class);
                 startActivity(intento);
 

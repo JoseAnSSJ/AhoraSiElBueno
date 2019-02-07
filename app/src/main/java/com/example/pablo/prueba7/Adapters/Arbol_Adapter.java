@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +22,7 @@ import com.example.pablo.prueba7.Request.Request;
 import com.example.pablo.prueba7.asignacion;
 
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -49,6 +52,7 @@ public class Arbol_Adapter extends BaseAdapter {
     public static class viewHolder{
         public static TextView nombre, servicio;
         public static Button medio;
+        ListView listaAparatos;
 
 
     }
@@ -78,9 +82,8 @@ public class Arbol_Adapter extends BaseAdapter {
             holder = new viewHolder();
 
             convertView=inflater.inflate(R.layout.activity_aparato_asignado_medio_list,null);
-
+            holder.listaAparatos = convertView.findViewById(R.id.ListaAparatos);
             holder.nombre=convertView.findViewById(R.id.textservicio);
-      //  holder.servicio=convertView.findViewById(R.id.textservicioasig);
             holder.medio=convertView.findViewById(R.id.medio);
 
 
@@ -99,16 +102,27 @@ public class Arbol_Adapter extends BaseAdapter {
                 holder.medio.setVisibility(View.INVISIBLE);
                 a=a+1;
             }if(dat.get(position).children.size()==0){
-              //  holder.servicio.setVisibility(View.INVISIBLE);
+
            }else{
-            for(ciclo=0; ciclo<1;ciclo++)
-            holder.nombre.setText(holder.nombre.getText()+dat.get(position).children.get(ciclo).getNombre()+"("+dat.get(position).children.get(ciclo).getDetalle()+")");
-            if(ciclo==1){
-                for(int c=1; c<dat.get(position).children.size();c++){
-                    holder.nombre.setText(holder.nombre.getText()+dat.get(position).children.get(c).getNombre()+"("+dat.get(position).children.get(ciclo).getDetalle()+")");
+                holder.listaAparatos.setVisibility(View.VISIBLE);
+                for(int d=0; d<dat.get(position).children.size(); d++){
+                    array.children = new ArrayList<>();
+                    String hijo="";
+                    hijo = dat.get(position).children.get(d).Nombre + dat.get(position).children.get(d).getDetalle();
+                    array.children.add(hijo);
+                    ArrayAdapter arrayAdapter1 = new ArrayAdapter(mcontext, android.R.layout.simple_list_item_checked,array.children);
+                    holder.listaAparatos.setAdapter(arrayAdapter1);
+
+                    holder.listaAparatos.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+                    holder.listaAparatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position3, long id) {
+
+                        }
+                    });
                 }
-            }
-        }
+                }
+
             if(a>=dat.size()){
             asignacion.siguiente.setEnabled(true);
         }else{
