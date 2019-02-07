@@ -18,6 +18,7 @@ import com.example.pablo.prueba7.Listas.JSONServiciosAparatos;
 import com.example.pablo.prueba7.Listas.JSONStatusApa;
 import com.example.pablo.prueba7.Listas.JSONTecSec;
 import com.example.pablo.prueba7.Listas.JSONTipoAparatos;
+import com.example.pablo.prueba7.Listas.QuejasList;
 import com.google.gson.JsonObject;
 
 
@@ -71,5 +72,7 @@ public interface Service {
     @POST(Constants.URL_ACEPTAR_ASIG)
     Call<JsonObject> getDataAceptarAsig();
 
+    @POST(Constants.URL_GET_QUEJAS_AGENDADAS)
+    Call<QuejasList>getQuejasAgendadas();
 }
 

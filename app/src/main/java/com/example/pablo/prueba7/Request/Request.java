@@ -33,6 +33,7 @@ import com.example.pablo.prueba7.Listas.JSONServiciosAparatos;
 import com.example.pablo.prueba7.Listas.JSONStatusApa;
 import com.example.pablo.prueba7.Listas.JSONTecSec;
 import com.example.pablo.prueba7.Listas.JSONTipoAparatos;
+import com.example.pablo.prueba7.Listas.QuejasList;
 import com.example.pablo.prueba7.MainActivity;
 import com.example.pablo.prueba7.Modelos.GetDameDatosCAMDOResult;
 import com.example.pablo.prueba7.Modelos.DeepConsModel;
@@ -51,6 +52,7 @@ import com.example.pablo.prueba7.Modelos.Get_ClvTecnicoResult;
 import com.example.pablo.prueba7.Modelos.GetDameListadoOrdenesAgendadasResult;
 import com.example.pablo.prueba7.Modelos.GetdameSerDELCliresumenResult;
 import com.example.pablo.prueba7.Modelos.InfoClienteModelo;
+import com.example.pablo.prueba7.Modelos.ListadoQuejasAgendadas;
 import com.example.pablo.prueba7.Modelos.OrdSer;
 import com.example.pablo.prueba7.Modelos.ProximaCitaModel;
 import com.example.pablo.prueba7.Modelos.Queja;
@@ -296,6 +298,58 @@ public class Request extends AppCompatActivity {
         });
 
             getQuejas();
+
+    }
+
+    /////////////////Lista de reportes/////////////////////////////
+    public void getListQuejas()  {
+
+        Service service = null;
+        try {
+            service = services.getListQuejasService();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Call<QuejasList> call = service.getQuejasAgendadas();
+        call.enqueue(new Callback<QuejasList>() {
+
+
+            @Override
+            public void onResponse(Call<QuejasList> call, Response<QuejasList> response) {
+                QuejasList jsonResponse = response.body();
+
+                array.dataquejas = new ArrayList<List<ListadoQuejasAgendadas>>(asList(jsonResponse.GetDameListadoQuejasAgendadasResult()));
+                Iterator<List<ListadoQuejasAgendadas>> itData = array.dataquejas.iterator();
+                while (itData.hasNext()) {
+                    List<ListadoQuejasAgendadas> dat = (List<ListadoQuejasAgendadas>) itData.next();
+                    Array.Queja.clear();
+                    Array.nombreQ.clear();
+                    Array.statusQ.clear();
+                    Array.contratoQ.clear();
+                    for (int i = 0; i < dat.size(); i++) {
+                        Log.d("Clave Reporte", String.valueOf(dat.get(i).getClvQueja()));
+                        Log.d("Contrato", dat.get(i).getContrato());
+                        Log.d("Nombre", dat.get(i).getNombre());
+                        Log.d("Status", dat.get(i).getStatus());
+
+
+                        Array.Queja.add(String.valueOf(dat.get(i).getClvQueja()));
+                        Array.contratoQ.add(String.valueOf(dat.get(i).getContrato()));
+                        Array.nombreQ.add(String.valueOf(dat.get(i).getNombre()));
+                        Array.statusQ.add(String.valueOf(dat.get(i).getStatus()));
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<QuejasList> call, Throwable t) {
+
+            }
+
+
+        });
 
     }
     //////////////////Quejas////////////////////////////
@@ -554,6 +608,8 @@ public class Request extends AppCompatActivity {
                 Example3 jsonResponse = response.body();
                 array.dataTrabajos =  new ArrayList<List<GetBUSCADetOrdSerListResult>>(asList(jsonResponse.getGetBUSCADetOrdSerListResult()));
                 Iterator<List<GetBUSCADetOrdSerListResult>> itData = array.dataTrabajos.iterator();
+                Array.trabajox.clear();
+                Array.accionx.clear();
                 while (itData.hasNext()) {
                     List<GetBUSCADetOrdSerListResult> dat = (List<GetBUSCADetOrdSerListResult>) itData.next();
                     for (int i = 0; i < dat.size(); i++) {

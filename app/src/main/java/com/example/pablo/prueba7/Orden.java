@@ -29,6 +29,7 @@ import com.example.pablo.prueba7.Request.Request;
 
 import org.json.JSONException;
 
+import static com.example.pablo.prueba7.Services.Services.clavequeja;
 import static com.example.pablo.prueba7.Services.Services.clvorden;
 import static com.example.pablo.prueba7.Services.Services.cont;
 import static com.example.pablo.prueba7.Services.Services.opcion;
@@ -209,13 +210,16 @@ public class Orden extends AppCompatActivity
             clvorden=0;
             opcion=1;
             request.getListOrd();
-            request.getTrabajos();
+            //request.getTrabajos();
             //request.getDeepCons();
             startActivity(intent1);
 
 
         } else if (id == R.id.Reportes) {
             Intent intent1 = new Intent(Orden.this, Reportes.class);
+            clavequeja=0;
+            opcion=1;
+            request.getListQuejas();
             startActivity(intent1);
 
         } else if (id == R.id.Configuraciones) {

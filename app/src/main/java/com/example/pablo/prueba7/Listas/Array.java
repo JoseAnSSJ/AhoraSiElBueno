@@ -13,6 +13,7 @@ import com.example.pablo.prueba7.Modelos.GetMuestraTipoAparatoListResult;
 import com.example.pablo.prueba7.Modelos.GetSP_StatusAparatosListResult;
 import com.example.pablo.prueba7.Modelos.Get_ClvTecnicoResult;
 import com.example.pablo.prueba7.Modelos.GetdameSerDELCliresumenResult;
+import com.example.pablo.prueba7.Modelos.ListadoQuejasAgendadas;
 import com.example.pablo.prueba7.Modelos.OrdSer;
 import com.example.pablo.prueba7.Modelos.Queja;
 import com.example.pablo.prueba7.Modelos.GetDameDatosCAMDOResult;
@@ -41,7 +42,7 @@ public class Array {
     public static ArrayList<String>nombresrc=new ArrayList<>();
     public static ArrayList<String>statusrc=new ArrayList<>();
     //----ARRAY QUEJAS----//
-    //public static ArrayList<List<ListadoQuejasAgendadas>> dataquejas;
+    public static ArrayList<List<ListadoQuejasAgendadas>> dataquejas;
     public static ArrayList<String>contratoQ=new ArrayList<>();
     public static ArrayList<String>Queja=new ArrayList<>();
     public static ArrayList<String>nombreQ=new ArrayList<>();
