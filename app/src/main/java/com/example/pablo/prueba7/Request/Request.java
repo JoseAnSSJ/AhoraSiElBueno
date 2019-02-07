@@ -826,7 +826,7 @@ public class Request extends AppCompatActivity {
         call.enqueue(new Callback<JSONArbolServicios>() {
             @Override
             public void onResponse(Call<JSONArbolServicios> call, Response<JSONArbolServicios> response) {
-
+               // array.children.clear();
                 array.nombreArbol.clear();
                 JSONArbolServicios jsonResponse = response.body();
                 array.dataArbSer =  new ArrayList<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>>(asList(jsonResponse.GetMuestraArbolServiciosAparatosPorinstalarListResult()));
@@ -837,7 +837,6 @@ public class Request extends AppCompatActivity {
                     for (int i = 0; i < dat.size(); i++) {
                         Log.d("response21", String.valueOf(dat.get(i).getIdMedio()));
                         array.nombreArbol.add(dat.get(i).getNombre());
-
                     }
                 }
 
@@ -997,8 +996,7 @@ public class Request extends AppCompatActivity {
                 }
                 ArrayAdapter arrayAdapter = new ArrayAdapter(context, android.R.layout.simple_list_item_checked, array.serviciosAparatos);
                 asignado.serviciosAparato.setAdapter(arrayAdapter);
-              //   asignado.adapter = new Servicios_Adapter(context);
-              //  asignado.serviciosAparato.setAdapter(asignado.adapter);
+
 
 
             }
@@ -1026,7 +1024,7 @@ public class Request extends AppCompatActivity {
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                JsonObject jsonResponse = response.body();
+
             Toast.makeText(context, "aparato agregado", Toast.LENGTH_LONG).show();
 
             }
