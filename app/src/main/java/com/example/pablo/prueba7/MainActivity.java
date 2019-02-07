@@ -23,6 +23,7 @@ import com.example.pablo.prueba7.Request.Request;
 import org.json.JSONException;
 
 import static com.example.pablo.prueba7.Request.Request.datos;
+import static com.example.pablo.prueba7.Request.Request.nombre_tecnico;
 
 
 public class MainActivity extends AppCompatActivity implements ActionBar.TabListener, ViewPager.OnPageChangeListener {
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         info= findViewById(R.id.info);
         layoutAnimado= findViewById(R.id.animado);
         hzScrollView= findViewById(R.id.scv);
-        NombreTec= findViewById(R.id.tecnico);
+        NombreTec= findViewById(R.id.tecniconame);
         Contrato= findViewById(R.id.contrato);
         Status= findViewById(R.id.status);
         Empresa= findViewById(R.id.infoempresa);
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         InfoServicios= findViewById(R.id.infoservicios);
         setTitle(null);
 
+        NombreTec.setText(nombre_tecnico);
 
 
 //* Boton de informacion

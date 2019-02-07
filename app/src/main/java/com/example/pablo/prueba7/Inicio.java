@@ -101,7 +101,7 @@ public class Inicio extends AppCompatActivity
             clvorden=0;
             opcion=1;
             request.getListOrd();
-            request.getTrabajos();
+            //request.getTrabajos();
             //request.getDeepCons();
             startActivity(intent1);
 
