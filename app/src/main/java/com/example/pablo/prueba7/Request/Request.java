@@ -155,6 +155,7 @@ public class Request extends AppCompatActivity {
                     //Se recorre la lista y se guarla la informacion en el Modelo
                     for (int i = 0; i < data.size(); i++) {
                         Log.d("response9", data.get(i).clv_tecnico);
+
                     }
                     clave_tecnico = data.get(0).clv_tecnico;
                     services.claveTecnico = Integer.parseInt(data.get(0).clv_tecnico);
