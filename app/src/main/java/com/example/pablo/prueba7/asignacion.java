@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -41,6 +42,7 @@ Request request = new Request();
     public static ListView Asignacion;
     public static Spinner spinnerMedio;
     public static RelativeLayout layoutMedio;
+
 int c,d,e;
 String f;
 
@@ -73,6 +75,7 @@ String f;
 
         adapter = new Arbol_Adapter(getApplicationContext());
         Asignacion.setAdapter(adapter);
+        Asignacion.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
 
         siguiente.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,6 +157,7 @@ aceptarAsignacion.setOnClickListener(new View.OnClickListener() {
         request.getAceptatAsignacino(getApplicationContext());
         adapter = new Arbol_Adapter(getApplicationContext());
         Asignacion.setAdapter(adapter);
+        Asignacion.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
             // Intent intento=new Intent(asignacion.this,MainActivity.class);
        // startActivity(intento);
 
@@ -185,8 +189,30 @@ eliminarAparato.setOnClickListener(new View.OnClickListener() {
             }
 
         }
+        ////////////
+        for( c=0; c<dat.size(); c++) {
+            f= String.valueOf(c);
+            e=0;
+            if(dat.get(c).IdMedio!=null&& dat.get(c).Detalle!=null) {
+                    String abc = dat.get(c).IdMedio+dat.get(c).Detalle ;
+                    try {
+                        if ((abc).equals(Arbol_Adapter.DeletMedio.get(c))) {
+                            dat.get(c).setDetalle("");
+                            dat.get(c).setIdMedio(0);
+                            Arbol_Adapter.DeletChildren.remove(c);
+                            e = e + 1;
+                        }
+                    }catch (Exception x){
+
+                    }
+                }
+            }
+
+
+
         adapter = new Arbol_Adapter(getApplicationContext());
         Asignacion.setAdapter(adapter);
+        Asignacion.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
 
     }
 });
