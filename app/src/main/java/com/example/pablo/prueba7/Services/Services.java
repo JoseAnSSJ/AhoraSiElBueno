@@ -34,6 +34,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 import static com.example.pablo.prueba7.Adapters.Arbol_Adapter.clv_unicaNet;
+import static com.example.pablo.prueba7.Adapters.ordenes_adapter_result.clvor;
 import static com.example.pablo.prueba7.asignacion.jsonArray;
 import static com.example.pablo.prueba7.asignacion.jsonObject2;
 import static com.example.pablo.prueba7.asignado.idArticuloasignado;
@@ -41,6 +42,10 @@ import static com.example.pablo.prueba7.asignado.idArticuloasignado;
 
 public class Services {
     public static int claveTecnico;
+    public static int opcion;
+    public static int clvorden=0;
+    public static int clavequeja=0;
+    public static String cont;
 
     public String abc="Basic: "+Login.enco;
 
@@ -179,9 +184,45 @@ public class Services {
         JSONObject jsonObject = new JSONObject();
         JSONObject jsonObject2 = new JSONObject();
         jsonObject.put("clv_tecnico",claveTecnico);
-        jsonObject.put("op",1);
-        jsonObject.put("clv_orden",0);
-        jsonObject.put("contratoCom","");
+        jsonObject.put("op",opcion);
+        jsonObject.put("clv_orden",clvorden);
+        jsonObject.put("contratoCom",cont);
+        jsonObject2.put("ObjLista",jsonObject);
+
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+        final RequestBody body = RequestBody.create(JSON, String.valueOf(jsonObject2));
+
+        final OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+
+            @Override
+            public okhttp3.Response intercept(Interceptor.Chain chain) throws IOException {
+
+                //Modificacion del Header
+                Request newRequest = chain.request().newBuilder()
+                        .addHeader("Authorization", UserModel.Codigo)
+                        .addHeader("Content-Type", "application/json")
+                        .post(body).build();
+
+
+                return chain.proceed(newRequest);
+            }
+        }).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.NEW_URL)
+                .client(client).addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        return retrofit.create(Service.class);
+
+    }
+    ////////////Lista de Reportes//////////F///////////
+    public Service getListQuejasService() throws JSONException {
+        //POST Body JsonArray
+        JSONObject jsonObject = new JSONObject();
+        JSONObject jsonObject2 = new JSONObject();
+        jsonObject.put("clv_tecnico",claveTecnico);
+        jsonObject.put("op",opcion);
+        jsonObject.put("clv_queja",clavequeja);
+        jsonObject.put("contratoCom",cont);
         jsonObject2.put("ObjLista",jsonObject);
 
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
@@ -248,7 +289,7 @@ public class Services {
     public Service getDeepConsService() throws JSONException {
         //POST Body Json
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Clv_Orden", 345);
+        jsonObject.put("Clv_Orden", clvor);
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         final RequestBody body = RequestBody.create(JSON, jsonObject.toString());
 
@@ -316,7 +357,7 @@ public class Services {
 //////////////Lista de Trabajos/////F///////
     public Service getTrabajoService()throws JSONException{
         JSONObject jsonObject= new JSONObject();
-        jsonObject.put( "Clv_Orden",121211);
+        jsonObject.put( "Clv_Orden",clvor);
         MediaType JSON = MediaType.parse("application/json; charse=utf-8");
         final RequestBody body = RequestBody.create(JSON, jsonObject.toString());
         final OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {

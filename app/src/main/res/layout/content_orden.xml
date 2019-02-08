@@ -13,14 +13,12 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-            <ListView
-                android:id="@+id/listorden"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="230dp"/>
-
-
+        <ListView
+            android:id="@+id/listorden"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="100dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,6 +27,42 @@
             android:layout_marginStart="60dp"
             android:textStyle="bold"
             />
+        <EditText
+            android:id="@+id/ordsearch"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:inputType="number" />
+
+        <Button
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:gravity="center_vertical"
+            android:layout_marginTop="30dp"
+            android:background="@android:drawable/ic_search_category_default"
+            android:id="@+id/borden"
+            android:layout_marginStart="135dp"
+            android:layout_marginLeft="30dp" />
+
+
+        <EditText
+            android:id="@+id/contsearch"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="15dp"
+            android:inputType="text|number" />
+
+        <Button
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:gravity="center_vertical"
+            android:layout_marginTop="30dp"
+            android:background="@android:drawable/ic_search_category_default"
+            android:id="@+id/bcontrato"
+            android:layout_marginStart="330dp"
+            android:layout_marginLeft="30dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -68,42 +102,6 @@
             android:textSize="18dp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/trabajo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3090-23"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="80dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="10dp"
-            />
-
-        <TextView
-            android:id="@+id/observacion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:text="Maria Emma Garcia Zapotitlan"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="105dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="10dp"
-            />
-
-        <Button
-            android:id="@+id/orden"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="220dp"
-            android:layout_toRightOf="@+id/observacion"
-            android:text="500"
-            android:textSize="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="85dp"/>
         <Button
             android:id="@+id/cambiodom"
             android:layout_width="wrap_content"
@@ -111,62 +109,21 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="220dp"
             android:layout_toRightOf="@+id/observacion"
-            android:text="500"
+            android:text="Cambio Domicilio"
             android:textSize="10dp"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="135dp"/>
+            android:layout_marginTop="450dp"/>
         <Button
             android:id="@+id/cambioapa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="220dp"
+            android:layout_marginStart="100dp"
             android:layout_toRightOf="@+id/observacion"
-            android:text="500"
+            android:text="Cambio Aparato"
             android:textSize="10dp"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="185dp"/>
-
-        <TextView
-            android:id="@+id/recibi"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="334dp"
-            android:layout_marginTop="90dp"
-            android:text="P"
-            android:textStyle="bold"
-            android:gravity="center"
-            />
-
-        <EditText
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/trabajo"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:id="@+id/ordsearch"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="-110dp"
-            android:queryHint="Orden" />
-
-        <EditText
-            android:id="@+id/contsearch"
-            android:layout_width="178dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="188dp"
-            android:layout_marginTop="28dp"
-            android:queryHint="Contrato" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textview"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="250dp"
-            />
+            android:layout_marginTop="450dp"/>
 
 
     </RelativeLayout>

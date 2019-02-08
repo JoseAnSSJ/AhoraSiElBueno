@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.pablo.prueba7.Adapters.ordenes_adapter_result;
+import com.example.pablo.prueba7.Adapters.trabajos_adapter_result;
 import com.example.pablo.prueba7.Listas.Array;
 
 
@@ -18,7 +20,7 @@ import com.example.pablo.prueba7.Listas.Array;
  * A simple {@link Fragment} subclass.
  */
 public class Trabajos extends Fragment{
-    public static TextView trabajo1;
+    trabajos_adapter_result adaptertrabajos;
 
 
     public Trabajos() {
@@ -29,28 +31,24 @@ public class Trabajos extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle onSaveInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trabajos, container, false);
-        Button accion = view.findViewById(R.id.accion);
-        ListView trabajos=view.findViewById(R.id.listTrabajos);
 
-        /*trabajo1=view.findViewById(R.id.observacion1);
-        accion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intento = new Intent(getContext(), asignacion.class);
-                startActivity(intento);
-            }
-        });*/
+         ListView trabajos=view.findViewById(R.id.listTrabajos);
+
 
         ////////////////////////////////////////
-
+        //trabajos.setAdapter(null);
         TrabajosAdapter trabadapt=new TrabajosAdapter();
         trabajos.setAdapter(trabadapt);    //Asignacion del adapatador a la listView
 
+       // adaptertrabajos =new trabajos_adapter_result(Trabajos.this,Array.trabajox,Array.accionx);
+        //trabajos.setAdapter(adaptertrabajos);    //Asignacion del adapatador a la listView
+
         //////////////////////////////////////////
+
         return view;
     }
     ///////////////////Adaptador Trabajos//////////////////////////
-    class TrabajosAdapter extends BaseAdapter{
+    public class TrabajosAdapter extends BaseAdapter{
 
         @Override
         public int getCount() {
@@ -65,7 +63,7 @@ public class Trabajos extends Fragment{
 
         @Override
         public long getItemId(int position) {
-            return 0;
+            return position;
         }
 
         @Override

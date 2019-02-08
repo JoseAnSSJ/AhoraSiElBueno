@@ -32,16 +32,15 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="4dp"
-                android:layout_toStartOf="@+id/tecnico"
                 android:text="Tecnico:" />
 
             <TextView
-                android:id="@+id/tecnico"
+                android:id="@+id/tecniconame"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:text="Juan Santillan" />
+                android:layout_marginStart="70dp"
+                android:text="Juan Santillan"
+                android:textStyle="bold"/>
 
             <Button
                 android:id="@+id/info"

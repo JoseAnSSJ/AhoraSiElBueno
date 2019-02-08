@@ -53,6 +53,7 @@ import com.example.pablo.prueba7.Modelos.Get_ClvTecnicoResult;
 import com.example.pablo.prueba7.Modelos.GetDameListadoOrdenesAgendadasResult;
 import com.example.pablo.prueba7.Modelos.GetdameSerDELCliresumenResult;
 import com.example.pablo.prueba7.Modelos.InfoClienteModelo;
+import com.example.pablo.prueba7.Modelos.ListadoQuejasAgendadas;
 import com.example.pablo.prueba7.Modelos.OrdSer;
 import com.example.pablo.prueba7.Modelos.ProximaCitaModel;
 import com.example.pablo.prueba7.Modelos.Queja;
@@ -82,6 +83,7 @@ public class Request extends AppCompatActivity {
     Array array = new Array();
     CambioDom c = new CambioDom();
     public static String clave_tecnico;
+    public static String nombre_tecnico;
     String a="Seleccione tecnico secundario";
     Arbol_Adapter adapter;
 
@@ -159,9 +161,16 @@ public class Request extends AppCompatActivity {
                     //Se recorre la lista y se guarla la informacion en el Modelo
                     for (int i = 0; i < data.size(); i++) {
                         Log.d("response9", data.get(i).clv_tecnico);
+                        Log.d("nombre",data.get(i).tecnico);
+
                     }
                     clave_tecnico = data.get(0).clv_tecnico;
+                    nombre_tecnico=data.get(0).tecnico;
+
                     services.claveTecnico = Integer.parseInt(data.get(0).clv_tecnico);
+
+                   //MainActivity.NombreTec.setText(data.get(0).tecnico);
+
                 }
 
                 getProximaCita();
@@ -294,6 +303,58 @@ public class Request extends AppCompatActivity {
             getQuejas();
 
     }
+
+    /////////////////Lista de reportes/////////////////////////////
+    public void getListQuejas()  {
+
+        Service service = null;
+        try {
+            service = services.getListQuejasService();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Call<QuejasList> call = service.getQuejasAgendadas();
+        call.enqueue(new Callback<QuejasList>() {
+
+
+            @Override
+            public void onResponse(Call<QuejasList> call, Response<QuejasList> response) {
+                QuejasList jsonResponse = response.body();
+
+                array.dataquejas = new ArrayList<List<ListadoQuejasAgendadas>>(asList(jsonResponse.GetDameListadoQuejasAgendadasResult()));
+                Iterator<List<ListadoQuejasAgendadas>> itData = array.dataquejas.iterator();
+                while (itData.hasNext()) {
+                    List<ListadoQuejasAgendadas> dat = (List<ListadoQuejasAgendadas>) itData.next();
+                    Array.Queja.clear();
+                    Array.nombreQ.clear();
+                    Array.statusQ.clear();
+                    Array.contratoQ.clear();
+                    for (int i = 0; i < dat.size(); i++) {
+                        Log.d("Clave Reporte", String.valueOf(dat.get(i).getClvQueja()));
+                        Log.d("Contrato", dat.get(i).getContrato());
+                        Log.d("Nombre", dat.get(i).getNombre());
+                        Log.d("Status", dat.get(i).getStatus());
+
+
+                        Array.Queja.add(String.valueOf(dat.get(i).getClvQueja()));
+                        Array.contratoQ.add(String.valueOf(dat.get(i).getContrato()));
+                        Array.nombreQ.add(String.valueOf(dat.get(i).getNombre()));
+                        Array.statusQ.add(String.valueOf(dat.get(i).getStatus()));
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<QuejasList> call, Throwable t) {
+
+            }
+
+
+        });
+
+    }
     //////////////////Quejas////////////////////////////
     public void getQuejas()  {
         Service service = null;
@@ -389,23 +450,21 @@ public class Request extends AppCompatActivity {
                 Iterator<List<GetDameListadoOrdenesAgendadasResult>> itData = array.dataagenda.iterator();
                 while (itData.hasNext()) {
                     List<GetDameListadoOrdenesAgendadasResult> dat = (List<GetDameListadoOrdenesAgendadasResult>) itData.next();
+                    Array.ordensrc.clear();
+                    Array.nombresrc.clear();
+                    Array.statusrc.clear();
+                    Array.contratosrc.clear();
                     for (int i = 0; i < dat.size(); i++) {
                         Log.d("Clave de orden", String.valueOf(dat.get(i).getClvOrden()));
                         Log.d("Contrato", dat.get(i).getContrato());
                         Log.d("Nombre", dat.get(i).getNombre());
                         Log.d("Status", dat.get(i).getStatus());
 
-                        //guardando datos dentro de los arrays
-                        Array.ordenx.add(String.valueOf(dat.get(i).getClvOrden()));
-                        Array.contratox.add(String.valueOf(dat.get(i).getContrato()));
-                        Array.nombrex.add(String.valueOf(dat.get(i).getNombre()));
-                        Array.statusx.add(String.valueOf(dat.get(i).getStatus()));
-                       Array.ordensrc.add(String.valueOf(dat.get(i).getClvOrden()));
+                        Array.ordensrc.add(String.valueOf(dat.get(i).getClvOrden()));
                         Array.contratosrc.add(String.valueOf(dat.get(i).getContrato()));
-
+                        Array.nombresrc.add(String.valueOf(dat.get(i).getNombre()));
+                        Array.statusrc.add(String.valueOf(dat.get(i).getStatus()));
                     }
-
-
                 }
             }
 
@@ -418,7 +477,8 @@ public class Request extends AppCompatActivity {
         });
 
     }
- ///////////////////Consuta pantalla ordenes///////////////////////////
+
+    ///////////////////Consuta pantalla ordenes///////////////////////////
     public void getDeepCons() {
 
         Service service = null;
@@ -432,17 +492,22 @@ public class Request extends AppCompatActivity {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 JsonObject userJson = response.body().getAsJsonObject("GetDeepConsultaOrdSerResult");
-                // Log.d("response12", userJson.get("Obs").toString());
                 DeepConsModel user = new DeepConsModel(
+
                         userJson.get("Contrato").getAsInt(),
                         userJson.get("ContratoCom").getAsString(),
                         userJson.get("STATUS").getAsString(),
-                        userJson.get("NombreTecnico").getAsString(),
                         userJson.get("Obs").getAsString(),
-                        userJson.get("Clv_Orden").getAsString(),
+                        userJson.get("Clv_Orden").getAsInt(),
                         userJson.get("Clv_TipSer").getAsInt()
+
                 );
-//                MainActivity.NombreTec.setText(DeepConsModel.NombreTecnico);
+
+                MainActivity.Contrato.setText(String.valueOf(DeepConsModel.getContatoCom()));
+
+                InstalacionFragment.Obs.setText(String.valueOf(DeepConsModel.Obs));
+
+
                 if (DeepConsModel.STATUS.equals("E")) {
                     MainActivity.Status.setText("Ejecutada");
 
@@ -452,9 +517,6 @@ public class Request extends AppCompatActivity {
                 } else if (DeepConsModel.STATUS.equals("V")) {
                     MainActivity.Status.setText("En Visita");
                 }
-                MainActivity.Contrato.setText(String.valueOf(DeepConsModel.getContatoCom()));
-//                InstalacionFragment.Obs.setText(String.valueOf(DeepConsModel.Obs));
-
             }
 
             @Override
@@ -463,6 +525,7 @@ public class Request extends AppCompatActivity {
             }
         });
     }
+
     /////////////////Informacion del Cliente/////////////////////////////
     public void getInfoCliente()  {
 
@@ -548,6 +611,8 @@ public class Request extends AppCompatActivity {
                 Example3 jsonResponse = response.body();
                 array.dataTrabajos =  new ArrayList<List<GetBUSCADetOrdSerListResult>>(asList(jsonResponse.getGetBUSCADetOrdSerListResult()));
                 Iterator<List<GetBUSCADetOrdSerListResult>> itData = array.dataTrabajos.iterator();
+                Array.trabajox.clear();
+                Array.accionx.clear();
                 while (itData.hasNext()) {
                     List<GetBUSCADetOrdSerListResult> dat = (List<GetBUSCADetOrdSerListResult>) itData.next();
                     for (int i = 0; i < dat.size(); i++) {
@@ -854,7 +919,6 @@ public class Request extends AppCompatActivity {
         });
 
     }
-///////////////////////////////
 
     /////////////////////////////Medios Servicios//////////////////////////////
     public void getMedSer(final Context context)  {

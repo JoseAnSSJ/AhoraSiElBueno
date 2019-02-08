@@ -11,15 +11,31 @@ import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
 
 
+import com.example.pablo.prueba7.Adapters.quejas_adapter_result;
+import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.Request.Request;
 
 import org.json.JSONException;
 
+import static com.example.pablo.prueba7.Services.Services.clavequeja;
+import static com.example.pablo.prueba7.Services.Services.clvorden;
+import static com.example.pablo.prueba7.Services.Services.cont;
+import static com.example.pablo.prueba7.Services.Services.opcion;
+
 public class Reportes extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Request request = new Request();
+    ListView reportes;
+    Button breporte,bcontrato;
+    EditText reportesearch,contratosearch;
+    quejas_adapter_result adapterqueja;
     @Override
     protected void onCreate(Bundle onSaveInstanceState) {
         super.onCreate(onSaveInstanceState);
@@ -27,6 +43,11 @@ public class Reportes extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Error.Errores(this);
+        reportes=findViewById(R.id.listreporte);
+        breporte=findViewById(R.id.breporte);
+        bcontrato=findViewById(R.id.bcontrato);
+        reportesearch=findViewById(R.id.reportesearch);
+        contratosearch=findViewById(R.id.contsearch);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -37,6 +58,80 @@ public class Reportes extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        ////////////////////////////////
+        adapterqueja=new quejas_adapter_result(Reportes.this,Array.Queja,Array.nombreQ,Array.statusQ,Array.contratoQ);
+        reportes.setAdapter(adapterqueja);    //Asignacion del adapatador a la listView
+        /////////////////////////////////
+        ///////////Busqueda de Reporte/////////////
+
+        breporte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                if (reportesearch.getText().toString().trim().equalsIgnoreCase("")){
+                    Toast toast1 =
+                            Toast.makeText(getApplicationContext(),
+                                    "Campo de Reporte vacío", Toast.LENGTH_SHORT);
+                    toast1.show();
+
+                }
+                else {
+
+                    Array.Queja.clear();
+                    Array.nombreQ.clear();
+                    Array.statusQ.clear();
+                    Array.contratoQ.clear();
+
+                    opcion=2;
+                    clavequeja=Integer.parseInt(reportesearch.getText().toString().toLowerCase().trim());
+                    request.getListQuejas();
+
+                    Toast toast1 =
+                            Toast.makeText(getApplicationContext(),
+                                    "Reporte encontrado", Toast.LENGTH_SHORT);
+                    toast1.show();
+                    //reportesearch.setText(" ");
+                    reportes.setAdapter(adapterqueja);
+                }
+            }
+        });
+
+//////////////////Busqueda de Contrato//////////////////
+        bcontrato.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (contratosearch.getText().toString().trim().equalsIgnoreCase("")){
+                    Toast toast1 =
+                            Toast.makeText(getApplicationContext(),
+                                    "Campo de Contrato vacio", Toast.LENGTH_SHORT);
+                    toast1.show();
+
+                }
+                else {
+
+                    Array.Queja.clear();
+                    Array.nombreQ.clear();
+                    Array.statusQ.clear();
+                    Array.contratoQ.clear();
+
+                    opcion=3;
+                    cont=(contratosearch.getText().toString().toLowerCase().trim());
+                    request.getListQuejas();
+
+                    Toast toast1 =
+                            Toast.makeText(getApplicationContext(),
+                                    "Contrato encontrado", Toast.LENGTH_SHORT);
+                    toast1.show();
+                    //contratosearch.setText(" ");
+                    reportes.setAdapter(adapterqueja);
+                }
+            }
+        });
+
     }
 
     @Override
@@ -62,39 +157,46 @@ public class Reportes extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
-            // Handle navigation view item clicks here.
-            int id = item.getItemId();
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
 
-            if (id == R.id.Inicio) {
-                Intent intent1 = new Intent(Reportes.this, Inicio.class);
-                startActivity(intent1);
-                //Actualizar la siguente cita y la grafica
-               request.getProximaCita();
-                    request.getOrdenes();
+        if (id == R.id.Inicio) {
+            Intent intent1 = new Intent(Reportes.this, Inicio.class);
+            startActivity(intent1);
+            //Actualizar la siguente cita y la grafica
+            request.getProximaCita();
+            request.getOrdenes();
 
-            } else if (id == R.id.Ordenes) {
-                Intent intent1 = new Intent(Reportes.this, Orden.class);
-                startActivity(intent1);
+        } else if (id == R.id.Ordenes) {
+            Intent intent1 = new Intent(Reportes.this, Orden.class);
+            clvorden=0;
+            opcion=1;
+            request.getListOrd();
+            startActivity(intent1);
 
-            } else if (id == R.id.Reportes) {
-                Intent intent1 = new Intent(Reportes.this, Reportes.class);
-                startActivity(intent1);
+        } else if (id == R.id.Reportes) {
+            Intent intent1 = new Intent(Reportes.this, Reportes.class);
+            clavequeja=0;
+            opcion=1;
+            cont="";
+            request.getListQuejas();
+            startActivity(intent1);
 
-            } else if (id == R.id.Configuraciones) {
-                Intent intent1 = new Intent(Reportes.this, Configuracion.class);
-                startActivity(intent1);
+        } else if (id == R.id.Configuraciones) {
+            Intent intent1 = new Intent(Reportes.this, Configuracion.class);
+            startActivity(intent1);
 
-            }
-
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-            drawer.closeDrawer(GravityCompat.START);
-            return true;
         }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
     //Bloquear el boton de atras
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK)) {
         }
         return false;
     }
-    }
+}
 
