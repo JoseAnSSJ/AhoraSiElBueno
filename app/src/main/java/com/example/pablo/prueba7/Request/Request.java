@@ -1136,7 +1136,7 @@ public class Request extends AppCompatActivity {
                         userJson.get("CIUDAD").getAsString(),
                         userJson.get("COLONIA").getAsString(),
                         userJson.get("Nombre").getAsString(),
-                        userJson.get("NUMERO").getAsInt(),
+                        userJson.get("NUMERO").getAsString(),
                         userJson.get("Apellido_Paterno").getAsString(),
                         userJson.get("Apellido_Materno").getAsString()
 

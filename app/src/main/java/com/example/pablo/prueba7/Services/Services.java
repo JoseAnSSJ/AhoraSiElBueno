@@ -746,6 +746,7 @@ public class Services {
         return retrofit.create(Service.class);
 
     }
+    /////////////////////////solucion/////////////////////////////////////
 
     public Service getSolocionService() throws JSONException {
         JSONObject jsonObject = new JSONObject();
@@ -770,6 +771,7 @@ public class Services {
                 .build();
         return retrofit.create(Service.class);
     }
+    /////////////////////////  observacion y problema ////////////////////////////////////////
 
     public Service getReporteCService() throws JSONException {
         JSONObject jsonObject = new JSONObject();
@@ -794,7 +796,7 @@ public class Services {
                 .build();
         return retrofit.create(Service.class);
     }
-
+///////////////////////tipo prioridad////////////////////////////////
     public Service getPrioridadService() {
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(new Interceptor() {
@@ -818,7 +820,7 @@ public class Services {
 
         return retrofit.create(Service.class);
     }
-
+//////////////////////////clasificacion////////////////
     public Service getClasificacionService() {
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(new Interceptor() {
@@ -842,6 +844,7 @@ public class Services {
 
         return retrofit.create(Service.class);
     }
+    ///////////////////tecnicoNombre/////////////////
 
     public Service getNombreService() throws JSONException {
         JSONObject jsonObject = new JSONObject();
@@ -867,6 +870,9 @@ public class Services {
                 .build();
         return retrofit.create(Service.class);
     }
+
+
+    ///////////////////////Servicios Asignados//////////////
     public Service getAsignadosService() throws JSONException {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("Contrato", 5065);

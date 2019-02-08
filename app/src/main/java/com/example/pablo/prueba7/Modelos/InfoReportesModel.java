@@ -6,18 +6,21 @@ public class InfoReportesModel {
 
 
 
-    public static String Apellido_Materno;
-    public static String Apellido_Paterno;
+
     public static String CALLE;
     public static String CIUDAD;
     public static String COLONIA;
-    public static String CONTRATO;
-    public static int NUMERO;
     public static String Nombre;
+    public static String NUMERO;
+    public static String Apellido_Materno;
+    public static String Apellido_Paterno;
+    public static String CONTRATO;
 
 
 
-    public InfoReportesModel(String CALLE, String CIUDAD, String COLONIA, String NOMBRE, int NUMERO, String Apellido_Paterno, String Apellido_Materno) {
+
+
+    public InfoReportesModel(String CALLE, String CIUDAD, String COLONIA, String NOMBRE, String NUMERO, String Apellido_Paterno, String Apellido_Materno) {
         this.CALLE=CALLE;
         this.CIUDAD=CIUDAD;
         this.COLONIA=COLONIA;
@@ -43,7 +46,7 @@ public class InfoReportesModel {
     public String getNombre() {
         return Nombre;
     }
-    public int getNUMERO() {
+    public String getNUMERO() {
         return NUMERO;
     }
     public String getApellidoPaterno() { return Apellido_Paterno; }
@@ -67,7 +70,7 @@ public class InfoReportesModel {
         InfoReportesModel.COLONIA = COLONIA;
     }
     public void setNombre(String Nombre) { InfoReportesModel.Nombre = Nombre;}
-    public void setNUMERO(int NUMERO) { InfoReportesModel.NUMERO = NUMERO; }
+    public void setNUMERO(String NUMERO) { InfoReportesModel.NUMERO = NUMERO; }
     public void setApellidoPaterno(String Apellido_Paterno) { InfoReportesModel.Apellido_Paterno = Apellido_Paterno; }
     public void setApellidoMaterno(String Apellido_Materno) { InfoReportesModel.Apellido_Materno = Apellido_Materno; }
     public void setCONTRATO(String CONTRATO) { InfoReportesModel.CONTRATO = CONTRATO; }
