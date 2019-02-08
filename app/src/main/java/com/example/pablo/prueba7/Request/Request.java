@@ -1117,7 +1117,6 @@ public class Request extends AppCompatActivity {
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-
             Toast.makeText(context, "aparato agregado", Toast.LENGTH_LONG).show();
 
             }
