@@ -34,7 +34,7 @@ import com.example.pablo.prueba7.Listas.JSONServiciosAparatos;
 import com.example.pablo.prueba7.Listas.JSONStatusApa;
 import com.example.pablo.prueba7.Listas.JSONTecSec;
 import com.example.pablo.prueba7.Listas.JSONTipoAparatos;
-import com.example.pablo.prueba7.Login;
+
 import com.example.pablo.prueba7.MainActivity;
 import com.example.pablo.prueba7.Modelos.GetDameDatosCAMDOResult;
 import com.example.pablo.prueba7.Modelos.DeepConsModel;
@@ -1028,7 +1028,6 @@ public class Request extends AppCompatActivity {
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-
             Toast.makeText(context, "aparato agregado", Toast.LENGTH_LONG).show();
 
             }

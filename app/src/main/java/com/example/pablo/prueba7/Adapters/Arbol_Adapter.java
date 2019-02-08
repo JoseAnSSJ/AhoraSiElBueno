@@ -250,7 +250,7 @@ public class Arbol_Adapter extends BaseAdapter {
                     Arbol_Adapter.DeletMedio.clear();
                     DeletMedio.add(dat.get(position).IdMedio+dat.get(position).Detalle);
                 }
-               
+
 
             }
         });
