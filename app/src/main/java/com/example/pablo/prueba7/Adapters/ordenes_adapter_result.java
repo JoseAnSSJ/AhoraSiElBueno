@@ -17,6 +17,9 @@ import com.example.pablo.prueba7.Trabajos;
 
 import java.util.ArrayList;
 
+import static com.example.pablo.prueba7.Trabajos.adaptertrabajos;
+import static com.example.pablo.prueba7.Trabajos.trabajos;
+
 public class ordenes_adapter_result extends BaseAdapter {
 
     public static Integer clvor;
@@ -101,6 +104,7 @@ public class ordenes_adapter_result extends BaseAdapter {
 
             }
         });
+
         return convertView;
     }
 }

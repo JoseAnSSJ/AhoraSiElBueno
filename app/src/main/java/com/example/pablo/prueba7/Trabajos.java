@@ -20,7 +20,8 @@ import com.example.pablo.prueba7.Listas.Array;
  * A simple {@link Fragment} subclass.
  */
 public class Trabajos extends Fragment{
-    trabajos_adapter_result adaptertrabajos;
+    public static trabajos_adapter_result adaptertrabajos;
+    public static ListView trabajos;
 
 
     public Trabajos() {
@@ -32,16 +33,16 @@ public class Trabajos extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle onSaveInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trabajos, container, false);
 
-         ListView trabajos=view.findViewById(R.id.listTrabajos);
+         trabajos=view.findViewById(R.id.listTrabajos);
 
 
         ////////////////////////////////////////
         //trabajos.setAdapter(null);
-        TrabajosAdapter trabadapt=new TrabajosAdapter();
-        trabajos.setAdapter(trabadapt);    //Asignacion del adapatador a la listView
+       // TrabajosAdapter trabadapt=new TrabajosAdapter();
+       // trabajos.setAdapter(trabadapt);    //Asignacion del adapatador a la listView
 
-       // adaptertrabajos =new trabajos_adapter_result(Trabajos.this,Array.trabajox,Array.accionx);
-        //trabajos.setAdapter(adaptertrabajos);    //Asignacion del adapatador a la listView
+        adaptertrabajos =new trabajos_adapter_result(getActivity().getApplicationContext(),Array.trabajox,Array.accionx);
+        trabajos.setAdapter(adaptertrabajos);    //Asignacion del adapatador a la listView
 
         //////////////////////////////////////////
 
