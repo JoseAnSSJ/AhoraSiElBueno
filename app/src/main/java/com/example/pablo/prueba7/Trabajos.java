@@ -1,6 +1,7 @@
 package com.example.pablo.prueba7;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,21 +10,21 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.pablo.prueba7.Adapters.ordenes_adapter_result;
-import com.example.pablo.prueba7.Adapters.trabajos_adapter_result;
 import com.example.pablo.prueba7.Listas.Array;
+import com.example.pablo.prueba7.Request.Request;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class Trabajos extends Fragment{
-    public static TextView trabajo1;
-    trabajos_adapter_result adaptertrabajos;
-
-
+    RelativeLayout layoutAnimado;
+    Request request = new Request();
+    public static TextView trabajo;
+    public static Button accion;
     public Trabajos() {
         // Required empty public constructor
     }
@@ -71,15 +72,54 @@ public class Trabajos extends Fragment{
         public View getView(int position, View convertView, ViewGroup parent) {
 
             convertView = getLayoutInflater().inflate(R.layout.list_trabajos_items,null);
-            TextView trabajo=(TextView)convertView.findViewById(R.id.trabajov);
-            Button accion=(Button)convertView.findViewById(R.id.accionv);
+             trabajo=(TextView)convertView.findViewById(R.id.trabajov);
+            accion=(Button)convertView.findViewById(R.id.accionv);
+
+
             trabajo.setText(Array.trabajox.get(position));
             accion.setText(Array.accionx.get(position));
+
+            accion.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+
+                    if ((trabajo.getText().toString().trim()).equalsIgnoreCase("ISNET - Instalación de Servicio de Internet")) {
+                        Intent intento = new Intent(getContext(), asignacion.class);
+                        startActivity(intento);
+                    }
+
+                    if ((trabajo.getText().toString().trim()).equalsIgnoreCase("CAPAG - Cambio de tipo de aparato  FTTH")) {
+                        Intent intento = new Intent(getActivity(), CambioAparato.class);
+                        startActivity(intento);
+                    }
+                    if ((trabajo.getText().toString().trim()).equalsIgnoreCase("CAMDO - Cambio De Domicilio")) {
+
+                        Intent intento = new Intent(getActivity(), CambioDom.class);
+                        request.getCAMDO();
+                        startActivity(intento);
+                    }
+                    if ((trabajo.getText().toString().trim()).equalsIgnoreCase("CAPAT - Cambio De Tipo De Aparato")) {
+                        Intent intento = new Intent(getActivity(), CambioAparato.class);
+                        startActivity(intento);
+
+                    }
+                    if ((trabajo.getText().toString().trim()).equalsIgnoreCase("ISTVA - Instalación de Servicio de TV")) {
+                        Intent intento = new Intent(getContext(), asignacion.class);
+                        startActivity(intento);
+                    }
+                    if ((accion.getText().toString().trim().equalsIgnoreCase("Asignacion"))){
+                        Intent intento = new Intent(getContext(), asignacion.class);
+                        startActivity(intento);
+
+                    }
+
+                }
+            });
 
             return convertView;
         }
     }
+}
     ///////////////////////////////////////////////
 
-
-}

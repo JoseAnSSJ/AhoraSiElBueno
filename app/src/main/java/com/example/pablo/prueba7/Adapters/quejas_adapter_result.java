@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.pablo.prueba7.Listas.Array;
-import com.example.pablo.prueba7.MainActivity;
+import com.example.pablo.prueba7.MainReportes;
 import com.example.pablo.prueba7.R;
 import com.example.pablo.prueba7.Request.Request;
 
@@ -88,12 +88,9 @@ public class quejas_adapter_result extends BaseAdapter {
         holder.quejaq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intento1 = new Intent(mContext, MainActivity.class);
-                //  if(position!=0)
-                //    clvor=Integer.valueOf(Queja.get(position));
-
+                Intent intento1 = new Intent(mContext, MainReportes.class);
                 mContext.startActivity(intento1);
-                request.getDeepCons();
+                //request.getDeepCons();
 
 
             }
