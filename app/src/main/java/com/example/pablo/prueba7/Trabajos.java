@@ -45,11 +45,11 @@ public class Trabajos extends Fragment{
         //trabajos.setAdapter(adaptertrabajos);    //Asignacion del adapatador a la listView
 
         //////////////////////////////////////////
+
         return view;
     }
-
     ///////////////////Adaptador Trabajos//////////////////////////
-    class TrabajosAdapter extends BaseAdapter{
+    public class TrabajosAdapter extends BaseAdapter{
 
         @Override
         public int getCount() {

@@ -937,7 +937,6 @@ public class Request extends AppCompatActivity {
         });
 
     }
-///////////////////////////////
 
     /////////////////////////////Medios Servicios//////////////////////////////
     public void getMedSer(final Context context)  {
