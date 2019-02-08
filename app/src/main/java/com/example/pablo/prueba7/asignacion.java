@@ -158,8 +158,8 @@ aceptarAsignacion.setOnClickListener(new View.OnClickListener() {
         adapter = new Arbol_Adapter(getApplicationContext());
         Asignacion.setAdapter(adapter);
         Asignacion.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
-            // Intent intento=new Intent(asignacion.this,MainActivity.class);
-       // startActivity(intento);
+             Intent intento=new Intent(asignacion.this,MainActivity.class);
+        startActivity(intento);
 
     }
 });
@@ -196,7 +196,7 @@ eliminarAparato.setOnClickListener(new View.OnClickListener() {
             if(dat.get(c).IdMedio!=null&& dat.get(c).Detalle!=null) {
                     String abc = dat.get(c).IdMedio+dat.get(c).Detalle ;
                     try {
-                        if ((abc).equals(Arbol_Adapter.DeletMedio.get(c))) {
+                        if ((abc).equals(Arbol_Adapter.DeletMedio.get(0))) {
                             dat.get(c).setDetalle("");
                             dat.get(c).setIdMedio(0);
                             Arbol_Adapter.DeletChildren.remove(c);
