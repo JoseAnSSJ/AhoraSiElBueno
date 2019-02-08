@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/uno"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="259dp"
+                android:layout_marginTop="261dp"
                 android:text="Observaciones"
                 android:textColor="#000"
                 android:textSize="20dp" />

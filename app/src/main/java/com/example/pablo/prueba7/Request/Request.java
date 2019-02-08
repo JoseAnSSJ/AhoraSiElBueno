@@ -513,8 +513,7 @@ public class Request extends AppCompatActivity {
                 );
 
                 MainActivity.Contrato.setText(String.valueOf(DeepConsModel.getContatoCom()));
-
-                InstalacionFragment.Obs.setText(String.valueOf(DeepConsModel.Obs));
+                //InstalacionFragment.Obs.setText(String.valueOf(DeepConsModel.Obs));
 
 
                 if (DeepConsModel.STATUS.equals("E")) {
@@ -671,6 +670,12 @@ public class Request extends AppCompatActivity {
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, datos);
                     InstalacionFragment.TecSec.setAdapter(adapter);
                     InstalacionFragment.Obs.setText(String.valueOf(DeepConsModel.Obs));
+
+
+
+
+
+
                 }
 
 

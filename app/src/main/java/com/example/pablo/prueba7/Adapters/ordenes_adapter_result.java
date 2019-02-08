@@ -39,7 +39,7 @@ public class ordenes_adapter_result extends BaseAdapter {
 
     }
     public  class viewHolder{
-        TextView status,contrato,nombre;
+        TextView status,contrato1,nombre;
         Button orden;
     }
 
@@ -74,7 +74,7 @@ public class ordenes_adapter_result extends BaseAdapter {
 
             holder.status=(TextView)convertView.findViewById(R.id.statusv);
             holder.orden=(Button)convertView.findViewById(R.id.ordenv);
-            holder.contrato=(TextView)convertView.findViewById(R.id.contratov);
+            holder.contrato1=(TextView)convertView.findViewById(R.id.contratov);
             holder.nombre=(TextView)convertView.findViewById(R.id.nombrev);
 
             convertView.setTag(holder);
@@ -85,7 +85,7 @@ public class ordenes_adapter_result extends BaseAdapter {
 
         holder.nombre.setText(Array.nombresrc.get(position));
         holder.orden.setText(Array.ordensrc.get(position));
-        holder.contrato.setText(Array.contratosrc.get(position));
+        holder.contrato1.setText(Array.contratosrc.get(position));
         holder.status.setText(Array.statusrc.get(position));
 
         holder.orden.setOnClickListener(new View.OnClickListener() {

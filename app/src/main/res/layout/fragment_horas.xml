@@ -250,11 +250,11 @@
                 android:textSize="20dp" />
 
             <Spinner
-                android:id="@+id/tecnicosec"
+                android:id="@+id/tecnicosec1"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="430dp"
+                android:layout_marginTop="432dp"
                 android:background="@drawable/spinners"/>
 
 

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
@@ -24,6 +25,7 @@ public class HorasFragment extends Fragment  implements View.OnClickListener{
     private int mYear, mMonth, mDay, mHour, mMinute;
     private View contenedorParticular;
     private View contenedorCorporativo;
+    public static Spinner TecSec1;
     RadioButton btn1, bt2;
 
 
@@ -37,6 +39,11 @@ public class HorasFragment extends Fragment  implements View.OnClickListener{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_horas, container, false);
+
+        TecSec1= view.findViewById(R.id.tecnicosec1);
+
+
+
 
         //////////// acciones de botones de hora y fecha//////
         selectDate = view.findViewById(R.id.ejecureal1);

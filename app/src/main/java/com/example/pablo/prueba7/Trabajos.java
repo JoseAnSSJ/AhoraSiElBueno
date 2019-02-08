@@ -83,12 +83,15 @@ public class Trabajos extends Fragment{
 
                 @Override
                 public void onClick(View v) {
+                    if ((trabajo.getText().toString().trim()).equalsIgnoreCase("ISTVA - Instalación de Servicio de TV")) {
+                        Intent intento25 = new Intent(getActivity(), asignacion.class);
+                        startActivity(intento25);
+                    }
 
                     if ((trabajo.getText().toString().trim()).equalsIgnoreCase("ISNET - Instalación de Servicio de Internet")) {
                         Intent intento = new Intent(getContext(), asignacion.class);
                         startActivity(intento);
                     }
-
                     if ((trabajo.getText().toString().trim()).equalsIgnoreCase("CAPAG - Cambio de tipo de aparato  FTTH")) {
                         Intent intento = new Intent(getActivity(), CambioAparato.class);
                         startActivity(intento);
@@ -104,14 +107,18 @@ public class Trabajos extends Fragment{
                         startActivity(intento);
 
                     }
-                    if ((trabajo.getText().toString().trim()).equalsIgnoreCase("ISTVA - Instalación de Servicio de TV")) {
-                        Intent intento = new Intent(getContext(), asignacion.class);
-                        startActivity(intento);
-                    }
-                    if ((accion.getText().toString().trim().equalsIgnoreCase("Asignacion"))){
-                        Intent intento = new Intent(getContext(), asignacion.class);
+                    if ((trabajo.getText().toString().trim()).equalsIgnoreCase("CONEX - Contratación De Extensión")) {
+                        Intent intento = new Intent(getActivity(), asignacion.class);
+                        accion.setEnabled(false);
+                        accion.setText("---");
                         startActivity(intento);
 
+                    }
+
+
+                    if ((accion.getText().toString().trim().equalsIgnoreCase("null"))){
+                        accion.setEnabled(false);
+                        accion.setText("---");
                     }
 
                 }

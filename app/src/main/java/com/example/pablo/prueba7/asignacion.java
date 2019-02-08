@@ -1,7 +1,6 @@
 package com.example.pablo.prueba7;
 
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,14 +12,10 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
-
 import com.example.pablo.prueba7.Adapters.Arbol_Adapter;
 import com.example.pablo.prueba7.Listas.Array;
-import com.example.pablo.prueba7.Listas.JSONArbolServicios;
 import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
 import com.example.pablo.prueba7.Request.Request;
-import com.google.gson.JsonArray;
-
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,7 +23,6 @@ import org.json.JSONObject;
 
 import java.util.Iterator;
 import java.util.List;
-
 
 
 public class asignacion extends AppCompatActivity {
@@ -57,6 +51,7 @@ Request request = new Request();
         super.onCreate(onSaveInstanceState);
         setContentView(R.layout.activity_asignacion);
         siguiente= findViewById(R.id.siguiente);
+
         Asignacion = findViewById(R.id.Asignacion);
         eliminar = findViewById(R.id.eliminar);
         aceptarmedio = findViewById(R.id.aceptarMedio);
@@ -65,6 +60,8 @@ Request request = new Request();
         aceptarAsignacion = findViewById(R.id.aceptarAsignacion);
         layoutMedio = findViewById(R.id.poiuyt);
  //       request.getArbSer();
+
+
         adapter = new Arbol_Adapter(getApplicationContext());
         Asignacion.setAdapter(adapter);
 
@@ -144,8 +141,7 @@ aceptarAsignacion.setOnClickListener(new View.OnClickListener() {
 
 
 
-
-        request.getAceptatAsignacino(getApplicationContext());
+            request.getAceptatAsignacino(getApplicationContext());
 
     }
 });
