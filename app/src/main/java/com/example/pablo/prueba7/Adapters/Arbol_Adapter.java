@@ -41,7 +41,7 @@ public class Arbol_Adapter extends BaseAdapter {
     Request request = new Request();
     LayoutInflater inflater;
     Context mcontext;
-    public static int clv_unicaNet, clv_Medio, posi, d;
+    public static int clv_unicaNet, clv_Medio, posi, d,ce;
     public static String dato;
     Array array = new Array();
     public static int a=0, ciclo;
@@ -242,16 +242,31 @@ public class Arbol_Adapter extends BaseAdapter {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                if(holder.checkBox.isChecked()==true){
+                ce=0;
+            /*   if(holder.checkBox.isChecked()==true){
+                   holder.checkBox.setChecked(true);
                     Arbol_Adapter.DeletMedio.clear();
                     DeletMedio.add(dat.get(position).IdMedio+dat.get(position).Detalle);
+                }else {
+                   holder.checkBox.setChecked(false);
+               }*/
+            if(ce==0) {
+                for (int b = 0; b < 1; b++) {
+                    if (holder.checkBox.isChecked()) {
+                        holder.checkBox.setSelected(true);
+                        Arbol_Adapter.DeletMedio.clear();
+                        DeletMedio.add(dat.get(position).IdMedio + dat.get(position).Detalle);
+                        ce = 1;
+                    }
                 }
-
-
+            }else {
+                holder.checkBox.setSelected(false);
+                Arbol_Adapter.DeletMedio.clear();
+            }
             }
         });
 
