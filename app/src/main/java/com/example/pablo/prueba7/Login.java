@@ -75,13 +75,13 @@ public class Login extends AppCompatActivity {
 
                 user = usurio.getText().toString() + ":" + contraseña.getText().toString();
                 enco = (android.util.Base64.encodeToString(user.getBytes(), android.util.Base64.NO_WRAP));
-                    request.getReviews();
-
+                    request.getReviews(getApplicationContext());
+                Toast.makeText(getApplicationContext(), "Espere", Toast.LENGTH_LONG).show();
 
                 if (request.b=true) {
 
                     Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_LONG).show();
-                    Intent intento = new Intent(Login.this, Inicio.class);
+                   Intent intento = new Intent(Login.this, Inicio.class);
                     startActivity(intento);
                 }
             }

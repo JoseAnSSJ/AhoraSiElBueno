@@ -1,6 +1,7 @@
 package com.example.pablo.prueba7.Request;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -40,7 +41,11 @@ import com.example.pablo.prueba7.Listas.JSONSolucion;
 import com.example.pablo.prueba7.Listas.JSONStatusApa;
 import com.example.pablo.prueba7.Listas.JSONTecSec;
 import com.example.pablo.prueba7.Listas.JSONTipoAparatos;
+<<<<<<< MAESTRO
 import com.example.pablo.prueba7.Listas.QuejasList;
+=======
+import com.example.pablo.prueba7.Login;
+>>>>>>> 4
 import com.example.pablo.prueba7.MainActivity;
 import com.example.pablo.prueba7.MainReportes;
 import com.example.pablo.prueba7.Modelos.DeepConsModel;
@@ -112,7 +117,7 @@ public class Request extends AppCompatActivity {
 
 
     ///////////////////Token///////////////////////////
-    public void getReviews() {
+    public void getReviews(final Context context) {
 
             final List<String> lista = new ArrayList();
 
@@ -133,6 +138,7 @@ public class Request extends AppCompatActivity {
                                 userJson.get("Token").getAsString(),
                                 userJson.get("Codigo").getAsString()
                         );
+
                     }catch (Exception e){
                         Toast.makeText(getApplicationContext(),"Error en el Login(request)",Toast.LENGTH_LONG).show();
                     }
@@ -140,6 +146,7 @@ public class Request extends AppCompatActivity {
 
 
                     b = true;
+
                         getClv_tecnico();
 
 
