@@ -35,12 +35,12 @@ public class asignacion extends AppCompatActivity {
 Array array = new Array();
 Request request = new Request();
 
-    public static Button siguiente, eliminar, aceptarAsignacion;
+    public static Button siguiente, eliminar, aceptarAsignacion,eliminarAparato;
     public static  Button aceptarmedio,cancelarmedio;
     public static ListView Asignacion;
     public static Spinner spinnerMedio;
     public static RelativeLayout layoutMedio;
-
+int c;
 
     public static JSONArray jsonArray = new JSONArray();
     public static JSONArray jsonArray2 = new JSONArray();
@@ -60,6 +60,7 @@ Request request = new Request();
         siguiente= findViewById(R.id.siguiente);
         Asignacion = findViewById(R.id.Asignacion);
         eliminar = findViewById(R.id.eliminar);
+        eliminarAparato = findViewById(R.id.eliminarAparatos);
         aceptarmedio = findViewById(R.id.aceptarMedio);
         cancelarmedio = findViewById(R.id.cancelarMedio);
         spinnerMedio = findViewById(R.id.spinnerMedio);
@@ -147,10 +148,41 @@ aceptarAsignacion.setOnClickListener(new View.OnClickListener() {
 
 
         request.getAceptatAsignacino(getApplicationContext());
+        adapter = new Arbol_Adapter(getApplicationContext());
+        Asignacion.setAdapter(adapter);
+            // Intent intento=new Intent(asignacion.this,MainActivity.class);
+       // startActivity(intento);
 
     }
 });
+eliminarAparato.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
+        List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = (List<GetMuestraArbolServiciosAparatosPorinstalarListResult>) itData.next();
+        for( c=0; c<dat.size(); c++) {
+            String e= String.valueOf(c);
+            if(Arbol_Adapter.DeletChildren!=null){
+                for (int d = 0; d <Arbol_Adapter.DeletChildren.size(); d++) {
+                    try {
+                        String abc = String.valueOf(dat.get(c).children.get(d).getClv_Aparato())+e;
+                        String def = Arbol_Adapter.DeletChildren.get(d);
+                        if (def.equals(abc)) {
+                            dat.get(c).children.remove(d);
+                         //   Arbol_Adapter.DeletChildren.remove(d);
+                        }
+                    }catch (Exception r){
 
+                    }
+                }
+            }
+
+        }
+        adapter = new Arbol_Adapter(getApplicationContext());
+        Asignacion.setAdapter(adapter);
+
+    }
+});
 
 
 

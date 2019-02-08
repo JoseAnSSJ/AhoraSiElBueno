@@ -826,7 +826,7 @@ public class Request extends AppCompatActivity {
         call.enqueue(new Callback<JSONArbolServicios>() {
             @Override
             public void onResponse(Call<JSONArbolServicios> call, Response<JSONArbolServicios> response) {
-               // array.children.clear();
+                
                 array.nombreArbol.clear();
                 JSONArbolServicios jsonResponse = response.body();
                 array.dataArbSer =  new ArrayList<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>>(asList(jsonResponse.GetMuestraArbolServiciosAparatosPorinstalarListResult()));
