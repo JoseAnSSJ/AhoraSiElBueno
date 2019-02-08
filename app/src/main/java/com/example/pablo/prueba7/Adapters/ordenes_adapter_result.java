@@ -109,6 +109,7 @@ public class ordenes_adapter_result extends BaseAdapter {
 
             }
         });
+
         return convertView;
     }
 }
