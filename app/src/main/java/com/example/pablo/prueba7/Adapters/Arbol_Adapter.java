@@ -3,9 +3,11 @@ package com.example.pablo.prueba7.Adapters;
 import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraMedioPorServicoContratadoListResult;
+import com.example.pablo.prueba7.Modelos.children;
 import com.example.pablo.prueba7.R;
 import com.example.pablo.prueba7.Request.Request;
 import com.example.pablo.prueba7.asignacion;
@@ -36,13 +39,12 @@ public class Arbol_Adapter extends BaseAdapter {
     Request request = new Request();
     LayoutInflater inflater;
     Context mcontext;
-    public static int clv_unicaNet, clv_Medio, posi;
+    public static int clv_unicaNet, clv_Medio, posi, d;
     public static String dato;
     Array array = new Array();
     public static int a=0, ciclo;
+    public static ArrayList<String> DeletChildren = new ArrayList<String>();
 
-    Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
-    List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = itData.next();
 
     public Arbol_Adapter (Context context){
         mcontext=context;
@@ -79,51 +81,71 @@ public class Arbol_Adapter extends BaseAdapter {
 
 
 
-            holder = new viewHolder();
+        holder = new viewHolder();
+        Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
+        final List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = itData.next();
+        final children dataChild= new children();
+        convertView=inflater.inflate(R.layout.activity_aparato_asignado_medio_list,null);
+        holder.listaAparatos = convertView.findViewById(R.id.ListaAparatos);
+        holder.nombre=convertView.findViewById(R.id.textservicio);
+        holder.medio=convertView.findViewById(R.id.medio);
 
-            convertView=inflater.inflate(R.layout.activity_aparato_asignado_medio_list,null);
-            holder.listaAparatos = convertView.findViewById(R.id.ListaAparatos);
-            holder.nombre=convertView.findViewById(R.id.textservicio);
-            holder.medio=convertView.findViewById(R.id.medio);
 
-
-            convertView.setTag(holder);
+        convertView.setTag(holder);
 
 
         ///////////////
 
         ///////////////
 
-            if(dat.get(position).getIdMedio()==0){
-                holder.nombre.setText(array.nombreArbol.get(position));
-            }else{
+        if(dat.get(position).getIdMedio()==0){
+            holder.nombre.setText(array.nombreArbol.get(position));
+        }else{
 
-                holder.nombre.setText(dat.get(position).getNombre()+" ("+dat.get(position).getDetalle()+")");
-                holder.medio.setVisibility(View.INVISIBLE);
-                a=a+1;
-            }if(dat.get(position).children.size()==0){
+            holder.nombre.setText(dat.get(position).getNombre()+" ("+dat.get(position).getDetalle()+")");
+            holder.medio.setVisibility(View.INVISIBLE);
+            a=a+1;
+        }if(dat.get(position).children.size()==0){
 
-           }else{
-                holder.listaAparatos.setVisibility(View.VISIBLE);
-                for(int d=0; d<dat.get(position).children.size(); d++){
-                    array.children = new ArrayList<>();
-                    String hijo="";
-                    hijo = dat.get(position).children.get(d).Nombre + dat.get(position).children.get(d).getDetalle();
-                    array.children.add(hijo);
-                    ArrayAdapter arrayAdapter1 = new ArrayAdapter(mcontext, android.R.layout.simple_list_item_checked,array.children);
-                    holder.listaAparatos.setAdapter(arrayAdapter1);
+        }else{
+            holder.listaAparatos.setVisibility(View.VISIBLE);
+            array.children = new ArrayList<>();
+            Arbol_Adapter.DeletChildren.clear();
+            for(d = 0; d<dat.get(position).children.size(); d++){
+                String hijo="";
+                hijo = dat.get(position).children.get(d).Nombre + dat.get(position).children.get(d).getDetalle();
+                array.children.add(hijo);
+                ArrayAdapter arrayAdapter1 = new ArrayAdapter(mcontext, android.R.layout.simple_list_item_checked,array.children);
+                holder.listaAparatos.setAdapter(arrayAdapter1);
 
-                    holder.listaAparatos.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-                    holder.listaAparatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position3, long id) {
+                holder.listaAparatos.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
+                holder.listaAparatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position3, long id) {
+                        int e= Math.toIntExact(id);
+                     /*   if(dat.get(position).children.get(position3).baseIdUser==0){
+                            dat.get(position).children.get(position3).setBaseIdUser(1);
+                        }else{
+                            dat.get(position).children.get(position3).setBaseIdUser(0);
+                        }*/
+                   //     if(dat.get(position).children.get(position3).baseI){
+                            DeletChildren.clear();
+                            String abc= String.valueOf(position);
+                            DeletChildren.add(String.valueOf(dat.get(position).children.get(position3).getClv_Aparato())+abc);
+                        //}
+                        /*else{
+                            DeletChildren.remove(dat.get(position).children.get(position3).getClv_Aparato()+position);
 
-                        }
-                    });
-                }
-                }
+                        }*/
+                        Log.d("asdasd", String.valueOf(DeletChildren));
 
-            if(a>=dat.size()){
+
+                    }
+                });
+            }
+        }
+
+        if(a>=dat.size()){
             asignacion.siguiente.setEnabled(true);
         }else{
             asignacion.siguiente.setEnabled(false);
@@ -157,7 +179,7 @@ public class Arbol_Adapter extends BaseAdapter {
                 posi = position;
                 ////
                 layoutMedio.setVisibility(View.VISIBLE);
-                 Asignacion.setVisibility(View.GONE);
+                Asignacion.setVisibility(View.GONE);
                 siguiente.setEnabled(false);
 
 
