@@ -40,7 +40,11 @@
             android:text="Medio"
             android:id="@+id/medio"
             android:layout_marginTop="2dp"
-            android:layout_marginStart="285dp"/>
+            android:layout_marginStart="285dp"
+            android:checked="false"
+            android:clickable="false"
+            android:focusable="false"
+            />
 
         <ListView
             android:id="@+id/ListaAparatos"
