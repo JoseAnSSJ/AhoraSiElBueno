@@ -43,7 +43,7 @@ public class Arbol_Adapter extends BaseAdapter {
     public static String dato;
     Array array = new Array();
     public static int a=0, ciclo;
-    public static ArrayList<String> DeletChildren = new ArrayList<String>();
+    public static ArrayList<Integer> DeletChildren = new ArrayList<Integer>();
 
 
     public Arbol_Adapter (Context context){
@@ -118,25 +118,16 @@ public class Arbol_Adapter extends BaseAdapter {
                 ArrayAdapter arrayAdapter1 = new ArrayAdapter(mcontext, android.R.layout.simple_list_item_checked,array.children);
                 holder.listaAparatos.setAdapter(arrayAdapter1);
 
-                holder.listaAparatos.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
+                holder.listaAparatos.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
                 holder.listaAparatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position3, long id) {
                         int e= Math.toIntExact(id);
-                     /*   if(dat.get(position).children.get(position3).baseIdUser==0){
-                            dat.get(position).children.get(position3).setBaseIdUser(1);
-                        }else{
-                            dat.get(position).children.get(position3).setBaseIdUser(0);
-                        }*/
-                   //     if(dat.get(position).children.get(position3).baseI){
+
                             DeletChildren.clear();
                             String abc= String.valueOf(position);
-                            DeletChildren.add(String.valueOf(dat.get(position).children.get(position3).getClv_Aparato())+abc);
-                        //}
-                        /*else{
-                            DeletChildren.remove(dat.get(position).children.get(position3).getClv_Aparato()+position);
+                            DeletChildren.add(Integer.valueOf(dat.get(position).children.get(position3).getClv_Aparato()+abc));
 
-                        }*/
                         Log.d("asdasd", String.valueOf(DeletChildren));
 
 

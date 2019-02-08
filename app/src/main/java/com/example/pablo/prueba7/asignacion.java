@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import com.example.pablo.prueba7.Adapters.Arbol_Adapter;
 import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
+import com.example.pablo.prueba7.Modelos.children;
 import com.example.pablo.prueba7.Request.Request;
 
 import org.json.JSONArray;
@@ -34,7 +35,10 @@ Request request = new Request();
     public static ListView Asignacion;
     public static Spinner spinnerMedio;
     public static RelativeLayout layoutMedio;
-int c;
+int c,d,e;
+String f;
+
+    children dataChild= new children();
 
     public static JSONArray jsonArray = new JSONArray();
     public static JSONArray jsonArray2 = new JSONArray();
@@ -156,18 +160,21 @@ eliminarAparato.setOnClickListener(new View.OnClickListener() {
     public void onClick(View v) {
         Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
         List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = (List<GetMuestraArbolServiciosAparatosPorinstalarListResult>) itData.next();
+
+
         for( c=0; c<dat.size(); c++) {
-            String e= String.valueOf(c);
-            if(Arbol_Adapter.DeletChildren!=null){
-                for (int d = 0; d <Arbol_Adapter.DeletChildren.size(); d++) {
+            f= String.valueOf(c);
+            e=0;
+            if(dat.get(c).children!=null) {
+                for (int d = 0; d < dat.get(c).children.size(); d++) {
+                    String abc = dat.get(c).children.get(d).getClv_Aparato() + f;
                     try {
-                        String abc = String.valueOf(dat.get(c).children.get(d).getClv_Aparato())+e;
-                        String def = Arbol_Adapter.DeletChildren.get(d);
-                        if (def.equals(abc)) {
+                        if (Integer.parseInt(abc) == (Arbol_Adapter.DeletChildren.get(e))) {
                             dat.get(c).children.remove(d);
-                         //   Arbol_Adapter.DeletChildren.remove(d);
+                            Arbol_Adapter.DeletChildren.remove(e);
+                            e = e + 1;
                         }
-                    }catch (Exception r){
+                    }catch (Exception x){
 
                     }
                 }
