@@ -11,11 +11,7 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.TimePicker;
-
-import com.example.pablo.prueba7.Request.Request;
 
 import java.util.Calendar;
 
@@ -41,7 +37,6 @@ public class HorasFragment extends Fragment  implements View.OnClickListener{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_horas, container, false);
-
 
         //////////// acciones de botones de hora y fecha//////
         selectDate = view.findViewById(R.id.ejecureal);

@@ -1,7 +1,6 @@
 package com.example.pablo.prueba7.sampledata;
 
 
-
 import com.example.pablo.prueba7.Listas.Example;
 import com.example.pablo.prueba7.Listas.Example1;
 import com.example.pablo.prueba7.Listas.Example2;
@@ -12,10 +11,12 @@ import com.example.pablo.prueba7.Listas.JSONArbolServicios;
 import com.example.pablo.prueba7.Listas.JSONCAMDO;
 import com.example.pablo.prueba7.Listas.JSONCLIAPA;
 import com.example.pablo.prueba7.Listas.JSONClasificacionProblm;
-import com.example.pablo.prueba7.Listas.JSONPrioridad;
 import com.example.pablo.prueba7.Listas.JSONMediosSer;
+import com.example.pablo.prueba7.Listas.JSONNombreTecnico;
+import com.example.pablo.prueba7.Listas.JSONPrioridad;
 import com.example.pablo.prueba7.Listas.JSONReporteCliente;
 import com.example.pablo.prueba7.Listas.JSONResponseTecnico;
+import com.example.pablo.prueba7.Listas.JSONServicioAsignado;
 import com.example.pablo.prueba7.Listas.JSONSolucion;
 import com.example.pablo.prueba7.Listas.JSONStatusApa;
 import com.example.pablo.prueba7.Listas.JSONTecSec;
@@ -71,6 +72,10 @@ public interface Service {
     Call<JSONPrioridad>getprior();
     @GET(Constants.URL_GET_CLASIF)
     Call<JSONClasificacionProblm>getclas();
+    @POST(Constants.URL_GET_ITEC)
+    Call<JSONNombreTecnico>getNom();
+    @POST(Constants.URL_GET_ASERVICE)
+    Call<JSONServicioAsignado>getServ();
 
 
 

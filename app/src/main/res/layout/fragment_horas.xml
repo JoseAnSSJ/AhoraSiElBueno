@@ -253,14 +253,14 @@
             <Spinner
                 android:id="@+id/tecnicosec"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="28dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="430dp"
-                android:textSize="20dp"
                 android:autofillHints="Tecnioos"
+                android:background="@drawable/botones"
 
 
-                />
+                android:textSize="20dp" />
 
 
 

@@ -25,5 +25,7 @@ public class Constants {
     public static final String URL_GET_REPCL="Quejas/GetQuejasList";
     public static final String URL_GET_PRIORI="Softv_GetPrioridadQueja/GetSoftv_GetPrioridadQuejaList";
     public static final String URL_GET_CLASIF="uspConsultaTblClasificacionProblemas/GetuspConsultaTblClasificacionProblemasList";
+    public static final String URL_GET_ITEC="OrdSer/GetConTecnicoAgenda";
+    public static final String URL_GET_ASERVICE="DameSerDelCliFac/GetDameSerDelCliFacList";
 
 }

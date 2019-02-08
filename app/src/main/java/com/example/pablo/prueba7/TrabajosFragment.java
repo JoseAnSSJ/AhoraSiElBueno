@@ -31,8 +31,9 @@ public class TrabajosFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_trabajos2, container, false);
-
-       request.getSolucuion(getContext());
+        request.getServiciosAsignados(getContext());
+        request.getnombretec(getContext());
+        request.getSolucuion(getContext());
        request.getPrior(getContext());
        request.getClasific(getContext());
 
