@@ -193,13 +193,7 @@ public class Arbol_Adapter extends BaseAdapter {
                     Toast.makeText(mcontext, "Debe de llenar el campo 'Medio'", Toast.LENGTH_LONG).show();
                 } else {
 
-                    Iterator<List<GetMuestraMedioPorServicoContratadoListResult>> itData2 = array.dataMedSer.iterator();
-                    List<GetMuestraMedioPorServicoContratadoListResult> dat2 = itData2.next();
-                    try {
-                        clv_Medio = dat2.get(position).getIdMedio();
-                    } catch (Exception e) {
-                        clv_Medio = dat2.get(position - 1).getIdMedio();
-                    }
+
 
 
                     layoutMedio.setVisibility(View.GONE);
@@ -207,8 +201,7 @@ public class Arbol_Adapter extends BaseAdapter {
                     siguiente.setEnabled(true);
                     //////
                     medio.setVisibility(View.GONE);
-                    dat.get(position).setIdMedio(clv_Medio);
-                    dat.get(position).setDetalle(dato);
+
                     a=0;
                     Asignacion.setAdapter(Arbol_Adapter.this);
 
@@ -232,8 +225,16 @@ public class Arbol_Adapter extends BaseAdapter {
                     m[0] = 2;
                     Iterator<List<GetMuestraMedioPorServicoContratadoListResult>> itdata3 = array.dataMedSer.iterator();
                     List<GetMuestraMedioPorServicoContratadoListResult> dat3 = itdata3.next();
+                    Iterator<List<GetMuestraMedioPorServicoContratadoListResult>> itData2 = array.dataMedSer.iterator();
+                    List<GetMuestraMedioPorServicoContratadoListResult> dat2 = itData2.next();
                     dato = dat3.get(position1-1).getDescripcion();
-
+                    try {
+                        clv_Medio = dat2.get(position1).getIdMedio();
+                    } catch (Exception e) {
+                        clv_Medio = dat2.get(position1 - 1).getIdMedio();
+                    }
+                    dat.get(posi).setIdMedio(clv_Medio);
+                    dat.get(posi).setDetalle(dato);
                 }
             }
 
@@ -246,8 +247,10 @@ public class Arbol_Adapter extends BaseAdapter {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if(holder.checkBox.isChecked()==true){
+                    Arbol_Adapter.DeletMedio.clear();
                     DeletMedio.add(dat.get(position).IdMedio+dat.get(position).Detalle);
                 }
+               
 
             }
         });

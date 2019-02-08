@@ -4,6 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,7 +21,20 @@
         android:layout_marginTop="50dp"
         android:layout_marginLeft="10dp"
         android:layout_centerHorizontal="true"
-        android:text="Eliminar" />
+        android:text="Eliminar"
+        android:visibility="gone"
+        />
+    <Button
+        android:id="@+id/eliminarAparatos"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="Eliminar"
+
+        />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -98,32 +112,24 @@
 
     <Button
         android:id="@+id/siguiente"
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="22dp"
+        android:layout_above="@+id/aceptarAsignacion"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
         android:text="Asignar Aparatos" />
     <Button
         android:id="@+id/aceptarAsignacion"
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
         android:text="Aceptar"
         />
-    <Button
-        android:id="@+id/eliminarAparatos"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="20dp"
-        android:text="Eliminar"
 
-        />
 </RelativeLayout>
