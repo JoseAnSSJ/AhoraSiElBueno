@@ -64,6 +64,7 @@ import com.example.pablo.prueba7.Modelos.Get_ClvTecnicoResult;
 import com.example.pablo.prueba7.Modelos.GetdameSerDELCliresumenResult;
 import com.example.pablo.prueba7.Modelos.GetuspBuscaContratoSeparado2ListResult;
 import com.example.pablo.prueba7.Modelos.GetuspConsultaTblClasificacionProblemasListResult;
+import com.example.pablo.prueba7.Modelos.InfoClienteModelo;
 import com.example.pablo.prueba7.Modelos.ListadoQuejasAgendadas;
 import com.example.pablo.prueba7.Modelos.OrdSer;
 import com.example.pablo.prueba7.Modelos.ProximaCitaModel;

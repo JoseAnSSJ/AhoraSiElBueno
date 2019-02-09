@@ -40,7 +40,7 @@ public class InstalacionFragment extends Fragment implements View.OnClickListene
     private int mYear, mMonth, mDay, mHour, mMinute;
     private View contenedorParticular;
     private View contenedorCorporativo;
-    TextView coordenadas, direccion;
+    TextView coordenadas, direccion, coordenadas1,coordenadas2;
     public static TextView Obs;
     public static Spinner TecSec;
 Request request = new Request();
@@ -82,6 +82,9 @@ Request request = new Request();
         TecSec = view.findViewById(R.id.tecnicosec);
         ///////////////////GPS//////////////////////////////
         coordenadas = view.findViewById(R.id.txtCoordenadas);
+        coordenadas1 =view.findViewById(R.id.txtCoordenadas1);
+        coordenadas2 = view.findViewById(R.id.txtCoordenadas2);
+
 
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, 1000);
@@ -278,8 +281,12 @@ Request request = new Request();
             loc.getLatitude();
             loc.getLongitude();
 
-            String Text = "Mi ubicacion actual es: " + "\n Lat = " + loc.getLatitude() + "\n Long = " + loc.getLongitude();
-            coordenadas.setText(Text);
+            String Text1 = "Coordenadas" ;
+            String Text2 =  "\n Lat = " + loc.getLatitude();
+            String Text3 = "\n Long = " + loc.getLongitude();
+            coordenadas2.setText(Text3);
+            coordenadas1.setText(Text2);
+            coordenadas.setText(Text1);
             this.mainActivity.setLocation(loc);
         }
 
