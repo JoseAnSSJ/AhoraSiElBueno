@@ -81,7 +81,7 @@ public class MainReportes extends AppCompatActivity implements ActionBar.TabList
         ActionBar.Tab tab = actionBar.newTab().setText("Horas").setTabListener(this);
         actionBar.addTab(tab);
 
-        tab = actionBar.newTab().setText("----").setTabListener(this);
+        tab = actionBar.newTab().setText("Reporte").setTabListener(this);
         actionBar.addTab(tab);
 
         tab = actionBar.newTab().setText("Material").setTabListener(this);
