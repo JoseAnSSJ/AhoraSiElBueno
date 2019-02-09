@@ -28,11 +28,7 @@ public class InfoReportesModel {
         this.NUMERO=NUMERO;
         this.Apellido_Paterno=Apellido_Paterno;
         this.Apellido_Materno=Apellido_Materno;
-
-
     }
-
-
 
     public String getCALLE() {
         return CALLE;
