@@ -17,14 +17,15 @@ import java.util.ArrayList;
 public class trabajos_adapter_result extends BaseAdapter {
 
     LayoutInflater inflatertrab;
-    Context Trabajos;
+    Context Cmcontext;
     ArrayList<String>trabajox;
     ArrayList<String>accionx;
 
-    public trabajos_adapter_result(Trabajos context, ArrayList<String>trabajox, ArrayList<String>accionx){
+    public trabajos_adapter_result(Context context, ArrayList<String>trabajox, ArrayList<String>accionx){
       this.trabajox=trabajox;
       this.accionx=accionx;
-      inflatertrab=LayoutInflater.from(Trabajos);
+      Cmcontext=context;
+      inflatertrab=LayoutInflater.from(Cmcontext);
     }
 
     public class viewHolder{
