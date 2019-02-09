@@ -4,15 +4,13 @@ package com.example.pablo.prueba7.Services;
 
 import com.example.pablo.prueba7.CambioAparato;
 import com.example.pablo.prueba7.Listas.Array;
-import com.example.pablo.prueba7.Modelos.DeepConsModel;
 import com.example.pablo.prueba7.Login;
-
+import com.example.pablo.prueba7.Modelos.DeepConsModel;
 import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
 import com.example.pablo.prueba7.Modelos.UserModel;
 import com.example.pablo.prueba7.asignacion;
 import com.example.pablo.prueba7.sampledata.Constants;
 import com.example.pablo.prueba7.sampledata.Service;
-
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,7 +19,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
-
 
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
@@ -32,9 +29,9 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-
 import static com.example.pablo.prueba7.Adapters.Arbol_Adapter.clv_unicaNet;
 import static com.example.pablo.prueba7.Adapters.ordenes_adapter_result.clvor;
+import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.clvReport;
 import static com.example.pablo.prueba7.asignacion.jsonArray;
 import static com.example.pablo.prueba7.asignacion.jsonObject2;
 import static com.example.pablo.prueba7.asignado.idArticuloasignado;
@@ -715,7 +712,7 @@ public class Services {
 
     public Service getMediosReportes() throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("ContratoCom", 1018-20);
+        jsonObject.put("ContratoCom", "1018-20");
         jsonObject.put("IdUsuario", 1);
         jsonObject.put("TipoSer", 1);
         jsonObject.put("Op", 0);
@@ -775,7 +772,7 @@ public class Services {
 
     public Service getReporteCService() throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Clv_Queja", 16);
+        jsonObject.put("Clv_Queja", clvReport);
         MediaType JSON = MediaType.parse("application/json; charse=utf-8");
         final RequestBody body = RequestBody.create(JSON, jsonObject.toString());
         final OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
@@ -848,7 +845,7 @@ public class Services {
 
     public Service getNombreService() throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Clv", 16);
+        jsonObject.put("Clv", clvReport);
         jsonObject.put("Op", 1);
         MediaType JSON = MediaType.parse("application/json; charse=utf-8");
         final RequestBody body = RequestBody.create(JSON, jsonObject.toString());

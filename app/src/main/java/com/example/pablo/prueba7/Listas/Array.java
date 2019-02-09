@@ -20,6 +20,7 @@ import com.example.pablo.prueba7.Modelos.GetSP_StatusAparatosListResult;
 import com.example.pablo.prueba7.Modelos.GetSoftvGetPrioridadQuejaListResult;
 import com.example.pablo.prueba7.Modelos.Get_ClvTecnicoResult;
 import com.example.pablo.prueba7.Modelos.GetdameSerDELCliresumenResult;
+import com.example.pablo.prueba7.Modelos.GetuspBuscaContratoSeparado2ListResult;
 import com.example.pablo.prueba7.Modelos.GetuspConsultaTblClasificacionProblemasListResult;
 import com.example.pablo.prueba7.Modelos.ListadoQuejasAgendadas;
 import com.example.pablo.prueba7.Modelos.OrdSer;
@@ -70,14 +71,16 @@ public class Array {
     public static  ArrayList<List<GetMuestraTipoAparatoListResult>> dataTipoAparatos;
     public static  ArrayList<List<GetMuestraAparatosDisponiblesListResult>> dataAparatosDisponibles;
     public static  ArrayList<List<GetMuestraServiciosRelTipoAparatoListResult>> dataserviciosAparatos;
+
     /////////////////////////////////Pantalla_Reportes/////////////////////////////////////////////////////////////////////////
-    //public static ArrayList<List<InfoReportesModel>> dataRep;
+    public static ArrayList<List<GetuspBuscaContratoSeparado2ListResult>> dataRep;
     public static ArrayList<List<GetMUESTRATRABAJOSQUEJASListResult>> dataSOL;
     public static ArrayList<List<GetQuejasListResult>>dataReport;
     public static ArrayList<List<GetSoftvGetPrioridadQuejaListResult>>dataPriori;
     public static ArrayList<List<GetuspConsultaTblClasificacionProblemasListResult>>dataClasf;
     public static ArrayList<List<GetConTecnicoAgendaResult>>dataNom;
     public static ArrayList<List<GetDameSerDelCliFacListResult>>dataServ;
+    public static ArrayList <String>Asigna=new ArrayList<>();
 
 
 }

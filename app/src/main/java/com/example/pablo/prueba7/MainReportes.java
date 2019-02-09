@@ -22,7 +22,7 @@ public class MainReportes extends AppCompatActivity implements ActionBar.TabList
     Button info;
     RelativeLayout layoutAnimado;
 
-    public static TextView Nombre1, Direccion1,NombreTec1,infoA;
+    public static TextView Nombre1, Direccion1,NombreTec1,infoA,contrato1,ciudad1;
     Request request = new Request();
 
     @Override
@@ -36,6 +36,8 @@ public class MainReportes extends AppCompatActivity implements ActionBar.TabList
         Direccion1= findViewById(R.id.infodireccion1);
         NombreTec1= findViewById(R.id.tecnico1);
         infoA = findViewById(R.id.infoservicios1);
+        contrato1=findViewById(R.id.contrato1);
+        ciudad1=findViewById(R.id.infoempresa1);
 
         setTitle(null);
         //request.getTecSec(this);
@@ -44,7 +46,7 @@ public class MainReportes extends AppCompatActivity implements ActionBar.TabList
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              request.getReportes();
+
 
                 if(layoutAnimado.getVisibility()==View.GONE) {
                     layoutAnimado.setVisibility(View.VISIBLE);

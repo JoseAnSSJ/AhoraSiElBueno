@@ -16,6 +16,7 @@ import com.example.pablo.prueba7.Listas.JSONMediosSer;
 import com.example.pablo.prueba7.Listas.JSONNombreTecnico;
 import com.example.pablo.prueba7.Listas.JSONPrioridad;
 import com.example.pablo.prueba7.Listas.JSONReporteCliente;
+import com.example.pablo.prueba7.Listas.JSONReportes;
 import com.example.pablo.prueba7.Listas.JSONResponseTecnico;
 import com.example.pablo.prueba7.Listas.JSONServicioAsignado;
 import com.example.pablo.prueba7.Listas.JSONServiciosAparatos;
@@ -80,7 +81,7 @@ public interface Service {
     Call<QuejasList>getQuejasAgendadas();
     /////////////////////////////////Reportes///////////////////////////////////
     @POST(Constants.URL_GET_CLIT_REPOR)
-    Call<JsonObject> getReport();
+    Call<JSONReportes> getReport();
     @POST(Constants.URL_GET_SOL)
     Call<JSONSolucion> getSolut();
     @POST(Constants.URL_GET_REPCL)
