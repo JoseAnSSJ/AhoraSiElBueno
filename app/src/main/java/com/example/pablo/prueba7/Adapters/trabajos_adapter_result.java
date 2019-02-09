@@ -14,6 +14,8 @@ import com.example.pablo.prueba7.Trabajos;
 
 import java.util.ArrayList;
 
+import static com.example.pablo.prueba7.Trabajos.trabajos;
+
 public class trabajos_adapter_result extends BaseAdapter {
 
     LayoutInflater inflatertrab;
@@ -27,6 +29,8 @@ public class trabajos_adapter_result extends BaseAdapter {
       Cmcontext=context;
       inflatertrab=LayoutInflater.from(Cmcontext);
     }
+
+
 
     public class viewHolder{
         TextView trabajo;

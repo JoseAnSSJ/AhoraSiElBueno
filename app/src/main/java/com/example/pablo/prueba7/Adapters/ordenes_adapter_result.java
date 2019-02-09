@@ -16,6 +16,8 @@ import com.example.pablo.prueba7.Request.Request;
 
 import java.util.ArrayList;
 
+import static com.example.pablo.prueba7.Trabajos.trabajos;
+
 public class ordenes_adapter_result extends BaseAdapter {
 
     public static Integer clvor;
@@ -96,6 +98,7 @@ public class ordenes_adapter_result extends BaseAdapter {
                 clvor=Integer.valueOf(ordensrc.get(position));
                 request.getDeepCons();
                 request.getTrabajos();
+
 
 
 

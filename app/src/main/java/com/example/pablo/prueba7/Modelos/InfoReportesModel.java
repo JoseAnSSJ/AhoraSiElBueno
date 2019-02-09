@@ -57,9 +57,6 @@ public class InfoReportesModel {
         return CONTRATO;
     }
 
-
-
-
     public void setCALLE(String CALLE) {
         InfoReportesModel.CALLE = CALLE;
     }

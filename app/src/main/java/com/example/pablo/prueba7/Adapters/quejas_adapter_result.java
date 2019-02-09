@@ -90,6 +90,7 @@ public class quejas_adapter_result extends BaseAdapter {
             public void onClick(View v) {
                 Intent intento1 = new Intent(mContext, MainReportes.class);
                 mContext.startActivity(intento1);
+                request.getReportes();
                 //request.getDeepCons();
 
 

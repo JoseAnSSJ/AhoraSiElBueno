@@ -382,7 +382,7 @@ public class Services {
 //////////////Tecnico Secundario/////F//////////
     public Service getTecSecService() throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("ClvOrdSer", 0);
+        jsonObject.put("ClvOrdSer", clvor);
         MediaType JSON = MediaType.parse("application/json; charse=utf-8");
         final RequestBody body = RequestBody.create(JSON, jsonObject.toString());
         final OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
@@ -715,7 +715,7 @@ public class Services {
 
     public Service getMediosReportes() throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("ContratoCom", 1018-20);
+        jsonObject.put("ContratoCom", "1018-20");
         jsonObject.put("IdUsuario", 1);
         jsonObject.put("TipoSer", 1);
         jsonObject.put("Op", 0);
