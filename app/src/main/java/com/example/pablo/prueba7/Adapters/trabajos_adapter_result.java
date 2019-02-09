@@ -60,7 +60,6 @@ public class trabajos_adapter_result extends BaseAdapter {
             holder.accion=(Button)convertView.findViewById(R.id.accionv);
 
             convertView.setTag(holder);
-
         }
         else {
             holder=(viewHolder)convertView.getTag();
