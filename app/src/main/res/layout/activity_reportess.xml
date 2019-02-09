@@ -32,7 +32,6 @@
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="4dp"
-            android:layout_toStartOf="@+id/tecnico"
             android:text="Tecnico:" />
 
         <TextView
@@ -66,7 +65,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/contrato"
+            android:id="@+id/contrato1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -76,25 +75,7 @@
             android:hint="456-453" />
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="250dp"
-            android:layout_marginTop="25dp"
-            android:text="Status:"
-            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="300dp"
-            android:layout_marginTop="25dp"
-            android:hint="Ejecutada" />
 
 
     </RelativeLayout>
@@ -138,12 +119,12 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="50dp"
-                android:text="Empresa:"
+                android:text="Ciudad:"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/infoempresa"
+                android:id="@+id/infoempresa1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"

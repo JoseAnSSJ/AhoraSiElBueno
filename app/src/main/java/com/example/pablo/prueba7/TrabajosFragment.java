@@ -37,6 +37,7 @@ public class TrabajosFragment extends Fragment {
        request.getPrior(getContext());
        request.getClasific(getContext());
         request.getReportesC();
+        request.getReportes(getContext());
 
 
         solucion = view.findViewById(R.id.tiposol);
