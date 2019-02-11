@@ -4,14 +4,12 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.view.ContextThemeWrapper;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.example.pablo.prueba7.Adapters.Arbol_Adapter;
-import com.example.pablo.prueba7.Adapters.trabajos_adapter_result;
 import com.example.pablo.prueba7.CambioAparato;
 import com.example.pablo.prueba7.CambioDom;
 import com.example.pablo.prueba7.Inicio;
@@ -73,7 +71,6 @@ import com.example.pablo.prueba7.Modelos.ProximaCitaModel;
 import com.example.pablo.prueba7.Modelos.Queja;
 import com.example.pablo.prueba7.Modelos.UserModel;
 import com.example.pablo.prueba7.Services.Services;
-import com.example.pablo.prueba7.Trabajos;
 import com.example.pablo.prueba7.TrabajosFragment;
 import com.example.pablo.prueba7.asignacion;
 import com.example.pablo.prueba7.asignado;
@@ -91,12 +88,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-<<<<<<< HEAD
-import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.contratoB;
-=======
 import static com.example.pablo.prueba7.Trabajos.adaptertrabajos;
 import static com.example.pablo.prueba7.Trabajos.trabajos;
->>>>>>> MAESTRO
 import static java.util.Arrays.asList;
 
 public class Request extends AppCompatActivity {
@@ -1455,12 +1448,10 @@ public class Request extends AppCompatActivity {
                         MainReportes.contrato1.setText(dat.get(i).getCONTRATO());
                         MainReportes.ciudad1.setText(dat.get(i).getCIUDAD());
 
-<<<<<<< HEAD
-                        contratoB= Integer.valueOf(String.valueOf(dat.get(i).getContratoBueno()));
 
-=======
-                        contbu=(Long.valueOf(dat.get(i).getContratoBueno()));
->>>>>>> MAESTRO
+                      //  contratoB= Integer.valueOf(String.valueOf(dat.get(i).getContratoBueno()));
+
+
                     }
 
 
