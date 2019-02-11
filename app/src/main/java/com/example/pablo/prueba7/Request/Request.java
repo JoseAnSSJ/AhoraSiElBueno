@@ -32,6 +32,7 @@ import com.example.pablo.prueba7.Listas.JSONMediosSer;
 import com.example.pablo.prueba7.Listas.JSONNombreTecnico;
 import com.example.pablo.prueba7.Listas.JSONPrioridad;
 import com.example.pablo.prueba7.Listas.JSONReporteCliente;
+import com.example.pablo.prueba7.Listas.JSONReportes;
 import com.example.pablo.prueba7.Listas.JSONResponseTecnico;
 import com.example.pablo.prueba7.Listas.JSONServicioAsignado;
 import com.example.pablo.prueba7.Listas.JSONServiciosAparatos;
@@ -63,9 +64,9 @@ import com.example.pablo.prueba7.Modelos.GetSP_StatusAparatosListResult;
 import com.example.pablo.prueba7.Modelos.GetSoftvGetPrioridadQuejaListResult;
 import com.example.pablo.prueba7.Modelos.Get_ClvTecnicoResult;
 import com.example.pablo.prueba7.Modelos.GetdameSerDELCliresumenResult;
+import com.example.pablo.prueba7.Modelos.GetuspBuscaContratoSeparado2ListResult;
 import com.example.pablo.prueba7.Modelos.GetuspConsultaTblClasificacionProblemasListResult;
 import com.example.pablo.prueba7.Modelos.InfoClienteModelo;
-import com.example.pablo.prueba7.Modelos.InfoReportesModel;
 import com.example.pablo.prueba7.Modelos.ListadoQuejasAgendadas;
 import com.example.pablo.prueba7.Modelos.OrdSer;
 import com.example.pablo.prueba7.Modelos.ProximaCitaModel;
@@ -100,6 +101,7 @@ public class Request extends AppCompatActivity {
     CambioDom c = new CambioDom();
     public static String clave_tecnico;
     public static String nombre_tecnico;
+    public static Long contbu;
     String a="Seleccione tecnico secundario";
     Arbol_Adapter adapter;
 
@@ -670,6 +672,10 @@ public class Request extends AppCompatActivity {
                     InstalacionFragment.Obs.setText(String.valueOf(DeepConsModel.Obs));
 
 
+                   // ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, datos);
+                    //.TecSec.setAdapter(adapter1);
+
+
 
 
 
@@ -1121,7 +1127,7 @@ public class Request extends AppCompatActivity {
     ////////////////////////////////////////INFO CLIENTE Reportes///////////////////////////////////////
 
 
-    public void getReportes() {
+  /*  public void getReportes() {
 
         Service service = null;
         try {
@@ -1133,6 +1139,8 @@ public class Request extends AppCompatActivity {
         Call<JsonObject> call = service.getReport();
         call.enqueue(new Callback<JsonObject>() {
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+
+
                 JsonObject userJson = response.body().getAsJsonObject("GetuspBuscaContratoSeparado2ListResult");
                 InfoReportesModel user = new InfoReportesModel(
                         userJson.get("CALLE").getAsString(),
@@ -1147,7 +1155,7 @@ public class Request extends AppCompatActivity {
                 );
 
 
-                MainReportes.Nombre1.setText(InfoReportesModel.Nombre + "   " + InfoReportesModel.Apellido_Paterno + "   " + InfoReportesModel.Apellido_Materno);
+             MainReportes.Nombre1.setText(InfoReportesModel.Nombre + "   " + InfoReportesModel.Apellido_Paterno + "   " + InfoReportesModel.Apellido_Materno);
                 MainReportes.Direccion1.setText(InfoReportesModel.CALLE + "   " + InfoReportesModel.NUMERO + "   " + InfoReportesModel.COLONIA);
 
             }
@@ -1158,7 +1166,7 @@ public class Request extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 
     ////////////////////////////////////TIPO DE SOLUCION///////////////////////////////////////////////
     public void getSolucuion(final Context context) {
@@ -1371,7 +1379,7 @@ public class Request extends AppCompatActivity {
 
         });
     }
-    public void getServiciosAsignados(Context context) {
+    public void getServiciosAsignados() {
         Service service = null;
         try {
             service = services.getAsignadosService();
@@ -1412,5 +1420,55 @@ public class Request extends AppCompatActivity {
 
         });
     }
+    public void getReportes() {
+        Service service = null;
+        try {
+            service = services.getMediosReportes();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Call<JSONReportes> call = service.getReport();
+        call.enqueue(new Callback<JSONReportes>() {
+            @Override
+            public void onResponse(Call<JSONReportes> call, Response<JSONReportes> response) {
+                JSONReportes jsonResponse = response.body();
+                array.dataRep = new ArrayList<List<GetuspBuscaContratoSeparado2ListResult>>(asList(jsonResponse.getGetuspBuscaContratoSeparado2ListResult()));
+
+
+                Iterator<List<GetuspBuscaContratoSeparado2ListResult>> itData = array.dataRep.iterator();
+                while (itData.hasNext()) {
+                    List<GetuspBuscaContratoSeparado2ListResult> dat = (List<GetuspBuscaContratoSeparado2ListResult>) itData.next();
+                    for (int i = 0; i < dat.size(); ++i) {
+                        Log.d("response100", dat.get(i).getNombre());
+                        Log.d("response101", dat.get(i).getApellidoPaterno());
+                        Log.d("response102", String.valueOf(dat.get(i).getContratoBueno()));
+                        Log.d("response103",dat.get(i).getCONTRATO());
+
+
+
+                        MainReportes.Nombre1.setText(dat.get(i).getNombre()+ "  " + dat.get(i).getApellidoPaterno()+"  " + dat.get(i).getApellidoMaterno());
+                        MainReportes.Direccion1.setText(dat.get(i).getCALLE()+ "  "+ dat.get(i).getNUMERO()+ "  " +dat.get(i).getCOLONIA());
+                        MainReportes.contrato1.setText(dat.get(i).getCONTRATO());
+
+                        MainReportes.ciudad1.setText(dat.get(i).getCIUDAD());
+
+                        contbu=(Long.valueOf(dat.get(i).getContratoBueno()));
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<JSONReportes> call, Throwable t) {
+
+            }
+
+        });
+
+    }
+
+
 }
+
+
 
