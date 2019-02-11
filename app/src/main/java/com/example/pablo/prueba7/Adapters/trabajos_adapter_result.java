@@ -20,6 +20,7 @@ public class trabajos_adapter_result extends BaseAdapter {
 
     LayoutInflater inflatertrab;
     Context Cmcontext;
+    Context context;
     ArrayList<String>trabajox;
     ArrayList<String>accionx;
 
@@ -28,6 +29,7 @@ public class trabajos_adapter_result extends BaseAdapter {
       this.accionx=accionx;
       Cmcontext=context;
       inflatertrab=LayoutInflater.from(Cmcontext);
+      inflatertrab=LayoutInflater.from(context);
     }
 
 
