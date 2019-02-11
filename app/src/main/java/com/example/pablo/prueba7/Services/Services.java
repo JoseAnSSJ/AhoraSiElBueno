@@ -35,6 +35,7 @@ import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.clvReport
 import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.contbueno;
 import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.contratoReport;
 import static com.example.pablo.prueba7.Request.Request.contbu;
+import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.contratoReport;
 import static com.example.pablo.prueba7.asignacion.jsonArray;
 import static com.example.pablo.prueba7.asignacion.jsonObject2;
 import static com.example.pablo.prueba7.asignado.idArticuloasignado;

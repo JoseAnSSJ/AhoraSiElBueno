@@ -96,6 +96,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.contratoB;
 import static com.example.pablo.prueba7.Trabajos.adaptertrabajos;
 import static com.example.pablo.prueba7.Trabajos.trabajos;
 import static java.util.Arrays.asList;
@@ -1432,6 +1433,7 @@ public class Request extends AppCompatActivity {
         }
         Call<JSONReportes> call = service.getReport();
         call.enqueue(new Callback<JSONReportes>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onResponse(Call<JSONReportes> call, Response<JSONReportes> response) {
                 JSONReportes jsonResponse = response.body();
@@ -1444,22 +1446,23 @@ public class Request extends AppCompatActivity {
                     for (int i = 0; i < dat.size(); ++i) {
                         Log.d("response100", dat.get(i).getNombre());
                         Log.d("response101", dat.get(i).getApellidoPaterno());
-                        Log.d("response102", String.valueOf(dat.get(i).getContratoBueno()));
-                        Log.d("response103",dat.get(i).getCONTRATO());
+                        Log.d("response102",((String.valueOf(dat.get(i).getContratoBueno()))));
+                        Log.d("response103", dat.get(i).getCONTRATO());
 
 
-
-                        MainReportes.Nombre1.setText(dat.get(i).getNombre()+ "  " + dat.get(i).getApellidoPaterno()+"  " + dat.get(i).getApellidoMaterno());
-                        MainReportes.Direccion1.setText(dat.get(i).getCALLE()+ "  "+ dat.get(i).getNUMERO()+ "  " +dat.get(i).getCOLONIA());
+                        MainReportes.Nombre1.setText(dat.get(i).getNombre() + "  " + dat.get(i).getApellidoPaterno() + "  " + dat.get(i).getApellidoMaterno());
+                        MainReportes.Direccion1.setText(dat.get(i).getCALLE() + "  " + dat.get(i).getNUMERO() + "  " + dat.get(i).getCOLONIA());
                         MainReportes.contrato1.setText(dat.get(i).getCONTRATO());
-
                         MainReportes.ciudad1.setText(dat.get(i).getCIUDAD());
 
-                        contbu=(Long.valueOf(dat.get(i).getContratoBueno()));
+                        contratoB= Integer.valueOf(String.valueOf(dat.get(i).getContratoBueno()));
+
                     }
+
+
                 }
 
-            }
+                }
 
             @Override
             public void onFailure(Call<JSONReportes> call, Throwable t) {
