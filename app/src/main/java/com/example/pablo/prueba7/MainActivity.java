@@ -108,8 +108,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         tab = actionBar.newTab().setText("Ejecutar").setTabListener(this);
         actionBar.addTab(tab);
 
-
-
     }
     public class PagerAdapter extends FragmentPagerAdapter {
 

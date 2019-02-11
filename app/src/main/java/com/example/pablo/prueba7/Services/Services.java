@@ -32,7 +32,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static com.example.pablo.prueba7.Adapters.Arbol_Adapter.clv_unicaNet;
 import static com.example.pablo.prueba7.Adapters.ordenes_adapter_result.clvor;
 import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.clvReport;
+<<<<<<< HEAD
 import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.contratoReport;
+=======
+import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.contbueno;
+import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.contratoReport;
+import static com.example.pablo.prueba7.Request.Request.contbu;
+>>>>>>> MAESTRO
 import static com.example.pablo.prueba7.asignacion.jsonArray;
 import static com.example.pablo.prueba7.asignacion.jsonObject2;
 import static com.example.pablo.prueba7.asignado.idArticuloasignado;
@@ -380,7 +386,7 @@ public class Services {
 //////////////Tecnico Secundario/////F//////////
     public Service getTecSecService() throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("ClvOrdSer", 0);
+        jsonObject.put("ClvOrdSer", clvor);
         MediaType JSON = MediaType.parse("application/json; charse=utf-8");
         final RequestBody body = RequestBody.create(JSON, jsonObject.toString());
         final OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
@@ -869,11 +875,10 @@ public class Services {
         return retrofit.create(Service.class);
     }
 
-
     ///////////////////////Servicios Asignados//////////////
     public Service getAsignadosService() throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Contrato", 5065);
+        jsonObject.put("Contrato", contbu);
         MediaType JSON = MediaType.parse("application/json; charse=utf-8");
         final RequestBody body = RequestBody.create(JSON, jsonObject.toString());
         final OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {

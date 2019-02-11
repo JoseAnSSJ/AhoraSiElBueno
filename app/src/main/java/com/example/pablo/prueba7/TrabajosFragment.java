@@ -31,13 +31,13 @@ public class TrabajosFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_trabajos2, container, false);
-        request.getServiciosAsignados(getContext());
+
         request.getnombretec(getContext());
         request.getSolucuion(getContext());
        request.getPrior(getContext());
        request.getClasific(getContext());
         request.getReportesC();
-        request.getReportes(getContext());
+        request.getReportes();
 
 
         solucion = view.findViewById(R.id.tiposol);

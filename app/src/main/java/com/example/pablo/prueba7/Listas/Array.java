@@ -80,7 +80,11 @@ public class Array {
     public static ArrayList<List<GetuspConsultaTblClasificacionProblemasListResult>>dataClasf;
     public static ArrayList<List<GetConTecnicoAgendaResult>>dataNom;
     public static ArrayList<List<GetDameSerDelCliFacListResult>>dataServ;
+<<<<<<< HEAD
     public static ArrayList<Long> Asigna= new ArrayList<>();
+=======
+    public static ArrayList <Long>Asigna=new ArrayList<>();
+>>>>>>> MAESTRO
 
 
 }
