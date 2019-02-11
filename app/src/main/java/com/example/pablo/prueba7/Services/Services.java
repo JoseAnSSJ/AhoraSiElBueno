@@ -32,7 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static com.example.pablo.prueba7.Adapters.Arbol_Adapter.clv_unicaNet;
 import static com.example.pablo.prueba7.Adapters.ordenes_adapter_result.clvor;
 import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.clvReport;
-import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.contbueno;
+//import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.contbueno;
 import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.contratoReport;
 import static com.example.pablo.prueba7.Request.Request.contbu;
 import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.contratoReport;

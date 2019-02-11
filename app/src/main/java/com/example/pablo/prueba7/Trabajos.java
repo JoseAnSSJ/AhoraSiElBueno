@@ -84,11 +84,13 @@ public class Trabajos extends Fragment{
                 public void onClick(View v) {
                     if ((trabajo.getText().toString().trim()).equalsIgnoreCase("ISTVA - Instalación de Servicio de TV")) {
                         Intent intento25 = new Intent(getActivity(), asignacion.class);
+                        request.getArbSer();
                         startActivity(intento25);
                     }
 
                     if ((trabajo.getText().toString().trim()).equalsIgnoreCase("ISNET - Instalación de Servicio de Internet")) {
                         Intent intento = new Intent(getContext(), asignacion.class);
+                        request.getArbSer();
                         startActivity(intento);
                     }
                     if ((trabajo.getText().toString().trim()).equalsIgnoreCase("CAPAG - Cambio de tipo de aparato  FTTH")) {
@@ -108,6 +110,7 @@ public class Trabajos extends Fragment{
                     }
                     if ((trabajo.getText().toString().trim()).equalsIgnoreCase("CONEX - Contratación De Extensión")) {
                         Intent intento = new Intent(getActivity(), asignacion.class);
+                        request.getArbSer();
                         accion.setEnabled(false);
                         accion.setText("---");
                         startActivity(intento);
