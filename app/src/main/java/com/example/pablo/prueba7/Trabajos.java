@@ -84,6 +84,7 @@ public class Trabajos extends Fragment{
                 @Override
                 public void onClick(View v) {
                     if ((trabajo.getText().toString().trim()).equalsIgnoreCase("ISTVA - Instalación de Servicio de TV")) {
+                        request.getArbSer();
                         Intent intento25 = new Intent(getActivity(), asignacion.class);
                         startActivity(intento25);
                     }
