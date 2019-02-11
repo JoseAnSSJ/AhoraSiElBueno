@@ -33,7 +33,11 @@ public class Ejecutar1Fragment extends Fragment {
         eject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
                 eject.setEnabled(false);
+                
 
             }
         });

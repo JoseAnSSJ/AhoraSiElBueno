@@ -32,6 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static com.example.pablo.prueba7.Adapters.Arbol_Adapter.clv_unicaNet;
 import static com.example.pablo.prueba7.Adapters.ordenes_adapter_result.clvor;
 import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.clvReport;
+import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.contratoReport;
 import static com.example.pablo.prueba7.asignacion.jsonArray;
 import static com.example.pablo.prueba7.asignacion.jsonObject2;
 import static com.example.pablo.prueba7.asignado.idArticuloasignado;
@@ -712,7 +713,7 @@ public class Services {
 
     public Service getMediosReportes() throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("ContratoCom", "1018-20");
+        jsonObject.put("ContratoCom", contratoReport);
         jsonObject.put("IdUsuario", 1);
         jsonObject.put("TipoSer", 1);
         jsonObject.put("Op", 0);
