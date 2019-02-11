@@ -169,25 +169,28 @@ eliminarAparato.setOnClickListener(new View.OnClickListener() {
         Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
         List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = (List<GetMuestraArbolServiciosAparatosPorinstalarListResult>) itData.next();
 
+        while(Arbol_Adapter.DeletChildren.isEmpty()==false) {
+            for (c = 0; c < dat.size(); c++) {
+                f = String.valueOf(c);
+                e = 0;
+                if (dat.get(c).children != null) {
+                    for (int d = 0; d < dat.get(c).children.size(); d++) {
+                        String abc = dat.get(c).children.get(d).getClv_Aparato() + f;
+                        try {
 
-        for( c=0; c<dat.size(); c++) {
-            f= String.valueOf(c);
-            e=0;
-            if(dat.get(c).children!=null) {
-                for (int d = 0; d < dat.get(c).children.size(); d++) {
-                    String abc = dat.get(c).children.get(d).getClv_Aparato() + f;
-                    try {
-                        if (Integer.parseInt(abc) == (Arbol_Adapter.DeletChildren.get(e))) {
-                            dat.get(c).children.remove(d);
-                            Arbol_Adapter.DeletChildren.remove(e);
-                            e = e + 1;
+
+                            if (Integer.parseInt(abc) == (Arbol_Adapter.DeletChildren.get(0))) {
+                                dat.get(c).children.remove(d);
+                                Arbol_Adapter.DeletChildren.remove(0);
+                                //  e = e + 1;
+                            }
+                        } catch (Exception x) {
+
                         }
-                    }catch (Exception x){
-
                     }
                 }
-            }
 
+            }
         }
         ////////////
         for( c=0; c<dat.size(); c++) {
@@ -201,6 +204,7 @@ eliminarAparato.setOnClickListener(new View.OnClickListener() {
                             dat.get(c).setIdMedio(0);
                             Arbol_Adapter.DeletChildren.remove(c);
                             e = e + 1;
+
                         }
                     }catch (Exception x){
 
@@ -213,7 +217,7 @@ eliminarAparato.setOnClickListener(new View.OnClickListener() {
         adapter = new Arbol_Adapter(getApplicationContext());
         Asignacion.setAdapter(adapter);
         Asignacion.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
-
+        siguiente.setEnabled(false);
     }
 });
 

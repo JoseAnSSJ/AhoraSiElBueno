@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -41,7 +42,9 @@ public class Arbol_Adapter extends BaseAdapter {
     Request request = new Request();
     LayoutInflater inflater;
     Context mcontext;
-    public static int clv_unicaNet, clv_Medio, posi, d,ce;
+    public static int clv_unicaNet, clv_Medio, posi, d;
+    int b=0;
+    public static int c=0;
     public static String dato;
     Array array = new Array();
     public static int a=0, ciclo;
@@ -58,7 +61,7 @@ public class Arbol_Adapter extends BaseAdapter {
         public static TextView nombre, servicio;
         public static Button medio;
         ListView listaAparatos;
-        RadioButton checkBox;
+        CheckBox checkBox;
 
 
     }
@@ -102,7 +105,7 @@ public class Arbol_Adapter extends BaseAdapter {
         ///////////////
 
         ///////////////
-
+        a=0;
         if(dat.get(position).getIdMedio()==0){
             holder.nombre.setText(array.nombreArbol.get(position));
             holder.checkBox.setVisibility(View.GONE);
@@ -111,53 +114,78 @@ public class Arbol_Adapter extends BaseAdapter {
             holder.nombre.setText(dat.get(position).getNombre()+" ("+dat.get(position).getDetalle()+")");
             holder.medio.setVisibility(View.INVISIBLE);
             holder.checkBox.setVisibility(View.VISIBLE);
-            a=a+1;
+
         }if(dat.get(position).children.size()==0){
 
         }else{
+
             holder.listaAparatos.setVisibility(View.VISIBLE);
             array.children = new ArrayList<>();
             holder.checkBox.setVisibility(View.GONE);
             Arbol_Adapter.DeletChildren.clear();
+
             for(d = 0; d<dat.get(position).children.size(); d++){
+                c=0;
                 String hijo="";
                 hijo = dat.get(position).children.get(d).Nombre + dat.get(position).children.get(d).getDetalle();
                 array.children.add(hijo);
                 ArrayAdapter arrayAdapter1 = new ArrayAdapter(mcontext, android.R.layout.simple_list_item_checked,array.children);
                 holder.listaAparatos.setAdapter(arrayAdapter1);
 
-                holder.listaAparatos.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+                holder.listaAparatos.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
                 holder.listaAparatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position3, long id) {
                         int e= Math.toIntExact(id);
-
-                            DeletChildren.clear();
+                        if(holder.listaAparatos.isItemChecked(position3)==true){
+                            Arbol_Adapter.DeletMedio.clear();
+                           // DeletChildren.clear();
                             String abc= String.valueOf(position);
                             DeletChildren.add(Integer.valueOf(dat.get(position).children.get(position3).getClv_Aparato()+abc));
+                        }
+                        if(holder.listaAparatos.isItemChecked(position3)==false){
+                            DeletChildren.clear();
+                           }
 
                         Log.d("asdasd", String.valueOf(DeletChildren));
 
 
                     }
                 });
+                holder.listaAparatos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
             }
         }
 
-        if(a>=dat.size()){
-            asignacion.siguiente.setEnabled(true);
-        }else{
-            asignacion.siguiente.setEnabled(false);
-        }
+int d=0;
+     for(int c=0; c<dat.size(); c++){
+            if(dat.get(c).Detalle!=""){
+                d=d+1;
+            }
+            if(d==dat.size()){
+                asignacion.siguiente.setEnabled(true);
+            }else{
+                asignacion.siguiente.setEnabled(false);
+            }
+     }
 
         ////////////////////
         asignacion.eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                holder.medio.setVisibility(View.VISIBLE);
-                clv_Medio = 0;
-                clv_unicaNet = 0;
+             //   holder.medio.setVisibility(View.VISIBLE);
+             //   clv_Medio = 0;
+             //   clv_unicaNet = 0;
 
             }
         });
@@ -246,31 +274,17 @@ public class Arbol_Adapter extends BaseAdapter {
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                ce=0;
-            /*   if(holder.checkBox.isChecked()==true){
-                   holder.checkBox.setChecked(true);
-                    Arbol_Adapter.DeletMedio.clear();
-                    DeletMedio.add(dat.get(position).IdMedio+dat.get(position).Detalle);
-                }else {
-                   holder.checkBox.setChecked(false);
-               }*/
-            if(ce==0) {
-                for (int b = 0; b < 1; b++) {
-                    if (holder.checkBox.isChecked()) {
-                        holder.checkBox.setSelected(true);
-                        Arbol_Adapter.DeletMedio.clear();
-                        DeletMedio.add(dat.get(position).IdMedio + dat.get(position).Detalle);
-                        ce = 1;
-                    }
-                }
-            }else {
-                holder.checkBox.setSelected(false);
-                Arbol_Adapter.DeletMedio.clear();
-            }
+               if(holder.checkBox.isChecked()==true){
+                      Arbol_Adapter.DeletMedio.clear();
+                       DeletMedio.add(dat.get(position).IdMedio+dat.get(position).Detalle);
+                }if(holder.checkBox.isChecked()==false){
+                  Arbol_Adapter.DeletMedio.clear();
+
+               }
+
             }
         });
 
         return convertView;
     }
-
 }
