@@ -1442,7 +1442,7 @@ public class Request extends AppCompatActivity {
                     for (int i = 0; i < dat.size(); ++i) {
                         Log.d("response100", dat.get(i).getNombre());
                         Log.d("response101", dat.get(i).getApellidoPaterno());
-                        Log.d("response102", String.valueOf(dat.get(i).getContratoBueno()));
+                        Log.d("response102", (String.valueOf(dat.get(i).getContratoBueno())));
                         Log.d("response103",dat.get(i).getCONTRATO());
 
 
@@ -1450,10 +1450,15 @@ public class Request extends AppCompatActivity {
                         MainReportes.Nombre1.setText(dat.get(i).getNombre()+ "  " + dat.get(i).getApellidoPaterno()+"  " + dat.get(i).getApellidoMaterno());
                         MainReportes.Direccion1.setText(dat.get(i).getCALLE()+ "  "+ dat.get(i).getNUMERO()+ "  " +dat.get(i).getCOLONIA());
                         MainReportes.contrato1.setText(dat.get(i).getCONTRATO());
-
                         MainReportes.ciudad1.setText(dat.get(i).getCIUDAD());
 
-                        Array.Asigna.add(String.valueOf(dat.get(i).getContratoBueno()));
+
+                        Array.Asigna.add(Long.valueOf(String.valueOf(dat.get(i).getContratoBueno())));
+
+
+
+
+
 
 
                     }
