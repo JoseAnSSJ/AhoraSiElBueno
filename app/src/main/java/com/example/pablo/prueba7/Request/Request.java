@@ -93,9 +93,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+<<<<<<< HEAD
 import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.contratoB;
 import static com.example.pablo.prueba7.Trabajos.adaptertrabajos;
 import static com.example.pablo.prueba7.Trabajos.trabajos;
+=======
+>>>>>>> Josue
 import static java.util.Arrays.asList;
 
 public class Request extends AppCompatActivity {
@@ -104,7 +107,11 @@ public class Request extends AppCompatActivity {
     CambioDom c = new CambioDom();
     public static String clave_tecnico;
     public static String nombre_tecnico;
+<<<<<<< HEAD
     public static Long contbu;
+=======
+    public static Long abc;
+>>>>>>> Josue
     String a="Seleccione tecnico secundario";
     Arbol_Adapter adapter;
 
@@ -1452,8 +1459,9 @@ public class Request extends AppCompatActivity {
                         MainReportes.contrato1.setText(dat.get(i).getCONTRATO());
                         MainReportes.ciudad1.setText(dat.get(i).getCIUDAD());
 
-                        contratoB= Integer.valueOf(String.valueOf(dat.get(i).getContratoBueno()));
 
+                        abc=dat.get(i).contratoBueno;
+                        getServiciosAsignados();
                     }
 
 

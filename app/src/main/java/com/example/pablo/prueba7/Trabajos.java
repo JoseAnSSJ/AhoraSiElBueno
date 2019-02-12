@@ -86,6 +86,7 @@ public class Trabajos extends Fragment{
                 @Override
                 public void onClick(View v) {
                     if ((trabajo.getText().toString().trim()).equalsIgnoreCase("ISTVA - Instalación de Servicio de TV")) {
+                        request.getArbSer();
                         Intent intento25 = new Intent(getActivity(), asignacion.class);
                         request.getArbSer();
                         startActivity(intento25);
@@ -101,7 +102,6 @@ public class Trabajos extends Fragment{
                         startActivity(intento);
                     }
                     if ((trabajo.getText().toString().trim()).equalsIgnoreCase("CAMDO - Cambio De Domicilio")) {
-
                         Intent intento = new Intent(getActivity(), CambioDom.class);
                         request.getCAMDO();
                         startActivity(intento);
