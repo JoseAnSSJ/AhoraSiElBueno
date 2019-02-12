@@ -873,7 +873,7 @@ public class Services {
     ///////////////////////Servicios Asignados//////////////
     public Service getAsignadosService() throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Contrato", 5065);
+        jsonObject.put("Contrato", com.example.pablo.prueba7.Request.Request.abc);
         MediaType JSON = MediaType.parse("application/json; charse=utf-8");
         final RequestBody body = RequestBody.create(JSON, jsonObject.toString());
         final OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {

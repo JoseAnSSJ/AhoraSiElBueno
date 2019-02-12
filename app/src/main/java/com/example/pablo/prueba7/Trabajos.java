@@ -98,7 +98,6 @@ public class Trabajos extends Fragment{
                         startActivity(intento);
                     }
                     if ((trabajo.getText().toString().trim()).equalsIgnoreCase("CAMDO - Cambio De Domicilio")) {
-
                         Intent intento = new Intent(getActivity(), CambioDom.class);
                         request.getCAMDO();
                         startActivity(intento);
