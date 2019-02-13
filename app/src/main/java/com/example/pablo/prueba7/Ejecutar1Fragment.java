@@ -36,6 +36,8 @@ public class Ejecutar1Fragment extends Fragment {
 
 
 
+
+
                 eject.setEnabled(false);
                 
 

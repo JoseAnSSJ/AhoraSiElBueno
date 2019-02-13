@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.R;
-import com.example.pablo.prueba7.Trabajos;
 
 import java.util.ArrayList;
 
@@ -56,8 +55,8 @@ public class trabajos_adapter_result extends BaseAdapter {
 
             convertView=inflatertrab.inflate(R.layout.list_trabajos_items,null);
 
-            holder.trabajo=(TextView)convertView.findViewById(R.id.trabajov);
-            holder.accion=(Button)convertView.findViewById(R.id.accionv);
+            holder.trabajo= convertView.findViewById(R.id.trabajov);
+            holder.accion=  convertView.findViewById(R.id.accionv);
 
             convertView.setTag(holder);
 
