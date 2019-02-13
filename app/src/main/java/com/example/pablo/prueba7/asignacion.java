@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
+import static com.example.pablo.prueba7.Adapters.ordenes_adapter_result.clvor;
 import com.example.pablo.prueba7.Adapters.Arbol_Adapter;
 import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
@@ -90,6 +91,7 @@ String f;
                 Log.d("numero", String.valueOf(Arbol_Adapter.a));
                 Intent intento=new Intent(asignacion.this,asignado.class);
                 startActivity(intento);
+
             }
         });
         Asignacion.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -102,7 +104,7 @@ aceptarAsignacion.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         for(int a=0; a<Array.dataArbSer.get(0).size(); a++){
-            Array.dataArbSer.get(0).get(a).setClv_orden(121222);
+            Array.dataArbSer.get(0).get(a).setClv_orden(clvor);
         }
         Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
             List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = (List<GetMuestraArbolServiciosAparatosPorinstalarListResult>) itData.next();
@@ -154,8 +156,9 @@ aceptarAsignacion.setOnClickListener(new View.OnClickListener() {
         adapter = new Arbol_Adapter(getApplicationContext());
         Asignacion.setAdapter(adapter);
         Asignacion.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
-             Intent intento=new Intent(asignacion.this,MainActivity.class);
-        startActivity(intento);
+            finish();
+        //       Intent intento=new Intent(asignacion.this,MainActivity.class);
+      // startActivity(intento);
 
     }
 });

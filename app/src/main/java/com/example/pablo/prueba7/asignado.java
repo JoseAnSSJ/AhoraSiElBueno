@@ -170,9 +170,9 @@ public class asignado extends AppCompatActivity {
                 ////////////
 
                 asignacion.aceptarAsignacion.setVisibility(View.VISIBLE);
-
-                Intent intento=new Intent(asignado.this,asignacion.class);
-                startActivity(intento);
+            finish();
+            //    Intent intento=new Intent(asignado.this,asignacion.class);
+            //    startActivity(intento);
 
             }
         });
