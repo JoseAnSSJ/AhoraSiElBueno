@@ -25,7 +25,6 @@ public class Constants {
     public static final String URL_GET_SERVICIOS_APARATOS = "MuestraServiciosRelTipoAparato/GetMuestraServiciosRelTipoAparatoList";
     public static final String URL_ACEPTAR_ASIG = "AsignaAparatosAlServicio/GetAsignaAparatosAlServicioList";
     public static final String URL_GET_QUEJAS_AGENDADAS = "AplicacionMovil/GetDameListadoQuejasAgendadas";
-
     //////////////////////////////////////////////////////////////Reportes////////////////////////////////////////////////////////////////
     public static final String URL_GET_CLIT_REPOR ="uspBuscaContratoSeparado2/GetuspBuscaContratoSeparado2List";
     public static final String URL_GET_SOL="MUESTRATRABAJOSQUEJAS/GetMUESTRATRABAJOSQUEJASList";

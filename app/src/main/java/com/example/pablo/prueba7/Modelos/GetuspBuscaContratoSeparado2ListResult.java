@@ -36,10 +36,10 @@ public class GetuspBuscaContratoSeparado2ListResult {
     private Object clvColonia;
     @SerializedName("ContratoBueno")
     @Expose
-    private Long contratoBueno;
+    public Long contratoBueno;
     @SerializedName("ContratoCom")
     @Expose
-    private Object contratoCom;
+    public Object contratoCom;
     @SerializedName("ESHOTEL")
     @Expose
     private Boolean eSHOTEL;

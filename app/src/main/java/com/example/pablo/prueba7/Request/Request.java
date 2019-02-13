@@ -99,6 +99,7 @@ public class Request extends AppCompatActivity {
     public static String clave_tecnico;
     public static String nombre_tecnico;
     public static Long contbu;
+    public static Long abc;
     String a="Seleccione tecnico secundario";
     Arbol_Adapter adapter;
 
@@ -1448,8 +1449,8 @@ public class Request extends AppCompatActivity {
                         MainReportes.contrato1.setText(dat.get(i).getCONTRATO());
                         MainReportes.ciudad1.setText(dat.get(i).getCIUDAD());
 
-
-                      //  contratoB= Integer.valueOf(String.valueOf(dat.get(i).getContratoBueno()));
+                       abc=dat.get(i).contratoBueno;
+                       getServiciosAsignados();
 
 
                     }

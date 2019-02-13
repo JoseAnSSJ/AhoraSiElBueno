@@ -34,8 +34,8 @@ public class TrabajosFragment extends Fragment {
 
         request.getnombretec(getContext());
         request.getSolucuion(getContext());
-       request.getPrior(getContext());
-       request.getClasific(getContext());
+        request.getPrior(getContext());
+        request.getClasific(getContext());
         request.getReportesC();
         request.getReportes();
 
