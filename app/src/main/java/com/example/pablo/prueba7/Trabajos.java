@@ -36,13 +36,13 @@ public class Trabajos extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle onSaveInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trabajos, container, false);
 
-       trabajos=view.findViewById(R.id.listTrabajos);
+        trabajos=view.findViewById(R.id.listTrabajos);
 
 
         ////////////////////////////////////////
         //trabajos.setAdapter(null);
-       // TrabajosAdapter trabadapt=new TrabajosAdapter();
-       // trabajos.setAdapter(trabadapt);    //Asignacion del adapatador a la listView
+        // TrabajosAdapter trabadapt=new TrabajosAdapter();
+        // trabajos.setAdapter(trabadapt);    //Asignacion del adapatador a la listView
 
         adaptertrabajos =new trabajos_adapter_result(getActivity().getApplicationContext(),Array.trabajox,Array.accionx);
         //trabajos.setAdapter(adaptertrabajos);    //Asignacion del adapatador a la listView
@@ -52,86 +52,7 @@ public class Trabajos extends Fragment{
         return view;
     }
     ///////////////////Adaptador Trabajos//////////////////////////
-    public class TrabajosAdapter extends BaseAdapter{
 
-        @Override
-        public int getCount() {
-
-            return Array.trabajox.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return position;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            convertView = getLayoutInflater().inflate(R.layout.list_trabajos_items,null);
-             trabajo=(TextView)convertView.findViewById(R.id.trabajov);
-            accion=(Button)convertView.findViewById(R.id.accionv);
-
-
-            trabajo.setText(Array.trabajox.get(position));
-            accion.setText(Array.accionx.get(position));
-
-            accion.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    if ((trabajo.getText().toString().trim()).equalsIgnoreCase("ISTVA - Instalación de Servicio de TV")) {
-                        request.getArbSer();
-                        Intent intento25 = new Intent(getActivity(), asignacion.class);
-                        request.getArbSer();
-                        startActivity(intento25);
-                    }
-
-                    if ((trabajo.getText().toString().trim()).equalsIgnoreCase("ISNET - Instalación de Servicio de Internet")) {
-                        Intent intento = new Intent(getContext(), asignacion.class);
-                        request.getArbSer();
-                        startActivity(intento);
-                    }
-                    if ((trabajo.getText().toString().trim()).equalsIgnoreCase("CAPAG - Cambio de tipo de aparato  FTTH")) {
-                        Intent intento = new Intent(getActivity(), CambioAparato.class);
-                        startActivity(intento);
-                    }
-                    if ((trabajo.getText().toString().trim()).equalsIgnoreCase("CAMDO - Cambio De Domicilio")) {
-                        Intent intento = new Intent(getActivity(), CambioDom.class);
-                        request.getCAMDO();
-                        startActivity(intento);
-                    }
-                    if ((trabajo.getText().toString().trim()).equalsIgnoreCase("CAPAT - Cambio De Tipo De Aparato")) {
-                        Intent intento = new Intent(getActivity(), CambioAparato.class);
-                        startActivity(intento);
-
-                    }
-                    if ((trabajo.getText().toString().trim()).equalsIgnoreCase("CONEX - Contratación De Extensión")) {
-                        Intent intento = new Intent(getActivity(), asignacion.class);
-                        request.getArbSer();
-                        accion.setEnabled(false);
-                        accion.setText("---");
-                        startActivity(intento);
-
-                    }
-
-
-                    if ((accion.getText().toString().trim().equalsIgnoreCase("null"))){
-                        accion.setEnabled(false);
-                        accion.setText("---");
-                    }
-
-                }
-            });
-
-            return convertView;
-        }
-    }
 }
-    ///////////////////////////////////////////////
+///////////////////////////////////////////////
 

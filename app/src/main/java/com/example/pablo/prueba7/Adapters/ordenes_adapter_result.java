@@ -24,7 +24,7 @@ import static com.example.pablo.prueba7.Trabajos.trabajos;
 
 public class ordenes_adapter_result extends BaseAdapter {
 
-    public static Integer clvor;
+    public static Integer clvor, contratoReq;
     LayoutInflater inflater;
     Context mContext;
     ArrayList<String> ordensrc;

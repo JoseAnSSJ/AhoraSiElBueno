@@ -74,6 +74,7 @@ import com.example.pablo.prueba7.Modelos.OrdSer;
 import com.example.pablo.prueba7.Modelos.ProximaCitaModel;
 import com.example.pablo.prueba7.Modelos.Queja;
 import com.example.pablo.prueba7.Modelos.UserModel;
+import com.example.pablo.prueba7.R;
 import com.example.pablo.prueba7.Services.Services;
 import com.example.pablo.prueba7.Trabajos;
 import com.example.pablo.prueba7.TrabajosFragment;
@@ -81,6 +82,7 @@ import com.example.pablo.prueba7.asignacion;
 import com.example.pablo.prueba7.asignado;
 import com.example.pablo.prueba7.sampledata.Service;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 
 import org.json.JSONException;
 
@@ -93,12 +95,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-<<<<<<< HEAD
 import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.contratoB;
+import static com.example.pablo.prueba7.ExtensionesAdi.txtExtencion;
 import static com.example.pablo.prueba7.Trabajos.adaptertrabajos;
 import static com.example.pablo.prueba7.Trabajos.trabajos;
-=======
->>>>>>> Josue
 import static java.util.Arrays.asList;
 
 public class Request extends AppCompatActivity {
@@ -107,11 +107,8 @@ public class Request extends AppCompatActivity {
     CambioDom c = new CambioDom();
     public static String clave_tecnico;
     public static String nombre_tecnico;
-<<<<<<< HEAD
     public static Long contbu;
-=======
     public static Long abc;
->>>>>>> Josue
     String a="Seleccione tecnico secundario";
     Arbol_Adapter adapter;
 
@@ -266,53 +263,60 @@ public class Request extends AppCompatActivity {
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
                 Example jsonResponse = response.body();
-                array.dataord = new ArrayList<List<OrdSer>>(asList(jsonResponse.getDameOrdenesQuejasTotalesResult.getOrdSer()));
-                Iterator<List<OrdSer>> itData = array.dataord.iterator();
-                while (itData.hasNext()) {
-                    List<OrdSer> dat = (List<OrdSer>) itData.next();
-                    for (int i = 0; i < dat.size(); i++) {
-                        Log.d("response9", dat.get(i).getStatus());
-                        Log.d("response10", String.valueOf(dat.get(i).getTotal()));
-                        if(dat.get(i).getStatus().equals("Ejecutada")){
-                            try{
-                                Inicio.OE = dat.get(i).getTotal();
+                try {
+                    array.dataord = new ArrayList<List<OrdSer>>(asList(jsonResponse.getDameOrdenesQuejasTotalesResult.getOrdSer()));
+                    Iterator<List<OrdSer>> itData = array.dataord.iterator();
+                    while (itData.hasNext()) {
+                        List<OrdSer> dat = (List<OrdSer>) itData.next();
+                        for (int i = 0; i < dat.size(); i++) {
+                            Log.d("response9", dat.get(i).getStatus());
+                            Log.d("response10", String.valueOf(dat.get(i).getTotal()));
+                            if (dat.get(i).getStatus().equals("Ejecutada")) {
+                                try {
+                                    Inicio.OE = dat.get(i).getTotal();
 
-                            }catch (Exception e){
-                                Inicio.OE = 0;
+                                } catch (Exception e) {
+                                    Inicio.OE = 0;
+                                }
                             }
-                        }
-                        if(dat.get(i).getStatus().equals("Pendiente")){
-                            try{
-                                Inicio.OP = dat.get(i).getTotal();
-                            }catch (Exception e){
-                                Inicio.OP = 0;
+                            if (dat.get(i).getStatus().equals("Pendiente")) {
+                                try {
+                                    Inicio.OP = dat.get(i).getTotal();
+                                } catch (Exception e) {
+                                    Inicio.OP = 0;
+                                }
                             }
-                        }
-                        if(dat.get(i).getStatus().equals("Visita")){
-                            try{
-                                Inicio.OV = dat.get(i).getTotal();
-                            }catch (Exception e){
-                                Inicio.OV = 0;
-                            }
+                            if (dat.get(i).getStatus().equals("Visita")) {
+                                try {
+                                    Inicio.OV = dat.get(i).getTotal();
+                                } catch (Exception e) {
+                                    Inicio.OV = 0;
+                                }
 
-                        }
-                        if(dat.get(i).getStatus().equals("En Proceso")){
-                            try{
-                                Inicio.OEP = dat.get(i).getTotal();
-                            }catch (Exception e){
-                                Inicio.OEP = 0;
                             }
-                    }
-                        if(dat.get(i).getStatus().equals("otro")){
-                            try{
-                                Inicio.OO = dat.get(i).getTotal();
-                            }catch (Exception e){
-                                Inicio.OO = 0;
+                            if (dat.get(i).getStatus().equals("En Proceso")) {
+                                try {
+                                    Inicio.OEP = dat.get(i).getTotal();
+                                } catch (Exception e) {
+                                    Inicio.OEP = 0;
+                                }
+                            }
+                            if (dat.get(i).getStatus().equals("otro")) {
+                                try {
+                                    Inicio.OO = dat.get(i).getTotal();
+                                } catch (Exception e) {
+                                    Inicio.OO = 0;
+                                }
                             }
                         }
                     }
+                }catch (Exception e){
+                    Inicio.OE = 0;
+                    Inicio.OP = 0;
+                    Inicio.OV = 0;
+                    Inicio.OEP = 0;
+                    Inicio.OO = 0;
                 }
-
             }
 
             @Override
@@ -449,6 +453,11 @@ public class Request extends AppCompatActivity {
         });
     }
     /////////////////Lista de Ordenes/////////////////////////////
+    /*
+
+    No tiene nada LisOrd
+
+     */
     public void getListOrd()  {
 
         Service service = null;
@@ -521,9 +530,17 @@ public class Request extends AppCompatActivity {
                         userJson.get("Clv_TipSer").getAsInt()
 
                 );
+try{
+    MainActivity.Contrato.setText(String.valueOf(DeepConsModel.getContatoCom()));
+}catch (Exception e){
 
-                MainActivity.Contrato.setText(String.valueOf(DeepConsModel.getContatoCom()));
-                //InstalacionFragment.Obs.setText(String.valueOf(DeepConsModel.Obs));
+}
+                try {
+                    InstalacionFragment.Obs.setText(String.valueOf(DeepConsModel.Obs));
+                }catch (Exception e){
+
+                }
+
 
 
                 if (DeepConsModel.STATUS.equals("E")) {
@@ -638,6 +655,7 @@ public class Request extends AppCompatActivity {
 
                         Array.trabajox.add(String.valueOf(dat.get(i).getDescripcion()));
                         Array.accionx.add(String.valueOf(dat.get(i).getAccion()));
+                        Array.clavex.add(dat.get(i).getClave());
                     }
                 }
 
@@ -705,8 +723,33 @@ public class Request extends AppCompatActivity {
             }
         });
     }
+///////////////////////Extenciones Adicionales/////////////////
+    public void getExtencionesAdicionales() {
+
+        Service service = null;
+        try {
+            service = services.getExtencionAdiService();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Call<JsonObject> call = service.getDataExtencionAdi();
+        call.enqueue(new Callback<JsonObject>() {
 
 
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response1) {
+
+                String string = String.valueOf(response1.body().getAsJsonPrimitive("GetCONCONEXResult"));
+                txtExtencion.setText(string);
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+
+            }
+        });
+    }
 ////ClientesAparato////
 
     public void getCliApa(final Context context) {

@@ -26,6 +26,7 @@ import com.example.pablo.prueba7.Listas.JSONTecSec;
 import com.example.pablo.prueba7.Listas.JSONTipoAparatos;
 import com.example.pablo.prueba7.Listas.QuejasList;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -39,10 +40,11 @@ public interface Service {
     @POST(Constants.URL_GET_PROX)
     Call<JsonObject> getDataProx();
     @POST(Constants.URL_GET_ORDQUE)
-
     Call<Example> getDataOrdenes();
-    @POST(Constants.URL_GET_LIST_ORD)
+    @POST(Constants.URL_GET_CONCON)
+    Call<JsonObject> getDataExtencionAdi();
 
+    @POST(Constants.URL_GET_LIST_ORD)
     Call<Example1> getDataListOrd();
     @POST(Constants.URL_GET_DEEP_CONS)
     Call<JsonObject> getDataDeepCons();

@@ -58,6 +58,10 @@
             android:theme="@style/AppTheme.NoActionBar"
 
             ></activity>
+        <activity android:name=".ExtensionesAdi"
+            android:theme="@style/AppTheme.NoActionBar"
+
+            ></activity>
         <activity android:name=".MainReportes"
             android:configChanges="screenSize|orientation"
             ></activity>
