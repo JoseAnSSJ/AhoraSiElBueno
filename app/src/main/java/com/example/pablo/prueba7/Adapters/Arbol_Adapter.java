@@ -3,23 +3,32 @@ package com.example.pablo.prueba7.Adapters;
 import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraMedioPorServicoContratadoListResult;
+import com.example.pablo.prueba7.Modelos.children;
 import com.example.pablo.prueba7.R;
 import com.example.pablo.prueba7.Request.Request;
 import com.example.pablo.prueba7.asignacion;
 
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -33,13 +42,15 @@ public class Arbol_Adapter extends BaseAdapter {
     Request request = new Request();
     LayoutInflater inflater;
     Context mcontext;
-    public static int clv_unicaNet, clv_Medio, posi;
+    public static int clv_unicaNet, clv_Medio, posi, d;
+    int b=0;
+    public static int c=0;
     public static String dato;
     Array array = new Array();
     public static int a=0, ciclo;
+    public static ArrayList<Integer> DeletChildren = new ArrayList<Integer>();
+    public static ArrayList<String> DeletMedio = new ArrayList<String>();
 
-    Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
-    List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = itData.next();
 
     public Arbol_Adapter (Context context){
         mcontext=context;
@@ -49,6 +60,8 @@ public class Arbol_Adapter extends BaseAdapter {
     public static class viewHolder{
         public static TextView nombre, servicio;
         public static Button medio;
+        ListView listaAparatos;
+        CheckBox checkBox;
 
 
     }
@@ -75,54 +88,105 @@ public class Arbol_Adapter extends BaseAdapter {
 
 
 
-            holder = new viewHolder();
+        holder = new viewHolder();
+        Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
+        final List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = itData.next();
+        final children dataChild= new children();
+        convertView=inflater.inflate(R.layout.activity_aparato_asignado_medio_list,null);
+        holder.listaAparatos = convertView.findViewById(R.id.ListaAparatos);
+        holder.nombre=convertView.findViewById(R.id.textservicio);
+        holder.medio=convertView.findViewById(R.id.medio);
+        holder.checkBox=convertView.findViewById(R.id.chek);
 
-            convertView=inflater.inflate(R.layout.activity_aparato_asignado_medio_list,null);
 
-            holder.nombre=convertView.findViewById(R.id.textservicio);
-      //  holder.servicio=convertView.findViewById(R.id.textservicioasig);
-            holder.medio=convertView.findViewById(R.id.medio);
-
-
-            convertView.setTag(holder);
+        convertView.setTag(holder);
 
 
         ///////////////
 
         ///////////////
+        a=0;
+        if(dat.get(position).getIdMedio()==0){
+            holder.nombre.setText(array.nombreArbol.get(position));
+            holder.checkBox.setVisibility(View.GONE);
+        }else{
 
-            if(dat.get(position).getIdMedio()==0){
-                holder.nombre.setText(array.nombreArbol.get(position));
-            }else{
+            holder.nombre.setText(dat.get(position).getNombre()+" ("+dat.get(position).getDetalle()+")");
+            holder.medio.setVisibility(View.INVISIBLE);
+            holder.checkBox.setVisibility(View.VISIBLE);
 
-                holder.nombre.setText(dat.get(position).getNombre()+" ("+dat.get(position).getDetalle()+")");
-                holder.medio.setVisibility(View.INVISIBLE);
-                a=a+1;
-            }if(dat.get(position).children.size()==0){
-              //  holder.servicio.setVisibility(View.INVISIBLE);
-           }else{
-            for(ciclo=0; ciclo<1;ciclo++)
-            holder.nombre.setText(holder.nombre.getText()+dat.get(position).children.get(ciclo).getNombre()+"("+dat.get(position).children.get(ciclo).getDetalle()+")");
-            if(ciclo==1){
-                for(int c=1; c<dat.get(position).children.size();c++){
-                    holder.nombre.setText(holder.nombre.getText()+dat.get(position).children.get(c).getNombre()+"("+dat.get(position).children.get(ciclo).getDetalle()+")");
-                }
+        }if(dat.get(position).children.size()==0){
+
+        }else{
+
+            holder.listaAparatos.setVisibility(View.VISIBLE);
+            array.children = new ArrayList<>();
+            holder.checkBox.setVisibility(View.GONE);
+            Arbol_Adapter.DeletChildren.clear();
+
+            for(d = 0; d<dat.get(position).children.size(); d++){
+                c=0;
+                String hijo="";
+                hijo = dat.get(position).children.get(d).Nombre + dat.get(position).children.get(d).getDetalle();
+                array.children.add(hijo);
+                ArrayAdapter arrayAdapter1 = new ArrayAdapter(mcontext, android.R.layout.simple_list_item_checked,array.children);
+                holder.listaAparatos.setAdapter(arrayAdapter1);
+
+                holder.listaAparatos.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
+                holder.listaAparatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position3, long id) {
+                        int e= Math.toIntExact(id);
+                        if(holder.listaAparatos.isItemChecked(position3)==true){
+                            Arbol_Adapter.DeletMedio.clear();
+                           // DeletChildren.clear();
+                            String abc= String.valueOf(position);
+                            DeletChildren.add(Integer.valueOf(dat.get(position).children.get(position3).getClv_Aparato()+abc));
+                        }
+                        if(holder.listaAparatos.isItemChecked(position3)==false){
+                            DeletChildren.clear();
+                           }
+
+                        Log.d("asdasd", String.valueOf(DeletChildren));
+
+
+                    }
+                });
+                holder.listaAparatos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
             }
         }
-            if(a>=dat.size()){
-            asignacion.siguiente.setEnabled(true);
-        }else{
-            asignacion.siguiente.setEnabled(false);
-        }
+
+int d=0;
+     for(int c=0; c<dat.size(); c++){
+            if(dat.get(c).Detalle!=""){
+                d=d+1;
+            }
+            if(d==dat.size()){
+                asignacion.siguiente.setEnabled(true);
+            }else{
+                asignacion.siguiente.setEnabled(false);
+            }
+     }
 
         ////////////////////
         asignacion.eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                holder.medio.setVisibility(View.VISIBLE);
-                clv_Medio = 0;
-                clv_unicaNet = 0;
+             //   holder.medio.setVisibility(View.VISIBLE);
+             //   clv_Medio = 0;
+             //   clv_unicaNet = 0;
+
             }
         });
 
@@ -143,7 +207,7 @@ public class Arbol_Adapter extends BaseAdapter {
                 posi = position;
                 ////
                 layoutMedio.setVisibility(View.VISIBLE);
-                 Asignacion.setVisibility(View.GONE);
+                Asignacion.setVisibility(View.GONE);
                 siguiente.setEnabled(false);
 
 
@@ -157,13 +221,7 @@ public class Arbol_Adapter extends BaseAdapter {
                     Toast.makeText(mcontext, "Debe de llenar el campo 'Medio'", Toast.LENGTH_LONG).show();
                 } else {
 
-                    Iterator<List<GetMuestraMedioPorServicoContratadoListResult>> itData2 = array.dataMedSer.iterator();
-                    List<GetMuestraMedioPorServicoContratadoListResult> dat2 = itData2.next();
-                    try {
-                        clv_Medio = dat2.get(position).getIdMedio();
-                    } catch (Exception e) {
-                        clv_Medio = dat2.get(position - 1).getIdMedio();
-                    }
+
 
 
                     layoutMedio.setVisibility(View.GONE);
@@ -171,8 +229,7 @@ public class Arbol_Adapter extends BaseAdapter {
                     siguiente.setEnabled(true);
                     //////
                     medio.setVisibility(View.GONE);
-                    dat.get(position).setIdMedio(clv_Medio);
-                    dat.get(position).setDetalle(dato);
+
                     a=0;
                     Asignacion.setAdapter(Arbol_Adapter.this);
 
@@ -196,13 +253,35 @@ public class Arbol_Adapter extends BaseAdapter {
                     m[0] = 2;
                     Iterator<List<GetMuestraMedioPorServicoContratadoListResult>> itdata3 = array.dataMedSer.iterator();
                     List<GetMuestraMedioPorServicoContratadoListResult> dat3 = itdata3.next();
+                    Iterator<List<GetMuestraMedioPorServicoContratadoListResult>> itData2 = array.dataMedSer.iterator();
+                    List<GetMuestraMedioPorServicoContratadoListResult> dat2 = itData2.next();
                     dato = dat3.get(position1-1).getDescripcion();
-
+                    try {
+                        clv_Medio = dat2.get(position1).getIdMedio();
+                    } catch (Exception e) {
+                        clv_Medio = dat2.get(position1 - 1).getIdMedio();
+                    }
+                    dat.get(posi).setIdMedio(clv_Medio);
+                    dat.get(posi).setDetalle(dato);
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+               if(holder.checkBox.isChecked()==true){
+                      Arbol_Adapter.DeletMedio.clear();
+                       DeletMedio.add(dat.get(position).IdMedio+dat.get(position).Detalle);
+                }if(holder.checkBox.isChecked()==false){
+                  Arbol_Adapter.DeletMedio.clear();
+
+               }
+
             }
         });
 

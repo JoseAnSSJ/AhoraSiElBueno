@@ -53,10 +53,11 @@
     <Spinner
         android:id="@+id/aparato"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="28dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="150dp"
         android:autofillHints="asd"
+        android:background="@drawable/spinners"
 
         />
     <TextView
@@ -71,9 +72,10 @@
     <Spinner
         android:id="@+id/estadoaparato"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="28dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="220dp"
+        android:background="@drawable/spinners"
         />
 
 </RelativeLayout>
@@ -82,6 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/ads"
         android:layout_marginTop="300dp"
+
         >
         <TextView
             android:layout_width="wrap_content"
@@ -107,9 +110,10 @@
         <Spinner
             android:id="@+id/tipo_aparato1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="28dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="110dp"
+            android:background="@drawable/spinners"
             />
         </RelativeLayout>
         <RelativeLayout
@@ -129,9 +133,10 @@
         <Spinner
             android:id="@+id/aparatoAsignar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="28dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="70dp"
+            android:background="@drawable/spinners"
             />
         </RelativeLayout>
         <Button

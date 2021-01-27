@@ -9,7 +9,7 @@ public class ListadoQuejasAgendadas {
 
     @SerializedName("Clv_Queja")
     @Expose
-    private Integer clvQueja;
+     Integer clvQueja;
     @SerializedName("Contrato")
     @Expose
     private String contrato;

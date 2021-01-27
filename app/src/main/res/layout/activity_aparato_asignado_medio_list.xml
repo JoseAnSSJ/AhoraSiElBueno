@@ -5,26 +5,24 @@
     android:background="#ffff"
     >
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp">
 
         <CheckBox
             android:id="@+id/chek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"/>
-
+            android:layout_marginStart="20dp"
+            />
 
         <TextView
             android:id="@+id/textservicio"
-            android:layout_width="wrap_content"
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
             android:layout_marginTop="10dp"
             android:text="Servicio Basico De TV De Cable "
-            android:textSize="15dp" />
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
         <TextView
             android:id="@+id/textservicioasig"
             android:layout_width="wrap_content"
@@ -40,6 +38,19 @@
             android:text="Medio"
             android:id="@+id/medio"
             android:layout_marginTop="2dp"
-            android:layout_marginStart="285dp"/>
-    </RelativeLayout>
+            android:layout_marginStart="285dp"
+            android:checked="false"
+            android:clickable="false"
+            android:focusable="false"
+            />
+
+        <ListView
+            android:id="@+id/ListaAparatos"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_below="@+id/textservicio"
+            android:layout_marginStart="75dp"
+            android:layout_marginTop="19dp"
+            android:visibility="gone"
+            android:nestedScrollingEnabled="true" />
 </RelativeLayout>

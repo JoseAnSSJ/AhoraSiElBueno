@@ -17,9 +17,14 @@ import com.example.pablo.prueba7.Trabajos;
 
 import java.util.ArrayList;
 
+import static com.example.pablo.prueba7.Trabajos.trabajos;
+
+import static com.example.pablo.prueba7.Trabajos.adaptertrabajos;
+import static com.example.pablo.prueba7.Trabajos.trabajos;
+
 public class ordenes_adapter_result extends BaseAdapter {
 
-    public static Integer clvor;
+    public static Integer clvor, contratoReq;
     LayoutInflater inflater;
     Context mContext;
     ArrayList<String> ordensrc;
@@ -40,7 +45,7 @@ public class ordenes_adapter_result extends BaseAdapter {
 
     }
     public  class viewHolder{
-        TextView status,contrato,nombre;
+        TextView status,contrato1,nombre;
         Button orden;
     }
 
@@ -75,7 +80,7 @@ public class ordenes_adapter_result extends BaseAdapter {
 
             holder.status=(TextView)convertView.findViewById(R.id.statusv);
             holder.orden=(Button)convertView.findViewById(R.id.ordenv);
-            holder.contrato=(TextView)convertView.findViewById(R.id.contratov);
+            holder.contrato1=(TextView)convertView.findViewById(R.id.contratov);
             holder.nombre=(TextView)convertView.findViewById(R.id.nombrev);
 
             convertView.setTag(holder);
@@ -86,7 +91,7 @@ public class ordenes_adapter_result extends BaseAdapter {
 
         holder.nombre.setText(Array.nombresrc.get(position));
         holder.orden.setText(Array.ordensrc.get(position));
-        holder.contrato.setText(Array.contratosrc.get(position));
+        holder.contrato1.setText(Array.contratosrc.get(position));
         holder.status.setText(Array.statusrc.get(position));
 
         holder.orden.setOnClickListener(new View.OnClickListener() {
@@ -94,13 +99,20 @@ public class ordenes_adapter_result extends BaseAdapter {
             public void onClick(View v) {
                 Intent intento1 = new Intent(mContext, MainActivity.class);
                 mContext.startActivity(intento1);
-                clvor=Integer.valueOf(ordensrc.get(position));
+                clvor = Integer.valueOf(ordensrc.get(position));
+
+
+
+
                 request.getDeepCons();
                 request.getTrabajos();
 
 
+
+
             }
         });
+
         return convertView;
     }
 }

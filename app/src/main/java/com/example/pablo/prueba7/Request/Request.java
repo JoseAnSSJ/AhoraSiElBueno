@@ -1,22 +1,23 @@
 package com.example.pablo.prueba7.Request;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ContextThemeWrapper;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-
 import com.example.pablo.prueba7.Adapters.Arbol_Adapter;
-import com.example.pablo.prueba7.Adapters.Servicios_Adapter;
+import com.example.pablo.prueba7.Adapters.trabajos_adapter_result;
 import com.example.pablo.prueba7.CambioAparato;
 import com.example.pablo.prueba7.CambioDom;
 import com.example.pablo.prueba7.Inicio;
 import com.example.pablo.prueba7.InstalacionFragment;
+import com.example.pablo.prueba7.Listas.Array;
 import com.example.pablo.prueba7.Listas.Example;
 import com.example.pablo.prueba7.Listas.Example1;
 import com.example.pablo.prueba7.Listas.Example2;
@@ -27,46 +28,66 @@ import com.example.pablo.prueba7.Listas.JSONAparatosDisponibles;
 import com.example.pablo.prueba7.Listas.JSONArbolServicios;
 import com.example.pablo.prueba7.Listas.JSONCAMDO;
 import com.example.pablo.prueba7.Listas.JSONCLIAPA;
+import com.example.pablo.prueba7.Listas.JSONClasificacionProblm;
 import com.example.pablo.prueba7.Listas.JSONMediosSer;
+import com.example.pablo.prueba7.Listas.JSONNombreTecnico;
+import com.example.pablo.prueba7.Listas.JSONPrioridad;
+import com.example.pablo.prueba7.Listas.JSONReporteCliente;
+import com.example.pablo.prueba7.Listas.JSONReportes;
 import com.example.pablo.prueba7.Listas.JSONResponseTecnico;
+import com.example.pablo.prueba7.Listas.JSONServicioAsignado;
 import com.example.pablo.prueba7.Listas.JSONServiciosAparatos;
+import com.example.pablo.prueba7.Listas.JSONSolucion;
 import com.example.pablo.prueba7.Listas.JSONStatusApa;
 import com.example.pablo.prueba7.Listas.JSONTecSec;
 import com.example.pablo.prueba7.Listas.JSONTipoAparatos;
 import com.example.pablo.prueba7.Listas.QuejasList;
+import com.example.pablo.prueba7.Login;
 import com.example.pablo.prueba7.MainActivity;
-import com.example.pablo.prueba7.Modelos.GetDameDatosCAMDOResult;
+import com.example.pablo.prueba7.MainReportes;
 import com.example.pablo.prueba7.Modelos.DeepConsModel;
 import com.example.pablo.prueba7.Modelos.GetBUSCADetOrdSerListResult;
+import com.example.pablo.prueba7.Modelos.GetConTecnicoAgendaResult;
+import com.example.pablo.prueba7.Modelos.GetDameDatosCAMDOResult;
+import com.example.pablo.prueba7.Modelos.GetDameListadoOrdenesAgendadasResult;
+import com.example.pablo.prueba7.Modelos.GetDameSerDelCliFacListResult;
 import com.example.pablo.prueba7.Modelos.GetListAparatosDisponiblesByIdArticuloResult;
 import com.example.pablo.prueba7.Modelos.GetListClienteAparatosResult;
 import com.example.pablo.prueba7.Modelos.GetListTipoAparatosByIdArticuloResult;
+import com.example.pablo.prueba7.Modelos.GetMUESTRATRABAJOSQUEJASListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraAparatosDisponiblesListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraMedioPorServicoContratadoListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraRelOrdenesTecnicosListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraServiciosRelTipoAparatoListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraTipoAparatoListResult;
+import com.example.pablo.prueba7.Modelos.GetQuejasListResult;
 import com.example.pablo.prueba7.Modelos.GetSP_StatusAparatosListResult;
+import com.example.pablo.prueba7.Modelos.GetSoftvGetPrioridadQuejaListResult;
 import com.example.pablo.prueba7.Modelos.Get_ClvTecnicoResult;
-import com.example.pablo.prueba7.Modelos.GetDameListadoOrdenesAgendadasResult;
 import com.example.pablo.prueba7.Modelos.GetdameSerDELCliresumenResult;
+import com.example.pablo.prueba7.Modelos.GetuspBuscaContratoSeparado2ListResult;
+import com.example.pablo.prueba7.Modelos.GetuspConsultaTblClasificacionProblemasListResult;
 import com.example.pablo.prueba7.Modelos.InfoClienteModelo;
 import com.example.pablo.prueba7.Modelos.ListadoQuejasAgendadas;
 import com.example.pablo.prueba7.Modelos.OrdSer;
 import com.example.pablo.prueba7.Modelos.ProximaCitaModel;
 import com.example.pablo.prueba7.Modelos.Queja;
 import com.example.pablo.prueba7.Modelos.UserModel;
+import com.example.pablo.prueba7.R;
 import com.example.pablo.prueba7.Services.Services;
+import com.example.pablo.prueba7.Trabajos;
+import com.example.pablo.prueba7.TrabajosFragment;
 import com.example.pablo.prueba7.asignacion;
 import com.example.pablo.prueba7.asignado;
 import com.example.pablo.prueba7.sampledata.Service;
 import com.google.gson.JsonObject;
-import com.example.pablo.prueba7.Listas.Array;
+import com.google.gson.JsonPrimitive;
+
 import org.json.JSONException;
 
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -74,7 +95,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.example.pablo.prueba7.asignacion.Asignacion;
+import static com.example.pablo.prueba7.Adapters.quejas_adapter_result.contratoB;
+import static com.example.pablo.prueba7.ExtensionesAdi.txtExtencion;
+import static com.example.pablo.prueba7.Trabajos.adaptertrabajos;
+import static com.example.pablo.prueba7.Trabajos.trabajos;
 import static java.util.Arrays.asList;
 
 public class Request extends AppCompatActivity {
@@ -83,6 +107,8 @@ public class Request extends AppCompatActivity {
     CambioDom c = new CambioDom();
     public static String clave_tecnico;
     public static String nombre_tecnico;
+    public static Long contbu;
+    public static Long abc;
     String a="Seleccione tecnico secundario";
     Arbol_Adapter adapter;
 
@@ -93,7 +119,7 @@ public class Request extends AppCompatActivity {
 
 
     ///////////////////Token///////////////////////////
-    public void getReviews() {
+    public void getReviews(final Context context) {
 
             final List<String> lista = new ArrayList();
 
@@ -114,6 +140,7 @@ public class Request extends AppCompatActivity {
                                 userJson.get("Token").getAsString(),
                                 userJson.get("Codigo").getAsString()
                         );
+
                     }catch (Exception e){
                         Toast.makeText(getApplicationContext(),"Error en el Login(request)",Toast.LENGTH_LONG).show();
                     }
@@ -121,6 +148,7 @@ public class Request extends AppCompatActivity {
 
 
                     b = true;
+
                         getClv_tecnico();
 
 
@@ -218,7 +246,7 @@ public class Request extends AppCompatActivity {
             }
         });
     }
-    ///////////////////Ordenes///////////////////////////
+    ///////////////////Status,Observaciones, ORDENES///////////////////////////
     public void getOrdenes()  {
         Service service = null;
         try {
@@ -235,69 +263,67 @@ public class Request extends AppCompatActivity {
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
                 Example jsonResponse = response.body();
-                array.dataord = new ArrayList<List<OrdSer>>(asList(jsonResponse.getDameOrdenesQuejasTotalesResult.getOrdSer()));
-                Iterator<List<OrdSer>> itData = array.dataord.iterator();
-                while (itData.hasNext()) {
-                    List<OrdSer> dat = (List<OrdSer>) itData.next();
-                    for (int i = 0; i < dat.size(); i++) {
-                        Log.d("response9", dat.get(i).getStatus());
-                        Log.d("response10", String.valueOf(dat.get(i).getTotal()));
-                        if(dat.get(i).getStatus().equals("Ejecutada")){
-                            try{
-                                Inicio.OE = dat.get(i).getTotal();
+                try {
+                    array.dataord = new ArrayList<List<OrdSer>>(asList(jsonResponse.getDameOrdenesQuejasTotalesResult.getOrdSer()));
+                    Iterator<List<OrdSer>> itData = array.dataord.iterator();
+                    while (itData.hasNext()) {
+                        List<OrdSer> dat = (List<OrdSer>) itData.next();
+                        for (int i = 0; i < dat.size(); i++) {
+                            Log.d("response9", dat.get(i).getStatus());
+                            Log.d("response10", String.valueOf(dat.get(i).getTotal()));
+                            if (dat.get(i).getStatus().equals("Ejecutada")) {
+                                try {
+                                    Inicio.OE = dat.get(i).getTotal();
 
-                            }catch (Exception e){
-                                Inicio.OE = 0;
+                                } catch (Exception e) {
+                                    Inicio.OE = 0;
+                                }
                             }
-                        }
-                        if(dat.get(i).getStatus().equals("Pendiente")){
-                            try{
-                                Inicio.OP = dat.get(i).getTotal();
-                            }catch (Exception e){
-                                Inicio.OP = 0;
+                            if (dat.get(i).getStatus().equals("Pendiente")) {
+                                try {
+                                    Inicio.OP = dat.get(i).getTotal();
+                                } catch (Exception e) {
+                                    Inicio.OP = 0;
+                                }
                             }
-                        }
-                        if(dat.get(i).getStatus().equals("Visita")){
-                            try{
-                                Inicio.OV = dat.get(i).getTotal();
-                            }catch (Exception e){
-                                Inicio.OV = 0;
-                            }
+                            if (dat.get(i).getStatus().equals("Visita")) {
+                                try {
+                                    Inicio.OV = dat.get(i).getTotal();
+                                } catch (Exception e) {
+                                    Inicio.OV = 0;
+                                }
 
-                        }
-                        if(dat.get(i).getStatus().equals("En Proceso")){
-                            try{
-                                Inicio.OEP = dat.get(i).getTotal();
-                            }catch (Exception e){
-                                Inicio.OEP = 0;
                             }
+                            if (dat.get(i).getStatus().equals("En Proceso")) {
+                                try {
+                                    Inicio.OEP = dat.get(i).getTotal();
+                                } catch (Exception e) {
+                                    Inicio.OEP = 0;
+                                }
+                            }
+                            if (dat.get(i).getStatus().equals("otro")) {
+                                try {
+                                    Inicio.OO = dat.get(i).getTotal();
+                                } catch (Exception e) {
+                                    Inicio.OO = 0;
+                                }
+                            }
+                        }
                     }
-                        if(dat.get(i).getStatus().equals("otro")){
-                            try{
-                                Inicio.OO = dat.get(i).getTotal();
-                            }catch (Exception e){
-                                Inicio.OO = 0;
-                            }
-                        }
-                    }
-
-
-
-
-
+                }catch (Exception e){
+                    Inicio.OE = 0;
+                    Inicio.OP = 0;
+                    Inicio.OV = 0;
+                    Inicio.OEP = 0;
+                    Inicio.OO = 0;
                 }
-
             }
 
             @Override
             public void onFailure(Call<Example> call, Throwable t) {
 
             }
-
-
         });
-
-            getQuejas();
 
     }
 
@@ -427,6 +453,11 @@ public class Request extends AppCompatActivity {
         });
     }
     /////////////////Lista de Ordenes/////////////////////////////
+    /*
+
+    No tiene nada LisOrd
+
+     */
     public void getListOrd()  {
 
         Service service = null;
@@ -499,10 +530,17 @@ public class Request extends AppCompatActivity {
                         userJson.get("Clv_TipSer").getAsInt()
 
                 );
+try{
+    MainActivity.Contrato.setText(String.valueOf(DeepConsModel.getContatoCom()));
+}catch (Exception e){
 
-                MainActivity.Contrato.setText(String.valueOf(DeepConsModel.getContatoCom()));
+}
+                try {
+                    InstalacionFragment.Obs.setText(String.valueOf(DeepConsModel.Obs));
+                }catch (Exception e){
 
-                InstalacionFragment.Obs.setText(String.valueOf(DeepConsModel.Obs));
+                }
+
 
 
                 if (DeepConsModel.STATUS.equals("E")) {
@@ -617,9 +655,12 @@ public class Request extends AppCompatActivity {
 
                         Array.trabajox.add(String.valueOf(dat.get(i).getDescripcion()));
                         Array.accionx.add(String.valueOf(dat.get(i).getAccion()));
+                        Array.clavex.add(dat.get(i).getClave());
                     }
                 }
 
+               // trabajos_adapter_result adaptertrabajos =new trabajos_adapter_result(Trabajos.class,Array.trabajox,Array.accionx);
+                trabajos.setAdapter(adaptertrabajos);    //Asignacion del adapatador a la listView
             }
 
             @Override
@@ -659,6 +700,16 @@ public class Request extends AppCompatActivity {
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, datos);
                     InstalacionFragment.TecSec.setAdapter(adapter);
                     InstalacionFragment.Obs.setText(String.valueOf(DeepConsModel.Obs));
+
+
+                   // ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, datos);
+                    //.TecSec.setAdapter(adapter1);
+
+
+
+
+
+
                 }
 
 
@@ -672,8 +723,33 @@ public class Request extends AppCompatActivity {
             }
         });
     }
+///////////////////////Extenciones Adicionales/////////////////
+    public void getExtencionesAdicionales() {
+
+        Service service = null;
+        try {
+            service = services.getExtencionAdiService();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Call<JsonObject> call = service.getDataExtencionAdi();
+        call.enqueue(new Callback<JsonObject>() {
 
 
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response1) {
+
+                String string = String.valueOf(response1.body().getAsJsonPrimitive("GetCONCONEXResult"));
+                txtExtencion.setText(string);
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+
+            }
+        });
+    }
 ////ClientesAparato////
 
     public void getCliApa(final Context context) {
@@ -892,7 +968,7 @@ public class Request extends AppCompatActivity {
         call.enqueue(new Callback<JSONArbolServicios>() {
             @Override
             public void onResponse(Call<JSONArbolServicios> call, Response<JSONArbolServicios> response) {
-
+                
                 array.nombreArbol.clear();
                 JSONArbolServicios jsonResponse = response.body();
                 array.dataArbSer =  new ArrayList<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>>(asList(jsonResponse.GetMuestraArbolServiciosAparatosPorinstalarListResult()));
@@ -903,7 +979,6 @@ public class Request extends AppCompatActivity {
                     for (int i = 0; i < dat.size(); i++) {
                         Log.d("response21", String.valueOf(dat.get(i).getIdMedio()));
                         array.nombreArbol.add(dat.get(i).getNombre());
-
                     }
                 }
 
@@ -1062,8 +1137,7 @@ public class Request extends AppCompatActivity {
                 }
                 ArrayAdapter arrayAdapter = new ArrayAdapter(context, android.R.layout.simple_list_item_checked, array.serviciosAparatos);
                 asignado.serviciosAparato.setAdapter(arrayAdapter);
-              //   asignado.adapter = new Servicios_Adapter(context);
-              //  asignado.serviciosAparato.setAdapter(asignado.adapter);
+
 
 
             }
@@ -1091,7 +1165,6 @@ public class Request extends AppCompatActivity {
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                JsonObject jsonResponse = response.body();
             Toast.makeText(context, "aparato agregado", Toast.LENGTH_LONG).show();
 
             }
@@ -1102,4 +1175,354 @@ public class Request extends AppCompatActivity {
             }
         });
     }
+    ////////////////////////////////////////INFO CLIENTE Reportes///////////////////////////////////////
+
+
+  /*  public void getReportes() {
+
+        Service service = null;
+        try {
+            service = services.getMediosReportes();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        assert service != null;
+        Call<JsonObject> call = service.getReport();
+        call.enqueue(new Callback<JsonObject>() {
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+
+
+                JsonObject userJson = response.body().getAsJsonObject("GetuspBuscaContratoSeparado2ListResult");
+                InfoReportesModel user = new InfoReportesModel(
+                        userJson.get("CALLE").getAsString(),
+                        userJson.get("CIUDAD").getAsString(),
+                        userJson.get("COLONIA").getAsString(),
+                        userJson.get("Nombre").getAsString(),
+                        userJson.get("NUMERO").getAsString(),
+                        userJson.get("Apellido_Paterno").getAsString(),
+                        userJson.get("Apellido_Materno").getAsString()
+
+
+                );
+
+
+             MainReportes.Nombre1.setText(InfoReportesModel.Nombre + "   " + InfoReportesModel.Apellido_Paterno + "   " + InfoReportesModel.Apellido_Materno);
+                MainReportes.Direccion1.setText(InfoReportesModel.CALLE + "   " + InfoReportesModel.NUMERO + "   " + InfoReportesModel.COLONIA);
+
+            }
+
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+
+            }
+        });
+    }*/
+
+    ////////////////////////////////////TIPO DE SOLUCION///////////////////////////////////////////////
+    public void getSolucuion(final Context context) {
+
+        Service service = null;
+        try {
+            service = services.getSolocionService();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Call<JSONSolucion> call = service.getSolut();
+        call.enqueue(new Callback<JSONSolucion>() {
+
+
+            @Override
+            public void onResponse(Call<JSONSolucion> call, Response<JSONSolucion> response) {
+                JSONSolucion jsonResponse = response.body();
+                array.dataSOL = new ArrayList<List<GetMUESTRATRABAJOSQUEJASListResult>>((asList(jsonResponse.getGetMUESTRATRABAJOSQUEJASListResult())));
+                Iterator<List<GetMUESTRATRABAJOSQUEJASListResult>> itdata = array.dataSOL.iterator();
+                while (itdata.hasNext()) {
+                    List<GetMUESTRATRABAJOSQUEJASListResult> dat = itdata.next();
+                    String datos[] = new String[dat.size() + 1];
+                    datos[0] = "Seleccione Tipo Solucion";
+                    int j = 1;
+
+                    for (int i = 0; i < dat.size(); i++) {
+                        Log.d("descripcion", String.valueOf(dat.get(i).dESCRIPCION));
+                        datos[j] = dat.get(i).getDESCRIPCION();
+                        j = j + 1;
+                        //Sol.add(String.valueOf(dat.get(i).getDESCRIPCION()));
+                    }
+
+                    ArrayAdapter adapter = new ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, datos);
+                    TrabajosFragment.solucion.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JSONSolucion> call, Throwable t) {
+
+            }
+        });
+    }
+    //////////////////////////////////////////Reporte del Cliente//////////////////////////////////////////////////////////////////////
+
+    public void getReportesC() {
+        Service service = null;
+        try {
+            service = services.getReporteCService();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Call<JSONReporteCliente> call = service.getRPC();
+        call.enqueue(new Callback<JSONReporteCliente>() {
+            @Override
+            public void onResponse(Call<JSONReporteCliente> call, Response<JSONReporteCliente> response) {
+                JSONReporteCliente jsonResponse = response.body();
+                array.dataReport = new ArrayList<List<GetQuejasListResult>>(asList(jsonResponse.getGetQuejasListResult()));
+
+
+                Iterator<List<GetQuejasListResult>> itData = array.dataReport.iterator();
+                while (itData.hasNext()) {
+                    List<GetQuejasListResult> dat = (List<GetQuejasListResult>) itData.next();
+                    for (int i = 0; i < dat.size(); ++i) {
+                        Log.d("response40", dat.get(i).getObservaciones());
+                        Log.d("response41", dat.get(i).getProblema());
+
+
+                        TrabajosFragment.desc.setText(String.valueOf(dat.get(i).getObservaciones()));
+                        TrabajosFragment.problm.setText(String.valueOf(dat.get(i).getProblema()));
+
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<JSONReporteCliente> call, Throwable t) {
+
+            }
+
+        });
+
+    }
+    /////////////////////////////////////////////Tipo de Prioridad/////////////////////////////////////////////////
+
+    public void getPrior(final Context context) {
+
+
+        Service service = services.getPrioridadService();
+        Call<JSONPrioridad> call = service.getprior();
+        call.enqueue(new Callback<JSONPrioridad>() {
+
+
+            @Override
+            public void onResponse(Call<JSONPrioridad> call, Response<JSONPrioridad> response) {
+                JSONPrioridad jsonResponse = response.body();
+                array.dataPriori = new ArrayList<List<GetSoftvGetPrioridadQuejaListResult>>((asList(jsonResponse.getGetSoftvGetPrioridadQuejaListResult())));
+                Iterator<List<GetSoftvGetPrioridadQuejaListResult>> itdata = array.dataPriori.
+                        iterator();
+                while (itdata.hasNext()) {
+
+                    List<GetSoftvGetPrioridadQuejaListResult> dat = itdata.next();
+                    String datos[] = new String[dat.size() + 1];
+                    datos[0] = "Seleccione Prioridad";
+                    int j = 1;
+
+                    for (int i = 0; i < dat.size(); i++) {
+                        Log.d("descripcion31", String.valueOf(dat.get(i).descripcion));
+                        datos[j] = dat.get(i).getDescripcion();
+                        j = j + 1;
+
+                    }
+
+                    ArrayAdapter adapter = new ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, datos);
+                    TrabajosFragment.prioridad.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JSONPrioridad> call, Throwable t) {
+
+            }
+
+
+        });
+    }
+
+    ////////////////////////////////////////Clasificacion/////////////////////////////////////////////////////////////////////////////
+    public void getClasific(final Context context) {
+
+
+        Service service = services.getClasificacionService();
+        Call<JSONClasificacionProblm> call = service.getclas();
+        call.enqueue(new Callback<JSONClasificacionProblm>() {
+
+
+            @Override
+            public void onResponse(Call<JSONClasificacionProblm> call, Response<JSONClasificacionProblm> response) {
+                JSONClasificacionProblm jsonResponse = response.body();
+
+
+                array.dataClasf = new ArrayList<List<GetuspConsultaTblClasificacionProblemasListResult>>((asList(jsonResponse.getGetuspConsultaTblClasificacionProblemasListResult())));
+                Iterator<List<GetuspConsultaTblClasificacionProblemasListResult>> itdata = array.dataClasf.
+                        iterator();
+                while (itdata.hasNext()) {
+
+                    List<GetuspConsultaTblClasificacionProblemasListResult> dat = itdata.next();
+                    String datos[] = new String[dat.size() + 1];
+                    datos[0] = "Seleccione un Problema";
+                    int j = 1;
+
+                    for (int i = 0; i < dat.size(); i++) {
+                        Log.d("descripcion32", String.valueOf(dat.get(i).descripcion));
+                        datos[j] = dat.get(i).getDescripcion();
+                        j = j + 1;
+
+                    }
+
+                    ArrayAdapter adapter = new ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, datos);
+                    TrabajosFragment.clasific.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JSONClasificacionProblm> call, Throwable t) {
+
+            }
+
+
+        });
+    }
+
+    public void getnombretec(Context context) {
+        Service service = null;
+        try {
+            service = services.getNombreService();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Call<JSONNombreTecnico> call = service.getNom();
+        call.enqueue(new Callback<JSONNombreTecnico>() {
+            @Override
+            public void onResponse(Call<JSONNombreTecnico> call, Response<JSONNombreTecnico> response) {
+                JSONNombreTecnico jsonResponse = response.body();
+                array.dataNom = new ArrayList<List<GetConTecnicoAgendaResult>>(Collections.singleton(asList(jsonResponse.getGetConTecnicoAgendaResult())));
+
+
+                Iterator<List<GetConTecnicoAgendaResult>> itData = array.dataNom.iterator();
+                while (itData.hasNext()) {
+                    List<GetConTecnicoAgendaResult> dat = (List<GetConTecnicoAgendaResult>) itData.next();
+                    for (int i = 0; i < dat.size(); ++i) {
+                        Log.d("response50", dat.get(i).getTecnico());
+
+
+
+                        MainReportes.NombreTec1.setText(String.valueOf(dat.get(i).getTecnico()));
+                        // TrabajosFragment.problm.setText(String.valueOf(dat.get(i).getProblema()));
+
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<JSONNombreTecnico> call, Throwable t) {
+
+            }
+
+
+        });
+    }
+    public void getServiciosAsignados() {
+        Service service = null;
+        try {
+            service = services.getAsignadosService();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Call<JSONServicioAsignado> call = service.getServ();
+        call.enqueue(new Callback<JSONServicioAsignado>() {
+            @Override
+            public void onResponse(Call<JSONServicioAsignado> call, Response<JSONServicioAsignado> response) {
+                JSONServicioAsignado jsonResponse = response.body();
+
+
+                array.dataServ = new ArrayList<List<GetDameSerDelCliFacListResult>>((asList(jsonResponse.getGetDameSerDelCliFacListResult())));
+
+
+                Iterator<List<GetDameSerDelCliFacListResult>> itData = array.dataServ.iterator();
+                while (itData.hasNext()) {
+                    List<GetDameSerDelCliFacListResult> dat = (List<GetDameSerDelCliFacListResult>) itData.next();
+                    for (int i = 0; i < dat.size(); ++i) {
+                        Log.d("response60", dat.get(i).getServicio());
+
+
+                        MainReportes.infoA.setText("    " + dat.get(0).getServicio() + '\n' + "    " + dat.get(1).getServicio() + '\n' +"    "+
+                                dat.get(2).getServicio() + '\n' + dat.get(3).getServicio() + '\n' + dat.get(4).getServicio()
+                                + '\n' + dat.get(5).getServicio()+ '\n' + dat.get(6).getServicio()+ '\n' + dat.get(7).getServicio()+ '\n' +"    "+ dat.get(8).getServicio());
+
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<JSONServicioAsignado> call, Throwable t) {
+
+            }
+
+
+        });
+    }
+    public void getReportes() {
+        Service service = null;
+        try {
+            service = services.getMediosReportes();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Call<JSONReportes> call = service.getReport();
+        call.enqueue(new Callback<JSONReportes>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onResponse(Call<JSONReportes> call, Response<JSONReportes> response) {
+                JSONReportes jsonResponse = response.body();
+                array.dataRep = new ArrayList<List<GetuspBuscaContratoSeparado2ListResult>>(asList(jsonResponse.getGetuspBuscaContratoSeparado2ListResult()));
+
+
+                Iterator<List<GetuspBuscaContratoSeparado2ListResult>> itData = array.dataRep.iterator();
+                while (itData.hasNext()) {
+                    List<GetuspBuscaContratoSeparado2ListResult> dat = (List<GetuspBuscaContratoSeparado2ListResult>) itData.next();
+                    for (int i = 0; i < dat.size(); ++i) {
+                        Log.d("response100", dat.get(i).getNombre());
+                        Log.d("response101", dat.get(i).getApellidoPaterno());
+                        Log.d("response102",((String.valueOf(dat.get(i).getContratoBueno()))));
+                        Log.d("response103", dat.get(i).getCONTRATO());
+
+
+                        MainReportes.Nombre1.setText(dat.get(i).getNombre() + "  " + dat.get(i).getApellidoPaterno() + "  " + dat.get(i).getApellidoMaterno());
+                        MainReportes.Direccion1.setText(dat.get(i).getCALLE() + "  " + dat.get(i).getNUMERO() + "  " + dat.get(i).getCOLONIA());
+                        MainReportes.contrato1.setText(dat.get(i).getCONTRATO());
+                        MainReportes.ciudad1.setText(dat.get(i).getCIUDAD());
+
+
+                        abc=dat.get(i).contratoBueno;
+                        getServiciosAsignados();
+                    }
+
+
+                }
+
+                }
+
+            @Override
+            public void onFailure(Call<JSONReportes> call, Throwable t) {
+
+            }
+
+        });
+
+    }
+
+
 }
+
+
+

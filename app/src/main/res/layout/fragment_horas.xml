@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InstalacionFragment">
+    tools:context=".HorasFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
@@ -82,14 +82,14 @@
                     android:textSize="20dp" />
 
                 <EditText
-                    android:id="@+id/ejecureal"
-                    android:layout_width="match_parent"
+                    android:id="@+id/ejecureal1"
+                    android:layout_width="144dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="200dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="40dp"
                     android:focusable="false"
                     android:hint="_/_/_"
                     android:textSize="20sp" />
@@ -100,8 +100,8 @@
 
             <RelativeLayout
                 android:id="@+id/RV"
-                android:layout_width="388dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="193dp"
                 android:layout_below="@+id/RE">
 
                 <TextView
@@ -114,6 +114,7 @@
                     android:textSize="20dp" />
 
                 <TextView
+                    android:id="@+id/visit2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -122,8 +123,20 @@
                     android:text="Visita 2"
                     android:textSize="20dp" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_below="@+id/visit2"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="39dp"
+                    android:layout_marginBottom="22dp"
+                    android:text="Visita 3"
+                    android:textSize="20dp" />
+
                 <EditText
-                    android:id="@+id/visita1"
+                    android:id="@+id/visita11"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -137,10 +150,10 @@
 
 
                 <EditText
-                    android:id="@+id/visita2"
+                    android:id="@+id/visita21"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/visita1"
+                    android:layout_below="@+id/visita11"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="200dp"
@@ -149,22 +162,36 @@
                     android:focusable="false"
                     android:hint="_/_/_"
                     android:textSize="20dp" />
+                <EditText
+                    android:id="@+id/visita31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/visita21"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:focusable="false"
+                    android:hint="_/_/_"
+                    android:textSize="20dp"/>
 
             </RelativeLayout>
-
 
             <RelativeLayout
                 android:layout_width="376dp"
                 android:layout_height="105dp"
                 android:layout_below="@+id/RV"
-                android:layout_alignParentStart="true">
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="20dp">
 
                 <TextView
                     android:id="@+id/horabi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="13dp"
+                    android:layout_marginStart="10dp"
                     android:text="Hora inicio"
                     android:textSize="20dp" />
 
@@ -174,7 +201,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="11dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="50dp"
                     android:layout_marginBottom="20dp"
                     android:text="Hora fin"
@@ -193,7 +220,6 @@
                     android:focusable="false"
                     android:hint="00:00"
                     android:textSize="20dp" />
-
 
 
                 <EditText
@@ -219,63 +245,27 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="290dp"
+                android:layout_marginTop="400dp"
                 android:text="Tecnico Secundario"
                 android:textSize="20dp" />
 
             <Spinner
-                android:id="@+id/tecnicosec"
+                android:id="@+id/tecnicosec1"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="314dp"
-                android:background="@drawable/spinners"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="350dp"
-                android:textSize="20dp"
-                android:text="Observaciones:"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="375dp"
-                android:textSize="20dp"
-                android:id="@+id/obs"
-                />
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:layout_marginTop="420dp">
-
-                <TextView
-                    android:id="@+id/txtCoordenadas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
-                <TextView
-                    android:id="@+id/txtCoordenadas1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtCoordenadas"
-                    android:text="TextView" />
-                <TextView
-                    android:id="@+id/txtCoordenadas2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtCoordenadas1"
-                    android:text="TextView" />
+                android:layout_marginTop="432dp"
+                android:background="@drawable/spinners"/>
 
 
-            </RelativeLayout>
+
+
 
 
         </RelativeLayout>
 
     </ScrollView>
+
 
 
 </FrameLayout>

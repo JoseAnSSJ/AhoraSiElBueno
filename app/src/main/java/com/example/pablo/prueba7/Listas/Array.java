@@ -1,34 +1,33 @@
 package com.example.pablo.prueba7.Listas;
 
 import com.example.pablo.prueba7.Modelos.GetBUSCADetOrdSerListResult;
+import com.example.pablo.prueba7.Modelos.GetConTecnicoAgendaResult;
+import com.example.pablo.prueba7.Modelos.GetDameDatosCAMDOResult;
 import com.example.pablo.prueba7.Modelos.GetDameListadoOrdenesAgendadasResult;
+import com.example.pablo.prueba7.Modelos.GetDameSerDelCliFacListResult;
 import com.example.pablo.prueba7.Modelos.GetListAparatosDisponiblesByIdArticuloResult;
 import com.example.pablo.prueba7.Modelos.GetListClienteAparatosResult;
 import com.example.pablo.prueba7.Modelos.GetListTipoAparatosByIdArticuloResult;
+import com.example.pablo.prueba7.Modelos.GetMUESTRATRABAJOSQUEJASListResult;
+import com.example.pablo.prueba7.Modelos.GetMuestraAparatosDisponiblesListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraMedioPorServicoContratadoListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraRelOrdenesTecnicosListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraServiciosRelTipoAparatoListResult;
 import com.example.pablo.prueba7.Modelos.GetMuestraTipoAparatoListResult;
+import com.example.pablo.prueba7.Modelos.GetQuejasListResult;
 import com.example.pablo.prueba7.Modelos.GetSP_StatusAparatosListResult;
+import com.example.pablo.prueba7.Modelos.GetSoftvGetPrioridadQuejaListResult;
 import com.example.pablo.prueba7.Modelos.Get_ClvTecnicoResult;
 import com.example.pablo.prueba7.Modelos.GetdameSerDELCliresumenResult;
+import com.example.pablo.prueba7.Modelos.GetuspBuscaContratoSeparado2ListResult;
+import com.example.pablo.prueba7.Modelos.GetuspConsultaTblClasificacionProblemasListResult;
 import com.example.pablo.prueba7.Modelos.ListadoQuejasAgendadas;
 import com.example.pablo.prueba7.Modelos.OrdSer;
 import com.example.pablo.prueba7.Modelos.Queja;
-import com.example.pablo.prueba7.Modelos.GetDameDatosCAMDOResult;
-import com.example.pablo.prueba7.Modelos.GetMuestraAparatosDisponiblesListResult;
-import com.example.pablo.prueba7.Modelos.children;
 
-import java.security.PublicKey;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 public class Array {
    public static ArrayList<List<GetdameSerDELCliresumenResult>> dataclientes;
@@ -50,9 +49,11 @@ public class Array {
  ///////////////////////ARRAY TRABAJOS///////////////////
     public static ArrayList <String>trabajox=new ArrayList<>();
     public static ArrayList<String>accionx=new ArrayList<>();
+    public static ArrayList<Integer>clavex=new ArrayList<>();
     //////////////////////////////////////////////////////
 
     public static ArrayList <String>nombreArbol=new ArrayList<>();
+    public static ArrayList <String>children=new ArrayList<>();
     public static ArrayList<String>medio=new ArrayList<>();
     public static ArrayList<String>tipoAparato=new ArrayList<>();
     public static ArrayList<String>aparatoDisponibles=new ArrayList<>();
@@ -72,4 +73,16 @@ public class Array {
     public static  ArrayList<List<GetMuestraTipoAparatoListResult>> dataTipoAparatos;
     public static  ArrayList<List<GetMuestraAparatosDisponiblesListResult>> dataAparatosDisponibles;
     public static  ArrayList<List<GetMuestraServiciosRelTipoAparatoListResult>> dataserviciosAparatos;
+
+    /////////////////////////////////Pantalla_Reportes/////////////////////////////////////////////////////////////////////////
+    public static ArrayList<List<GetuspBuscaContratoSeparado2ListResult>> dataRep;
+    public static ArrayList<List<GetMUESTRATRABAJOSQUEJASListResult>> dataSOL;
+    public static ArrayList<List<GetQuejasListResult>>dataReport;
+    public static ArrayList<List<GetSoftvGetPrioridadQuejaListResult>>dataPriori;
+    public static ArrayList<List<GetuspConsultaTblClasificacionProblemasListResult>>dataClasf;
+    public static ArrayList<List<GetConTecnicoAgendaResult>>dataNom;
+    public static ArrayList<List<GetDameSerDelCliFacListResult>>dataServ;
+    public static ArrayList<Long> Asigna= new ArrayList<>();
+
+
 }

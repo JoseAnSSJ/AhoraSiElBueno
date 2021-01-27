@@ -1,6 +1,5 @@
 package com.example.pablo.prueba7;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,61 +9,45 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.pablo.prueba7.Request.Request;
 
-
-import org.json.JSONException;
-
-import static com.example.pablo.prueba7.Request.Request.datos;
-import static com.example.pablo.prueba7.Request.Request.nombre_tecnico;
-
-
-public class MainActivity extends AppCompatActivity implements ActionBar.TabListener, ViewPager.OnPageChangeListener {
+public class MainReportes extends AppCompatActivity implements ActionBar.TabListener, ViewPager.OnPageChangeListener {
     private ViewPager mViewPager;
     ScrollView hzScrollView;
     Button info;
     RelativeLayout layoutAnimado;
-    public static TextView NombreTec, Contrato, Status, Empresa, Nombre, Direccion, InfoServicios;
 
+    public static TextView Nombre1, Direccion1,NombreTec1,infoA,contrato1,ciudad1;
     Request request = new Request();
 
-
     @Override
-    protected void onCreate(Bundle onSaveInstanceState) {
-        super.onCreate(onSaveInstanceState);
-        setContentView(R.layout.activity_swipe);
-        info= findViewById(R.id.info);
-        layoutAnimado= findViewById(R.id.animado);
-        hzScrollView= findViewById(R.id.scv);
-        NombreTec= findViewById(R.id.tecniconame);
-        Contrato= findViewById(R.id.contrato);
-        Status= findViewById(R.id.status);
-        Empresa= findViewById(R.id.infoempresa);
-        Nombre= findViewById(R.id.infonombre);
-        Direccion= findViewById(R.id.infodireccion);
-        InfoServicios= findViewById(R.id.infoservicios);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_reportess);
+        info=(Button)findViewById(R.id.info);
+        layoutAnimado = (RelativeLayout) findViewById(R.id.animado);
+        hzScrollView=(ScrollView)findViewById(R.id.scv);
+        Nombre1= findViewById(R.id.infonombre1);
+        Direccion1= findViewById(R.id.infodireccion1);
+        NombreTec1= findViewById(R.id.tecnico1);
+        infoA = findViewById(R.id.infoservicios1);
+        contrato1=findViewById(R.id.contrato1);
+        ciudad1=findViewById(R.id.infoempresa1);
+
         setTitle(null);
-
-        NombreTec.setText(nombre_tecnico);
-
+        //request.getTecSec(this);
 
 //* Boton de informacion
-
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                request.getArbSer();
-                Intent intento=new Intent(MainActivity.this,asignacion.class);
-                startActivity(intento);
-                request.getInfoCliente();
-                    request.getServicios();
+
+
                 if(layoutAnimado.getVisibility()==View.GONE) {
                     layoutAnimado.setVisibility(View.VISIBLE);
                     hzScrollView.setVisibility(View.VISIBLE);
@@ -81,14 +64,13 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
         //* Swipe
 
-        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
+        MainReportes.PagerAdapter adapter = new MainReportes.PagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
 
 
         mViewPager.setAdapter(adapter);
 
         mViewPager.setOnPageChangeListener(this);
-
 
         ActionBar actionBar = getSupportActionBar();
 
@@ -99,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         ActionBar.Tab tab = actionBar.newTab().setText("Horas").setTabListener(this);
         actionBar.addTab(tab);
 
-        tab = actionBar.newTab().setText("Trabajo").setTabListener(this);
+        tab = actionBar.newTab().setText("Reporte").setTabListener(this);
         actionBar.addTab(tab);
 
         tab = actionBar.newTab().setText("Material").setTabListener(this);
@@ -107,6 +89,10 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
         tab = actionBar.newTab().setText("Ejecutar").setTabListener(this);
         actionBar.addTab(tab);
+
+
+
+
 
     }
     public class PagerAdapter extends FragmentPagerAdapter {
@@ -118,13 +104,13 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         public Fragment getItem(int arg0) {
             switch (arg0) {
                 case 0:
-                    return new InstalacionFragment();
+                    return new HorasFragment();
                 case 1:
-                    return new Trabajos();
+                    return new TrabajosFragment();
                 case 2:
-                    return new Materiales();
+                    return new MaterialesFragment();
                 case 3:
-                    return new EjecutarFragment();
+                    return new Ejecutar1Fragment();
 
                 default:
                     return null;

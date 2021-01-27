@@ -13,7 +13,7 @@ public class GetDameListadoOrdenesAgendadasResult {
     private Integer clvOrden;
     @SerializedName("Contrato")
     @Expose
-    private String contrato;
+    public String contrato;
     @SerializedName("NOMBRE")
     @Expose
     private String nombre;

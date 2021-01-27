@@ -1,26 +1,24 @@
 package com.example.pablo.prueba7;
 
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
-
+import static com.example.pablo.prueba7.Adapters.ordenes_adapter_result.clvor;
 import com.example.pablo.prueba7.Adapters.Arbol_Adapter;
 import com.example.pablo.prueba7.Listas.Array;
-import com.example.pablo.prueba7.Listas.JSONArbolServicios;
 import com.example.pablo.prueba7.Modelos.GetMuestraArbolServiciosAparatosPorinstalarListResult;
+import com.example.pablo.prueba7.Modelos.children;
 import com.example.pablo.prueba7.Request.Request;
-import com.google.gson.JsonArray;
-
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,16 +28,20 @@ import java.util.Iterator;
 import java.util.List;
 
 
-
 public class asignacion extends AppCompatActivity {
 Array array = new Array();
 Request request = new Request();
-    public static Button siguiente, eliminar, aceptarAsignacion;
+
+    public static Button siguiente, eliminar, aceptarAsignacion,eliminarAparato;
     public static  Button aceptarmedio,cancelarmedio;
     public static ListView Asignacion;
     public static Spinner spinnerMedio;
     public static RelativeLayout layoutMedio;
 
+int c,d,e;
+String f;
+
+    children dataChild= new children();
 
     public static JSONArray jsonArray = new JSONArray();
     public static JSONArray jsonArray2 = new JSONArray();
@@ -57,16 +59,19 @@ Request request = new Request();
         super.onCreate(onSaveInstanceState);
         setContentView(R.layout.activity_asignacion);
         siguiente= findViewById(R.id.siguiente);
+
         Asignacion = findViewById(R.id.Asignacion);
         eliminar = findViewById(R.id.eliminar);
+        eliminarAparato = findViewById(R.id.eliminarAparatos);
         aceptarmedio = findViewById(R.id.aceptarMedio);
         cancelarmedio = findViewById(R.id.cancelarMedio);
         spinnerMedio = findViewById(R.id.spinnerMedio);
         aceptarAsignacion = findViewById(R.id.aceptarAsignacion);
         layoutMedio = findViewById(R.id.poiuyt);
- //       request.getArbSer();
+
         adapter = new Arbol_Adapter(getApplicationContext());
         Asignacion.setAdapter(adapter);
+        Asignacion.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
 
         siguiente.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +91,7 @@ Request request = new Request();
                 Log.d("numero", String.valueOf(Arbol_Adapter.a));
                 Intent intento=new Intent(asignacion.this,asignado.class);
                 startActivity(intento);
+
             }
         });
         Asignacion.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -98,12 +104,12 @@ aceptarAsignacion.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         for(int a=0; a<Array.dataArbSer.get(0).size(); a++){
-            Array.dataArbSer.get(0).get(a).setClv_orden(121222);
+            Array.dataArbSer.get(0).get(a).setClv_orden(clvor);
         }
         Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
             List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = (List<GetMuestraArbolServiciosAparatosPorinstalarListResult>) itData.next();
 
-            for(int c=0; c<asignado.selectedStrings.size(); c++){
+            for(int c=0; c<dat.size(); c++){
                 jsonObject3 = new JSONObject();
                 jsonArray3 = new JSONArray();
                 try {
@@ -144,12 +150,75 @@ aceptarAsignacion.setOnClickListener(new View.OnClickListener() {
 
 
 
+            request.getAceptatAsignacino(getApplicationContext());
 
         request.getAceptatAsignacino(getApplicationContext());
+        adapter = new Arbol_Adapter(getApplicationContext());
+        Asignacion.setAdapter(adapter);
+        Asignacion.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+            finish();
+        //       Intent intento=new Intent(asignacion.this,MainActivity.class);
+      // startActivity(intento);
 
     }
 });
+eliminarAparato.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Iterator<List<GetMuestraArbolServiciosAparatosPorinstalarListResult>> itData = array.dataArbSer.iterator();
+        List<GetMuestraArbolServiciosAparatosPorinstalarListResult> dat = (List<GetMuestraArbolServiciosAparatosPorinstalarListResult>) itData.next();
 
+        while(Arbol_Adapter.DeletChildren.isEmpty()==false) {
+            for (c = 0; c < dat.size(); c++) {
+                f = String.valueOf(c);
+                e = 0;
+                if (dat.get(c).children != null) {
+                    for (int d = 0; d < dat.get(c).children.size(); d++) {
+                        String abc = dat.get(c).children.get(d).getClv_Aparato() + f;
+                        try {
+
+
+                            if (Integer.parseInt(abc) == (Arbol_Adapter.DeletChildren.get(0))) {
+                                dat.get(c).children.remove(d);
+                                Arbol_Adapter.DeletChildren.remove(0);
+                                //  e = e + 1;
+                            }
+                        } catch (Exception x) {
+
+                        }
+                    }
+                }
+
+            }
+        }
+        ////////////
+        for( c=0; c<dat.size(); c++) {
+            f= String.valueOf(c);
+            e=0;
+            if(dat.get(c).IdMedio!=null&& dat.get(c).Detalle!=null) {
+                    String abc = dat.get(c).IdMedio+dat.get(c).Detalle ;
+                    try {
+                        if ((abc).equals(Arbol_Adapter.DeletMedio.get(0))) {
+                            dat.get(c).setDetalle("");
+                            dat.get(c).setIdMedio(0);
+                            Arbol_Adapter.DeletChildren.remove(c);
+                            e = e + 1;
+
+                        }
+                    }catch (Exception x){
+
+                    }
+                }
+            }
+
+
+
+        adapter = new Arbol_Adapter(getApplicationContext());
+        Asignacion.setAdapter(adapter);
+        Asignacion.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+        siguiente.setEnabled(false);
+    }
+});
 
 
 
